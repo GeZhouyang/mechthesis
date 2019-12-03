@@ -1,46 +1,43 @@
 %------------------------------------------------------------------------------
 % Define title, author(s), affiliation and publishing status
 %
-\papertitle[Development of a Superlaser System] % Short title used in headlines (optional)
+\papertitle[ICLS/GFM for droplet suspensions under depletion forces] % Short title used in headlines (optional)
 {%
-  Development of a Superlaser System for space applications% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+  An efficient mass-preserving interface-correction level set/ghost fluid method
+  for droplet suspensions under depletion forces% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
 }%
 %
-\papertoctitle{Development of a Superlaser System for space\\applications} % Title for toc
+\papertoctitle{An efficient mass-preserving interface-correction level set/ghost fluid method
+  for droplet suspensions under depletion forces} % Title for toc
 %
-\paperauthor[A. Skywalker \& D. Vader] % Short authors used in headlines and List Of Papers
+\paperauthor[Ge, Loiseau, Tammisola, Brandt] % Short authors used in headlines and List Of Papers
 {%
-  Anakin Skywalker$^1$ and Darth Vader$^2$%
+  Zhouyang Ge, Jean-Christophe Loiseau, Outi Tammisola and Luca Brandt%
 }%
 %
 %\listpaperauthor{A. Skywalker \& D. Vader}% (optional) Short authors used in List Of Papers
 %
 \paperaffiliation
 {%
-  $^1$ Linn\'e FLOW Centre, KTH Mechanics, S-100 44 Stockholm, Sweden\\
-  $^2$ Super-laser LAB, The Death Star, currently orbiting Alderaan%
+  Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
 }%
 %
-\paperjournal[Gal. Empire Publ.] % Short publish info used in List Of Papers
+\paperjournal[J. Comput. Phys.] % Short publish info used in List Of Papers
 {%
-	Galactic Empire Publications%
+	Journal of Computational Physics%
 }%
 %
-\papervolume{42}%
+\papervolume{353}%
 %
-\papernumber{2}%
+\papernumber{}%
 %
-\paperpages{1--10}%
+\paperpages{435--459}%
 %
-\paperyear{3639}%
+\paperyear{2018}%
 %
 \papersummary%
-{% Insert summary of the paper here (used in introduction) 
-	The implications of concurrent archetypes have been far-reaching and
-	pervasive. Given the current status of heterogeneous technology,
-	cyberinformaticians daringly desire the key unification of the Turing
-	machine and erasure coding. We explore new decentralized information,
-	which we call Tuna.
+{% Insert summary of the paper here (used in introduction)
+\todo
 }%
 %
 \graphicspath{{paper1/}}%
@@ -59,11 +56,14 @@
 %------------------------------------------------------------------------------
 %
 \begin{paperabstract}
-	The implications of concurrent archetypes have been far-reaching and
-	pervasive. Given the current status of heterogeneous technology,
-	cyberinformaticians daringly desire the key unification of the Turing
-	machine and erasure coding. We explore new decentralized information,
-	which we call Tuna.
+Aiming for the simulation of colloidal droplets in microfluidic devices, we present here a numerical method for two-fluid systems subject to surface tension and depletion forces among the suspended droplets. The algorithm is based on an efficient solver for the incompressible two-phase Navier-Stokes equations, and uses a mass-conserving level set method to capture the fluid interface. 
+The four novel ingredients proposed here are, firstly, an interface-correction level set (ICLS) method; % that efficiently preserves mass. 
+global mass conservation is achieved by performing an additional advection near the interface, with a correction velocity obtained by locally solving an algebraic equation, which is easy to implement in both 2D and 3D. 
+Secondly, we report a second-order accurate geometric estimation of the curvature at the interface and, 
+thirdly, the combination of the ghost fluid method with the fast pressure-correction approach enabling an accurate and fast computation even for large density contrasts. 
+Finally, we derive %sharp formulation for the pressure difference 
+a hydrodynamic model for the interaction forces
+induced by depletion of surfactant micelles and combine it with a multiple level set approach to study short-range interactions among droplets in the presence of attracting forces.
 \end{paperabstract}
 
 
