@@ -1075,6 +1075,7 @@ A common problem in multiphase-flow simulations is the artificial velocity gener
 %We also note that the spurious currents reported here are obtained performing the level set reinitialization at about every 100 steps. However, if we turn off the reinitialization, such spurious velocity eventually goes to machine zero due to viscous damping (not shown\Ge{, see \cite{Popinet_JCP_2009} for detailed explanations for a similar test}). This further validates the computation of the surface tension with the GFM.
 
 \begin{table}[t]
+    \footnotesize
  \centering
   \caption{Dependence of spurious current capillary number $Ca$ on the Laplace number for a static droplet with surface tension on a $32\times32$ mesh in comparison with \cite{Desjardins_JCP_2008}.}
   \tabulinesep=1.2mm
@@ -1408,13 +1409,11 @@ and
 \end{equation}
 
 
-\paragraph{Approaching drops} 
-
+\noindent
+\textbf{Approaching drops. } 
 \Ge{We verify the depletion force model and its numerical implementation by simulating 2 to 14 approaching droplets in a quiescent fluid environment. Specifically, we set the droplet radius $R=0.5$, the computational domain $3\times3\times3$, and the resolution $\Delta x=1/32$. The radius of the surfactant micelle is set to be $r_s=1/16$, corresponding to $2\Delta x$. The viscosity and density ratios of the droplet to the ambient fluid are both 1. The non-dimensional parameters are %chosen as $Re=10$, $We=0.05$, 
 $La=2000$
 and $Fr=\infty$, leading to a reference Laplace pressure jump $p_\sigma=80$ and neglected gravity. The uniform osmotic pressure is either $10$ or $40$.}
-
-\Ge{The temporal evolutions of the minimal surface distances in the case of two and three droplets are shown in Fig.\ \ref{fig: dep demo}. Here, time is scaled by a factor $T_\pi=(r_s/R)(p_\sigma/p_{os})$. The droplets, originally separated by a distance of $r_s$, get closer to the limit of the grid spacing at $t \approx T_\pi$. For the present study, we let the droplets aggregate without applying any repulsion models, except that the magnitude of the osmotic pressure is reduced when $d_{min}/r_s<0.1$. The smooth approaching in all cases and the collapse of the distance curve clearly evidence an attracting depletion force. To assess the robustness of the method, we further tested clustering of droplets into shapes from a 2D diamond to a face-centered cubic (FCC) composed of 14 drops, illustrated here in Fig.\ \ref{fig: clusters}. FCC represents the unit structure of one of the most compact sphere packings. Therefore, we can conclude that the hydrodynamic model implemented by the MLS/GFM-based method is accurate and robust in computing the depletion forces.}
 
 \begin{figure}[t]
  \begin{center}
@@ -1430,6 +1429,8 @@ and $Fr=\infty$, leading to a reference Laplace pressure jump $p_\sigma=80$ and 
  \caption{Minimal distance between the droplet surfaces as function of time in the presence of depletion forces proportional to $p_{os}=10$ (solid line) and $p_{os}=40$ (dashed line). Simulation of (a) two droplets and (b) three droplets suspended in an initially quiescent fluid. Due to symmetry, only the minimal distance is plotted.}
  \label{fig: dep demo}
 \end{figure}
+
+\Ge{The temporal evolutions of the minimal surface distances in the case of two and three droplets are shown in Fig.\ \ref{fig: dep demo}. Here, time is scaled by a factor $T_\pi=(r_s/R)(p_\sigma/p_{os})$. The droplets, originally separated by a distance of $r_s$, get closer to the limit of the grid spacing at $t \approx T_\pi$. For the present study, we let the droplets aggregate without applying any repulsion models, except that the magnitude of the osmotic pressure is reduced when $d_{min}/r_s<0.1$. The smooth approaching in all cases and the collapse of the distance curve clearly evidence an attracting depletion force. To assess the robustness of the method, we further tested clustering of droplets into shapes from a 2D diamond to a face-centered cubic (FCC) composed of 14 drops, illustrated here in Fig.\ \ref{fig: clusters}. FCC represents the unit structure of one of the most compact sphere packings. Therefore, we can conclude that the hydrodynamic model implemented by the MLS/GFM-based method is accurate and robust in computing the depletion forces.}
 
 \begin{figure}[t]
 \centering
