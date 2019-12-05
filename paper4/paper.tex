@@ -1,0 +1,86 @@
+%------------------------------------------------------------------------------
+% Define title, author(s), affiliation and publishing status
+%
+\papertitle[Two spheres in wall-bounded shear flow] % Short title used in healines (optional)
+{%
+ The theory of hydrodynamic interaction of \\two spheres in wall-bounded shear flow% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+}%
+%
+\papertoctitle{The theory of hydrodynamic interaction of two spheres in wall-bounded shear flow} % Title for toc
+%
+\paperauthor[Fouxon, Rubinstein, Ge, Brandt, Leshansky] % Short authors used in headlines and List Of Papers
+{%
+  Itzhak Fouxon$^{1,2}$, Boris Rubinstein$^3$, Zhouyang Ge$^4$, \\Luca Brandt$^4$, Alexander Leshansky$^1$%
+}%
+%
+\listpaperauthor{I. Fouxon, B. Rubinstein, Z. Ge, L. Brandt, A. Leshansky}% (optional) Short authors used in List Of Papers
+%
+\paperaffiliation
+{%
+  $^1$ Department of Chemical Engineering, Technion, Haifa 32000, Israel\\%
+  $^2$ Department of Computational Science and Engineering, Yonsei University, \\Seoul 120-749, South Korea\\%
+  $^3$ Stowers Institute for Medical Research, 1000 E 50th st., Kansas City, \\MO 64110, USA\\%
+  $^4$ Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
+}%
+%
+\paperjournal[Under review for Phys.\ Rev.\ Fluids] % Short publish info used in List Of Papers
+{%
+	Under review for Physical Review Fluids%
+}%
+%
+\papervolume{}%
+%
+\papernumber{}
+%
+\paperpages{}%
+%
+\paperyear{}%
+%
+\papersummary%
+{% Insert summary of the paper here (used in introduction)
+   \todo
+}%
+%
+\graphicspath{{paper4/}}%
+%
+%
+%===============================================================================
+%                            BEGIN PAPER
+%===============================================================================
+%
+\begin{paper}
+
+\makepapertitle
+
+%------------------------------------------------------------------------------
+% Abstract
+%------------------------------------------------------------------------------
+%
+\begin{paperabstract}
+	
+The seminal Batchelor-Green's (BG) theory on the hydrodynamic interaction of two spherical particles of radii $a$ suspended in a viscous shear flow assumes unbounded fluid. In the present paper we study how a rigid plane wall modifies this interaction. Using an integral equation for the surface traction we derive the expression for the particles' relative velocity as a sum of the BG's velocity and the term due to the presence of a wall at finite distance, $z_0$. Our calculation is not the perturbation theory of the BG solution, so the contribution due to the wall is not necessarily small. We indeed demonstrate that the presence of the wall is a singular perturbation, i.e., its effect cannot be neglected even at large distances. The distance at which the wall significantly alters the particles interaction scales as $z_0^{3/5}$. The phase portrait of the particles' relative motion is different from the BG theory, where there are two singly-connected regions of open and closed trajectories both of infinite volume. For finite $z_0$, besides the BG's domains of open and closed trajectories, there is a domain of closed (dancing) and open (swapping) trajectories that do not materialize in an unbounded shear flow. The width of this region grows as $1/z_0$ at smaller separations from the wall. Along the swapping trajectories, that have been previously observed numerically, the incoming particle is turning back after the encounter with the reference particle, rather than passing it by, as the BG theory anticipates. The region of dancing trajectories has infinite volume and is separated from a BG-type domain of closed trajectories that becomes compact due to presence of the wall. We found a one-parameter family of equilibrium states that were previously overlooked, whereas the pair of spheres flows as a whole without changing its configuration. These states are marginally stable and their perturbation yields a two-parameter family of the dancing trajectories, whereas the test particle is orbiting around a fixed point in a frame co-moving with the reference particle. We suggest that the phase portrait obtained at $z_0 \gg a$ is topologically stable and can be extended down to rather small $z_0$ of several particle diameters. We confirm this hypothesis by direct numerical simulations of the Navier-Stokes equations with $z_0=5a$. Qualitatively the distant wall is the third body that changes the global topology of the phase portrait of two-particle interaction.
+\end{paperabstract}
+
+
+%------------------------------------------------------------------------------
+% Article
+%------------------------------------------------------------------------------
+%
+\input{paper4/article.tex}
+
+
+%------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------
+%
+%\clearpage
+\bibliographystyle{jfm}
+\bibliography{thesis}
+%
+\IfFileExists{paper4/paper.bbl}{\input{paper4/paper.bbl}}{}
+
+
+%===============================================================================
+%                            END PAPER
+%===============================================================================
+\end{paper}

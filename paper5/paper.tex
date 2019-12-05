@@ -1,0 +1,83 @@
+%------------------------------------------------------------------------------
+% Define title, author(s), affiliation and publishing status
+%
+\papertitle[Droplets in homogeneous shear turbulence] % Short title used in headlines (optional)
+{%
+  Droplets in homogeneous shear turbulence% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+}%
+%
+\papertoctitle{Droplets in homogeneous shear turbulence} % Title for toc
+%
+\paperauthor[Rosti, Ge, Jain, Dodd, Brandt] % Short authors used in headlines and List Of Papers
+{%
+  Marco E. Rosti$^1$, Zhouyang Ge$^1$, Suhas S. Jain$^2$, \\Michael S. Dodd$^2$, Luca Brandt$^{1,3}$%
+}%
+%
+\listpaperauthor{M.E. Rosti, Z. Ge, S.S. Jain, M.S. Dodd, L. Brandt}% (optional) Short authors used in List Of Papers
+%
+\paperaffiliation
+{%
+  $^1$ Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden\\%
+  $^2$ Center for Turbulence Research, Stanford University, CA 94305, USA\\%
+  $^3$ Department of Energy and Process Engineering, Norwegian University of Science and Technology (NTNU), NO 7491, Norway%
+}%
+%
+\paperjournal[J. Fluid Mech.] % Short publish info used in List Of Papers
+{%
+	Journal of Fluid Mechanics%
+}%
+%
+\papervolume{876}%
+%
+\papernumber{}%
+%
+\paperpages{962--984}%
+%
+\paperyear{2019}%
+%
+\papersummary%
+{% Insert summary of the paper here (used in introduction)
+\todo
+}%
+%
+\graphicspath{{paper5/}}%
+%
+%
+%===============================================================================
+%                            BEGIN PAPER
+%===============================================================================
+%
+\begin{paper}
+
+\makepapertitle
+
+%------------------------------------------------------------------------------
+% Abstract
+%------------------------------------------------------------------------------
+%
+\begin{paperabstract}
+We  simulate  the  flow  of  two  immiscible  and  incompressible  fluids  separated  by  an interface  in  a  homogeneous  turbulent  shear  flow  at  a  shear  Reynolds  number  equal to  15 200.  The  viscosity  and  density  of  the  two  fluids  are  equal,  and  various  surface tensions  and  initial  droplet  diameters  are  considered  in  the  present  study.  We  show that  the  two-phase  flow  reaches  a  statistically  stationary  turbulent  state  sustained  by a  non-zero  mean  turbulent  production  rate  due  to  the  presence  of  the  mean  shear. Compared  to  single-phase  flow,  we  find  that  the  resulting  steady-state  conditions exhibit  reduced  Taylor-microscale  Reynolds  numbers  owing  to  the  presence  of  the dispersed  phase,  which  acts  as  a  sink  of  turbulent  kinetic  energy  for  the  carrier  fluid. At steady state, the mean power of surface tension is zero and the turbulent productionrate  is  in  balance  with  the  turbulent  dissipation  rate,  with  their  values  being  larger than  in  the  reference  single-phase  case.  The  interface  modifies  the  energy  spectrum by  introducing  energy  at  small  scales,  with  the  difference  from  the  single-phase  case reducing  as  the  Weber  number  increases.  This  is  caused  by  both  the  number  ofdroplets  in  the  domain  and  the  total  surface  area  increasing  monotonically  with  the Weber  number.  This  reflects  also  in  the  droplet  size  distribution,  which  changes  with the  Weber  number,  with  the  peak  of  the  distribution  moving  to  smaller  sizes  as  the Weber  number  increases.  We  show  that  the  Hinze  estimate  for  the  maximum  dropletsize,  obtained  considering  break-up  in  homogeneous  isotropic  turbulence,  provides an  excellent  estimate  notwithstanding  the  action  of  significant  coalescence  and  the presence  of  a  mean  shear.
+\end{paperabstract}
+
+
+%------------------------------------------------------------------------------
+% Article
+%------------------------------------------------------------------------------
+%
+\input{paper5/article.tex}
+
+
+%------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------
+%
+%\clearpage
+\bibliographystyle{jfm}
+\bibliography{thesis}
+%
+\IfFileExists{paper5/paper.bbl}{\input{paper5/paper.bbl}}{}
+
+%===============================================================================
+%                            END PAPER
+%===============================================================================
+\end{paper}
