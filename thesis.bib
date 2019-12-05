@@ -414,13 +414,19 @@ pages = {4469--4498},
 year = {2009},
 }
 
-@Article{ Wim-Paul_JCP_2012,
-author = {Breugem, W.-P.},
-title = {Numerical simulation of drop impact on a liquid-liquid interface with a multiple marker front-capturing method},
-journal = {J. Comput. Phys.},
-volume = {228},
-pages = {4444--4467},
-year = {2012},
+@article{Wim-Paul_JCP_2012,
+title = "A second-order accurate immersed boundary method for fully resolved simulations of particle-laden flows",
+journal = "Journal of Computational Physics",
+volume = "231",
+number = "13",
+pages = "4469 - 4498",
+year = "2012",
+issn = "0021-9991",
+doi = "https://doi.org/10.1016/j.jcp.2012.02.026",
+url = "http://www.sciencedirect.com/science/article/pii/S0021999112001374",
+author = "Wim-Paul Breugem",
+keywords = "Immersed boundary method, Particle-laden flow, Finite-volume method, Grid locking, Multidirect forcing scheme, Retraction distance, Order of grid convergence",
+abstract = "An immersed boundary method (IBM) with second-order spatial accuracy is presented for fully resolved simulations of incompressible viscous flows laden with rigid particles. The method is based on the computationally efficient direct-forcing method of Uhlmann [M. Uhlmann, An immersed boundary method with direct forcing for simulation of particulate flows, J. Comput. Phys. 209 (2005) 448–476] that is embedded in a finite-volume/pressure-correction method. The IBM consists of two grids: a fixed uniform Eulerian grid for the fluid phase and a uniform Lagrangian grid attached to and moving with the particles. A regularized delta function is used to communicate between the two grids and proved to be effective in suppressing grid locking. Without significant loss of efficiency, the original method is improved by: (1) a better approximation of the no-slip/no-penetration (ns/np) condition on the surface of the particles by a multidirect forcing scheme, (2) a correction for the excess in the effective particle diameter by a slight retraction of the Lagrangian grid from the surface towards the interior of the particles with a fraction of the Eulerian grid spacing, and (3) an enhancement of the numerical stability for particle–fluid mass density ratios near unity by a direct account of the inertia of the fluid contained within the particles. The new IBM contains two new parameters: the number of iterations Ns of the multidirect forcing scheme and the retraction distance rd. The effect of Ns and rd on the accuracy is investigated for five different flows. The results show that rd has a strong influence on the effective particle diameter and little influence on the error in the ns/np condition, while exactly the opposite holds for Ns. A novel finding of this study is the demonstration that rd has a strong influence on the order of grid convergence. It is found that for spheres the choice of rd=0.3Δx yields second-order accuracy compared to first-order accuracy of the original method that corresponds to rd=0. Finally, Ns=2 appears optimal for reducing the error in the ns/np condition and maintaining the computational efficiency of the method."
 }
 
 @Article{Brun_JCP_2012,
@@ -1045,6 +1051,300 @@ abstract = "We review non-equilibrium many-body phenomena in ensembles of 2D mic
 
 @article{is,
 title={Interaction forces between microfluidic droplets in a Hele-Shaw cell}, volume={800}, DOI={10.1017/jfm.2016.403}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Sarig, I. and Starosvetsky, Y. and Gat, A. D.}, year={2016}, pages={264–277}}
+
+@article{f1,
+title={Dynamic simulation of bounded suspensions of hydrodynamically interacting particles}, volume={200}, DOI={10.1017/S0022112089000558}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Durlofsky, Louis J. and Brady, John F.}, year={1989}, pages={39–67}}
+
+@article{f2,
+title={Pressure-driven flow of suspensions: simulation and theory}, volume={275}, DOI={10.1017/S0022112094002326}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Nott, Prabhu R. and Brady, John F.}, year={1994}, pages={157–199}}
+
+@article{f3,
+title = "Pressure-driven flow of a suspension: Buoyancy effects",
+journal = "International Journal of Multiphase Flow",
+volume = "24",
+number = "1",
+pages = "105 - 130",
+year = "1998",
+issn = "0301-9322",
+doi = "https://doi.org/10.1016/S0301-9322(97)00035-9",
+url = "http://www.sciencedirect.com/science/article/pii/S0301932297000359",
+author = "J.F. Morris and J.F. Brady",
+keywords = "suspensions, pressure-driven flow, buoyancy, shear-induced migration, flow modeling, non-Newtonian rheology",
+abstract = "Dynamic simulation of pressure-driven flow of a non-neutrally buoyant suspension has been performed by Stokesian Dynamics. Channel flow at zero Reynolds number of a monodisperse non-Brownian suspension of spheres in a monolayer was studied for a range of three parameters: bulk particle area fraction ΦAb dimensionless gravitational parameter B = (U0/〈u〉(Ha)2, and dimensionless channel width Ha. Here, U0 is the Stokes settling velocity of an isolated sphere, 〈u〉 is the mean velocity of the suspension, H is the channel width, and a is the particle radius. From an initially uniform distribution, a range of behavior in the fully-developed flow is observed depending upon the value of B. For small B, shear-induced migration dominates buoyancy effects, and a layer at large ΦA is formed in the center of the channel. For sufficiently strong gravitation, particles settle rapidly to form a concentrated layer that is transported along the bottom of the channel by shearing. At intermediate values of B, shear-induced migration of particles to the center of the channel occurs simultaneously with gravitational settling. In the lower portion of the channel, these fluxes are opposed and lead to nonmonotonic variation of particle fraction, with ΦA increasing away from the lower wall to a maximum near or even above the centerline and then rapidly decreasing, typically vanishing to leave clear fluid adjacent to the upper wall. These results are in qualitative agreement with the small amount of experimental data in the literature on such systems. The flow has been modeled using macroscopic balance equations presented previously; the predictions agree well with simulations."
+}
+
+@article{f4,
+title={Normal stresses and microstructure in bounded sheared suspensions via Stokesian Dynamics simulations}, volume={412}, DOI={10.1017/S0022112000008375}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={SINGH, ANUGRAH and NOTT, PRABHU R.}, year={2000}, pages={279–301}}
+
+@article{f5,
+author = {Morris,Jeffrey F. },
+title = {Anomalous migration in simulated oscillatory pressure-driven flow of a concentrated suspension},
+journal = {Physics of Fluids},
+volume = {13},
+number = {9},
+pages = {2457-2462},
+year = {2001},
+doi = {10.1063/1.1390363},
+
+URL = { 
+        https://doi.org/10.1063/1.1390363
+    
+},
+eprint = { 
+        https://doi.org/10.1063/1.1390363
+    
+}
+
+}
+
+
+@article{f7,
+author = {Bhattacharya,S.  and Bławzdziewicz,J.  and Wajnryb,E. },
+title = {Hydrodynamic interactions of spherical particles in Poiseuille flow between two parallel walls},
+journal = {Physics of Fluids},
+volume = {18},
+number = {5},
+pages = {053301},
+year = {2006},
+doi = {10.1063/1.2195992},
+
+URL = { 
+        https://doi.org/10.1063/1.2195992
+    
+},
+eprint = { 
+        https://doi.org/10.1063/1.2195992
+    
+}
+
+}
+
+@article{tl2014,
+author = {Shani, I. and Beatus, T. and Bar-Ziv, R. H. and Tlusty, T.},
+title = {Long-range orientational order in two-dimensional microfluidic dipoles},
+journal = {Nature Phys.},
+volume = {10},
+number = {},
+pages = {140--144},
+year = {2014}
+}
+
+
+@Article{tab0,
+author="Shen, B.
+and Leman, M.
+and Reyssat, M.
+and Tabeling, P.",
+title="Dynamics of a small number of droplets in microfluidic Hele--Shaw cells",
+journal="Experiments in Fluids",
+year="2014",
+month="May",
+day="01",
+volume="55",
+number="5",
+pages="1728",
+abstract="We investigate the dynamics of a small number of droplets (N = 1, 2, 3) in microfluidic Hele--Shaw cells. We study the cases N = 1, 2, and 3 droplets and analyze the influence of the side walls. In the course of the study, we observe spontaneous alignment of droplet pairs, pair exchanges, droplet escape, multiple reflections between walls, i.e., a number of phenomena that have not been reported yet. As a whole, using pairwise far-field dipolar interactions between droplets, along with treating the walls as mirrors, allows to reproduce the observations, even though limitations in the predictability of the model are pointed out in a few cases. From a more practical prospective, the work shows that the behavior of elementary droplet assemblies can be put under acceptable experimental control in a wide variety of situations, a feature potentially interesting for self-assembly, mixing, or transport of particles in microfluidic environments.",
+issn="1432-1114",
+doi="10.1007/s00348-014-1728-2",
+url="https://doi.org/10.1007/s00348-014-1728-2"
+}
+
+@article{tabeling,
+author = {Shen, Bingqing and Ricouvier, Joshua and Malloggi, Florent and Tabeling, Patrick},
+title = {Designing Colloidal Molecules with Microfluidics},
+journal = {Advanced Science},
+
+volume = {3},
+number = {6},
+pages = {1600012},
+keywords = {building blocks, colloidal molecules, high throughput, microfluidics, self-assembly},
+doi = {10.1002/advs.201600012},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/advs.201600012},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/advs.201600012},
+abstract = {The creation of new colloidal materials involves the design of functional building blocks. Here, a microfluidic method for designing building blocks one by one, at high throughput, with a broad range of shapes is introduced. The method exploits a coupling between hydrodynamic interactions and depletion forces that controls the configurational dynamics of droplet clusters traveling in microfluidic channels. Droplet clusters can be solidified in situ with UV. By varying the flow parameters, clusters are prescribed a given size, geometry, chemical and/or magnetic heterogeneities enabling local bonding. Compact structures (chains, triangles, diamonds, tetrahedrons,...) and noncompact structures, such as crosses and T, difficult to obtain with current techniques are produced. Size dispersions are small (2\%) and throughputs are high (30 000 h−1). The work opens a new pathway, based on microfluidics, for designing colloidal building blocks with a potential to enable the creation of new materials.},
+year = {2016}
+}
+
+@article{sb,
+author = {Swan,James W.  and Brady,John F. },
+title = {Particle motion between parallel walls: Hydrodynamics and simulation},
+journal = {Physics of Fluids},
+volume = {22},
+number = {10},
+pages = {103301},
+year = {2010},
+doi = {10.1063/1.3487748},
+
+URL = { 
+        https://doi.org/10.1063/1.3487748
+    
+},
+eprint = { 
+        https://doi.org/10.1063/1.3487748
+    
+}
+
+}
+
+
+@Book{Batchelor,
+author = {Batchelor, G.K.},
+title = {An introduction to fluid dynamics},
+year = {1967},
+Publisher = {Cambridge University Press},
+address = {London, N.W.},
+}
+
+@article{lubr,
+author = {Tavakol, B. and Holmes, D. P.  and  Froehlicher, G. and  Stone, H. A.},
+title = {Extended Lubrication Theory: Improved Estimates of Flow in Channels with Variable Geometry},
+journal = {ArXiv},
+volume = {},
+number = {1403.2343},
+pages = {},
+year = {2017}
+}
+
+@Book{szeri,
+author = { Szeri, A. Z.},
+title = {Fluid film lubrication: theory and design},
+year = {2005},
+Publisher = {Cambridge University Press},
+address = {},
+}
+
+@Book{bruce,
+author = {Bruce, R. W. ed.},
+title = {Handbook of Lubrication and Tribology},
+year = {2012},
+Publisher = {Cambridge University Press},
+address = {},
+}
+
+@Book{ll,
+author = {Landau, L. D.  and Lifshitz,E. M. },
+title = {Fluid mechanics},
+year = {1987},
+Publisher = {},
+address = {},
+}
+
+@Book{hb,
+author = {Happel, J. and  Brenner, H.},
+title = {Low Reynolds number hydrodynamics: with special applications to particulate media},
+year = {1983},
+Publisher = {Martinus Nijhoff Publishers},
+address = {The Hague},
+}
+
+@Book{ps,
+author = {Pozrikidis, C.},
+title = {Boundary integral and singularity methods for linearized viscous flow},
+year = {1992},
+Publisher = {Cambridge University Press},
+address = {},
+}
+
+
+@Article{LironMochon,
+author="Liron, N.
+and Mochon, S.",
+title="Stokes flow for a stokeslet between two parallel flat plates",
+journal="Journal of Engineering Mathematics",
+year="1976",
+month="Oct",
+day="01",
+volume="10",
+number="4",
+pages="287--303",
+abstract="Velocity and pressure fields for Stokes flow due to a force singularity of arbitrary orientation and arbitrary distance between two parallel plates are found, using the image technique and a Fourier transform. Two alternative expressions for the solution, one in terms of infinite integrals and the other in terms of infinite series, are given. The infinite series solution is especially suitable for computation purposes being an exponentially decreasing series. From the series the ``far field'' behaviour is extracted. It is found that a force singularity parallel to the two planes has a far field behaviour of source and image for the parallel components (a two dimensional source doublet of height-dependent strength) whereas the normal component, and all fields due to a force singularity normal to the planes, die out exponentially. Velocity fields are compared with those of the one plane case. An estimate of the influence of the second wall and when its effect can be disregarded is obtained.",
+issn="1573-2703",
+doi="10.1007/BF01535565",
+url="https://doi.org/10.1007/BF01535565"
+}
+
+@Book{levich,
+author = {Levich, V.G.},
+title = {Physicochemical hydrodynamics},
+year = {1977},
+Publisher = {Advance Publications},
+address = {},
+}
+
+@Book{leal,
+author = {Leal, L.G.},
+title = {Advanced transport phenomena: fluid mechanics and convective transport processes},
+year = {2007},
+Publisher = {Cambridge University Press},
+address = {},
+}
+
+@article{1rd2,
+title={The motion of rigid particles in a shear flow at low Reynolds number}, volume={14}, DOI={10.1017/S002211206200124X}, number={2}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Bretherton, F. P.}, year={1962}, pages={284–304}}
+
+@Book{grad,
+author = {Gradshteyn,I. S.  and  Ryzhik, I. M.},
+title = {Table of integrals, series, and products},
+year = {2014},
+Publisher = {Academic press},
+address = {},
+}
+
+@article{ibm,
+title = "A second-order accurate immersed boundary method for fully resolved simulations of particle-laden flows",
+journal = "Journal of Computational Physics",
+volume = "231",
+number = "13",
+pages = "4469 - 4498",
+year = "2012",
+issn = "0021-9991",
+doi = "https://doi.org/10.1016/j.jcp.2012.02.026",
+url = "http://www.sciencedirect.com/science/article/pii/S0021999112001374",
+author = "Wim-Paul Breugem",
+keywords = "Immersed boundary method, Particle-laden flow, Finite-volume method, Grid locking, Multidirect forcing scheme, Retraction distance, Order of grid convergence",
+abstract = "An immersed boundary method (IBM) with second-order spatial accuracy is presented for fully resolved simulations of incompressible viscous flows laden with rigid particles. The method is based on the computationally efficient direct-forcing method of Uhlmann [M. Uhlmann, An immersed boundary method with direct forcing for simulation of particulate flows, J. Comput. Phys. 209 (2005) 448–476] that is embedded in a finite-volume/pressure-correction method. The IBM consists of two grids: a fixed uniform Eulerian grid for the fluid phase and a uniform Lagrangian grid attached to and moving with the particles. A regularized delta function is used to communicate between the two grids and proved to be effective in suppressing grid locking. Without significant loss of efficiency, the original method is improved by: (1) a better approximation of the no-slip/no-penetration (ns/np) condition on the surface of the particles by a multidirect forcing scheme, (2) a correction for the excess in the effective particle diameter by a slight retraction of the Lagrangian grid from the surface towards the interior of the particles with a fraction of the Eulerian grid spacing, and (3) an enhancement of the numerical stability for particle–fluid mass density ratios near unity by a direct account of the inertia of the fluid contained within the particles. The new IBM contains two new parameters: the number of iterations Ns of the multidirect forcing scheme and the retraction distance rd. The effect of Ns and rd on the accuracy is investigated for five different flows. The results show that rd has a strong influence on the effective particle diameter and little influence on the error in the ns/np condition, while exactly the opposite holds for Ns. A novel finding of this study is the demonstration that rd has a strong influence on the order of grid convergence. It is found that for spheres the choice of rd=0.3Δx yields second-order accuracy compared to first-order accuracy of the original method that corresponds to rd=0. Finally, Ns=2 appears optimal for reducing the error in the ns/np condition and maintaining the computational efficiency of the method."
+}
+
+@article{ruth,
+title={Active suspensions in thin films: nutrient uptake and swimmer motion}, volume={733}, DOI={10.1017/jfm.2013.459}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Lambert, Ruth A. and Picano, Francesco and Breugem, Wim-Paul and Brandt, Luca}, year={2013}, pages={528–557}}
+
+@article{picano,
+title={Turbulent channel flow of dense suspensions of neutrally buoyant spheres}, volume={764}, DOI={10.1017/jfm.2014.704}, journal={Journal of Fluid Mechanics}, publisher={Cambridge University Press}, author={Picano, Francesco and Breugem, Wim-Paul and Brandt, Luca}, year={2015}, pages={463–487}}
+
+@article{bim_1p,
+author = {Staben,Michelle E.  and Zinchenko,Alexander Z.  and Davis,Robert H. },
+title = {Motion of a particle between two parallel plane walls in low-Reynolds-number Poiseuille flow},
+journal = {Physics of Fluids},
+volume = {15},
+number = {6},
+pages = {1711-1733},
+year = {2003},
+doi = {10.1063/1.1568341},
+
+URL = { 
+        https://aip.scitation.org/doi/abs/10.1063/1.1568341
+    
+},
+eprint = { 
+        https://aip.scitation.org/doi/pdf/10.1063/1.1568341
+    
+}
+
+}
+
+
+
+@Book{cl,
+author = { Jackson,J. D.},
+title = {Classical electrodynamics},
+year = {1962},
+Publisher = {John Wiley and Sons},
+address = {},
+}
+
+
+
+
 
 
 
