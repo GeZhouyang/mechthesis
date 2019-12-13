@@ -1,0 +1,83 @@
+%------------------------------------------------------------------------------
+% Define title, author(s), affiliation and publishing status
+%
+\papertitle[DLCM for dense particle suspensions] % Short title used in healines (optional)
+{%
+ A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+}%
+%
+\papertoctitle{A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows} % Title for toc
+%
+\paperauthor[Ge, Tammisola, Brandt] % Short authors used in headlines and List Of Papers
+{%
+  Zhouyang Ge, Outi Tammisola, Luca Brandt%
+}%
+%
+\listpaperauthor{Z. Ge, O. Tammisola, L. Brandt}% (optional) Short authors used in List Of Papers
+%
+\paperaffiliation
+{%
+  Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
+}%
+%
+\paperjournal[Technical Report] % Short publish info used in List Of Papers
+{%
+	Technical Report%
+}%
+%
+\papervolume{}%
+%
+\papernumber{}
+%
+\paperpages{}%
+%
+\paperyear{}%
+%
+\papersummary%
+{% Insert summary of the paper here (used in introduction)
+   \todo
+}%
+%
+\graphicspath{{paper8/}}%
+%
+%
+%===============================================================================
+%                            BEGIN PAPER
+%===============================================================================
+%
+\begin{paper}
+
+\makepapertitle
+
+%------------------------------------------------------------------------------
+% Abstract
+%------------------------------------------------------------------------------
+%
+\begin{paperabstract}
+	A discrete-element lubrication/contact dynamics model (DLCM) is implemented for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, solves directly the particle dynamics in the overdamped limit, and is suitable for particles under quasi-static motion determined by balancing conservative and dissipative interactions at the pair level. Comparing to Stokesian dynamics models, the present method neglects long-range hydrodynamic interactions but admits the particle contact and friction, hence is computationally more efficient at high concentrations. Up to $\mathcal{O}(10^3)$ particles under volume fractions from 45\% to 65\% have been tested and compared with literature results, showing continuous and discontinuous shear thickening behaviours, thus verifying the implementation. We also extend the methodology to non-spherical particles using an approximate form of the hydrodynamic forces and the GJK algorithm for collision detection. The proposed model is straight-forward to implement and can be used to study the shear jamming and other complex rheologies of suspension flows.
+
+\end{paperabstract}
+
+
+%------------------------------------------------------------------------------
+% Article
+%------------------------------------------------------------------------------
+%
+\input{paper8/article.tex}
+
+
+%------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------
+%
+%\clearpage
+\bibliographystyle{jfm}
+\bibliography{thesis}
+%
+\IfFileExists{paper8/paper.bbl}{\input{paper8/paper.bbl}}{}
+
+
+%===============================================================================
+%                            END PAPER
+%===============================================================================
+\end{paper}
