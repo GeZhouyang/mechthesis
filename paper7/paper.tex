@@ -1,30 +1,28 @@
 %------------------------------------------------------------------------------
 % Define title, author(s), affiliation and publishing status
 %
-\papertitle[Frequency dependence of the complex viscosity of a dense noncolloidal suspension] % Short title used in healines (optional)
+\papertitle[DLCM for dense particle suspensions] % Short title used in healines (optional)
 {%
- Anomalous frequency dependence of the complex viscosity of a dense noncolloidal particle suspension% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+ A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
 }%
 %
-\papertoctitle{Anomalous frequency dependence of the complex viscosity of a dense noncolloidal particle suspension} % Title for toc
+\papertoctitle{A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows} % Title for toc
 %
-\paperauthor[Ge, Martone, Carotenuto, Radhakrishnan, Brandt, Minale] % Short authors used in headlines and List Of Papers
+\paperauthor[Ge, Tammisola, Brandt] % Short authors used in headlines and List Of Papers
 {%
-  Zhouyang Ge$^1$, Raffaella Martone$^2$, Claudia Carotenuto$^2$, Rangarajan Radhakrishnan$^3$, Luca Brandt$^1$, Mario Minale$^2$%
+  Zhouyang Ge, Outi Tammisola, Luca Brandt%
 }%
 %
-\listpaperauthor{Z. Ge, R. Martone, C. Carotenuto, R. Radhakrishnan, L. Brandt, M. Minale}% (optional) Short authors used in List Of Papers
+\listpaperauthor{Z. Ge, O. Tammisola, L. Brandt}% (optional) Short authors used in List Of Papers
 %
 \paperaffiliation
 {%
-  $^1$ Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden\\%
-  $^2$ University of Campania ``Luigi Vanvitelli'', Department of Engineering, \\via Roma 29 -- 81031 Aversa (CE), Italy\\%
-  $^3$ Institute for Infrastructure and Environment, School of Engineering, \\The University of Edinburgh, United Kingdom%
+  Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
 }%
 %
-\paperjournal[To be submitted] % Short publish info used in List Of Papers
+\paperjournal[Technical Report] % Short publish info used in List Of Papers
 {%
-	To be submitted%
+	Technical Report%
 }%
 %
 \papervolume{}%
@@ -37,7 +35,7 @@
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-   \todo
+   This report documents the implementation detail of a discrete-element lubrication/contact dynamics model (DLCM) intended for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, and solves directly the particle dynamics in the overdamped limit by balancing conservative and dissipative interactions at the pair level. Potential drawbacks include omissions of fluid/particle inertia and long-range hydrodynamic interactions. The implementation has been tested with up to $\mathcal{O}(10^3)$ particles under volume fractions from 45\% to 65\%, showing continuous and discontinuous shear thickening behaviours in excellent agreement with literature results.
 }%
 %
 \graphicspath{{paper7/}}%
@@ -56,7 +54,8 @@
 %------------------------------------------------------------------------------
 %
 \begin{paperabstract}
-	We report rheological measurements of a noncolloidal particle suspension at 40\% solid volume fraction. A frequency-dependent complex viscosity is found under oscillatory shear (OS) flows, whereas a constant dynamic viscosity is found under the same shear rates in steady shear (SS) flows. We hypothesize this contradiction arises from the underlying microstructural difference between OS and SS, mediated by interparticle forces. Discrete element simulations of a proxy noncolloidal suspension further reveals the qualitative difference of the stress budget and predicts shear thickening or thinning, only in OS, due to repulsive or attractive interactions, respectively.
+	A discrete-element lubrication/contact dynamics model (DLCM) is implemented for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, solves directly the particle dynamics in the overdamped limit, and is suitable for particles under quasi-static motion determined by balancing conservative and dissipative interactions at the pair level. Comparing to Stokesian dynamics models, the present method neglects long-range hydrodynamic interactions but admits the particle contact and friction, hence is computationally more efficient at high concentrations. Up to $\mathcal{O}(10^3)$ particles under volume fractions from 45\% to 65\% have been tested and compared with literature results, showing continuous and discontinuous shear thickening behaviours, thus verifying the implementation. We also extend the methodology to non-spherical particles using an approximate form of the hydrodynamic forces and the GJK algorithm for collision detection. The proposed model is straight-forward to implement and can be used to study the shear jamming and other complex rheologies of suspension flows.
+
 \end{paperabstract}
 
 
