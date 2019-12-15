@@ -1,43 +1,41 @@
 %------------------------------------------------------------------------------
 % Define title, author(s), affiliation and publishing status
 %
-\papertitle[Integral representation of channel flow with interacting particles] % Short title used in healines (optional)
+\papertitle[Flow-assisted droplet assembly in a 3D microfluidic channel] % Short title used in headlines (optional)
 {%
- Integral representation of channel flow with interacting particles% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+  Flow-assisted droplet assembly in a 3D microfluidic channel% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
 }%
 %
-\papertoctitle{Integral representation of channel flow with interacting particles} % Title for toc
+\papertoctitle{Flow-assisted droplet assembly in a 3D microfluidic channel} % Title for toc
 %
-\paperauthor[Fouxon, Ge, Brandt, Leshansky] % Short authors used in headlines and List Of Papers
+\paperauthor[Ge, Tammisola, Brandt] % Short authors used in headlines and List Of Papers
 {%
-  Itzhak Fouxon$^{1,2}$, Zhouyang Ge$^3$, Luca Brandt$^3$, \\Alexander Leshansky$^1$%
+  Zhouyang Ge, Outi Tammisola, Luca Brandt%
 }%
 %
-\listpaperauthor{I. Fouxon, Z. Ge, L. Brandt, A. Leshansky}% (optional) Short authors used in List Of Papers
+\listpaperauthor{Z. Ge, O. Tammisola, L. Brandt}% (optional) Short authors used in List Of Papers
 %
 \paperaffiliation
 {%
-  $^1$ Department of Chemical Engineering, Technion, Haifa 32000, Israel\\%
-  $^2$ Department of Computational Science and Engineering, Yonsei University, \\Seoul 120-749, South Korea\\%
-  $^3$ Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
+  Linn\'e FLOW Centre and SeRC, KTH Mechanics, S-100 44 Stockholm, Sweden%
 }%
 %
-\paperjournal[Phys.\ Rev.\ E.] % Short publish info used in List Of Papers
+\paperjournal[Soft Matter.] % Short publish info used in List Of Papers
 {%
-	Physical Review E%
+	Soft Matter%
 }%
 %
-\papervolume{96}%
+\papervolume{15}%
 %
-\papernumber{063110}
+\papernumber{}%
 %
-\paperpages{}%
+\paperpages{3451--3460}%
 %
-\paperyear{2017}%
+\paperyear{2019}%
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-   \todo
+In this paper, I performed a series of simulations, using methods developed in paper 1, to examine the droplet interaction in increasingly realistic conditions, mimicking a microfluidic experiment. The main objective was to elucidate the physical mechanism that leads to the experimentally observed droplet clustering, which had been explained by a dipolar interaction theory. Contrary to previous belief, we found that dipolar interactions alone cannot account for the fast droplet dynamics; a number of 3D effects must be included to faithfully reproduce the observation. This conclusion is supported by theoretical derivations of the Stokes flow (papers 3 and 4), implying that designing microfluidic channels to directly produce large droplet crystals remains difficult in practice.
 }%
 %
 \graphicspath{{paper2/}}%
@@ -56,7 +54,10 @@
 %------------------------------------------------------------------------------
 %
 \begin{paperabstract}
-	We construct a boundary integral representation for the low-Reynolds-number flow in a channel in the presence of freely-suspended particles (or droplets) of arbitrary size and shape. We demonstrate that lubrication theory holds away from the particles at horizontal distances exceeding the channel height and derive a multipole expansion of the flow which is dipolar to the leading approximation. We show that the dipole moment of an arbitrary particle is a weighted integral of the stress and the flow at the particle surface, which can be determined numerically. We introduce the equation of motion that describes hydrodynamic interactions between arbitrary, possibly different, distant particles, with interactions determined by the product of the mobility matrix and the dipole moment. Further, the problem of three identical interacting spheres initially aligned in the streamwise direction is considered and the experimentally observed ``pair exchange" phenomenon is derived analytically and confirmed numerically. For non-aligned particles, we demonstrate the formation of a configuration with one particle separating from a stable pair. Our results suggest that in a dilute initially homogenous particulate suspension flowing in a channel the particles will eventually separate into singlets and pairs.
+Self-assembly of soft matter, such as droplets or colloids, has become a promising scheme to engineer novel materials, model living matter, and explore non-equilibrium statistical mechanics. In this article, we present detailed numerical simulations of few non-Brownian droplets in various flow conditions, specifically, focusing on their self-assembly within a short distance in a three-dimensional ($3D$) microfluidic channel, cf.\
+\cite{tabeling}.
+%[Shen \textit{et al., Adv. Sci.}, 2016, \textbf{3}(6):1600012].
+Contrary to quasi two-dimensional ($q2D$) systems, where dipolar interaction is the key mechanism for droplet rearrangement, droplets in $3D$ confinement produce much less disturbance to the underlying flow, thus experiencing weaker dipolar interactions. Using confined simple shear and Poiseuille flows as reference flows, we show that the droplet dynamics is mostly affected by the shear-induced cross-stream migration, which favors chain structures if the droplets are under an attractive depletion force. For more compact clusters, such as three droplets in a triangular shape, our results suggest that an inhomogeneous cross-sectional inflow profile is further required. Overall, the accelerated self-assembly of a small-size droplet cluster results from the combined effects of strong depletion forces, confinement-mediated shear alignments, and fine-tuned inflow conditions. The deterministic nature of the flow-assisted self-assembly implies the possibility of large throughputs, though calibration of all different effects \xx{to directly produce large droplet crystals is generally difficult}.
 \end{paperabstract}
 
 
@@ -71,12 +72,11 @@
 % Bibliography
 %------------------------------------------------------------------------------
 %
-%\clearpage
+\clearpage
 \bibliographystyle{jfm}
 \bibliography{thesis}
 %
 \IfFileExists{paper2/paper.bbl}{\input{paper2/paper.bbl}}{}
-
 
 %===============================================================================
 %                            END PAPER

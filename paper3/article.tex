@@ -1,46 +1,20 @@
-%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%--%%This is the LaTeX ARTICLE template for RSC journals
-%--%%Copyright The Royal Society of Chemistry 2016
-%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--%\documentclass[aps,pre,twocolumn,amsmath,amssymb,amsfonts]{revtex4-1}
+%--%%\documentclass[aps,pre,twocolumn,amsmath,amssymb,amsfonts]{revtex4}
+%--%\usepackage{epsfig}
+%--%\usepackage{graphicx}
+%--%\usepackage{dcolumn}
+%--%\usepackage{bm}\usepackage[titletoc]{appendix}
 %--%
-%--%\documentclass[twoside,twocolumn,9pt]{article}
-%--%\usepackage{extsizes}
-%--%\usepackage[super,sort&compress,comma]{natbib} 
-%--%\usepackage[version=3]{mhchem}
-%--%\usepackage[left=1.5cm, right=1.5cm, top=1.785cm, bottom=2.0cm]{geometry}
-%--%\usepackage{balance}
-%--%\usepackage{times,mathptmx}
-%--%\usepackage{sectsty}
-%--%\usepackage{graphicx} 
-%--%\usepackage{lastpage}
-%--%\usepackage[format=plain,justification=justified,singlelinecheck=false,font={stretch=1.125,small,sf},labelfont=bf,labelsep=space]{caption}
-%--%\usepackage{float}
-%--%\usepackage{fancyhdr}
-%--%\usepackage{color}
-%--%\usepackage{fnpos}
-%--%\usepackage[english]{babel}
-%--%\usepackage{array}
-%--%\usepackage{droidsans}
-%--%\usepackage{charter}
-%--%\usepackage[T1]{fontenc}
-%--%\usepackage[usenames,dvipsnames]{xcolor}
-%--%\usepackage{setspace}
-%--%\usepackage[compact]{titlesec}
-%--%%%%Please don't disable any packages in the preamble, as this may cause the template to display incorrectly.%%%
 %--%
-%--%%\usepackage{epstopdf}%This line makes .eps figures into .pdf - please comment out if not required.
-%--%
-%--%%%%%
-%--%\usepackage[utf8]{inputenc}
+%--%\usepackage{graphicx}
 %--%\usepackage{subfigure}
 %--%\usepackage{amsfonts}
 %--%\usepackage{amsgen}
 %--%\usepackage{amsbsy}
-%--%\usepackage{amsmath}
-%--%\usepackage{amssymb}
-%--%\usepackage{mathrsfs}
-%--%\usepackage{mathtools}
-%--%\usepackage{bm}
+%--%%\usepackage{amsmath}
+%--%%\usepackage{amssymb}
+%--%%\usepackage{mathrsfs}
+%--%%\usepackage{mathtools}
 %--%\usepackage{epstopdf}
 %--%\usepackage{caption}
 %--%\usepackage{tabularx}
@@ -48,559 +22,1216 @@
 %--%\usepackage{xcolor}
 %--%\usepackage{nicefrac}
 %--%\usepackage{enumitem}
-%--%\usepackage[ruled]{algorithm2e}
-%--%\usepackage{url}
+%--%\usepackage[normalem]{ulem} %To strikeout text
 %--%
-%--%\newcommand{\xx}[1]{\textcolor{black}{#1}}
-%--%\newcommand\etal{\textit{et al.\ }}
-%--%\newcommand\viz{\textit{viz. }}
+%--%
+%--%\newcommand\Ge{\textcolor{blue}{Ge:}}
 %--%\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
-%--%\newcommand\etc{\textit{etc}}
-%--%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 %--%
-%--%%\bibliographystyle{unsrt}  % references listed in order of appearance
-%--%
-%--%\definecolor{cream}{RGB}{222,217,201}
-%--%
+%--%\newcommand{\red}[1]{{\color{red}#1}}
+%--%\newcommand{\blue}[1]{{\color{blue}#1}}
 %--%
 %--%
 %--%\begin{document}
 %--%
-%--%\pagestyle{fancy}
-%--%\thispagestyle{plain}
-%--%\fancypagestyle{plain}{
+%--%\author{Itzhak Fouxon$^{1,2}$} \email{itzhak8@gmail.com}  \author{Zhouyang Ge$^3$}\email{zhoge@mech.kth.se} \author{Luca Brandt$^3$}\email{luca@mech.kth.se} \author{Alexander Leshansky$^1$}\email{lisha@tx.technion.ac.il}
+%--%\affiliation{$^1$ Department of Chemical Engineering, Technion, Haifa 32000, Israel}
+%--%\affiliation{$^2$ Department of Computational Science and Engineering, Yonsei University, Seoul 120-749, South Korea}
+%--%\affiliation{$^3$ Linn\'{e} FLOW Centre and SeRC (Swedish e-Science Research Centre), KTH Mechanics, SE-100 44 Stockholm, Sweden}
 %--%
-%--%%%%HEADER%%%
-%--%\fancyhead[C]{\includegraphics[width=18.5cm]{head_foot/header_bar}}
-%--%\fancyhead[L]{\hspace{0cm}\vspace{1.5cm}\includegraphics[height=30pt]{head_foot/SM}}
-%--%\fancyhead[R]{\hspace{0cm}\vspace{1.7cm}\includegraphics[height=55pt]{head_foot/RSC_LOGO_CMYK}}
-%--%\renewcommand{\headrulewidth}{0pt}
-%--%}
-%--%%%%END OF HEADER%%%
+%--%\begin{abstract}
 %--%
-%--%%%%PAGE SETUP - Please do not change any commands within this section%%%
-%--%\makeFNbottom
-%--%\makeatletter
-%--%\renewcommand\LARGE{\@setfontsize\LARGE{15pt}{17}}
-%--%\renewcommand\Large{\@setfontsize\Large{12pt}{14}}
-%--%\renewcommand\large{\@setfontsize\large{10pt}{12}}
-%--%\renewcommand\footnotesize{\@setfontsize\footnotesize{7pt}{10}}
-%--%\makeatother
-%--%
-%--%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-%--%\renewcommand\footnoterule{\vspace*{1pt}% 
-%--%\color{cream}\hrule width 3.5in height 0.4pt \color{black}\vspace*{5pt}} 
-%--%\setcounter{secnumdepth}{5}
-%--%
-%--%\makeatletter 
-%--%\renewcommand\@biblabel[1]{#1}            
-%--%\renewcommand\@makefntext[1]% 
-%--%{\noindent\makebox[0pt][r]{\@thefnmark\,}#1}
-%--%\makeatother 
-%--%\renewcommand{\figurename}{\small{Fig.}~}
-%--%\sectionfont{\sffamily\Large}
-%--%\subsectionfont{\normalsize}
-%--%\subsubsectionfont{\bf}
-%--%\setstretch{1.125} %In particular, please do not alter this line.
-%--%\setlength{\skip\footins}{0.8cm}
-%--%\setlength{\footnotesep}{0.25cm}
-%--%\setlength{\jot}{10pt}
-%--%\titlespacing*{\section}{0pt}{4pt}{4pt}
-%--%\titlespacing*{\subsection}{0pt}{15pt}{1pt}
-%--%%%%END OF PAGE SETUP%%%
-%--%
-%--%%%%FOOTER%%%
-%--%\fancyfoot{}
-%--%\fancyfoot[LO,RE]{\vspace{-7.1pt}\includegraphics[height=9pt]{head_foot/LF}}
-%--%\fancyfoot[CO]{\vspace{-7.1pt}\hspace{13.2cm}\includegraphics{head_foot/RF}}
-%--%\fancyfoot[CE]{\vspace{-7.2pt}\hspace{-14.2cm}\includegraphics{head_foot/RF}}
-%--%\fancyfoot[RO]{\footnotesize{\sffamily{1--\pageref{LastPage} ~\textbar  \hspace{2pt}\thepage}}}
-%--%\fancyfoot[LE]{\footnotesize{\sffamily{\thepage~\textbar\hspace{3.45cm} 1--\pageref{LastPage}}}}
-%--%\fancyhead{}
-%--%\renewcommand{\headrulewidth}{0pt} 
-%--%\renewcommand{\footrulewidth}{0pt}
-%--%\setlength{\arrayrulewidth}{1pt}
-%--%\setlength{\columnsep}{6.5mm}
-%--%\setlength\bibsep{1pt}
-%--%%%%END OF FOOTER%%%
-%--%
-%--%%%%FIGURE SETUP - please do not change any commands within this section%%%
-%--%\makeatletter 
-%--%\newlength{\figrulesep} 
-%--%\setlength{\figrulesep}{0.5\textfloatsep} 
-%--%
-%--%\newcommand{\topfigrule}{\vspace*{-1pt}% 
-%--%\noindent{\color{cream}\rule[-\figrulesep]{\columnwidth}{1.5pt}} }
-%--%
-%--%\newcommand{\botfigrule}{\vspace*{-2pt}% 
-%--%\noindent{\color{cream}\rule[\figrulesep]{\columnwidth}{1.5pt}} }
-%--%
-%--%\newcommand{\dblfigrule}{\vspace*{-1pt}% 
-%--%\noindent{\color{cream}\rule[-\figrulesep]{\textwidth}{1.5pt}} }
-%--%
-%--%\makeatother
-%--%%%%END OF FIGURE SETUP%%%
-%--%
-%--%%%%TITLE, AUTHORS AND ABSTRACT%%%
-%--%\twocolumn[
-%--%  \begin{@twocolumnfalse}
-%--%\vspace{3cm}
-%--%\sffamily
-%--%\begin{tabular}{m{4.5cm} p{13.5cm} }
-%--%
-%--%\includegraphics{head_foot/DOI} & \noindent\LARGE{\textbf{Flow-assisted droplet assembly in a 3D microfluidic channel$^\dag$}} \\%Article title goes here instead of the text "This is the title"
-%--%\vspace{0.3cm} & \vspace{0.3cm} \\
-%--%
-%--% & \noindent\large{Zhouyang Ge,$^{\ast}$ Outi Tammisola, and Luca Brandt} \\%Author names go here instead of "Full name", etc.
-%--%
-%--%\includegraphics{head_foot/dates} & \noindent\normalsize{%The abstract should be a single paragraph which summarises the content of the article. Any references in the abstract should be written out in full \textit{e.g.}\ [Surname \textit{et al., Journal Title}, 2000, \textbf{35}, 3523].
-%--%Self-assembly of soft matter, such as droplets or colloids, has become a promising scheme to engineer novel materials, model living matter, and explore non-equilibrium statistical mechanics. In this article, we present detailed numerical simulations of few non-Brownian droplets in various flow conditions, specifically, focusing on their self-assembly within a short distance in a three-dimensional ($3D$) microfluidic channel, cf.\ [Shen \textit{et al., Adv. Sci.}, 2016, \textbf{3}(6):1600012]. Contrary to quasi two-dimensional ($q2D$) systems, where dipolar interaction is the key mechanism for droplet rearrangement, droplets in $3D$ confinement produce much less disturbance to the underlying flow, thus experiencing weaker dipolar interactions. Using confined simple shear and Poiseuille flows as reference flows, we show that the droplet dynamics is mostly affected by the shear-induced cross-stream migration, which favors chain structures if the droplets are under an attractive depletion force. For more compact clusters, such as three droplets in a triangular shape, our results suggest that an inhomogeneous cross-sectional inflow profile is further required. Overall, the accelerated self-assembly of a small-size droplet cluster results from the combined effects of strong depletion forces, confinement-mediated shear alignments, and fine-tuned inflow conditions. The deterministic nature of the flow-assisted self-assembly implies the possibility of large throughputs, though calibration of all different effects \xx{to directly produce large droplet crystals is generally difficult}.
-%--%} \\%The abstrast goes here instead of the text "The abstract should be..."
-%--%
-%--%\end{tabular}
-%--%
-%--% \end{@twocolumnfalse} \vspace{0.6cm}
-%--%]
-%--%  
-%--%%%%END OF TITLE, AUTHORS AND ABSTRACT%%%
-%--%
-%--%%%%FONT SETUP - please do not change any commands within this section
-%--%\renewcommand*\rmdefault{bch}\normalfont\upshape
-%--%\rmfamily
-%--%\section*{}
-%--%\vspace{-1cm}
+%--%We construct a boundary integral representation for the low-Reynolds-number flow in a channel in the presence of freely-suspended particles (or droplets) of arbitrary size and shape. We demonstrate that lubrication theory holds away from the particles at horizontal distances exceeding the channel height and derive a multipole expansion of the flow which is dipolar to the leading approximation. We show that the dipole moment of an arbitrary particle is a weighted integral of the stress and the flow at the particle surface, which can be determined numerically. We introduce the equation of motion that describes hydrodynamic interactions between arbitrary, possibly different, distant particles, with interactions determined by the product of the mobility matrix and the dipole moment. Further, the problem of three identical interacting spheres initially aligned in the streamwise direction is considered and the experimentally observed ``pair exchange" phenomenon is derived analytically and confirmed numerically. For non-aligned particles, we demonstrate the formation of a configuration with one particle separating from a stable pair. Our results suggest that in a dilute initially homogenous particulate suspension flowing in a channel the particles will eventually separate into singlets and pairs.
 %--%
 %--%
-%--%%%%FOOTNOTES%%%
 %--%
-%--%\footnotetext{\textit{~Linn\'{e} FLOW Centre and SeRC (Swedish e-Science Research Centre), KTH Mechanics, SE-100 44 Stockholm, Sweden. E-mail: zhoge@mech.kth.se}}
+%--%\end{abstract}
 %--%
-%--%
-%--%%Please use \dag to cite the ESI in the main text of the article.
-%--%%If you article does not have ESI please remove the the \dag symbol from the title and the footnotetext below.
-%--%\footnotetext{\dag~Electronic Supplementary Information (ESI) available: [details of any supplementary information available should be included here]. See DOI: 10.1039/cXsm00000x/}
-%--%%additional addresses can be cited as above using the lower-case letters, c, d, e... If all authors are from the same address, no letter is required
-%--%
-%--%%\footnotetext{\ddag~Additional footnotes to the title and authors can be included \textit{e.g.}\ `Present address:' or `These authors contributed equally to this work' as above using the symbols: \ddag, \textsection, and \P. Please place the appropriate symbol next to the author's name and include a \texttt{\textbackslash footnotetext} entry in the the correct place in the list.}
-%--%
-%--%%%%END OF FOOTNOTES%%%
-
-
-
-
-
-%%%MAIN TEXT%%%%
+%--%\title{Integral representation of channel flow with interacting particles}
+%--%\maketitle
 
 \section{Introduction}
 
-Recent advances in colloidal science have generated a growing interest in the fabrication of functional materials, especially those possessing photonic band gaps \citep{PRL1990, PBM1999, ZnO2003, colloidal2003, Shen_2016AS}. Colloids --  particles or droplets of (sub-)micron scale -- are manipulated with high precision to self-organize into controlled patterns, which then form a library of basic building blocks for more complex structures \citep{Sacanna_Pine_2011}. Conceivably, such direct assembly is also the most efficient mechanism for material synthesis. Colloidal self-assembly has thus become a promising scheme to engineer novel materials, mimicking the machinery of nature \citep{vanBlaaderen}. 
+Hydrodynamic interactions among particles flowing in the fluid confined between two parallel walls at low Reynolds number have recently attracted a considerable attention \citep{carba,d1,d2,d3,d4,d5,d6,d7,anom,7,tlusty,tl2006,tl2012,is,sb,f1,f2,f3,f4,f5,f7,tl2014,tabeling,tab0}. The case of particles driven by thermal noise in the absence of a macroscopic flow was studied in \cite{carba,d1,d2,d3,d4,d5,d6,d7,anom,7,tlusty}. The hydrodynamic interactions cause long-range correlations 
+in their diffusive motions 
+that are measurable even at distances ten times larger than the particle size \citep{carba,anom}. In the case of
+%LB macroscopic
+pressure-driven Poiseuille or shear flow the particles are, in addition, dragged by the flow \citep{f1,f2,f3,f4,f5,f7,tl2006,tl2012,tl2014,tabeling,tab0,is}.
 
-Currently, there are many strategies to synthesize colloidal building blocks, e.g.\ creating a short-range depletion potential in a microwell \citep{Meng2010}, exploiting shape/surface anisotropy of the colloids \citep{Sacanna_Pine_2011, Evers2016}, using patterned substrates as templates \citep{Yin2001}, or even jamming droplets with a micro-mixer \citep{Joshua_2017PRL}. Among these, \textit{flow-assisted} self-assembly seems especially appealing, since the microfluidic droplets are driven by an external flow rather than Brownian motions, reducing the range of assembly time from days down to seconds (c.f.\ the experiment of \citep{McMullen2018} as an example). With the potential of being optimized and applied in parallel, microfluidics appears to be the fastest pathway towards photonic material generation.
+Identical particles at similar positions inside the channel move at the same velocity if not for hydrodynamic interactions. These interactions induce particle relative motions, which can result in considerable changes of their configuration inside the channel. 
+In the case of a large number of particles the interactions cause also chaotic collisions among the particles \citep{tl2014}.
 
-Following this approach,   \cite{Shen_2016AS} recently demonstrated the generation and self-assembly of droplet strings into a rich variety of (non-)compact structures, including chains, triangles, diamonds, crosses, \etc .\ in a simple microfluidic device (see Fig.\ \ref{fig: chip}). Unlike most previous studies \citep{Cui2004,Beatus2006,Janssen2012,Uspal2013,Desreumaux,zhu_gallaire_2016}, where droplets under strong confinement interact via dipolar flows \citep{q2d_Beatus,Diamant}, these droplets are smaller than the smallest dimension of the microfluidic channel. Specifically, the droplets are tens to hundreds microns in diameter, while the channel height is about three times larger. As a consequence, typical quasi two-dimensional ($q2D$) arguments do not apply, and the dynamics is fully three-dimensional ($3D$). In the latter case, the complete Navier-Stokes (or Stokes) equations have to be solved to obtain a correct physical understanding of the system,\footnote{A notable exception is the dynamics of two droplets in unbounded linear flows solved analytically by \cite{batchelor_green_1972}.} wherein prior simulations mainly focus on the deformation and migration of a single drop, or an evenly spaced array of drops \citep{coulliette_pozrikidis_1998,Griggs2007,Janssen_Anderson_2007}. Interestingly, assuming a tunable far-field dipolar interaction,   \cite{Shen_2016AS} could however model the droplet motions up to a ``semiquantitative'' level, reproducing the sophisticated self-assembly observed in experiments. This apparent contradiction motivates us to pursue a detailed numerical study of the relatively fast droplet self-assembly in order to investigate the interactions in their microfluidic channel.
+Theoretical progress has mainly relied on the observation that the far flow caused by a particle confined in a channel is a dipolar flow decaying quadratically with the distance \citep{anom}. For disk-like particles with thickness close to the channel width $h$, the dipolar flow and its moments were derived from lubrication theory in \cite{tlusty}. The dipolar flow holds at distances much larger than the disk radius, where it gives also the leading order hydrodynamic interactions among particles \citep{tlusty,tl2006,tl2012,tl2014}.
 
-In the following, we first present a numerical methodology for the dynamics of two viscous fluids, including a hydrodynamic model for the near-field depletion force, a localized attractive force between suspending droplets. Applying this methodology, we then show results of extensive simulations of two to ten droplets in quiescent, shear-, and pressure-driven channel flows, each of which isolating an individual effect contributing to the self-assembly. Here, the focus is on the clustering and droplet interactions within a short distance from their initial release rather than the production of the droplets, which has been studied previously \cite{step-emuls}. Our aim is to elucidate the physical picture of the hydrodynamic interactions, potentially improving the design of more efficient microfluidic systems.
+It was observed in \cite{tl2012}, however, that hydrodynamic interactions of pancake-like disks can also be described at much smaller distances between the disks where dipolar approximation breaks down, yet lubrication theory still holds \citep{Batchelor,lubr,szeri,bruce}. This theory predicts that at distances from the particle boundary much larger than $h$ the depth-averaged flow is an ideal two dimensional flow with potential obeying the Laplace equation. The boundary condition (b.\ c.), derived somewhat heuristically, is the usual ideal flow b.\ c.\ prescribing  the velocity component normal to the particle surfaces \citep{ll}, which allowed to find the hydrodynamic interactions of two close disks, see \cite{tl2012}. Moreover, it was observed that the non-rigidity of the particles makes the lubrication theory valid up to distances from the particles smaller than $h$. The calculation of the hydrodynamic interactions for disks of different radii requires solving the Laplace equation with the help of bipolar coordinates, see \cite{is}.
 
-\begin{figure}[t]
- \centering
- \includegraphics[width=0.9\columnwidth]{figs/microfluidic_channel.png}
- \caption{(a) Photo of a microfluidic channel placed above a desktop microscope. (b) Schematic of the channel geometry and generation of the droplet clusters. The main channel has a typical dimension of (50 $\mu$m $\times$ 600 $\mu$m $\times$ 5000 $\mu$m) in height, width, and length; hence, it can be considered as a Hele-Shaw cell. (c) Bottom view of the droplet self-assembly observed from the microscope. Pictures courtesy of Dr.\ Joshua Ricouvier. For more details, see   \cite{Shen_2016AS}.}
- \label{fig: chip}
-\end{figure}
+Recently, a practical applications of hydrodynamic interactions among particles in a channel has been proposed. In particular, it is suggested that the combined action of adhesive (non-hydrodynamic) forces and hydrodynamic interactions between microdroplets can result in the formation of regular particle clusters and can thus be potentially used for the production of new materials \citep{tab0,tabeling}. The hydrodynamic forces are believed to be a significant factor in these structure formation. Though the particles 
+forming the structure are in a close proximity in the experiments mentioned above, the hydrodynamic interactions are described phenomenologically by a dipolar flow, formally only valid at larger distances. Despite the use of the far-field dipolar flow beyond its domain of validity, the numerical simulations  in \cite{tab0} showed very good agreement with the experimental results \citep{tabeling}. The above motivates the need for the detailed theoretical study of hydrodynamic interactions among particles in narrow channels.
 
+In this work, we introduce a boundary integral representation of the channel flow in the presence of freely suspended particles. The particles can be rigid or soft (droplets).
+The representation does not depend on the particle equation of motion, defined by inertia.
+Boundary integral representations are known to be useful in unconfined flows and can also be applied to confined geometries  \citep{hb,ps}.
+The flow is here expressed as the sum of the undisturbed Poiseuille flow and an integral over the surfaces of all particles, where the particles can have arbitrary shapes.
+The derivation is performed for a pressure-driven flow, but identical considerations can be applied to shear flows.
 
-\section{Models and methods} \label{model}
+Our representation results in a formula for calculation of the dipole moment, which was previously available only for the case of disk-like particles. The moment is given in terms of a weighted integral of the
+stress tensor and the  flow over the surface(s) of the particle(s). Once this integral is numerically tabulated, the result can be used to approximate the flow in different configurations. Here, we perform simulations for the case of neutrally buoyant rigid spherical particles and compute the integral for different positions of the particle center and different ratios of the particle radius to the channel height, i.e.\ different confinements.
 
-\subsection{Hydrodynamic model}
+We use this new integral representation to show that the lubrication theory holds at the particle near proximity, closer than what typically expected. As an example, we solve the problem of three aligned particles moving along the line defined by their centers and  the case of three nonaligned particles.
+We conjecture that this solution is the attractor to which the long-time evolution of arbitrary initial condition converges. We conclude by proposing a mean field description of strong hydrodynamic interactions of close
+particles in a dense suspension.
 
-The dynamics of two immiscible, Newtonian fluids in incompressible flows is governed by the Navier-Stokes equations
-\begin{subequations}
- \begin{equation}
-   \nabla \cdot {\bm u} = 0,
-  \label{div free}
- \end{equation}
- \begin{equation}
-      \frac{\partial {\bm u}}{\partial t} + {\bm u} \cdot \nabla {\bm u} = \frac{1}{\rho_iRe} \bigg(-\nabla p + \nabla \cdot \big[ \mu_i ( \nabla {\bm u} + \nabla {\bm u}^T ) \big] \bigg) + \frac{{\bm g}}{Fr},
-  \label{NS}
- \end{equation}
-\end{subequations}
-where ${\bm u}$, $p$, $\bm{g}$, $\rho_i$ and $\mu_i$ denote the non-dimensional velocity, pressure, unit gravitational vector, density, and dynamic viscosity, respectively. Eq.\ \eqref{NS} is written for each fluid component, $i$ ($=1$ for the carrier fluid, 2 for the droplet), requiring a pressure boundary condition across the fluid interface
-\begin{equation}
-  p_2 - p_1 = \frac{\kappa}{Ca},
-  \label{p laplace}
-\end{equation}
-with $\kappa$ being the mean curvature (the contribution due to the viscosity difference is neglected assuming matching viscosity \citep{Batchelor}).
+\section{Integral representation for channel flow with particles}
 
-So far, we have introduced three non-dimensional numbers: $Re$, $Ca$, and $Fr$, denoting the Reynolds, capillary, and Froude numbers, separately. Choosing fluid $1$ as the reference phase, they are defined as
-\begin{equation}
-  \begin{aligned}
-    Re = \frac{\tilde{\rho}_1 \tilde{U} \tilde{L}}{\tilde{\mu}_1},\quad \quad Ca = \frac{\tilde{\mu}_1 \tilde{U}}{\tilde{\sigma}},\quad \quad Fr=\frac{\tilde{U}^2}{\tilde{g}\tilde{L}},      
-  \label{non-di}    
-  \end{aligned}
-\end{equation}
-where $\tilde{U}$, $\tilde{L}$, $\tilde{\rho}_1$, $\tilde{\mu}_1$, $\tilde{\sigma}$, and $\tilde{g}$ denote the reference \textit{dimensional} velocity, length, density, dynamic viscosity, surface tension, and gravitational acceleration. Following the experiments in   \cite{Shen_2016AS}, typical values of the reference velocity and length are $\tilde{U} \sim 100$ $\mu$m/s and $\tilde{L} \sim 100$ $\mu$m, leading to $Re \sim 10^{-2}$, $Ca \sim 10^{-5}$, and $Fr \sim 10^{-5}$ for oil-water systems. Therefore, inertial (but not gravitational) effects are negligible and the droplets shall remain mostly spherical. In the simulations that we are going to present, however, these numbers are enlarged within reasonable physical limits also to reduce the computation time. Specifically, $Re$ has been increased up to $10$ in most cases except those in Sec.\ \ref{sec:shear} (where $Re=1$) and those in Sec.\ \ref{sec:non-uniform} (where $Re=0.1$); $Ca$ is in the order of $10^{-3} \sim 10^{-2}$ depending on the $Re$; whereas $Fr=0.025$ if gravity is enabled (otherwise $\infty$). \xx{In general, the Reynolds number cannot be arbitrarily increased  as it is proportional to the fluid inertia. The reason we \textit{can} increase it here is essentially due to the uniformity of the underlying flow. In this case, the mere effect of further reducing the $Re$ is stretching the time scale, making the computations significantly longer. We have tested all cases at smaller $Re$'s to ensure that the differences are negligible in the case of fully developed Couette and Poiseuille flows.} This is discussed in more details in Appendix \ref{app:numerics}. 
+In this Section we derive the boundary integral representation for channel flow in the presence of an arbitrary number of particles of arbitrary shape (see Fig.\ \ref{fig: setup} where spherical particles are shown for illustration). It is assumed that the Reynolds number is low and the Stokes equations hold. The
+derivation uses the reciprocal theorem with the reciprocal flow given by the Stokeslet in a channel \citep{LironMochon}, similarly to the derivations in infinite space, see e. g. \cite{ps}.
+In this Section we make no assumptions on the form of the equation of motion of the particles which may change according to the relevance of inertia. The particles can be rigid, droplets or, e.g.\ viscoelastic.
 
-Finally, we note that the surface tension can also vary due to temperature or surfactant concentration gradients, leading to Marangoni stress along the surface. The detailed chemistry is rather complex \cite{Eastoe}; in the present paper, we assume constant and uniform surface tension $\tilde{\sigma}$ to reduce the number of the governing parameters.
-
-\subsection{Depletion theory}
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=0.9\columnwidth]{figs/depletion4.pdf}
- \caption{Depletion of surfactant micelles of radius $r_s$ between larger colloidal droplets of radius $R$, separated by distance $r$. The dashed lines around larger spheres represent the region from which the centers of small spheres are excluded. They overlap when $r \leqslant 2R+2r_s$. Inset: a zoom-in sketch of two droplets near contact.}
- \label{fig: depl theory}
-\end{figure}
-
-Droplets suspended in an ambient fluid dissolved by surfactant molecules typically experience an attractive depletion force. The first model to describe such interaction was proposed by  \cite{Asakura_Oosawa}, who assumed the surfactant micelles to be non-interacting hard spheres. As sketched in Fig.\ \ref{fig: depl theory}, a suspension of such small spheres around the large colloidal droplets creates an osmotic pressure on the droplet surface. When the distance between two droplets is less than the diameter of the surfactant micelles, the pressure defect due to the exclusion of the micelles pulls the drops even closer, corresponding to an attractive force. Integrating this force with respect to the inter-droplet distance $r$ leads to a potential energy
-\begin{equation}
-    U(r)=
-    \begin{cases}
-        \infty & \textrm{if} \quad r \leqslant 2R \\
-        - p_{os}V_{ex} & \textrm{if} \quad 2R < r \leqslant 2R+2r_s  \\
-        0 \quad & \textrm{otherwise}, \\
-    \end{cases}
-    \label{pot}
-\end{equation}
-where $V_{ex}$ is the excluded volume and $p_{os}$ is the osmotic pressure. For spherical droplets, $V_{ex}$ can be calculated analytically
-\begin{equation}
-    V_{ex}(r) = \frac{4\pi (R+r_s)^3}{3}\bigg[ 1- \frac{3r}{4(R+r_s)}+\frac{r^3}{16(R+r_s)^3} \bigg],
-    \label{pot V}
-\end{equation}
-where $R$ and $r_s$ are, respectively, the radii of the big and small spheres. The osmotic pressure is given as
-\begin{equation}
-    p_{os} = nkT,
-    \label{pot P}
-\end{equation}
-where $n$ is the number density of the small spheres, $k$ the Boltzmann constant, and $T$ the temperature. The negative sign in Eq.\ \eqref{pot} corresponds to the tendency of the system to reduce its potential energy as the overlap increases. This is equivalent to increasing the total entropy of the small spheres \citep{Melby_PRL_2007}, and it provides a physical description of the depletion force even when the droplets are deformable, or when $p_{os}$ cannot be expressed by the van't Hoff's formula (Eq.\ \eqref{pot P}) \citep{Asakura_Oosawa}.
-
-Based on the above theory, we consider the depletion potential in the hydrodynamic model by adding an osmotic pressure, $p'(r')$, near the overlap region ($r'$ being the normalized distance to the droplet surface, see Fig.\ \ref{fig: depl theory}). Specifically, we write $p'$ as a Taylor-series expansion from $r'=r_s$
-\begin{equation}
-    p'(r'/r_s) = p'(1) + \bigg(\frac{r'}{r_s}-1 \bigg) \frac{\partial{p'}}{\partial{r'/r_s}},
-    \label{pot P linear}
-\end{equation}
-with a constant $\partial{p'}/\partial{(r'/r_s)}$ satisfying the original depletion force acting on one droplet, i.e.
-\begin{equation}
-    -p_{os}A_{ex} = \int_\Omega \big(p'(1) - p'(r'/r_s)\big)dS,
-    \label{pot P balance}
-\end{equation}
-where $A_{ex}$ is the effective area of the overlap $\Omega$. Note that, in this formulation, we do not require $p_{os}$ to be a thermodynamic pressure; instead, its strength can be defined by a non-dimensional number
-\begin{equation}
-    \Pi = \frac{p_{os}}{\kappa /Ca},
-    \label{Pi}
-\end{equation}
-which normalizes $p_{os}$ by the Laplace pressure due to surface tension. Doing so, the osmotic pressure varies continuously within the overlap and depends linearly on $r'$. An expansion of the osmotic pressure with the distance corresponds to a gradient of the micelle concentration near the gap; and if the micelle is much smaller than the droplet, as it is in the microfluidic device of interest \citep{Shen_2016AS}, the gradient will be very sharp. Conversely, when the distance to the surface varies slowly, such as in the gap of a \xx{squeezed} droplet and a flat wall, a uniform pressure will be recovered. In essence, what we propose here is a method to model the osmotic pressure as an equivalent mechanical pressure such that a favorable pressure gradient from the center of the overlap region generates an outflow, pulling the droplets towards each other. This is clearly illustrated in Fig.\ \ref{fig: depl flow}, where two droplets approach each other due to the locally induced depletion flow.
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=0.9\columnwidth]{figs/depletion_flow.png}
- \caption{(left) Two droplets approaching in a quiescent flow, and (right) close-up of the flows in the gap due to the depletion force.}
- \label{fig: depl flow}
-\end{figure}
-
-\subsection{Numerical methods}
-
-The above governing equations are solved numerically using the interface-correction level set/ghost fluid method (ICLS/GFM) \citep{ICLS}. The equations are discretized in space by the finite volume method, and integrated in time using the second-order Adam-Bashforth scheme. Combining several computational techniques, including the fast pressure correction method \citep{Dodd_JCP_2014}, the GFM \citep{Fedkiw_JCP_1999}, and the fast Fourier transform (FFT) \citep{Schumann_JCP_1988}, discontinuous quantities are treated sharply at high efficiency. For the detailed algorithm and validations, we refer to  \cite{ICLS}. The source code is also publicly available on GitHub \citep{icls_code}.
-
-\section{Results}
-
-In the following, we present simulation results of droplet motions in three types of flows: quiescent, shear-, and pressure-driven channel flows. In the last case, both Poiseuille flows and a non-uniform channel flow are considered. The purpose of using different flow types is to disentangle the effects of the depletion force, the droplet-droplet \xx{hydrodynamic} interaction, and the droplet-flow interaction. The simpler cases can be seen as model problems towards understanding of the more complex motions of droplet ensembles in realistic microfluidic devices.
-
-\subsection{Approaching droplets in quiescent flows} \label{sec:quiescent}
-\subsubsection{2 and 3 droplets}
-
-\begin{figure}[t]
+\begin{figure}[t!]
  \begin{center}
-  \includegraphics[width=\columnwidth]{figs/min_dist4.pdf}
-  \begin{picture}(0,0)
-   \put(-50,65){\includegraphics[height=1.5cm]{figs/2dp.png}}
-   \put(120,65){\includegraphics[height=1.5cm]{figs/3dp.png}}
-  \end{picture}
- \end{center}
- \caption{Minimal distance between the droplet surfaces as function of time in the presence of depletion forces proportional to $\Pi=1/8$ (solid line) and $\Pi=1/2$ (dashed line). Simulation of (a) two droplets and (b) three droplets suspended in an initially quiescent fluid. Due to symmetry, only the minimal distance is plotted.}
- \label{fig: dep demo}
+\includegraphics[width=.9\columnwidth]{channel_sphere3.pdf}
+\end{center}
+  \caption{Schematic configuration of spherical particles flowing in the pressure-driven (Poiseuille) flow in a channel.}
+ \label{fig: setup}
 \end{figure}
 
-The simplest case of droplet self-assembly is identical drops approaching in quiescent flows, i.e.\ no external flow motions. In such a case, the remaining fluid parameters can be grouped into two non-dimensional numbers, i) the Laplace number $La = \tilde{\sigma} \tilde{\rho}_1 (2\tilde{R})/\tilde{\mu}_1^2$, where $\tilde{R}$ is the droplet radius; and ii) the osmotic-to-Laplace pressure ratio $\Pi=p_{os}/p$. \footnote[3]{The density and viscosity ratios between the drop and the carrier fluids are assumed to be unity. See Appendix \ref{app:numerics} for the detailed numerical setup.} $La$ relates surface tension to the viscous stress, which can also be expressed as $La = Re/Ca$. $\Pi$ indicates the magnitude of the uniform osmotic pressure $p_{os}$ due to depletion of the surfactant micelles, scaled by a reference Laplace pressure $p$ due to surface tension (cf.\ Eq.\ \eqref{Pi}). In the following, we assume $La = 2000$ and $\Pi = 1/8$ or $1/2$, corresponding to the limit $Ca \ll Re \ll 1 $ and conditions above the critical micelle concentrations (CMC, see dimensional analysis below) as in the experiments \citep{Shen_2016AS}. 
-%This is reasonable since Re $\sim 10^{-3}$ and Ca $\sim 10^{-6}$ (see \citep{shen_thesis}, pp 63-64), and the osmotic pressure at surfactant concentrations above CMC is of similar order-of-magnitude to the Laplace pressure (see dimensional values below). The same setup is used throughout the section, except that the domain size is adjusted to accommodate more droplets when necessary.
 
-The approach of two and three droplets is illustrated in Fig.\ \ref{fig: dep demo}, where the minimal distance between the droplet surfaces $d_{min}$, normalized by the surfactant micelle radius $r_s$, is shown as a function of time. Here, time is re-scaled by the factor $T_\pi = \tilde{r}_s/(\tilde{R}\Pi)$ to account for the size contrast of the droplet and the surfactant micelle, thus indicating an inverse scaling of the approaching time with the osmotic pressure for inertialess droplets, i.e.\ $T \propto \Pi^{-1}$. Indeed, for both $\Pi = 1/8$ and $1/2$, our results show that $d_{min}$ approaches the limit of the grid spacing at $t \approx T_\pi$. The smooth approach in both cases and the collapse of the distance curves thus verify our modeling of the near field chemical interaction, consistent with an attracting depletion force. 
-%Numerically, we let the droplets aggregate without applying any repulsion models, only to reduce the magnitude of $p_{os}$ when $d_{min}/r_s < 0.1$. 
+The undisturbed flow $\bm u^0$, in the absence of  particles, is the Poiseuille flow driven by the constant pressure gradient $\nabla p^0$,
+\begin{eqnarray}&&
+u^0_x=\frac{z(z-h)\nabla_x p^0}{2\eta},\ \ \nabla p^0=\eta\nabla^2\bm u^0.\label{ps}
+\end{eqnarray}
+where $\eta$ is the fluid viscosity, $z$ is the vertical coordinate and $h$ is the channel width. The flow is in $x-$direction, $\nabla_x p^0=-|\nabla_x p^0| \bm{\hat x}$. In the presence of a freely suspended particle we look for the solution of,
+\begin{eqnarray}&&%\!\!\!\!\!\!\!\!\!\!\!\!\!
+\nabla p=\eta\nabla^2\bm u,\ \ \nabla\cdot\bm u=0,\ \ \ \ \bm u(z=0)=\bm u(z=h)=0,\nonumber\\&&%\!\!\!\!\!\!\!\!\!\!\!\!\!
+u_x(\infty)=\frac{z(z-h)\nabla_x p^0}{2\eta},
+\label{ds}
+\end{eqnarray}
+which holds outside the particle. The flow is completely determined when solving for the particle motion, i.e.\ knowing the instantaneous particle position as it determines the boundary condition $\bm u_{S}(\bm x)$ on the 
+ particle surface $S$. In the case of a rigid particle, $\bm u_{S}(\bm x)=\bm v+\bm \omega\times (\bm x-\bm y)$ where $\bm v$ and $
+\bm \omega$ are the particle translational and angular velocities  and $\bm y=(x_p, y_p, z_p)$ is the coordinate of the particle center of mass. The velocities $\bm v$ and $\bm \omega$ are determined by the solution of the equation for the particle motion coupled with the flow. These velocities could be time-independent as in the case of the steady motion of a neutrally buoyant rigid particle or the case of a non-neutrally buoyant particle after sedimentation when reaching the bottom wall (the theoretical determination of these velocities is impossible generally because of the interaction with the walls). These velocities can also be time-dependent as in the case of
+a transient flow  or the gravitational settling of a non-neutrally buoyant particle. If several particles are considered, a time-dependent configuration can be induced by their interactions. We assume here that the time variations are not fast so that the unsteady time-derivative term of the Navier-Stokes equations is negligible (for the steady motion of one particle the time-derivative is the spatial derivative of the flow along the streamline which is small  because of the smallness of the Reynolds number). In the case of droplets the boundary condition on the surface is determined by matching with the inner flow. However there is no need for solving for this inner flow since the detailed form of $\bm u_{S}(\bm x)$ is irrelevant for the derivation of the present representation. The generalization of the problem to the case of many particles is obvious.
 
-We note that $T_\pi$ is not a physical time scale (it is dimensionless). One possible definition for the depletion time scale is $\tilde{\tau}_\pi = \tilde{r}_s \tilde{\mu}_1 /(\tilde{R} \tilde{p}_{os})$, which can be rewritten as $T_\pi Ca \tilde{\tau}$, with a convection time scale $\tilde{\tau} =2\tilde{R}/\tilde{U}$ in the range of $0.1$ to $1$ s typically. By substitution of usual values of colloidal systems, e.g. $\tilde{r}_s = 1$ nm, $\tilde{\mu}_1 = 10^{-3}$ kg/m-s, $\tilde{R} = 10$ $\mu$m, and $\tilde{p}_{os} = 100$ Pa (corresponding to surfactant micelles concentration of 5 CMC, see  \cite{shen_thesis}, p112), the estimated time scale is 1 ns. Although $\tilde{\tau}_\pi$ can be amplified by increasing the viscosity of the suspending fluid or reducing the micelles concentration, its magnitude is so small that the approaching can be considered instantaneous. Therefore, in practical microfluidic devices such as those in   \cite{Shen_2016AS}, one cannot expect to detect the dynamical approaching process due to depletion forces. The droplets will appear either bound or separated, depending on the surfactant concentration and flow conditions.
+{\it Implications of lubrication theory.}---Some conclusions on the flow at distances from the particle much larger than the channel width $h$ can be obtained from lubrication theory \citep{Batchelor,lubr,szeri,bruce}. The lubrication theory predicts that at these distances,
+\begin{eqnarray}&&
+\bm u=\frac{z(z-h)\nabla p}{2\eta},\label{lubr}
+\end{eqnarray}
+with a certain $z-$independent $p$. Clearly, at large distances, $p\approx p^0$ at the leading order. The depth-averaged velocity $\bm u_d$ is the ideal potential two-dimensional flow,
+\begin{eqnarray}&&
+\bm u_d=\nabla\phi,\ \ \phi=-\frac{h^2 p}{12\eta},\ \ \nabla^2\phi=0.\label{dlp0}
+\end{eqnarray}
+In some cases this helps determining the flow completely.
 
-\subsubsection{4 to 10 droplets}
+{\it Large disks.}---Large non-wetting droplets squeezed between the walls of a Hele-Shaw cell have pancake-like shapes. These can be modeled as disks with radius $a\gg h$ and height close to $h$, i.e., they almost fill the entire channel height \citep{tlusty,tl2006,tl2012,tl2014}. In this case, one can use Eqs.~(\ref{lubr})-(\ref{dlp0}) at distances from the body that are much larger than $h$ but much smaller than $a$. Thus the ideal flow holds outside the narrow boundary layer near the particle surface whose characteristic size $l_0$ is of the order $h$, much smaller than the particle horizontal size $a$. We call the layer containing the flow vorticity the viscous layer and assume that there is no flux of mass through the surface of the droplet, which keeps its shape and volume. Thus, in the frame of reference moving with the disk, the normal 
+velocity component is zero at the outer boundary of the layer and the ideal flow outside the layer is determined uniquely by this boundary condition. However the geometry of the layer is not always known and the complete determination of the flow not possible. If we are only interested in the flow outside the immediate $l_0-$vicinity of the viscous layer,  we can set the boundary condition for the ideal flow on the disk itself, exploiting the fact that $l_0\ll a$. The flow is then found as the dipole potential \citep{tlusty},
+\begin{eqnarray}&&
+\phi=-\frac{h^2 p^0}{12\eta}-\frac{\bm d\cdot{\hat r}}{r} ,\ \ \nabla^2\phi=0,\ \ \bm d=a^2\bm v,\label{dl}
+\end{eqnarray}
+where $\bm d$ is the dipole moment, $\bm v=-v\bm{\hat x}$ is the difference between the disk velocity and $-h^2\nabla p_0/(12\eta)$. It is readily seen that the normal, radial component of the velocity $\nabla \phi$ on the surface of the disk is $[\bm v-h^2\nabla p^0/(12\eta)]\cdot{\hat r}$. Note that the velocity $v>0$ since the particle moves slower than the fluid.
 
-\begin{figure}[t]
+The tangential velocity component on the outer boundary of the viscous layer obtained from Eq.~(\ref{dl}) does not match the tangential velocity of the droplet surface. In contrast with the normal component, which can be considered almost constant through the viscous layer, the tangential component changes quickly through this layer to match the inner flow at the droplet surface. As example, in the limit of high droplet viscosity, the condition on the disk surface is that the flow is the appropriate superposition of translation and solid body rotation. Similar viscous layers occur for rigid bodies oscillating in the fluid \citep{ll}. The ideal flow was obtained in \cite{tlusty} and here we describe how this ideal flow fits the complete equations for the viscous flow.
+%We find,
+%\begin{eqnarray}&&
+%\bm u_d=\frac{2{\hat r}(\bm d\cdot{\hat r})-\bm d}{r^2},\ \ \bm u_d\cdot {\hat r}=\frac{(\bm d\cdot{\hat r})}{a^2}
+%\\&&
+%(u_d)_x=\nabla \frac{a^2 v x}{r^2}=\frac{a^2 v(y^2-x^2)}{r^4}.
+%\end{eqnarray}
+
+{\it Boxes.}---Another case where the flow can be fixed without detailed calculations is the case of a box whose smallest dimension is close to $h$ and the longer dimensions are much larger than $h$. If the box is located in the channel so that the flow is
+perpendicular to its longer axis with length $l\gg h$ then far from the ends of the box we find the ideal two-dimensional flow with constant velocity on the line.
+The solution for the ideal flow with constant velocity on an infinite linear boundary is the uniform flow. We thus conclude that in the frame moving with the box there is a region of stagnant flow behind the box, whose size is of order $l$.
+
+Generally, the flow can be inferred from the lubrication theory in quite a detail for particles whose horizontal dimensions are much larger than $h$ and whose vertical dimension is close to $h$. The flow outside the narrow viscous layer near the particle surface is $z(z-h)$ times the two-dimensional ideal flow determined by the boundary condition of zero normal velocity on the particle surface. The tangential velocity changes fast across the viscous layer. However, if the particle horizontal dimensions are not large or the dimensions are large but the vertical dimension is not close to $h$, a different approach is needed.
+
+{\it Boundary integral representation from the reciprocal theorem.}---We use the reciprocal theorem \citep{hb,ps} using as the reciprocal flow the solution of \cite{LironMochon} for the point-force or Stokeslet between two parallel plates, i.e.\
+\begin{eqnarray}&&
+-\nabla p^S+\eta \nabla^2 \bm u^S+\bm g\delta(\bm x-\bm x_0)=0,\ \ \nabla\cdot\bm u^S=0, \label{stokes}\\&& \bm u^S(z=0)=\bm u^S(z=h)=0,\ \ \bm u^S(x^2+y^2\to\infty)=0.\nonumber \end{eqnarray}
+Analogously to the flow due to a point-force acting on a viscous fluid in infinite space (e.g. \cite{ps}), the solution depends linearly on the source forcing $\bm g$,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\bm u^S(\bm x)=\frac{1}{8\pi \eta}S_{ik}(\bm x, \bm x_0)g_k, \label{vl}
+\end{eqnarray}
+where we introduced the tensor $S_{ik}$ independent of $\bm g$. Similarly for the stress tensor of the Stokeslet solution we can write,
+\begin{eqnarray}&&
+\sigma^S_{ik}(\bm x)\!=-p^S\delta_{ik}+\eta\left(\nabla_k u^S_i+\nabla_i u^S_k\right)\!=\!\frac{T_{ilk}(\bm x, \bm x_0)g_l}{8\pi},\label{st}\\&& \nabla_kT_{ilk}\!=\!-8\pi\delta_{il}\delta(\bm x\!-\!\bm x_0),\ \ T_{ilk}\!\!=\!\!-p_l \delta_{ik}\!+\!\nabla_k S_{il}\!+\!\nabla_i S_{kl},\nonumber
+\end{eqnarray}
+where $T_{ilk}$ is a third-rank tensor independent of $\bm g$ and we defined the $\bm g-$independent $p_l$ by $p^S=\bm p\cdot\bm g/(8\pi)$.
+%\begin{eqnarray}&&%\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%T_{ilk}\!\!=-p_l \delta_{ik}\!+\!\nabla_k S_{il}\!+\!\nabla_i S_{kl},\label{strt}
+%\end{eqnarray}
+%where $p_l$ is independent of $\bm g$.
+We use the Lorentz identity,
+\begin{eqnarray}&&
+\nabla_k\left[u_{i}\sigma^S_{ik}-u^S_i\sigma_{ik}\right]+\bm u\cdot \bm g\delta(\bm x-\bm x_0)=0,\label{lo}
+%\\&&\sigma_{ik}=-p\delta_{ik}+\eta\left(\nabla_iu_k+\nabla_ku_i\right).\nonumber
+\end{eqnarray}
+readily inferred from the Stokes equations with $\sigma_{ik}$ the stress tensor of the flow defined by Eqs.~(\ref{ds}),
+\begin{eqnarray}&&
+\sigma_{ik}=-p\delta_{ik}+\eta\left(\nabla_iu_k+\nabla_ku_i\right).
+\end{eqnarray}
+Substituting $\bm u^S$ and $\bm \sigma^S$ from Eqs.~(\ref{vl})-(\ref{st}) in Eq.~(\ref{lo}) and using the above identity we find that,
+\begin{eqnarray}&&
+8\pi \eta u_{l}(\bm x')\delta(\bm x'-\bm x)=\frac{\partial}{\partial x_k'}\left[S_{il}(\bm x', \bm x)\sigma_{ik}(\bm x')
+\right.\nonumber\\&&\left.-\eta u_{i}(\bm x')T_{ilk}(\bm x', \bm x)\right].\label{fd}
+\end{eqnarray}
+Integrating this equation over $\bm x'$ outside the particles,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+u_l\!=\!f_l\!-\!\sum_n\int_{S_n}\!\!\!\frac{S_{il}(\bm x', \bm x)\sigma'_{ik}dS_k'}{8\pi \eta}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
++\sum_n\int_{S_n}\frac{u_{i}(\bm x')T_{ilk}(\bm x'\!, \!\bm x)dS'_k}{8\pi},\label{in}
+\end{eqnarray}
+where $\bm f$ is the integral over the far surface at infinity,  $S_n$ is the surface of the $n-$th particle and $dS_k$ is aligned with the outward normal to the particle surface. There is no contribution from the channel boundaries $z=0$ and $z=h$ since both flows vanish there.
+
+We assume that the particles are confined in a finite region so that the flow far from the particles is the Poiseuille flow given by Eq.~(\ref{ps}), see Eq.~(\ref{ds}). Since the Stokeslet decays far from the source, the second and the third terms on the RHS of Eq.~(\ref{in}) decay to zero at large distances from the particles.
+ Thus, the asymptotic approach of $\bm u$ to the Poiseuille flow at large distances implies the asymptotic equality of $\bm f$ to the Poiseuille flow. It is readily seen using the asymptotic form of the Stokeslet at large horizontal distances, provided in the next Section, and the asymptotic, Poiseuille, form of the flow, that $\bm f$ is determined by terms independent of the particles, that is terms that would be the same for the case of no particles.
+Thus necessarily $\bm f$ is the Poiseuille flow given by Eq.~(\ref{ps}). This is confirmed by the direct calculation in Appendix \ref{f}. We therefore conclude that,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+u_l\!=\!\frac{\delta_{lx}z(z\!-\!h)\nabla_x p^0}{2\eta}\!-\!\sum_n\int_{S_n}\!\!\!\frac{S_{il}(\bm x', \bm x)\sigma'_{ik}dS_k'}{8\pi \eta}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
++\sum_n\int_{S_n}\frac{u_{i}(\bm x')T_{ilk}(\bm x'\!, \!\bm x)dS'_k}{8\pi}.\label{inrep}
+\end{eqnarray}
+This integral representation of the flow involves no approximations and holds for particles of arbitrary shape. The flow is determined by the values of $\bm u$ and $\sigma_{ik}$ at the particle surface. When the distance between the particles are much larger than their size the hydrodynamic interactions are negligible and $\bm u$ and $\sigma_{ik}$ are approximately those of an isolated particle. However, the current representation works also when the particles are close to each other so that the hydrodynamic interactions change significantly the values of $\bm u$ and $\sigma_{ik}$ at the particle surface.
+
+%We can rewrite the representation given by Eq.~(\ref{inrep}) using the form of $T_{ilk}$ given by Eq.~(\ref{strt}). The term involving the pressure is
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%-\int_{S_n}\frac{p_l(\bm x'\!, \!\bm x)\bm u(\bm x') \cdot d\bm S'}{8\pi}=\int \frac{dV'}{8\pi}\bm u(\bm x')\cdot \nabla' p_l(\bm x'\!, \!\bm x).
+%\end{eqnarray}
+
+{\it Simplification for rigid surface.}---The integral representation above simplifies in the case of rigid surfaces when the flow on the surface of the particles is the superposition of translation and solid-body rotation. This is not only the case of rigid particles described after Eq.~(\ref{ds}), but  often also the case of small bubbles where impurities present in the fluid accumulate at the surface making it effectively rigid. In this case, experiments demonstrate that the behavior of these bubbles is similar to that of rigid particles \citep{hb,levich}. In these and similar cases the flow at the particle surface $u_i(\bm x')$ has the form  $c_i+\epsilon_{irm}x'_m{\tilde c}_r$ where both $\bm c$ and $\bm {\tilde c}$ are independent of $\bm x'$. Hence the last term in Eq.~(\ref{inrep}) drops out because  for $\bm x$ outside the particle interior $V_p$,
+\begin{eqnarray}&&
+\int_{S_p}dS'_k T_{ilk}(\bm x', \bm x)=\int_{V_p} dV \nabla'_k T_{ilk}=0, \\&& \epsilon_{irm}\int_{S}dS'_k x'_mT_{ilk}(\bm x', \bm x)
+=\epsilon_{irm}\int_{V_p} dV \delta_{mk}T_{ilk}=0,
+\nonumber
+\end{eqnarray}
+cf.\ \cite{ps}. Note that we made use of the fact that $\epsilon_{irm}$ is antisymmetric over indices $i$, $m$ whereas $T_{ilm}$ is symmetric with respect to those indices. We conclude that in the case of many particles with rigid surfaces,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+u_l\!=\!\frac{\delta_{lx}z(z\!-\!h)\nabla_x p^0}{2\eta}\!-\!\sum_n\int_{S_n}\!\!\!\frac{S_{il}(\bm x', \bm x)\sigma'_{ik}dS_k'}{8\pi \eta},\label{inrepmany}
+\end{eqnarray}
+The representations derived here are thus useful to descrive  the  flow.
+
+\section{Derivation of lubrication theory}
+
+In this Section we demonstrate that Eqs.~(\ref{inrep}) and (\ref{inrepmany}) imply that the predictions of the lubrication theory hold at horizontal distances from the particles larger than $h$. This is less restrictive than the usual condition of applicability of the lubrication theory for distances much larger than $h$, cf.\ \cite{is}. This property comes from the Stokeslet flow which obeys the lubrication theory at distances larger than $h$. We use the representation
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+S_{il}(\bm x', \bm x)\!=\!\frac{12 z'(h\!-\!z')z(z\!-\!h)\nabla_i\nabla_l  \ln \rho}{h^3}\!+\!{\tilde S}_{il}(\bm x', \bm x),\label{Stokesl}
+\end{eqnarray}
+where $\rho$ is the length of $\bm \rho\!=\!(x-x', y-y')$ (thus $\nabla_i\nabla_l  \ln \rho=0$ if one of the indices is $z$). It was observed in \cite{LironMochon}
+that ${\tilde S}_{il}$ decays exponentially in $\rho$ with exponent at least $\pi/h$, that is the smallness is at least $\exp(-\pi\rho/h)$.
+%Similarly, if one of the indices of $S_{il}$ is $z$ then $S_{il}$ is of order $\exp(-\pi\rho/h)$.
+Thus already at $\rho\approx h$ we can discard the last, non-potential term in Eq.~(\ref{Stokesl}). The resulting approximation to the Stokeslet flow,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+S_{il}(\bm x', \bm x)\!\approx\! S^0_{il}(\bm x', \bm x)\!= \!\frac{12 z'(h\!-\!z')z(z\!-\!h)\nabla_i\nabla_l  \ln \rho}{h^3},\label{so}%\nonumber
+\end{eqnarray}
+is the two-dimensional potential flow times $z'(h-z')$, in agreement with the predictions of the lubrication theory, see Eq.~(\ref{lubr}). Note  that $S^0_{il}(\bm x', \bm x)$ is a symmetric function of $\bm x$ and
+$\bm x'$, whose dependence on the horizontal coordinates is via the difference $\bm \rho$ only. We consider the corresponding pressure $p^0$ that approximately solves the corresponding Stokes equation
+$\nabla'_i p^0_l(\bm x', \bm x)\!=\!\nabla'^2 S^0_{il}(\bm x', \bm x)$, see the second of Eqs.~(\ref{st}). Here $\nabla'_i$ designates the derivative over $x'_i$ and we do not write the $\delta(\bm x'-\bm x)$ term on the RHS. We thus find ($l\neq z$),
+\begin{eqnarray}&&
+p^0_l(\bm x', \bm x)=\frac{24 z(z-h)\rho_l}{h^3 \rho^2}=\frac{24z(z-h)}{ h^3}\nabla_l\ln \rho.
+\end{eqnarray}
+%as can be checked readily.
+%We check this,
+%\begin{eqnarray}&&
+%\nabla'_i p^0_l(\bm x', \bm x)=-\frac{24z(z-h)}{ h^3}\nabla_i\nabla_l\ln \rho,\\&&
+%\nabla'^2 S^0_{il}(\bm x', \bm x)=-\frac{24z(z\!-\!h)\nabla_i\nabla_l  \ln \rho}{h^3}.
+%\end{eqnarray}
+Here, $p^0$ is the leading order approximation for the pressure of the Stokeslet at large distances \citep{LironMochon}, with an exponentially small correction.
+We can write ($l\neq z$ but $i$ or $k$ can be  $z$),
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+T_{ilk}(\bm x', \bm x)=-p^0_l\delta_{ik}+\nabla'_k S^0_{il}+\nabla'_i S^0_{kl}\!+\!{\tilde T}_{ilk}(\bm x', \bm x),
+\end{eqnarray}
+where ${\tilde T}_{ilk}(\bm x', \bm x)$ decays exponentially in $\rho$ with exponent at least $\pi/h$, cf.\ Eq.~(\ref{st}). The stress tensor $T_{ilk}(\bm x', \bm x)$
+is exponentially small when one of the indices is $z$.
+We find using the expressions for $p_0$ and $S^0_{il}$,
+\begin{eqnarray}&&
+T_{ilk}(\bm x', \bm x)\approx \frac{24z(h-z)}{h^3}\nabla_l\left[ \left(\delta_{ik}+z'(h\!-\!z')\nabla_i \nabla_k \right)\ln \rho\right]\nonumber\\&&
++\frac{12 (h\!-\!2z')z(z\!-\!h)}{h^3}\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right) \nabla_l\ln \rho,
+\end{eqnarray}
+where we neglected exponentially small correction. We find from Eq.~(\ref{inrep}) that,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\bm u(\bm x)\!=\!\frac{z(z\!-\!h)\nabla p}{2\eta}+O\left(e^{-\pi\min[\rho_n]/h}\right)\!;\ \ \nabla^2 p\!=\!0,\label{fi}
+\end{eqnarray}
+where  
+$\bm u=(u_x, u_y)$ and $\min[\rho_n]$ is the distance from $\bm x$ to the closest boundary of a particle. 
+The pressure $p$ in this formula is independent of $z$ as predicted by the lubrication theory used in Eq.~(\ref{lubr}) with,
+\begin{eqnarray}&&\!\!\!\!\!\!
+p=p^0+\sum_n \delta p_n,\ \ \delta p_n=\frac{3\nabla_i}{\pi h^3}\int_{S_n}z'(z'-h) \ln \rho \sigma_{ik}'dS_k'\nonumber
+\\&&\!\!\!\!\!\!
+-\frac{6\eta}{\pi h^3} \int_{S_n} dS'_k  \left(\delta_{ik}+z'(h\!-\!z')\nabla_i \nabla_k \right) u_{i}(\bm x') \ln \rho\nonumber\\&&\!\!\!\!\!\!
++\frac{3\eta}{\pi h^3} \int_{S_n} dS'_k  (h\!-\!2z')\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right) u_{i}(\bm x') \ln \rho,\label{fu}
+\end{eqnarray}
+where $\delta p_n$ is the pressure perturbation due to the $n-$th particle and the summation over repeated indices is from $1$ to $3$. Eqs.~(\ref{fi})-(\ref{fu}) are one of the main results of our work. These provide a refinement of the lubrication theory demonstrating that Eq.~(\ref{lubr}) holds under
+the condition $\exp{(-\pi \min[\rho_n]/h)}\ll 1$, which is difficult to show
+using the classic lubrication theory as it demands the strong inequality $\min[\rho_n]\gg h$. For instance, at $\min[\rho_n]=h$ the exponential factor is $\sim 0.04$. The result holds both for droplets and rigid particles where for rigid particles the last two lines of Eq.~(\ref{fu}) become zero and the equation reduces to
+\begin{eqnarray}&&\!\!\!\!\!\!
+p=p^0+\frac{3\nabla_i}{\pi h^3}\sum_n\int_{S_n}z'(z'-h) \ln \rho \sigma_{ik}'dS_k'.\label{rg}
+\end{eqnarray}
+We have good control of the correction terms to Eqs.~(\ref{fi})-(\ref{rg}) from the series representation of ${\tilde S}_{il}(\bm x', \bm x)$ provided in \cite{LironMochon}.
+
+The pressure $p$ solves the two-dimensional Laplace equation in the domain between the particles since it is formed by integrals of the fundamental solution of the Laplace equation $\ln \rho$ over the particle boundaries.
+The formula for $p$ matches the ideal flow that holds beyond the horizontal distance $h$ from the particles with the fully viscous flow near the particles. The viscous layer is the neighborhood
+of the boundary of each particle where Eq.~(\ref{fu}) breaks down. Though the solution for $p$ is given in terms
+of the unknown velocities and stress tensors on the surfaces of the particles, it seems that this is as much as can be done generally: the matching problem is not solvable for any general particle shape. It does simplify for disk-like particles as described previously.
+
+{\it Hydrodynamic interactions of pancake-like droplets.}---Eqs.~(\ref{fi})-(\ref{fu}) provide support for the observation that  the width of the viscous layer around disk-like droplets is not larger than $h$.
+The formulae tell that, unless the distance between the droplet surfaces is smaller than $h$, the (horizontal) flow outside the viscous layers near the particles is an
+ideal potential flow. This flow can be determined using the boundary condition that the normal velocity at the outer boundary of the viscous layer coincides with the normal component of the translational velocity of the particle.
+%%
+Since the layer width is of the order of $h$, and as long as the distance between the droplets is larger than $h$ (but possibly much smaller than $a$) we can impose the boundary condition on the particle surface, neglecting the finite width of this viscous layer as we did for the case of the single large disk, see Eq.~(\ref{dl}). Similarly, in the presence of many particles whose separation is larger than $h$, the flow outside the boundary layer is described by a pressure field $p$ that obeys \citep{is,tl2012},
+\begin{eqnarray}&&%\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\nabla^2 p=0,\ \ \left(\bm v_n+\frac{h^2\nabla p}{12\eta}\right)\cdot{\hat n}_n=0, \label{press}
+\end{eqnarray}
+where $\bm v_n$ is the velocity of $n-$th particle, ${\hat n}_n$ is the unit vector normal to the surface of the $n-$th particle. The pressure gradient is taken at the outer boundary of the viscous layer of the $n-$th particle. However, since the latter is narrow, one can consider $\nabla p$ on the surface of the $n-$th particle without affecting significantly the solution for the pressure outside the viscous layers. To find the pressure inside the layers would require a separate study. For close droplets the pressure determined by Eq.~(\ref{press}) is different from the superposition of the dipole solutions given by Eqs.~(\ref{dlp0})-(\ref{dl}) due to the near-field interactions.
+
+Finally, we demonstrate that the force exerted on the particles, determined by the viscous stress tensor at the particle surface, can be obtained from the ideal flow description.
+The force $\bm F^n$ on particle $n$ is determined by the following integral over the particle surface,
+\begin{eqnarray}&&%\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\bm F^n_i\!= \int_{S_n}\sigma_{ik}dS_k=\int_{outer}\sigma_{ik}dS_k,
+\end{eqnarray}
+where the last integral is over the outer boundary of the viscous layer of the $n-$th particle and we used $\nabla_k\sigma_{ik}=0$. We can neglect the viscous contribution to the stress tensor at the outer boundary and find
+\begin{eqnarray}&&%\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\bm F^n\!\approx -\int_{outer}p d\bm S\approx -\int_{S_n}p d\bm S,\label{force}
+\end{eqnarray}
+where we must use the pressure $p$ determined from Eq.~(\ref{press}) in the last term and not the true pressure on the surface of the particle. Thus, the force 
+coincides with that in an ideal flow and, effectively, we can assume that the ideal flow holds everywhere disregarding the no-slip boundary condition. This provides a consistent basis for the study of hydrodynamic interactions between  large droplets at small distances as performed in \cite{is,tl2012}.
+
+%In the case of large disks referred previously the potential flow holds up to the surface of the disk. We observe that when the pair of points $\bm x$ and $\bm x'$ is separated by distance much smaller than $h$ and is well separated from the walls then the impact of the walls can be neglected and Stokeslet in the infinite space holds,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%S_{il}(\bm x', \bm x)\approx \frac{\delta_{il}+{\hat r}_i{\hat r}_l}{r}, \ \ r\ll \min[h, |h-z|, z].
+%\end{eqnarray}
+%where $\bm r=\bm x'-\bm x$. The integral in Eq.~(\ref{inrep}) has finite limit when $\bm x$ approaches the surface (we assume that $\sigma_{ik}$ is smoothly varying on the surface and for convergence questions can be treated as a constant). For $\bm x$ on the surface because of integrability of $1/r$ in two dimensions the integral is determined by the boundary $r\sim \min[h, |h-z|, z]$. For most of the points on the lateral boundary we find that the integral is determined by $r\sim h$ where $S_{il}$ becomes potential. Over rest of the surface where $1/r^2$ behavior holds. We must consider the model with $\sigma_{ik}=const$.
+
+
+\section{Multipole expansion}
+
+
+The flow at large distances from the particles can be  effectively studied using the multipole expansion. The distances must be larger than $h$ and much larger than the particle size.
+We perform here this expansion in terms of $\delta p_n$ in Eq.~(\ref{fu}), solution of the two-dimensional
+Laplace equation. We write $\delta p_n$ as,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k' \left(
+z'(z'-h) \sigma_{ik}'\nabla_i-\eta u_{i}(\bm x')\left(
+2\delta_{ik}\nonumber\right.\right.\\&&\!\!\!\!\!\!\!\!\!\left.\left.+2z'(h\!-\!z')\nabla_i \nabla_k
++(h\!-\!2z')
+\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right)\right)\right)\ln \rho.\label{deltap}
+\end{eqnarray}
+We provide next the expansion 
+in Cartesian and polar coordinates  
+as in three-dimensional electrostatics \citep{cl}.
+
+We set the origin of the coordinate system
+%introduce center of coordinates at some point 
+inside the $n-$th particle. To determine the multipole expansion in Cartesian coordinates we consider the Taylor series (remind that $\rho=|\bm r-\bm r'|$),
+\begin{eqnarray}&&\!\!\!\!\!\!
+\ln \rho\!=\!\ln r\!-\!r'_l\nabla_l\ln r\!+\!\frac{r'_lr'_p}{2}\nabla_l\nabla_p\ln r\!+\!\ldots,
+\end{eqnarray}
+where dots stand for higher-order terms. Substituting into Eq.~(\ref{deltap}) one obtains the Cartesian form of the multipole expansion. The  leading-order $\ln r$ term in the series,
+\begin{eqnarray}&&\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k' \left(
+z'(z'-h) \sigma_{ik}'\nabla_i-\eta u_{i}(\bm x')\left(
+2\delta_{ik}\nonumber\right.\right.\\&&\!\!\!\!\!\!\left.\left.+2z'(h\!-\!z')\nabla_i \nabla_k
++(h\!-\!2z')
+\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right)\right)\right)\ln r,
+\end{eqnarray}
+has a contribution proportional to $\int \bm u\cdot{\bm dS}$, i.e.\  proportional to $\ln r$. Further assuming the droplet is incompressible $\int \bm u\cdot{\bm dS}=0$.
+In this case,  the leading order term at larger distances is given by the dipole term,
+\begin{eqnarray}&&\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k' \left(
+z'(z'-h) \sigma_{ik}'\nabla_i-\eta u_{i}(\bm x')(h\!-\!2z')\nonumber\right.\\&&\!\!\!\!\!\!\left.
+\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right)\right)\ln r
++\frac{6\eta\nabla_l\ln r}{\pi h^3}\int_{S_n}r'_l \bm u\cdot{\bm dS}, \label{dpl}
+\end{eqnarray}
+where the last term comes from the next-order term in the expansion of the logarithm. This term can be simplified for droplets that do not change their shape, such as the pancake-like droplets considered previously, since
+the slip and flow on the surface are irrelevant. For instance, for a spherical droplet whose center moves with velocity $\bm v$,  one obtains $\int_{S_n}r'_l \bm u\cdot{\bm dS}=v_k\int_{S_n}r'_l dS_k=4\pi a^3 v_l/3$.
+The complete expansion becomes,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k' \left(
+z'(z'-h) \sigma_{ik}'\nabla_i-\eta u_{i}(\bm x')\left(
+2\delta_{ik}\nonumber\right.\right.\\&&\!\!\!\!\!\!\!\!\!\left.\left.+2z'(h\!-\!z')\nabla_i \nabla_k
++(h\!-\!2z')
+\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right)\right)\right)\left(\ln r\nonumber\right.\\&&\!\!\!\!\!\!\left.
+-r'_{l}\nabla_{l}\ln r+\frac{r'_{l}r'_{p}}{2}\nabla_{l}\nabla_{p}\ln r+\ldots
+\right).
+\end{eqnarray}
+The expansion in polar coordinates is found observing that for $r'<r$,
+\begin{eqnarray}&&
+\ln |\bm r-\bm r'|=\ln r\nonumber\\&&
+-\sum_{n=1}^{\infty}\left(\frac{r'}{r}\right)^n\frac{\cos(n\theta)\cos(n\theta')+\sin(n\theta)\sin(n\theta')}{n}. \label{logexp}
+\end{eqnarray}
+This formula represents the fundamental solution $\ln |\bm r-\bm r'|$ in terms of the elementary solutions of Laplace equation, $r^{-k}\exp(ik\theta)$ and $r'^p\exp(ip\theta')$ with  $k$ and $p$ positive integers.
+This is the counterpart of the expansion of $|\bm r-\bm r'|^{-1}$ in spherical harmonics adopted in three-dimensional multipole expansion in electrostatics \citep{cl} and, in fact, it can be derived from
+that expansion by confining $\bm r$, $\bm r'$ in a plane. We provide here a simpler derivation. We consider,
+\begin{eqnarray}&&\!\!\!\!\!\!
+\ln |\bm r-\bm r'|=\ln r+\frac{\ln\left(1-2\epsilon\cos\gamma+\epsilon^2\right)}{2},\ \ \epsilon=\frac{r'}{r},
+\end{eqnarray}
+where $\gamma$ is the angle between $\bm r$ and $\bm r'$ and $\epsilon<1$. We recall the Fourier series,
+\begin{eqnarray}&&
+\ln\left(1\!-\!2\epsilon\cos\gamma\!+\!\epsilon^2\right)\!=\! -\sum_{n=1}^{\infty}\frac{2\epsilon^n \cos(n\gamma)}{n}\,%!+\!\sum_{n=1}^{\infty} b_n\sin(n\gamma),\nonumber
+\end{eqnarray}
+where the integrals for the Fourier coefficients can be obtained using the residue theorem \citep{grad}.
+%there is no $n=0$ term due to the vanishing of the integral of the LHS over the period. We have \citep{grad},
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+%a_n=\int_{-\pi}^{\pi}\ln\left(1-2\epsilon\cos\gamma+\epsilon^2\right)\cos(n\gamma)\frac{d\gamma}{\pi}=-\frac{2\epsilon^n}{n},
+%\end{eqnarray}
+%and the corresponding integral for $b_n$ gives $b_n=0$ (these
+Finally, introducing the polar angles $\theta$ and $\theta'$ for $\bm r$ and $\bm r'$, respectively, and using $\gamma=\theta'-\theta$ we obtain Eq.~(\ref{logexp}).
+%\begin{eqnarray}&&
+%\ln |\bm r-\bm r'|=\ln r\nonumber\\&&
+%-\sum_{n=1}^{\infty}\frac{r'^n\cos(n\theta)\cos(n\theta')+r'^n\sin(n\theta)\sin(n\theta')}{nr^n}. \nonumber
+%\end{eqnarray}
+The multipolar expansion in polar coordinates is finally
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k' \left(
+z'(z'-h) \sigma_{ik}'\nabla_i-\eta u_{i}(\bm x')\left(
+2\delta_{ik}\nonumber\right.\right.\\&&\!\!\!\!\!\!\!\!\!\left.\left.+2z'(h\!-\!z')\nabla_i \nabla_k
++(h\!-\!2z')
+\left(\delta_{kz}\nabla_i+\delta_{iz}\nabla_k \right)\right)\right)\left(\ln r\nonumber\right.\\&&\!\!\!\!\!\!\left.
+-\sum_{n=1}^{\infty}\left(\frac{r'}{r}\right)^n\frac{\cos(n\theta)\cos(n\theta')+\sin(n\theta)\sin(n\theta')}{n}
+\right),
+\end{eqnarray}
+which gives the pressure as a superposition of elementary solutions $r^{-k}\exp(ik\theta)$.
+The formulae simplify for rigid particles to
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k'
+z'(z'-h) \sigma_{ik}'\nabla_i\left(\ln r\nonumber\right.\\&&\!\!\!\!\!\!\left.
+-r'_{l}\nabla_{l}\ln r+\frac{r'_{l}r'_{p}}{2}\nabla_{l}\nabla_{p}\ln r+\ldots
+\right)
+\end{eqnarray}
+and
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+\delta p_n=\frac{3}{\pi h^3}\int_{S_n}dS_k'
+z'(z'-h) \sigma_{ik}'\nabla_i\left(\ln r\nonumber\right.\\&&\!\!\!\!\!\!\left.
+-\sum_{n=1}^{\infty}\left(\frac{r'}{r}\right)^n\frac{\cos(n\theta)\cos(n\theta')+\sin(n\theta)\sin(n\theta')}{n}
+\right).
+\end{eqnarray}
+The multipole expansion of the flow is derived by taking the gradient of the pressure using Eq.~(\ref{fi}). As an example, the perturbation  of the Poiseuille flow due to a rigid particle, $\delta u_k$, is up to a cubically decaying term,
+\begin{eqnarray}&&
+\delta u_k\!%=\!\frac{3z(z\!-\!h)}{2\pi \eta h^3}\!\nabla_k\int_{S}\!\!\frac{z'(z'\!-\!h)r_i f_i(\bm x')dS'}{(x'\!-\!x)^2\!+\!(y'\!-\!y)^2}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+=\!-\frac{3z(z\!-\!h)s_i}{2\pi h^3\eta}\nabla_k \nabla_i \ln r -\frac{3z(z\!-\!h)}{2\pi h^3\eta}\nonumber \\&&\times\nabla_k \nabla_i\frac{1}{r}\int_{S}\!\!\!dS_k'z'(z'\!-\!h) \sigma_{ik}' r' \cos(\theta-\theta'),\label{mo}
+\end{eqnarray}
+where we introduced,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+s_i=\int_{S}\!\! z'(h\!-\!z') \sigma_{ik}'dS_k'. \label{dlpa}
+\end{eqnarray}
+The first term in Eq.~(\ref{mo}) is a dipole and the second term a quadrupole. Similarly, we can write the corresponding and higher-order terms for droplets.
+
+
+
+
+%-- Below is commented on 29 June 2017 by Anthony Ge.
+%We consider the leading order term of the multipole expansion for the case of spherical particles (similar considerations can be done for other symmetric shapes).
+%It is plausible that $s>0$ because the flow tries dragging the particle (the actual drag is zero). This is confirmed by numerical simulations. The flow is,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\delta u_x(\bm x)\!=\!\frac{3s(z_p)z(h\!-\!z)}{2\pi \eta h^3(x^2+y^2)}\frac{y^2- x^2}{x^2+y^2},\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\delta u_y(\bm x)\!=\!-\frac{3s(z_p)z(h\!-\!z)}{2\pi \eta h^3(x^2+y^2)}\frac{2xy}{x^2+y^2}.\label{dist_flow}
+%\end{eqnarray}
+%We observe that velocity in $x-$direction is identical in front and behind the particle. This has consequence for far interactions of spheres considered in the Section \ref{interactions}.
+
+%We can describe clearly the far flow of the particle introducing the effective radius $a_0$ by $\tilde {\bm d}=a_0^2\bm v$. Here $\bm v=-v{\hat x}$ is the velocity of the particle in the frame that moves with velocity
+%$-h^2 \nabla p^0/(12\eta)$. We have $v>0$ since the particle moves slower than the fluid, cf. Eq.~(\ref{dl}). We find,
+%\begin{eqnarray}&&
+%a_0^2=\frac{s}{4\pi v \eta   h}.
+%\end{eqnarray}
+%Thus we can characterize different geometries of the sphere location in the channel, as described by $z_p$ and the radius $a$ of the sphere, using the dimensionless ratio $a_0^2/a^2=s/(4\pi v \eta  a^2 h)$.
+
+%We can produce the estimate of $\tilde {\bm d}$ in Eq.~(\ref{tld}) for the case of sphere with radius $a_0\approx h/2$. The particle almost fills the channel vertically. We observe that for disk with radius $a\gg a_0$ and height $2a_0$ we have $\tilde {\bm d}\approx a^2\bm v$ where $\bm v$ is the difference of the disk velocity and $-h^2\nabla p_0/(12\eta)$, see the consideration of this case using the lubrication theory. Taking the
+%limit of $a\to a_0$ we find that $\tilde {\bm d}$ and $a_0^2 v$ must hold have the same order of magnitude. Here $\bm v$ is the difference of the sphere's velocity and $-h^2\nabla p_0/(12\eta)$. This estimate is confirmed by the numerical simulations described below.
+
+%We performed direct numerical simulations, where we compute the motion of one rigid sphere under various confinement and at different positions, summarized in Tables \ref{tab: h=3} - \ref{tab: h=1.125} (see Appendix \ref{numm} for details). Here, the relative velocity of the particle, defined as $\delta u_p=u_p-u_x^0$ where $u_p$ is the particle center velocity, is non-dimensionalized by the bulk velocity of the undisturbed channel flow $U_b=-h^2\nabla_x p^0/(12\eta)$. The reduction of the translational velocity as the particle is placed closer to one wall or as the particle size increases is consistent with previous computaions using the boundary integral method \citep{bim_1p}.
+%-- End commenting 29 June 2017.
+
+
+
+\section{Leading-order behavior at large distances}
+
+In this Section we consider the leading order behavior of the flow at large horizontal distances from the particle(s). The distances must be larger than $h$ (but not much larger) and much larger than the size of the particles.
+The far-field flow perturbation $\delta \bm u_n$ due to the $n-$th particle is given by the dipole flow,
+\begin{eqnarray}&&\!\!\!\!\!\!
+\delta \bm u_n=\frac{z(z\!-\!h)}{2\eta}\nabla \delta p_n,\ \ \delta p_n=-\frac{3}{\pi h^3}\!(\bm s_n\cdot\nabla) \ln r,\label{flowdp}
+\end{eqnarray}
+where
+\begin{eqnarray}&&\!\!\!\!\!\!
+(s_n)_i=\int_{S_n}dS_k'
+z'(h-z') \sigma_{ik}'+\eta\int_{S_n}dS_z' (h\!-\!2z')u_{i}(\bm x')\nonumber\\&&\!\!\!\!\!\!+\eta\int_{S_n}dS_i' (h\!-\!2z')u_{z}(\bm x')
+-2\eta\int_{S_n}r'_i \bm u\cdot{\bm dS},
+\end{eqnarray}
+see Eqs.~(\ref{fi}) and (\ref{dpl}). For rigid particles this reduces to Eq.~(\ref{dlpa}) which is why we use the same letter for the coefficient $s_i$. We find that the perturbation of the potential of the
+depth-averaged flow $\delta \phi_n=-h^2 \delta p_n/(12\eta)$ is,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!
+\delta \phi_n=-\frac{\tilde {\bm d}_n\cdot{\hat r}}{r},\ \ \tilde {\bm d}_n=-\frac{\bm s_n }{4\pi\eta h}, \label{tld}
+\end{eqnarray}
+see Eq.~(\ref{dlp0}). Thus, the flow perturbation at large distances is the dipolar flow with effective dipole moment $\tilde {\bm d}$. 
+We can describe the far-field impact of a particle of arbitrary shape on the flow introducing
+the source in the potential equation, $\nabla^2\delta\phi_n=-2\pi(\tilde {\bm d}_n\cdot\nabla)\delta(x)\delta(y)$ so that the full potential $\phi$ obeys,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!
+\nabla^2\phi=-2\pi\sum_n(\tilde {\bm d}_n\cdot\nabla)\delta(x-x_n)\delta(y-y_n)
+\end{eqnarray}
+where $(x_n, y_n)$ are the horizontal coordinates of some point inside the $n-$th particle (observe that $p^0$ is a linear function and has zero laplacian).
+
+The resulting correction to the Poiseuille flow is that of
+a particle that moves in direction of $\bm s$, see Eq.~(\ref{dl}),
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\delta u_k(\bm x)\!=\!\frac{3s_iz(h\!-\!z)}{\pi \eta h^3(x^2+y^2)}\left[\frac{\delta_{ik}}{2}\!-\!\frac{x_ix_k}{x^2+y^2}\right],\ \ \rho\gg h. \label{stks}
+\end{eqnarray}
+The lateral, $y$ and $z$, components of $\bm s$ vanish for particles that have fore-and-aft symmetry. This can be shown in the same way as for the absence of lateral migration of spheres in a channel \citep{leal,1rd2}.
+The reversal of the sign of $\bm u$ and $p$ produces another solution of the system of Eqs.~(\ref{ds}). This solution has opposite sign of the stress tensor and velocity and thus of $\bm s$. However, it describes
+the same physical situation and thus must have the same lateral components of $\bm s$, hence these components must vanish. Thus, for spheres or ellipsoids $\bm s=s\bm {\hat x}$. In contrast, for particles whose shape
+is an arc or similar one can have a non-zero $s_y$ and $s_z$.
+
+We consider a spherical particle as an example of a particle with fore-and-aft symmetry. We can introduce $s_i=s(z_p)\delta_{ix}$ where,
+\begin{eqnarray}&&\!\!\!\!\!\!
+s(z_p)=\int_{S}\!\! z'(h\!-\!z') \sigma_{xk}'dS_k'+\eta\int_{S_n}dS_z' (h\!-\!2z')u_x(\bm x')\nonumber\\&&\!\!\!\!\!\!+\eta\int_{S_n}dS_x' (h\!-\!2z')u_{z}(\bm x')
+-2\eta\int_{S_n}r'_x \bm u\cdot{\bm dS}, \ \
+\end{eqnarray}
+with $z_p$ the vertical position of the particle center. In this case, the flow is
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\delta u_x(\bm x)\!=\!\frac{3s(z_p)z(h\!-\!z)}{2\pi \eta h^3(x^2+y^2)}\frac{y^2- x^2}{x^2+y^2},\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\delta u_y(\bm x)\!=\!-\frac{3s(z_p)z(h\!-\!z)}{2\pi \eta h^3(x^2+y^2)}\frac{2xy}{x^2+y^2}.
+\label{dist_flow}
+\end{eqnarray}
+It is plausible that $s(z_p)>0$ because the particle is always lagging behind the local flow. This is confirmed by the direct numerical simulations reported below.
+
+The formulas provided here give the possibility of tabulating the particle dipole moments from numerical simulations for future use. 
+For a spherical particle of fixed radius the dipole moment depends on the vertical coordinate $z_p$. 
+The solution of the flow equations in the presence of an isolated sphere would give the stress tensor and the surface velocity 
+with which we can find $s(z_p)$. We illustrate this procedure for the case where the particle is a rigid sphere with same density as that of the fluid.
+The equation of motion is,
+\begin{equation}
+    m\frac{dv_i}{dt} =
+    \int_{S} \sigma_{ik} dS_k,
+\label{eqmp}
+\end{equation}
+where $m$ is the mass of the particle and gravity does not influence the motion since the particle is assumed to be neutrally buoyant. This equation is coupled to the time-
+dependent Navier-Stokes equations where the unsteady
+term is not negligible during the transients. 
+The particle eventually reaches a constant velocity and the fluid flow is governed by the steady Stokes equations due to the small 
+Reynolds number. 
+Thus, our derivation of the far flow holds with the dipole coefficient for rigid particles,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+s(z_p)=\int_{S}\!\! z'(h\!-\!z') \sigma_{xk}'dS_k'.
+\end{eqnarray}
+We computed here $s(z_p)$ using the numerically determined $\sigma_{xk}$ for different $z_p$ and different radii of the sphere. The results are summarized in Tables \ref{tab: h=3} - \ref{tab: h=1.125} (see Appendix \ref{numm} for details). Here, the particle relative velocity, defined as $\delta u_p=u_p-u_x^0$ where $u_p$ is the particle center velocity, is non-dimensionalized by the bulk velocity of the undisturbed channel flow $U_b=-h^2\nabla_x p^0/(12\eta)$. 
+The reduction of the translational velocity as the particle is placed closer to one wall or as the particle size increases is consistent with previous computations using the 
+boundary integral method \citep{bim_1p}.
+
+\begin{table}[t]
  \centering
- \includegraphics[width=0.9\columnwidth]{figs/packings.png}
- \caption{Packing of $N$ droplets due to the near field depletion force. (a-b) $N = 4$, (c) $N = 5$, (d) $N = 6$, (e) $N = 7$, (f) $N = 8$, (g) $N = 9$, (h) $N = 10$.}
- \label{fig: sph pack}
-\end{figure}
-
-To further demonstrate the effect of the depletion force, we ``virtually'' assemble four to ten droplets under various initial configurations to form stable clusters as illustrated in Fig.\ \ref{fig: sph pack}. These clusters can be either $2D$ or $3D$, exhibiting different levels/kinds of symmetry. In our simulations, the shape of the cluster is solely determined by the initial droplet arrangement, in the absence of any disturbance or other driving forces. Permitting disturbances, such as vibrations or thermal noises, would eventually lead to the formation of ``rigid clusters", i.e.\ clusters that cannot be reshaped by a small amount of inter-droplet displacement. Analytically, the number of possible rigid clusters grows rapidly with the number of droplets ($N$). For example, there is only one possible rigid cluster for $N = 4$, while there are 259 possibilities for $N = 10$, for packing of $3N-6$ contacts  \citep{Holmes-Cerfon}. For brevity, we only illustrate two examples for $N = 4$ (including one planar cluster) and one example for $N = 5$ to 10 in Fig. \ref{fig: sph pack}. 
-
-We remind that the specific coordinates of the sphere packings bear no more significance than other possibilities in our simulations. They are arbitrarily chosen to illustrate the self-assembly due to the near field attraction. This is not the case for trapped equilibrium clusters, where less symmetric geometries are found to be favored by the entropic depletion force \citep{Meng2010,Klein2018}. \xx{Nor is it similar to colloidal particles interacting via short-range attracitve, long-range repulsive potentials, where complex phase transitions emerge depending on the competition of the interactions \citep{salr14,salr18}.} Here, the self-assembly is microfluidic-based, driven by the hydrodynamics rather than the minimization of free energy over long periods. We examine the effect of the flow next.
-
-\subsection{Sticky droplets in shear-driven channel flows} \label{sec:shear}
-
-When the droplets are carried by an external flow, their interactions are undoubtedly affected by the flow conditions, droplet-flow interactions and flow-induced droplet-droplet interactions \citep{Fouxon_2017}. To study these additional effects, we consider an elementary flow field, the wall-bounded simple shear flow, defined as $(u,v,w)=(0, \dot{\gamma}z,0)$ for $z \in [-L_z/2,L_z/2]$. Here, $v$ is the only non-zero velocity component, its magnitude varies linearly with the $z$ coordinate, and $\dot{\gamma}$ is the shear rate (see Fig.\  \ref{fig: shell}a). The presence of droplets will locally modify this flow field, which we sustain by enforcing opposite motions of two moving plates at $z= \pm L_z/2$.
-
-Dating back to  \cite{Taylor501}, the deformation and motion of single or multiple droplet(s)/particle(s) have been studied extensively in simple shear flows \citep{lin_lee_sather_1970,batchelor_green_1972,batchelor_green_1972b,Zinchenko1983,Zinchenko1984,zurita-gotor_2007}. In the case of spherical particles/droplets, previously identified interaction modes include closed trajectories (particles rotate around each other in the vorticity plane), open-and-symmetric trajectories (particles return to their original $z$ positions after passing each other), and swapping trajectories (particles exchange the $z$ position after a binary encounter). The first two modes are generic features of a dilute suspension of particles or non-deforming/non-coalescing droplets, while the last mode arises when the particles are under relatively large geometric confinement. Conceivably, adding a near-field depletion force shall not alter these three modes as it is only activated at nearly touching, when the particles are already in a bound pair. What is yet to be explored, however, is when the gap between the two confining plates is smaller than the sum of the particle diameters (i.e.\ $L_z/D<2$), thus disabling the occurrence of the Batchelor-Green type of closed orbit.
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=.2\columnwidth]{figs/shear1.png}
- \includegraphics[width=.4\columnwidth]{figs/shell1.png}
- \includegraphics[width=.7\columnwidth]{figs/angle_final2.pdf}
- \begin{picture}(0,0)
-   \put(-242,210){\includegraphics[height=.6cm]{figs/a.png}}
-   \put(-242,110){\includegraphics[height=.6cm]{figs/b.png}}
-  \end{picture}
- \caption{Stable configuration of a droplet pair in the simple shear flow. (a) Spherical diagram of the initial (blue dots) and final (red dots) positions of the second droplet in the reference frame of the first droplet. The blue arcs mark the border of the first quadrant where nine initial positions are considered. The undisturbed flow is a simple shear in the $yz$ plane. (b) Steady-state polar angle, $\theta_\infty$, corresponding to the cases in Table \ref{tbl: cases}. The average value is 79 deg. (dashed line). The stable azimuthal angle is identically 0.}
- \label{fig: shell}
-\end{figure}
-
-\begin{table}[h]
-  %\small
-  \centering
-  \caption{\ Initial polar ($\theta$) and azimuthal ($\phi$) angles of the second droplet in the reference frame of the first droplet. $\theta$ and $\phi$ are measured from the $z$- and $x$-axes, respectively (see Fig.\ \ref{fig: shell}(a)).}
-  \label{tbl: cases}
-  %\begin{tabular*}{0.48\textwidth}{@{\extracolsep{\fill}}l rrrrrrrrr}
-    \tabulinesep=1.2mm
-    \begin{tabular}{ l rrrrrrrrr}
-    \hline
-    Case \# & 1&2&3&4&5&6&7&8&9 \\
-    \hline
-    $\theta$ (deg.) & 70&70&70& 89&89&89& 91& 110&110 \\
-    $\phi$   (deg.) & 90&45& 0& 90&45& 0& 90&  90&  0 \\
-    \hline
-  \end{tabular}
+   \caption{Relative particle velocity $\delta u_p/U_b$ and magnitude of $\hat{s}$ as function of the particle centre position $z_p/h$ for spherical particles of radius $a=h/6$ obtained from the numerical simulations. }%$h/(2a)=3$.
+   \tabulinesep=1.2mm
+   \begin{tabular}{l r r r r r r r}
+       \hline
+       $z_p/h$              &$0.50$   &$0.55$   &$0.60$   &$0.65$   &$0.70$  &$0.75$   &$0.80$\\
+       \hline
+       $\delta u_p/U_b$     &$-0.06$  &$-0.06$  &$-0.06$  &$-0.07$  &$-0.07$ &$-0.09$  &$-0.17$\\
+       %$\hat{s} \e{-2}$     &$0.4$    &$0.5$    &$0.8$    &$1.3$    &$2.0$   &$3.0$    &$4.3$\\
+       $\hat{s} \e{-3}$     &$1.8$    &$2.2$    &$3.7$    &$6.3$    &$10.6$   &$17.8$    &$30.0$\\
+       \hline
+   \end{tabular}
+   \label{tab: h=3}
 \end{table}
 
-Fig.\ \ref{fig: shell}(a) illustrates various initial conditions of two touching droplets, corresponding to the nine cases listed in Table \ref{tbl: cases}, at $L_z/D=1.5$. Specifically, the initial positions of the second droplet is given in the spherical coordinates centered at the first one, where all cases are located in one quadrant-sphere as we do not distinguish between the two droplets (the rest are equivalent due to symmetry). Contrary to the less confined conditions where a bound pair would rotate indefinitely relative to each other under shear \citep{batchelor_green_1972,Zinchenko1984}, Fig.\ \ref{fig: shell} shows that the droplets tend to reside in the vorticity plane (i.e.\ the $yz$ plane) with a stable polar angle $\theta_\infty \approx 79$ deg. This is true even if the two droplets are not initially in the same vorticity plane (case 2,3,5,6,9), or if the second droplet is in the lower hemisphere relative to the first one (case 7,8,9). Particularly, in cases 8 and 9, the droplet pair first rotates clockwise, then slides along the wall, before finally reaching the stable orientation (see ESI Video 1). The anomalous trajectory is a clear evidence of the influence of the walls, which, together with the attractive depletion force, break the symmetry of the droplet binary interactions.
-
-The above results suggest that, for two droplets subject to an attractive depletion force in strongly confined simple shear flows, only one configuration is dynamically stable. It further implies that, for multiple droplets ($N>2$) traveling in a pressure-driven channel with $H/D<4$ ($H$ being the channel height, see Sec.\ \ref{sec:channel}), a chain-like structure oriented in the flow direction is expected. We remark that the precise configuration of the droplet cluster may depend on the flow conditions and the level of confinement (see Appendix \ref{app:trajectory} for further discussion); however, the \textit{qualitative} picture of the pairwise interaction shall remain unchanged, provided that the number of contact is $N-1$. As this is often the case before a compact cluster is formed, we proceed to examine the droplet self-assembly in pressure-driven flows.
 
 
-\subsection{Droplet clusters in pressure-driven channel flows} \label{sec:channel}
-
-\xx{In the following, clusters of three or four droplets are initialized to be in contact ($N-1$ contacts for $N$ droplets) and are released into different regions of a microfluidic channel to study their transport behavior. The production of these droplets is omitted, as the step-emulsifier is typically much smaller than the size of the channel, allowing for separation of the two processes \citep{shen_thesis,step-emuls}. We note that, although the droplets are already in a cluster initially, their relative rearrangement is still important as it determines the cluster morphology in the final state. The latter results primarily from the droplet-flow interaction and has direct consequence on the photonic properties of the droplet lattice, as we will discuss in details below.}
-
-\subsubsection{Uniform region (the Poiseuille flow)} \label{sec:poi}
-
-\begin{figure}[t]
+\begin{table}[t]
  \centering
- \includegraphics[width=.3\columnwidth]{figs/3-scatter-top.png}
- \includegraphics[width=.3\columnwidth]{figs/3-line-top1.png}
- \includegraphics[width=.3\columnwidth]{figs/3-triangle-top.png}
- \includegraphics[width=.3\columnwidth]{figs/3-scatter-side.png}
- \includegraphics[width=.3\columnwidth]{figs/3-line-side1.png}
- \includegraphics[width=.3\columnwidth]{figs/3-triangle-side.png}
- %\includegraphics[width=.9\columnwidth]{figs/result_poi.pdf}
- \includegraphics[width=.6\columnwidth]{figs/result_poi1.pdf}
- \includegraphics[width=.3\columnwidth]{figs/angle_sketch1.pdf}
- \begin{picture}(0,0)
-   %\put(-180,75){\includegraphics[height=1.4cm]{figs/angle_sketch.pdf}}
-   \put(-100,75){\includegraphics[height=2.5cm]{figs/result_poi_bar.pdf}}
-   \put(-325,260){\includegraphics[height=.6cm]{figs/a.png}}
-   \put(-325,140){\includegraphics[height=.6cm]{figs/b.png}}
- \end{picture}
- \caption{Three droplets in the Poiseuille flow. (a) Top (upper panels) and side (lower panels) views of the droplet positions. The droplets are colored differently only for visualization purposes. Left: without any depletion force (scattered droplets). Middle: with depletion force (forming a chain). Right: with depletion force (forming a triangle due to a different initial configuration). (b) Phase diagram showing the final configuration of three droplets under depletion force. $\theta_{open}$ and $\theta_{dirc}$ denote the \xx{initial} opening and the direction angles (see inset for illustration). \xx{Interpolating the results for $\theta_{open} \in [90,150]$ (shaded region), chain is clearly the predominant structure as shown in the probability distribution.}}
- \label{fig: poi results}
+   \caption{Relative particle velocity $\delta u_p/U_b$ and magnitude of $\hat{s}$ as function of the particle centre position $z_p/h$ for spherical particles of radius $a=h/3$ obtained from the numerical simulations. }
+%   \caption{$h/(2a)=1.5$.}
+   \tabulinesep=1.2mm
+   \begin{tabular}{l r r r r r}
+       \hline
+       $z_p/h$              &$0.50$   &$0.55$   &$0.60$    &$0.65$\\
+       \hline
+       $\delta u_p/U_b$     &$-0.24$  &$-0.25$  &$-0.30$   &$-0.45$\\
+       %$\hat{s} \e{-2}$     &$2.3$    &$2.7$    &$4.1$     &$8.1$\\
+       $\hat{s} \e{-2}$     &$4.1$    &$4.9$    &$7.6$     &$15.8$\\
+       \hline
+   \end{tabular}
+   \label{tab: h=1.5}
+\end{table}
+
+\begin{table}[t!]
+ \centering
+   \caption{Relative particle velocity $\delta u_p/U_b$ and magnitude of $\hat{s}$ as function of the particle centre position $z_p/h$ for spherical particles of radius $a=h/2.25$ obtained from the numerical simulations. }
+%  \caption{$h/(2a)=1.125$.}
+   \tabulinesep=1.2mm
+   \begin{tabular}{l r}
+       \hline
+       $z_p/h$              &$0.50$\\
+       \hline
+       $\delta u_p/U_b$     &$-0.52$\\
+       %$\hat{s} \e{-2}$     &$6.6$\\
+       $\hat{s} \e{-1}$     &$2.1$\\
+       \hline
+   \end{tabular}
+   \label{tab: h=1.125}
+\end{table}
+
+\begin{figure}[t!]
+ \begin{center}
+\includegraphics[width=.7\columnwidth]{flow_vort-40k_small.pdf}
+\end{center}
+  \caption{Depth-averaged disturbance flow around a sphere from the numerical simulations. The heavy arrows indicate the magnitude and light arrows the direction. The color in the background depicts the decay of the vorticity outside the sphere. The particle travels in the $x'$ direction and is located at the mid-channel ($z_p/h=0.5$), with $h/(2a)=1.5$. Only half of the plane is shown due to symmetry.}
+ \label{fig: flow}
 \end{figure}
 
-First, we consider droplet clusters in a Poiseuille flow; that is, we place the droplets in a channel whose undisturbed velocity is given as $(u,v,w)=(0,6z/H(1-z/H),0)$, with the channel height $H=3D$. As in the simple shear flow, the droplets are neutrally buoyant, and $x$, $y$, $z$ denote the spanwise, streamwise, and wall-normal directions, respectively. Enforcing periodic boundary conditions in both $x$ and $y$ directions, the flow can be computed efficiently using FFT, approximating the flow field far from the edges of the Hele-Shaw channel (see Fig.\ \ref{fig: chip}b).
+We also report the values of 
+$\hat{s}(z_p)=3s(z_p)/(2\pi\eta h^3)$, %$\hat{s}(z,z_p)=3s(z_p)z(h-z)/(2\pi\eta h^3)$, 
+the common pre-factor in Eq.~(\ref{dist_flow}). We note that, though overall small, $\hat{s}$ increases as the particle approaches one wall or as the confinement increases, as the relative velocity $\delta u_p$. The resulting $\hat{s}$, quantifying the local velocity disturbance generated by one particle, along with the spatial dependence in the horizontal plane, allows for predictions of the far-field interactions of spheres. These will be examined  in Section \ref{interactions}.
 
-As a control case, we simulate three droplets initially located near the bottom of the channel without any depletion forces. This is shown in the first column of Fig.\ \ref{fig: poi results}a, where the top and bottom panels illustrate the top and side views of the channel (see Fig.\ \ref{fig: chip}). The two snapshots are separated by $13.5$ convection time units (i.e.\ $\tilde{\tau}$). Clearly, the droplets quickly scatter as carried by the flow. In a previous work, we theoretically predicted the emergence of singlets and pairs of a dilute particle suspension due to weak particle-particle interactions \citep{Fouxon_2017}. This example illustrates the separation of a droplet cluster, enhanced by their initial proximity already at $N=3$, supporting our theoretical predictions.
-
-In contrast, when the droplets are bound by a strong depletion force, the same initial condition can lead to a chain structure oriented in the flow direction, see the second column of Fig.\ \ref{fig: poi results}a. Inspection of the side view reveals the apparent reason: the leading droplets migrate towards the middle of the channel due to the shear, thus experiencing faster flows; the attractive depletion force prevents the cluster from separating into singlets and pairs, yielding the eventual droplet string parallel to the stream. We propose that this shear-induced alignment mechanism is fundamentally due to the confinement-mediated pairwise interaction discussed in the previous section. The difference is that the Poiseuille flow has no simple analytical solution in the presence of droplets (hence the two cannot be compared exactly), and the confinement requirement is halved due to the symmetry of the parabolic velocity profile.
-
-To further test the robustness of the shear-alignment mechanism, we consider multiple initial configurations of the triplet in the same flow. As sketched in Fig.\ \ref{fig: poi results}b, three touching droplets whose centers are in the same $xy$ plane can be completely described by two angles: $\theta_{open}$, denoting the opening angle of the triplet, and $\theta_{dirc}$, denoting the angle between the bisector of the triplet and the direction of the undisturbed flow. For identical droplets, admissible angles are $\theta_{open} \in [60, 180]$ deg., and $\theta_{dirc} \in [0,180]$ deg. Extensive tests show that the chain structure is far more favorable than the closed triangular cluster in Poiseuille flows \xx{(see Fig.\ \ref{fig: poi results}b)}. One case of the triangle cluster is visualized in the third column of Fig.\ \ref{fig: poi results}a, where two droplets initially on the sides migrate towards the center, eventually leading to the closure of the open chain. In the vast majority of the cases, however, a straight droplet string aligned with the flow is observed, even if they are close to a triangle initially (note the small $\theta_{open}$ cases in Fig.\ \ref{fig: poi results}b).
-
-The above results confirm that the chain-like structure is indeed the predominant configuration of droplets bound by short-range depletion forces in the Poiseuille flow. Experimentally, this corresponds to strong diluting flows at the channel inlet, where long droplet strings are also observed further downstream (see  \cite{shen_thesis}, p137). More importantly, our simulations suggest that aligning of the droplets is a $3D$ shear-induced effect mediated by the confinement. The cross-stream migration of the droplets happens within a much shorter time span than any tangential rearrangement due to the dipolar interactions (cf.\  \cite{Diamant} and  \cite{Fouxon_2017}). This is one key difference between our $3D$ microfluidic channel and other $q2D$ devices. 
+Finally, we return to the lubrication theory by showing some typical depth-average velocity field in Fig.\ \ref{fig: flow} and the velocity decay in Fig.\ \ref{fig: decay}. As mentioned earlier,
+%the validity of the lubrication theory requires the horizontal dimensions of the particle to be much larger than its vertical one and the height of the channel.
+the lubrication theory is valid at horizontal distances larger than the height of the channel.
+Fig.\ \ref{fig: flow} depicts the flow field due to a sphere of diameter equal to 2/3 of the channel height. The non-zero vertical vorticity outside the particle indicates the non-ideal structure of the depth-average flow, in contrast to the simple mass dipole of a disk (see Eq.~\ref{dl}). However, as the confinement increases, the disturbance velocity asymptotes the leading-order quadratic decay, as shown in Fig.\ \ref{fig: decay}.
 
 
-\subsubsection{Entry region (with a non-uniform inflow)} \label{sec:non-uniform}
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=.9\columnwidth]{figs/non-uniform_inflow1.pdf}
- \caption{\xx{Cross-section of the channel inlet and magnitude of the initial velocity field at the central plane without droplets. The flow is injected from the step-emulsifier (red rectangle), where the droplets (not shown) are produced, into the channel (cf.\ Fig.\ \ref{fig: chip}b). The velocity is normalized such that $\abs{v}=1$ corresponds to the bulk flow velocity averaged over the entire channel.}}
- \label{fig: non-uniform sketch}
+\begin{figure}[t!]
+ \begin{center}
+ \includegraphics[width=.7\columnwidth]{decay.pdf}
+ \end{center}
+ \caption{Spatial variation of the normalized streamwise depth-averaged disturbance-velocity, $\delta u_d/U_b$, along the streamwise ($y=0$, circle) and spanwise ($x=0$, triangle) directions away from the particle center. The particle is located at the mid-channel ($z_p/h=0.5$), with $h/(2a)=1.125$.
+ %\red{The velocity is sampled at a fairly late time, but not so late that its value becomes too small to determine accurately in the periodic computational domain.}
+ The collapse of the disturbance-velocity away from the particle confirms the leading-order dipolar decay (dashed line).}
+ \label{fig: decay}
 \end{figure}
 
-So far, we have showed i) the self-assembly of two to ten droplets in quiescent flows, ii) the alignment of a droplet pair in confined simple shear flows, and iii) the chaining (or, sometimes clustering) of a triplet in the Poiseuille flow. Of these, i) is caused solely by the near-field depletion force, and provides the necessary condition for ii) and iii); ii) and iii) are closely related, and in principle can be generalized to clusters of $N>3$. In addition, we have distinguished our $3D$ channel from typical $q2D$ ones. The remaining question is what makes the droplets self-assemble into compact clusters within short distances (i.e.\ $\sim \mathcal{O}(10D)$ \footnote[4]{Dipolar interactions under similar confinement require at least $\mathcal{O}(100D)$ distance to see any clustering effect, see \cite{Fouxon_2017}.}) as seen in the experiment of   \cite{Shen_2016AS}?
+%We observe that velocity in $x-$direction is identical in front and behind the particle. This has consequence for
 
-To answer this question, we perform series of simulations of a triplet/quadruplet cluster in a non-uniform channel, similar to the actual entry region of the microfluidic channel (see Fig.\ \ref{fig: chip}). Fig.\ \ref{fig: non-uniform sketch} illustrates the cross-sectional design of the channel inlet and the obtained velocity distribution in the central plane. Specifically, the computational domain has a size of $(L_x/D,L_y/D,L_z/D)=(4.5,6,3)$ or $(4.5,8,3)$ depending on the cases, and the ratio of the inflow area to the entire cross-section is $A_{in}/A_{tot}=1/32$, resulting in a highly non-uniform velocity profile. Near the inlet, the peak velocity reaches 46 times the average bulk velocity, then quickly smoothens downstream. To utilise the efficient FFT solver, we again use periodic boundary condition in the spanwise ($x$) direction, mimicking the effect of diluting flows on the sides. The droplet-to-carrier-fluid density ratio is $\tilde{\rho}_2/\tilde{\rho}_1=1.8$, corresponding to silicone oil in water. The rest of the governing parameters are $Re=0.1$, $Ca=0.025$, $Fr=0.0027$, and $\Pi=1$.
+%We can describe clearly the far flow of the particle introducing the effective radius $a_0$ by $\tilde {\bm d}=a_0^2\bm v$. Here $\bm v=-v{\hat x}$ is the velocity of the particle in the frame that moves with velocity
+%$-h^2 \nabla p^0/(12\eta)$. We have $v>0$ since the particle moves slower than the fluid, cf. Eq.~(\ref{dl}). We find,
+%\begin{eqnarray}&&
+%a_0^2=\frac{s}{4\pi v \eta   h}.
+%\end{eqnarray}
+%Thus we can characterize different geometries of the sphere location in the channel, as described by $z_p$ and the radius $a$ of the sphere, using the dimensionless ratio $a_0^2/a^2=s/(4\pi v \eta  a^2 h)$.
 
-\begin{figure}[t]
- \centering
- \includegraphics[width=.3\columnwidth]{figs/bx4-top-2k_s.png}
- \includegraphics[width=.3\columnwidth]{figs/bx4-top-140k.png}
- \includegraphics[width=.3\columnwidth]{figs/bx4-top-280k.png}
- \includegraphics[width=.3\columnwidth]{figs/bx4-side-2k_s.png}
- \includegraphics[width=.3\columnwidth]{figs/bx4-side-140k.png}
- \includegraphics[width=.3\columnwidth]{figs/bx4-side-280k.png}
- \includegraphics[width=.75\columnwidth]{figs/time_arrow.pdf}
- \includegraphics[width=.3\columnwidth]{figs/bx6-top-0.png}
- \includegraphics[width=.3\columnwidth]{figs/bx6-top-150k-l.png}
- \includegraphics[width=.3\columnwidth]{figs/bx6-top-570k.png}
- \includegraphics[width=.3\columnwidth]{figs/bx6-side-0.png}
- \includegraphics[width=.3\columnwidth]{figs/bx6-side-150k-l.png}
- \includegraphics[width=.3\columnwidth]{figs/bx6-side-570k.png}
- \begin{picture}(0,0)
-   \put(-330,240){\includegraphics[height=.6cm]{figs/a.png}}
-   \put(-330,105){\includegraphics[height=.6cm]{figs/b.png}}
- \end{picture}
- \caption{Clustering of three droplets in a channel with a non-uniform inflow. \xx{(a) and (b) show the top (upper panel) and side (lower panel) view of the droplet positions under two initial conditions at different times.} The framed boxes depicts the actual computational domain \xx{(see Fig.\ \ref{fig: non-uniform sketch})}, in comparison to the Poiseuille channel in Fig.\ \ref{fig: poi results}. The color contours illustrate the velocity magnitude in two planes orthogonal to the viewing direction, \xx{where the color legend is the same as in Fig.\ \ref{fig: non-uniform sketch}}.}
- \label{fig: non-uniform}
+%We can produce estimate of $\tilde {\bm d}$ in Eq.~(\ref{tld}) for the case of $a_0\approx h/2$ when the particle almost fills the channel vertically. We observe that for disk with radius $a'\gg a$ and height $2a$ we have $\tilde {\bm d}\approx a^2\bm v$ where $\bm v$ is the difference of the disk velocity and $-h^2\nabla p_0/(12\eta)$, see the consideration of this case using the lubrication theory. Taking the limit of $a'\to a$ we find that $\tilde {\bm d}$ and $a_0^2 v$ must hold have the same order of magnitude. Here $\bm v$ is the difference of the sphere's velocity and $-h^2\nabla p_0/(12\eta)$. This estimate is confirmed by the numerical simulations described below.
+
+%We performed numerical simulations for finding $s/(4\pi v \eta  a^2 h)$ as function of $z_p$ and $a$..
+
+
+%\section{Finding $s$ from velocity}
+%
+%We try finding $s$ from the velocity $\bm v$ in Eq.~(\ref{ds}) using the reciprocal theorem. We use Lorentz identity,
+%\begin{eqnarray}&&
+%\nabla_k\left[u_{i}\sigma^0_{ik}\right]=\nabla_k\left[u^0_i\sigma_{ik}\right],
+%\end{eqnarray}
+%where $\bm u_0$ is the Poiseuille flow given by Eq.~(\ref{ps}). We observe that,
+%\begin{eqnarray}&&
+%\int u_{i}\sigma^0_{ik}dS_k=\bm u\cdot\bm F^0+\bm \omega \cdot\bm T^0=0,
+%\end{eqnarray}
+%where $\bm F^0$ and $\bm T^0$ are the force and the torque that the Poiseuille flow put on the sphere which are equal to zero. Thus we find performing integration of the Lorentz identity over the volume between the sphere and a faraway surface $S_{\infty}$ that,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\int_{S_{\infty}} \left[u^0_i\sigma_{ik}-u_{i}\sigma^0_{ik}\right]dS_k=\int u^0_i\sigma_{ik}dS_k=\frac{s\nabla_x p^0}{2\eta}.
+%\end{eqnarray}
+%where we used the definition of $s$ and the direction of $dS_k$ is that of the outward normal. Thus writing,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\bm u=\bm u^0+\bm u',\ \ \sigma=\sigma^0+\sigma',
+%\end{eqnarray}
+%where $\bm u'$ and $\sigma'$ are small at $S_{\infty}$ we have,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\frac{s\nabla_x p^0}{2\eta}=
+%\int_{S_{\infty}} \left[u^0_i\sigma'_{ik}-u'_{i}\sigma^0_{ik}\right]dS_k.
+%\end{eqnarray}
+%The first integral is,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\frac{\nabla_x p^0}{2\eta} \int_{S_{\infty}} z(z-h) \sigma'_{xk}dS_k.
+%\end{eqnarray}
+%Thus
+%\begin{eqnarray}&&
+%u^0_x=\frac{z(z-h)\nabla_x p^0}{2\eta},\ \ \nabla p^0=\eta\nabla^2\bm u^0.\label{ps}
+%\end{eqnarray}
+
+
+
+
+%We find using the boundary conditions at the surface,
+%\begin{eqnarray}&&
+%\int u_{i}\sigma^0_{ik}dS_k=\frac{s\nabla_x p^0}{2\eta}.
+%\end{eqnarray}
+%where,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\sigma^0_{ik}=-x \nabla_x p^0 \delta_{ik}+\left(z-\frac{h}{2}\right) \nabla_x p^0(\delta_{iz}\delta_{kx}+\delta_{ix}\delta_{kz}).
+%\end{eqnarray}
+%We put $x=0$ at the center of the sphere. We have using the boundary conditions on $\bm u$
+%
+%We have for the force ($\bm r=\bm x-\bm y$ and $z_p$ is the $z-$coordinate of the sphere center),
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%F^0_i\!=\!\int\!\! \sigma^0_{ik}dS_k\!=\!-\frac{\nabla_x p^0 }{a}\int\!\! x r_{i}dS\!+\!\frac{\nabla_x p^0}{a}\int\!\!dS \left(z\!-\!\frac{h}{2}\right)\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%(x\delta_{iz}\!+\!r_z\delta_{ix})\!=\!-\frac{\delta_{ix}\nabla_x p^0 }{a}\int\!\! \left[x^2\!-\!(z\!-\!z_p)\left(z\!-\!\frac{h}{2}\right)\right]dS.\nonumber
+%\end{eqnarray}
+%The torque is,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%T^0_i\!=\frac{\nabla_x p^0}{a}\int\!\! \left(z\!-\!\frac{h}{2}\right)\left[x\bm r\times{\hat z}+(z-z_p)\bm r\times{\hat x}\right]dS\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%=\!\frac{\delta_{iy}\nabla_x p^0 }{a}\int\!\! \left(z\!-\!\frac{h}{2}\right) \left((z-z_p)^2-x^2\right)dS.\nonumber
+%\end{eqnarray}
+%We conclude that,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\frac{s}{2\eta}=-\frac{v}{a}\int\!\! \left[x^2-(z-z_p)\left(z-\frac{h}{2}\right)\right]dS\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!+\frac{\omega}{a}\int\!\! \left(z\!-\!\frac{h}{2}\right) \left((z-z_p)^2-x^2\right)dS.
+%\end{eqnarray}
+%We observe that (remind that ),
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\int\!\! x^2dS=\int\!\! (z-z_p)^2dS=\int z (z-z_p)dS=\frac{4\pi a^4}{3},\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\int\!\! z^2dS=\int\!\! ((z-z_p)^2+z_p^2)dS=\frac{4\pi a^4}{3}+4\pi a^2z_p^2,\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\int\!\! z^3dS=\int\!\! ((z-z_p)^3+3z^2z_p-3z_p^2 z+z_p^3)dS\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%=4\pi a^4 z_p+4\pi a^2z_p^3.
+%\end{eqnarray}
+%Thus we can write,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\frac{s}{2\eta}=4\pi a z_p v\left(z_p-\frac{h}{2}\right)
+%\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!+\frac{\omega}{a}\int\!\! \left(z\!-\!\frac{h}{2}\right) \left(z^2-x^2\right)dS.
+%\end{eqnarray}
+
+
+
+
+\section{Interactions}\label{interactions}
+
+In this Section, we introduce equations that describe interactions of well-separated particles and solve them in some specific cases. We start by observing that because of the 
+linearity of the problem, the steady state (horizontal) velocity $\bm v_0$ of an isolated particle driven by the Poiseuille flow according to Eq.~(\ref{ds}) is given by
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\bm v_0=-{\hat M}\nabla p^0, \label{steady}
+\end{eqnarray}
+where we assume $\bm v_0$ is a function of $\nabla p^0$ that can be any constant vector in the plane. Indeed, $\bm v_0$ is a linear function of $\nabla p^0$ that is zero when there is no driving flow. Since ${\hat M}$  connects the velocity $\bm v_0$ with the force per unit volume of the fluid,  we call ${\hat M}$ the mobility matrix though it differs 
+from the more commonly used coefficient between the velocity and the force on the particle \citep{hb}. 
+The two-by-two mobility matrix ${\hat M}$ depends on the shape of the particle, whether the particle is rigid or droplet, and the particle position in the channel. The equation neglects gravitational settling, absent for neutrally buoyant particles or particles whose sedimentation is stopped by interactions with the walls,
+(as the pancake-like droplets) or because settling is negligible at relevant time scales. In cases with sedimentation velocity $\bm v_s$ so low that the particle stays in quasi-steady state we have,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\bm v_0=-{\hat M}(t)\nabla p^0+\bm v_s,
+\end{eqnarray}
+where the matrix ${\hat M}(t)$ is determined by the instantaneous configuration in the channel, which may depend on time due to sedimentation.
+
+We next consider interactions of many well-separated particles. The flow induced at the position of the $i-$th particle by the other particles is a quasi-Poiseuille flow,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\bm u\!=\!\frac{z(z\!-\!h)\nabla p}{2\eta},\ \ p\!=\!p^0\!-\!\sum_{k\neq i} \frac{3}{\pi h^3}\!(\bm s_k\cdot\nabla) \ln |\bm r\!-\!\bm r_k|,
+\end{eqnarray}
+where $\bm r_k$ is the horizontal position of the $k-$th particle, see Eqs.~(\ref{fi}), (\ref{flowdp}). We observe that we can neglect variations of $\nabla p$ over the particle since  the rest of the particles are well-separated. Thus, at the leading order in large distances between the particles the $i-$th particle assumes the horizontal velocity,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\frac{d\bm r_i}{dt}%=\bm v_i
+\!=\!-{\hat M}_i\nabla\left( p^0\!-\!\sum_{k\neq i} \frac{3}{\pi h^3}\!(\bm s_k\cdot\nabla) \ln |\bm r\!-\!\bm r_k|\right)_{\bm r=\bm r_i}, \label{inhetractio}
+\end{eqnarray}
+where ${\hat M}_i$ describes the geometry of the $i-$th particle. The sedimentation velocity can be included in a straightforward way. This is the equation that describes the long-range interactions of the particles. The presented derivation avoids the problem with boundary conditions encountered in the derivation of \cite{tl2014} for the case of droplets. In that case, the derivation started with the flow induced by other particles at the position of the $i-$th particle and not the pressure. Since for particles of finite extent it becomes non-obvious where the three-dimensional flow must be considered, our derivation seems to be useful for a proper consideration of particles whose vertical size is smaller than $h$.
+
+We consider the case of spherical particles or droplets of radius $a$ smaller than $h/2$. In this case ${\hat M}_i$ is $M(z_i)$ times the unit matrix where the scalar coefficient $M$ depends on the vertical coordinate $z_i$ of the $i-$th particle. Similarly $\bm s_k=s(z_k){\hat x}$ where $s(z)$ was introduced previously. We find,
+\begin{eqnarray}&&
+\dot{\bm r_i}%=\bm v_i
+\!=\!-\! M(z_i)\nabla p^0\! +\!\sum_{k\neq i}\! \frac{3M(z_i) s(z_k)}{\pi h^3r_{ik}^2}\!\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{ik}\cdot\bm {\hat x}\right) \bm r_{ik}}{r_{ik}^2}\right], \nonumber%\label{inhetractio1}
+\end{eqnarray}
+where $\bm r_{ik}=\bm r_i-\bm r_k$. Thus for pair of particles,
+\begin{eqnarray}&&
+\dot{\bm r}%=\bm v_i
+\!=%\delta M
+\left(M(z_1)\!-\! M(z_2)\right)
+\nabla p^0\! +\!\frac{3\delta_{12}}{\pi h^3r^2}\!\left[\bm {\hat x}\!-\!\frac{2 x \bm r}{r^2}\right], %\nonumber
+\label{pair}
+\end{eqnarray}
+where $\bm r=\bm r_2-\bm r_1=(x, y, z)$ and we introduced,% $\delta M=M(z_1)\!-\! M(z_2)$.
+\begin{eqnarray}&&
+\delta_{12}=M(z_2) s(z_1)-M(z_1) s(z_2).
+\end{eqnarray}
+Another case when Eqs.~(\ref{inhetractio}) simplify significantly is for pancake-like droplets that almost completely fill the channel in the vertical direction. In this case $M$ and $s$ are constant since no variation of the vertical position of the particles is possible. We see immediately that the configuration of two droplets is stable in the dipole approximation where $\dot{\bm r}$ in Eq.~(\ref{pair}) is zero (in a higher-order quadrupole approximation proportional to $r^{-3}$ the pair would not be stable). For many particles, the equations of motion in the frame that moves with the velocity of the isolated droplet $-M\nabla p^0$ become,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{d\bm r_i}{dt}=\sum_{k\neq i}\frac{q}{r_{ik}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{ik}\cdot\bm {\hat x}\right) \bm r_{ik}}{r_{ik}^2}\right],\ \ q= \frac{3M s}{\pi h^3}. \label{ints}
+\end{eqnarray}
+These equations hold also for spherical particles located at the same distance from the mid-plane where we must use for $M$ and $s$ the values at the corresponding $z$. This is the case where the particles have identical vertical coordinate or their coordinates can be obtained by reflection with respect to the mid plane. Other cases of symmetric particles where Eq.~(\ref{ints}) hold can be considered. If gravitational settling is relevant,  $\bm r_{ik}$ will change via time-dependent $s=s(z(t))$. It is assumed below that the change of $s=s(z(t))$ can be neglected over the time scales of interest.
+
+%We study the motion prescribed by Eq.~(\ref{inhetractio}) in the case of symmetric particles where ${\hat M}_{ik}$ is a scalar matrix $M\delta_{ik}$ which is identical for all particles ($M>0$). This can be the case of identical spherical particles (droplets or rigid ones) who are located at identical distances from the walls or the case of identical pancake-like droplets or other (the particles could be not rotationally invariant in the plane because after reorientation their velocity in Eq.~(\ref{steady}) can become aligned with $\nabla p^0$ as for ellipsoids). We assume that the particles have fore-and-aft symmetry so that the dipole vector $\bm s$ has only $x-$component $s$ which is identical for all particles. Finally we pass in the frame that moves at the velocity of isolated particle $M\nabla p^0$. We find the equation of motion,
+%
+%%Introducing ${\hat n}_{ik}=\bm r_{ik}/r_{ik}$,
+%%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%%\frac{d\bm r_i}{dt}=\sum_{k\neq i}\frac{q}{r_{ik}^2}\left[1\!-\!2{\hat n}_{ik}{\hat n}_{ik}\right]{\hat x},\ \ \bm r_{ik}=\bm r_i-\bm r_k,
+%%\end{eqnarray}
+%Thus in the case of spheres $s=s(z)$ where $z$ is the identical vertical position of all the spheres and .
+
+%\section{Pair instability and lateral migration}
+
+It is often the case that we have two spherical particles at the same vertical distance from the walls. This can be the case of spherical droplets created at some fixed place in the channel and then transported down the flow \cite{tab0}. In this case, an isolated pair is stable in the dipole approximation: we have $\dot{\bm r}=0$ in Eq.~(\ref{pair}) for $z_1=z_2$.
+%We consider stability of this solution. If $z\neq 0$ we have from Eq.~(\ref{pair}),
+%\begin{eqnarray}&&
+%\dot{z}%=\bm v_i
+%\!=\! \frac{6\delta_{12} x}{\pi h^3r^4}\! z, \label{inhetractio1}
+%\end{eqnarray}
+%We observe that $M(z)$ is maximal at the centre and decays monotonously toward the walls where the friction is maximal. In contrast, $s(z)$ is minimal at the center and grows monotonously toward the wall. We conclude that if
+%$x>0$ and center of the particle $1$ is closer to the mid-plane of the channel then $z$ would increase. Thus if the particle which is ahead is closer to the walls then the vertical separation would grow. Otherwise it would decay. We conclude that the situation with $z_1=z_2$ is unstable with respect to displacement of the particle with larger $x$ coordinate toward the closer wall.
+%
+%We consider the growth of $z$ from a small initial perturbation $z=z(0)$. We have at $|z|\ll h$,
+%\begin{eqnarray}&&
+%\delta_{12} \approx \left(M(z_0)s'(z_0)-M'(z_0)s(z_0)\right)z, \label{appr}
+%\end{eqnarray}
+%where $z_0=(z_1+z_2)/2$. There is degeneracy for $z_0$ in the middle of the channel where both $M'(z_0)$ and $s'(z_0)$ vanish and the difference is of order $z^2$. Considering $z_0$ which is not in the middle we have $M(z_0)<0$ and $s'(z_0)>0$. Thus we have from Eq.~(\ref{inhetractio1}) that,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\
+%\dot{z}=\lambda z^2,\ \ \lambda\!=\! \frac{6\left(M(z_0)s'(z_0)-M'(z_0)s(z_0)\right)x}{\pi h^3r^4}>0.
+%\end{eqnarray}
+%that holds for $|z|\ll h$ and $z_0$ not too close to the middle of the channel. This equation describes explosive evolution where $z$ for $z(0)>0$ becomes infinite in finite time,
+%\begin{eqnarray}&&
+%z(t)=\frac{z(0)}{1-\lambda t z(0)}.
+%\end{eqnarray}
+%Thus for $z(0)<0$ the perturbation decays to zero as a power-law but for $z(0)>0$ the solution becomes infinite at time $(\lambda  z(0))^{-1}$. The explosion is stopped by the breakdown of Eq.~(\ref{appr}). The typical growth time $t_g$ of the perturbation is determined by the condition $z(t_g)\sim h$ which gives $t_g\sim (\lambda h)^{-1}$ or,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+%t_g\!\sim \!\frac{\pi h^2r^4}{6\left(M(z_0)s'(z_0)\!-\!M'(z_0)s(z_0)\right)x}\!\sim \!\frac{h^3r^3}{M(z_0)s(z_0)}.
+%\end{eqnarray}
+%We consider spherical particles with radius of order $h$. Then we can estimate,
+%\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!
+%M(z_0)\sim \frac{z_0(h-z_0)}{2\eta}.
+%\end{eqnarray}
+%We can estimate $s(z_0)$ using...
+
+%\section{Pair exchange}
+This characterizes the basic property of the interaction given by Eq.~(\ref{ints}), that the velocity induced by particle $i$ at the position of the $k-$th particle is equal to the velocity induced by particle $k$ at the position of the $i-$th particle. Thus the interparticle distances can change only if there are three or more particles. We can re-write the equation of motion as
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{d\bm r_{ik}}{dt}=\sum_{l\neq i, l\neq k}\left(\frac{q}{r_{il}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{il}\cdot\bm {\hat x}\right) \bm r_{il}}{r_{il}^2}\right]\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\left.-\frac{q}{r_{kl}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{kl}\cdot\bm {\hat x}\right) \bm r_{kl}}{r_{kl}^2}\right]\right).
+\end{eqnarray}
+We start by considering in more detail the simplest case of two particles whose distance is constant in time. If the particles have the same $y-$coordinate then the $x-$coordinates obey,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{dx_1}{dt}=\frac{dx_2}{dt}=-\frac{q}{(x_1-x_2)^2}.
+\end{eqnarray}
+In this case the particles form a simple cluster with fixed distance that  moves as a whole slower than the particles separately. We consider now two particles at different spanwise locations, $y_1=y$, $y_2=0$,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{dx_1}{dt}=\frac{dx_2}{dt}=\!q\frac{(y_1-y_2)^2-(x_1-x_2)^2}{\left[(x_1-x_2)^2+(y_1-y_2)^2\right]^2},\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{dy_1}{dt}=\frac{dy_2}{dt}\!=\!-q\frac{2(x_1-x_2)(y_1-y_2)}{\left[(x_1-x_2)^2+(y_1-y_2)^2\right]^2}.
+\end{eqnarray}
+The RHSs are constant because inter-particle distances are but the velocity of the cluster of the two particles can change sign unlike the previous case. For two particles with the same $x$ coordinate, the $x-$ component of their velocity increases while the $y-$component is zero, see \cite{tab0} for experimental observations.
+
+Next, we consider the simplest case with changing inter-particle distances: three particles at the same height. From the analysis of the two-particle dynamics, a possible solution is that particles form a cluster of two particles with the third farther away.
+%
+%For the faraway particle t
+The interactions of the single distant particle with the clustered particles decay quadratically with the distance and can be assumed negligible. Thus, the isolated particle moves with the velocity of one single sphere. The cluster keeps its configuration and moves at a constant velocity $(q/r^2)[\bm {\hat x}\!-\!2 \left(\bm r\cdot\bm {\hat x}\right) \bm r/r^2]$ with respect to the third particle. If this velocity is such to increase the separation between the cluster and the third particle, this solution will continue ad infinitum. It is thus plausible to assume that any arbitrary initial configuration of three particles will separate asymptotically in one cluster and one particle. We will prove this below for the practically important case of three particles aligned in the streamwise, $x-$, direction. This case can be observed when the particles are injected in the flow at the same location.
+
+The distances between three particles are determined by two vectors $\bm r_{12}$ and $\bm r_{13}$ that obey,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!
+\dot{\bm r}_{12}\!=\!\frac{q}{r_{13}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{13}\!\cdot\!\bm {\hat x}\right) \bm r_{13}}{r_{13}^2}\right]\!-\!\frac{q}{r_{23}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{23}\!\cdot\!\bm {\hat x}\right) \bm r_{23}}{r_{23}^2}\right],\nonumber\\&&\!\!\!\!\!\!\!\!
+\dot{\bm r}_{13}\! =\!\frac{q}{r_{12}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{12}\!\cdot\!\bm {\hat x}\right) \bm r_{12}}{r_{12}^2}\right]\!-\!\frac{q}{r_{23}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{23}\!\cdot\!\bm {\hat x}\right) \bm r_{23}}{r_{23}^2}\right]\!.\label{grv}
+\end{eqnarray}
+The  solution described above pertaining the cluster of two particles (named here $2$ and $3$) and the faraway particle $1$ corresponds to neglecting the first terms in the RHSs,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot{\bm r}_{12}\approx \dot{\bm r}_{13}\approx -\frac{q}{r_{23}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{23}\!\cdot\!\bm {\hat x}\right) \bm r_{23}}{r_{23}^2}\right]\approx const,\label{clust}
+\end{eqnarray}
+where $\bm r_{23}$ is approximately constant. At large times the constant vector $\bm r_{23}$ has become much smaller than the linearly growing ${\bm r}_{12}$ and ${\bm r}_{13}$. We have that $\bm r_{23}={\bm r}_{13}-{\bm r}_{12}$ obeys the equation,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!
+\dot{\bm r}_{23}\!=\!\frac{q}{r_{12}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{12}\!\cdot\!\bm {\hat x}\right) \bm r_{12}}{r_{12}^2}\right]\!-\!\frac{q}{r_{13}^2}\left[\bm {\hat x}\!-\!\frac{2 \left(\bm r_{13}\!\cdot\!\bm {\hat x}\right) \bm r_{13}}{r_{13}^2}\right],\nonumber
+\end{eqnarray}
+where the RHS decays quadratically with time, in agreement with the assumption of constant  $\bm r_{23}$.
+
+We prove that the separation of 3 particles into one binary cluster and one isolated particle holds for arbitrary initial conditions when all three particles lie on the same line in the $x-$direction. It is clear that the separation can occur in two ways in this case: either particles $1$ and $2$ form a cluster or $2$ and $3$. Here we assume the ordering $x_1>x_2>x_3$. As the cluster moves slower than the isolated particle, the third particle would catch up with the binary cluster, made of $1$ and $2$. Hence the only stable configuration is a cluster of particles $2$ and $3$ whose distance from particle $1$ increases linearly with time due to the cluster deceleration. Formally,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot{x}_{12}\!=\!-q\left(\frac{1}{x_{13}^2}-\frac{1}{(x_{13}-x_{12})^2}\right),\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot{x}_{13}\!=\!-q\left(\frac{1}{x_{12}^2}-\frac{1}{(x_{13}-x_{12})^2}\right).\label{s}
+\nonumber%\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%\dot{x}_{23}\!=\!-q\left(\frac{1}{x_{12}^2}-\frac{1}{x_{13}^2}\right),
+\end{eqnarray}
+Introducing $x=x_{12}$ and $r=x_{13}/x_{12}$ where $r>1$, we can write
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot{x}\!=\!-\frac{q}{x^2}\left(\frac{1}{r^2}-\frac{1}{(r-1)^2}\right)\!=\!-\frac{q\left(1-2r\right)}{x^2 r^2(r-1)^2},\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot{x}+\frac{x \dot{r}}{r}\!=\!-\frac{q}{x^2}\left(\frac{1}{r}-\frac{1}{r(r-1)^2}\right).
+\end{eqnarray}
+The distance $r$ obeys,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x^3\dot{r}\!=\!-q\left(1-\frac{1}{(r-1)^2}\right)+q\left(\frac{1}{r}-\frac{r}{(r-1)^2}\right)\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+=-\frac{q(r-1)}{r}-\frac{q}{r-1}=-\frac{q(r^2\!-\!r\!+\!1)}{r(r-1)}.
+\end{eqnarray}
+Hence $r(t)$ decreases in time monotonously and we can write
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{d\ln x}{ds}=q\left(\frac{1}{(r-1)^2}-\frac{1}{r^2}\right),\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{dr}{ds}=-\frac{q(r^2\!-\!r\!+\!1)}{r(r-1)},\ \ \frac{ds}{dt}=\frac{1}{x^3(t)}.
+\end{eqnarray}
+We can solve for $s(r)$,
+
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{ds}{dr}=-\frac{1}{q}+\frac{1}{q(r^2\!-\!r\!+\!1)},\ \ s(r)=\frac{r_0-r}{q} \label{solution} \\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!+\frac{2}{q\sqrt{3}}\arctan\left(\frac{2r-1}{\sqrt{3}}\right)
+-\frac{2}{q\sqrt{3}}\arctan\left(\frac{2r_0-1}{\sqrt{3}}\right),\nonumber
+\end{eqnarray}
+where $r_0=r(s=0)$. The inversion of this formula, to find $r(s)$, gives a  transcendental equation. However, the asymptotic properties of the solution can be derived without solving the equation. When $s$ increases, $r$ decreases reaching $r=1$ at a finite value $s=s_*$ where,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+s_*=\frac{r_0-1}{q}+\frac{\pi}{3q\sqrt{3}}-\frac{2}{q\sqrt{3}}\arctan\left(\frac{2r_0-1}{\sqrt{3}}\right).
+\end{eqnarray}
+The situation of $r$ reaching $1$ would correspond to coalescence of the second and the third particles. This happens only asymptotically, as $s=s_*$ corresponds to infinite physical time, $t(s_*)=\infty$. 
+We have directly from Eq.~(\ref{solution}) that $s'(r=1)=0$ and $s''=(1-2r)/[q(r^2\!-\!r\!+\!1)^2]$ which gives,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+s(r)\approx s_*+(r-1)s'(r=1)+\frac{(r-1)^2s''(r=1)}{2}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+=s_*-\frac{(r-1)^2}{2q},\ \ (r-1)^2=2q(s_*-s). \label{rs}
+\end{eqnarray}
+We can find $x$ as a function of $r$ observing that,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{d\ln x}{dr}=\frac{d\ln x}{ds}\frac{ds}{dr}
+%=\left(\frac{1}{(r-1)^2}-\frac{1}{r^2}\right)\left(\frac{1}{r^2\!-\!r\!+\!1}-1\right)
+%\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+%=-\frac{1+2(r-1)}{(r-1)(r^2\!-\!r\!+\!1)}-\frac{1-2r}{r(r^2\!-\!r\!+\!1)}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+=-\left(\frac{1}{r-1}+\frac{1}{r}\right)\frac{1}{r^2\!-\!r\!+\!1}.
+\end{eqnarray}
+Integration of the above gives (with $x_0=x(t=0)$),
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\ln \left(\frac{x}{x_0}\right)=\ln\frac{r_0(r_0-1)}{r_0^2\!-\!r_0\!+\!1}-\ln\frac{r(r-1)}{r^2\!-\!r\!+\!1},\label{rsol}
+\end{eqnarray}
+where we used,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\int\left(\frac{1}{r-1}+\frac{1}{r}\right)\frac{1}{r^2\!-\!r\!+\!1}dr=\ln\frac{r(r-1)}{r^2\!-\!r\!+\!1}.
+%\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\frac{d}{dr}\ln\frac{r(r-1)}{r^2\!-\!r\!+\!1}=\frac{1}{r}+\frac{1}{r-1}-\frac{2r-1}{r^2\!-\!r\!+\!1}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!=\frac{(2r-1)(r^2\!-\!r\!+\!1)-r(r-1)(2r-1)}{r(r-1)(r^2\!-\!r\!+\!1)}
+\end{eqnarray}
+We find from Eq.~(\ref{rsol}) that,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x=x_0\frac{r_0(r_0-1)(r^2\!-\!r\!+\!1)}{r(r-1)(r_0^2\!-\!r_0\!+\!1)}.
+\end{eqnarray}
+In the limit of large times where $r$ approaches $1$ from above we have,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x\approx \frac{r_0(r_0-1)x_0}{(r-1)(r_0^2\!-\!r_0\!+\!1)}\approx \frac{r_0(r_0-1)x_0}{(r_0^2\!-\!r_0\!+\!1)\sqrt{2q(s_*-s)}}, \label{idst}
+\end{eqnarray}
+where we used Eq.~(\ref{rs}). Finally we restore the physical time using,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\frac{dt}{ds}=x^3(s)\approx \frac{r_0^3(r_0-1)^3x_0^3}{(r_0^2\!-\!r_0\!+\!1)^3(2q)^{3/2}(s_*-s)^{3/2}},
+\end{eqnarray}
+and obtain,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+t(s)\approx \frac{r_0^3(r_0-1)^3x_0^3}{q(r_0^2\!-\!r_0\!+\!1)^3\sqrt{2q(s_*-s)}}.
+\end{eqnarray}
+We conclude from Eqs.~(\ref{rs}), (\ref{idst}) that the long-time asymptotic form of the solution is,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x(t)=\frac{qt(r_0^2\!-\!r_0\!+\!1)^2}{r_0^2(r_0-1)^2x_0^2},\ \ r(t)=1+\frac{x_0^3r_0^3(r_0-1)^3}{qt(r_0^2\!-\!r_0\!+\!1)^3}.
+\end{eqnarray}
+This implies that the distance between the second and the third particles reaches a constant value at large times,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x_{23}(t)=x(t)(r(t)-1)\approx \frac{x_0r_0(r_0-1)}{r_0^2\!-\!r_0\!+\!1}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!=\frac{x_{13}(0)x_{23}(0)x_{12}(0)}{x_{13}(0)x_{23}(0)\!+\!x^2_{12}(0)}.\label{initial}
+\end{eqnarray}
+To conclude, we can write,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x(t)=\frac{qt}{x_{23}^2},
+\end{eqnarray}
+in agreement with the form given by Eq.~(\ref{clust}). This relation proves the separation in cluster and faraway particle and provides the distance between the particles in the cluster as function of the initial conditions.
+
+The obtained formulas provide a theoretical explanation for the pair exchange observed in the experiments by \cite{tab0}, and confirmed by numerical
+simulations as illustrated in Fig.\ \ref{fig: pair}. We consider initial conditions for which particles $1$ and $2$ are close and the third particle is trailing behind. In this case $x^2_{12}(0)\ll x_{13}(0),x_{23}(0)$ and Eq.~(\ref{initial}) becomes,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+x_{23}(t)=x_{12}(0).\label{initialp}
+\end{eqnarray}
+Thus, for long times the distance between the third and the second particle becomes equal to the initial distance between the first and the second particle, that is an exchange takes place.
+
+\begin{figure}[t!]
+ \begin{center}
+%\includegraphics[width=.9\columnwidth]{channel_sphere_pair_ex3.pdf}
+\includegraphics[width=1.\columnwidth]{channel_sphere_pair_ex4.pdf}
+\end{center}
+  \caption{Pair exchange phenomenon as obtained from numerical simulations. Initially particles $1$ are $2$ are close and particle $3$ is trailing behind the pair. As a result of hydrodynamic interactions the trailing particle is catching up with the pair, while the leading particle breaks away from the newly formed pair, whereas  the trailing particles $2$ and $3$ are separated by the same distance as $1$ and $2$ were initially.}
+ \label{fig: pair}
 \end{figure}
 
-Figs.\ \ref{fig: non-uniform} and \ref{fig: non-uniform 4} demonstrate four representative cases of the self-assembly of three and four droplets, respectively, within a distance of $\sim 10D$ from their initial release. Specifically, the droplets in Fig.\ \ref{fig: non-uniform}(a) are initialized with $\theta_{open}=120$ deg.\ and $\theta_{dirc}=90$ deg. According to Fig.\ \ref{fig: poi results}b, this triplet would become a chain in the Poiseuille flow. Here, due to the rapid expansion of the flow immediately after the inlet, the trailing droplet undergoes a upward motion to the high velocity region; and if the velocity gained during this sprint is large enough, as in Fig.\ \ref{fig: non-uniform}(a), the droplets will soon form a triangle; otherwise, the cluster will at least form a V-shape pointing upstream, as shown in the example of Fig.\ \ref{fig: non-uniform}(b). In the latter cases, the final shape of the cluster can be estimated by its orientation relative to the flow (i.e.\ $\theta_{open}$ and $\theta_{dirc}$). Instead of simulating a full evolution of the clustering process (which may require a very large simulation domain and long time), one can simply read the last $(\theta_{open},\theta_{dirc})$ in the phase diagram of Fig.\ \ref{fig: poi results}(b). In the case discussed above (Fig.\ \ref{fig: non-uniform}(b)), we verified that a triangular cluster is eventually obtained (see ESI Video 2).
 
-\begin{figure}[t]
- \centering
- \includegraphics[width=.3\columnwidth]{figs/bd5-top-0.png}
- \includegraphics[width=.3\columnwidth]{figs/bd5-top-120k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd5-top-250k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd5-side-0-no.png}
- \includegraphics[width=.3\columnwidth]{figs/bd5-side-120k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd5-side-250k.png}
- \includegraphics[width=.75\columnwidth]{figs/time_arrow.pdf}
- \includegraphics[width=.3\columnwidth]{figs/bd8-top-0.png}
- \includegraphics[width=.3\columnwidth]{figs/bd8-top-150k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd8-top-450k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd8-side-0.png}
- \includegraphics[width=.3\columnwidth]{figs/bd8-side-150k.png}
- \includegraphics[width=.3\columnwidth]{figs/bd8-side-450k.png}
- \begin{picture}(0,0)
-   \put(-330,240){\includegraphics[height=.6cm]{figs/a.png}}
-   \put(-330,105){\includegraphics[height=.6cm]{figs/b.png}}
- \end{picture}
- \caption{Clustering of four droplets in a channel with a non-uniform inflow. The organization of the plots is similar to Fig.\ \ref{fig: non-uniform}.}
- \label{fig: non-uniform 4}
-\end{figure}
+We can also prove the separation in one cluster and one faraway particle for initial conditions where the particles are "almost" aligned, i.e.\  $y_{12}$ and $y_{13}$ are much smaller than the smallest of $x_{12}$ and $x_{13}$.
+%
+If the $y-$components of the particle positions are linearly ordered, the equations for $x_{ik}$ do not change and the evolution of $x_{ik}$ is as above. The $y-$components obey,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!
+\dot{y}_{12}\!=\!-\frac{2q y_{13}}{x_{13}^3}+\frac{2qy_{23}}{(x_{13}-x_{12})^3},\ \ \dot{y}_{23}=\frac{2q y_{13}}{x_{13}^3}-\frac{2q y_{12}}{x_{12}^3}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\!
+\dot{y}_{13}\!=\!-\frac{2q y_{12}}{x_{12}^3}+\frac{2qy_{23}}{(x_{13}-x_{12})^3},
+\end{eqnarray}
+where $x_{ik}(t)$ are determined from the previous solution. Since $x_{12}$, $x_{13}$ grow linearly with time at large times then the asymptotic form of the solution is,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+y_{12}\!=\!y_{13}\!=\!\frac{2qc t}{x_0^3},\ \ y_{23}=c=const.\ \ \nonumber
+\end{eqnarray}
+This solution indicates that the first particle separates from the binary cluster at constant small but finite angle $\phi$ with respect to the $x-$direction given by,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\phi=\frac{y_{12}}{x_{12}}\!\approx \frac{y_{13}}{x_{13}}\!\approx \!\frac{c}{x_0\sqrt{2}},
+\end{eqnarray}
+Self-consistency with the assumption of smallness of $y_{ik}$ demands that $c\ll x_0$. This assumption can be guaranteed by the smallness of the initial conditions on $y_{ik}$ because of the linearity of the equations in $y_{ik}$.
 
-Similar observations are made for four droplets, for which we show two examples of clustering into diamond shapes in Fig.\ \ref{fig: non-uniform 4}. Here, the initial conditions are similar to those in Fig.\ \ref{fig: non-uniform}, only a fourth droplet is appended to the droplet string at a slightly lower vertical position (due to gravity). Note that the vertical coordinates of the droplets as they move downstream are in opposite orders (cf.\ the middle panels of Fig.\ \ref{fig: poi results}a). Consequently, the trailing droplets travel faster than the frontal ones, leading to the rapid closure of the cluster into more compact shapes.
+Thus we demonstrated the for initial conditions where the particles are aligned in the $x-$direction, or almost aligned, the solution at large times takes the form of a cluster of particles $2$ and $3$, those two initially upstream, with constant distance $\bm r_{23}$ and the first particle separating from the cluster according to Eq.~(\ref{clust}).
 
-The above examples clearly illustrate the direct effect of the non-uniform inflow. If properly matched with the initial droplet configuration, the droplets can form a compact structure within a much shorter distance than by the long-range dipolar interaction. And if the near-field depletion force is strong enough, the obtained compact cluster will stay bound further downstream. On the other hand, if the initial non-uniform inflow fails to bring the droplets sufficiently close within its range of influence, i.e. before viscous diffusion smoothens the initial velocity gradients (typically $\sim 10D$), the shear-induced cross-stream migration can break the clustering of the droplets, eventually leading to chain-like structures. This inflow effect, often neglected in theoretical models \citep{Shen_2016AS}, is what we propose to be the key reason for the accelerated droplet assembly.
-
-Finally, we remark that the simulated inlet configuration is only one simplified version of the experimental microfluidic channel. To fully reproduce the condition in the actual setup is unrealistic due to the size contrast of the different inlets; however, it is perhaps also unnecessary as the qualitative features of the clustering do not depend on the fine details at the device level. Depending on the governing parameters and the specific operating conditions, it is possible to optimize the geometry of the microfluidic device to achieve higher throughputs of compact droplet clusters at the outlet; \xx{however, in practice, tuning of the geometry and inflow conditions may still involve trial and error, since the final self-assembly results from the combination of all $3D$ effects with no simple parametric dependence. This is possibly the bottleneck of upscaling the current microfluidic strategy to directly create large photonic crystals.}
-
-
-\section{Summary and outlook}
-\label{sec:summary}
-
-Motivated by the recent experiment of flow-assisted droplet assembly \citep{Shen_2016AS} and its potential application for photonic material synthesis, we present a numerical study of finite numbers of non-Brownian droplets in a $3D$ microfluidic channel. The newly developed numerical methodology \citep{ICLS} allows for direct simulations of the two-fluid Navier-Stokes equations, and can account for the short-range attractive depletion force between the drops in a sharp fashion.
-
-Under this framework, we considered three types of flows with increasing complexity: quiescent, confined simple shear, and pressure-driven channel flows. The case of quiescent flows allows us to disentangle the effect of the depletion force from that of the flow. The simulation of two to three droplets shows that the approaching time is inversely proportional to the osmotic number $\Pi$, a ratio between the surfactant-induced osmotic pressure and the Laplace pressure. We further assembled four to ten droplets using an arbitrary enumeration of the corresponding sphere packing. Without any external driving motion or noise, the obtained structure is purely determined by the closest neighbors in the initial state. This seemingly obvious result lays the basis for our subsequent reasoning.
-
-As we place a droplet pair in the confined simple shear flow, the geometric obstruction combined with the depletion force results in a single steady configuration within the shear plane. The specific value of the alignment angle depends on the level of confinement and the shear rate; for nearly spherical drops between moving plates separated by $L_z/D =1.5$, we find the stable polar angle of the pair to be $\theta_\infty \approx 79$ deg. This alignment arises from the bifurcation of the relative trajectories of two droplets constrained by short-range attractive depletion forces. We expect the phenomenon to persist also for more than two drops, at least in the initial state where pairwise interaction dominates.
-
-The dynamics of droplet clusters in the channel flow depends strongly on the homogeneity of the velocity profile. Using the reference Poiseuille flow, we find that the chain-like structure is far more favorable than the triangular cluster despite the latter is mechanically more stable. This is in contrast to $q2D$ systems where dipolar interactions provide the tangential motion destabilizing the droplet string. When the channel height is larger than the droplet diameter, as it is the case here, the dipolar flow becomes insignificant and the shear-induced cross-stream migration is a genuine $3D$ effect.
-
-To fully understand the fast self-assembly observed in the experiment \citep{Shen_2016AS}, we also simulated three and four droplets near a step-emulsifier that is much smaller than the bulk channel. Under suitable initial conditions, the triplet/quadruplet indeed forms a more compact cluster from a chain. The nearly reversed inter-droplet motions comparing to the Poiseuille case clearly highlight the effect of the inhomogeneous flow. For practical microfluidic devices aiming for large throughputs, geometric optimization and fine tuning of the flow condition appear to be the key.
-
-The above depicts the complete physical picture of depletion/hydrodynamic interactions of few non-Brownian droplets in a $3D$ microfluidic channel. \xx{Correctly identifying these mechanisms may help experimentalists design microfluidic chips not only for the fabrication of photonic metamaterials, but also other functionalities in general. We note that, although it remains a challenge to directly produce large, defect-free photonic crystals (typically of diamond-like structures) using the current microfluidic setup, alternative strategies have been recently proposed to \textit{indirectly} assembly droplet lattices composed of smaller clusters \citep{Konstantin}, or creating hyperuniform droplet ensembles using a similar microfluidic device \citep{Sal03,Joshua_2017PRL}. The latter is an active on-going research area, and we hope our findings provide additional guidelines to rationalize the design procedure of these miniature devices.}
-
-\section*{Acknowledgments}
-
-The work is supported by the Microflusa project. This effort receives funding from the European Union Horizon 2020 research and innovation programme under Grant Agreement No.\ 664823.
-We thank Joshua Ricouvier and Bingqing Shen for providing the experimental details. Z.G.\ also thanks Mehdi Niazi, Alexander Leshansky, \AA smund Ervik, Zorana Zeravcic, and Tsvi Tlusty for helpful discussions.
-
-
-\section*{Appendix}
-\renewcommand\thesubsection{\Alph{subsection}} % redefine subsection labels (A,B,C...)
-
-\subsection{Numerical setup} \label{app:numerics}
-
-The simulations are performed in rectangular Cartesian domains with periodic and/or inflow-outflow boundary conditions in two directions and wall boundary condition (i.e.\ no slip/no penetration) in the third direction. The streamwise and spanwise dimensions of the computational box are at least three times bigger than the initial diameter of the droplet to prevent possible long-range interactions caused by the image droplet. The droplets are resolved by 32 grid points per diameter (i.e.\ $\Delta x=1/32$) to ensure that the interface curvature and the pressure jump are accurately computed, see \cite{ICLS} for detailed verification.
-
-As mentioned earlier, the numerical values of $Re$ and $Ca$ are artificially increased to facilitate faster simulations over a larger parameter space. Specifically, we set $Re=10$, $Ca=0.005$ in Secs.\ \ref{sec:quiescent} and \ref{sec:poi}; $Re=1$, $Ca=0.0025$ in Sec.\ \ref{sec:shear}; and $Re=0.1$, $Ca=0.025$ in Sec.\ \ref{sec:non-uniform}. $Fr$ is effectively $\infty$ by setting the density ratio equal to unity in all cases except in Sec.\ \ref{sec:non-uniform}, where it is 0.025. The viscosity ratio is always 1. 
-
-In Sec.\ \ref{sec:quiescent}, the suspending fluid has no underlying velocity, so the actual droplet Reynolds number should be rescaled by the ratio of the average approaching speed and the mean velocity of the channel \footnote{We keep the same definition of the Reynolds number due to bookkeeping reasons in the numerical code.}. In the case of two droplets, this factor is $1/64$ as one droplet moves the distance of $\Delta x$ within $t=2$, as comparing to a displacement of 2 within $t=2$. The rescaled Reynolds is then $Re_r \approx 0.16$.
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=.75\columnwidth]{figs/steady_angle1.pdf}
- \caption{Stable polar angle of two droplets in a shear-driven channel at different Reynolds numbers and confinement, cf.\ Sec.\ \ref{sec:shear}. \xx{The dashed line corresponds to $\theta_\infty=79$ deg.}}
- \label{fig: verify Re}
-\end{figure}
-
-In Sec.\ \ref{sec:shear}, we reduce $Re$ to 1 as the flow is shear-driven, thus the fluid inertia is expected to play a role. Testing various $Re$, as shown in Fig.\ \ref{fig: verify Re}, we observe that the stable polar angle approaches the same value for $Re \leqslant 1$ under the confinement of $L_z/D =1.5$, justifying the use of $Re=1$. For $L_z/D =3$, however, $Re<1$ must be used to obtain the true closed orbit of the two bounding pair (i.e.\ the obtained $\theta_\infty$ in that case is an artifact of the inertia).
-
-In Sec.\ \ref{sec:poi}, we increase $Re$ to 10 as the cross-stream migration in Poiseuille flow is a fairly robust phenomenon, only weakly dependent on the Reynolds number in the sense that a lower $Re$ imposes a longer time scale. Since we are interested in the final shape of the droplet cluster - a qualitative result rather than the detail dynamics - $Re=10$ is used to speed up the simulations (the computational time step is roughly inversely proportional to $Re$).
-
-Finally, in Sec.\ \ref{sec:non-uniform} where the entry region of the microfluidic channel is considered, we set the lowest Reynolds number to mimic the actual flow environment. Here, the capillary number is amplified to 0.025, larger than in the previous cases but still well within the low capillary limit. As a visual proof, the droplets shown in Fig.\ \ref{fig: non-uniform} all remain nearly spherical during the convection. Further reducing $Ca$ shall have no effect but refine the sphericity of the drops.
-
-
-\subsection{Confinement-mediated interaction} \label{app:trajectory}
-
-For unbounded simple shear flows, we know that a pair of spherical particles/droplets can undergo either closed orbits or open-and-symmetric trajectories \citep{batchelor_green_1972,Zinchenko1984}. With moderate confinements, swapping trajectories are also possible \citep{zurita-gotor_2007}. In Sec.\ \ref{sec:shear}, we show that strong geometric confinements combined with an attractive depletion force lead to pair alignments in the vorticity plane; particularly, the obtained stable polar angle is $\theta_\infty=79$ deg.\ for $L_z/D=1.5$. Below, we provide further evidence to support the symmetry-breaking argument and give a qualitative explanation of the observed $\theta_\infty$.
-
-\begin{figure}[t]
- \centering
- \includegraphics[width=.85\columnwidth]{figs/traj.pdf}
- \caption{Relative trajectories of the second sphere in the vorticity plane of the simple-shear channel under confinement $L_z/D=1.5$. The pair is not constrained by any depletion force. The shaded region denotes locations inaccessible to the second droplet if it is perfectly spherical. Overlap of the trajectories with the shades is a result of the small droplet deformation. The red dot corresponds to the polar angle of 79 deg, c.f.\ Fig.\ \ref{fig: shell}.}
- \label{fig: traj}
-\end{figure}
-
-In Fig.\ \ref{fig: verify Re}, we obtain non-converging values of $\theta_\infty$ at $L_z/D=3$. Under this confinement, the binding droplets in the low-Reynolds-number limit exhibit cyclic motions as if they are unconfined (see ESI Video 3). Clearly, the center-to-center depletion force does not play any role since the hydrodynamic stresses already keep the droplet together; the droplets deform slightly, but are essentially spherical. As we double the confinement, i.e.\ reducing $L_z/D$ by half, Fig.\ \ref{fig: traj} illustrates the relative trajectories in the absence of depletion forces (see also ESI Video 4,5). Here, only a quadrant of the plane in the vicinity of the first droplet is shown due to symmetry. Comparing to less confined conditions, the droplet pair displays only passing and swapping trajectories, while the Batchelor-Green type of closed orbit is completely suppressed (c.f.\ Fig.\ 3 in \citep{zurita-gotor_2007}). Arguably, such a result is obvious as the droplets cannot simply rotate in the same vorticity plane, whereas $3D$ rotations would violate either time-reversal or mirror symmetry. \footnote{The symmetry argument, however, is only a necessary but not sufficient condition, since droplet sliding on the walls already invokes effects of the noise (otherwise two droplets stuck by the walls should be regarded as an admissible solution).} Regardless the reason, the results demonstrate that droplets cannot stay together indefinitely due solely to the hydrodynamic interactions. More importantly, plotting the position corresponding to the angle of 79 deg.\ (the red dot in Fig.\ \ref{fig: traj}) in the trajectory map clearly rationalizes the existence of a stable polar angle: the second droplet would travel in either direction above or below the saddle point; with a radial depletion force, only at $\theta_\infty=79$ deg.\ can it stay dynamically stable.
+We formulate the hypothesis that any arbitrary initial configuration of three particles will lead at large times to a binary cluster and the third particle linearly separating from it. It seems that the evolution from any arbitrary initial conditions cannot be solved analytically, but only numerically: %in Appendix \ref{red} we suggest
+a reduction from four to three degrees of freedom can be obtained, but the resulting equations could not be solved.
 
 
 
-%--%\bigskip
+To conclude, we describe the properties of cluster solutions assuming constant $\bm r_{23}$, of magnitude $r_{23}$, and angle $\phi$ with respect to the $x-$axis. Using Eq.~(\ref{clust}), we write
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+\dot x_{12}\!\approx \dot x_{13}\approx \frac{q\cos(2\phi)}{r_{23}^2},\ \ \dot y_{12}\!\approx \dot y_{13}\approx \frac{q\sin(2\phi)}{r_{23}^2}. \nonumber
+\end{eqnarray}
+We can assume with no loss of generality that $x_2\geq x_3$ so that $\phi$ is in the range $-\pi/2\leq\phi\leq \pi/2$.
+Four different solutions can therefore be identified, assuming the cluster at large time can be denoted as a point at the origin.
+In the range $0\leq \phi\leq \pi/4$ the first particle leaves the cluster behind when going to infinity inside the first quadrant.
+%
+%Here we put the cluster, which "looks" as a point at large times, at the origin.
+In the range $-\pi/4\leq \phi\leq 0$, the first particle leaves the cluster behind when going to infinity inside the second quadrant. In the case of $\pi/4\leq \phi\leq  \pi/2$ the cluster leaves the first particle behind and to the right. Finally in the case of $-\pi/2\leq \phi\leq  -\pi/4$ the cluster leaves the first particle behind and to the left.
+
+
+It is clear from the above that the configuration with distant pairs or singlets of particles is stable: the singlets separate ballistically from the stable pairs which maintain the pair 
+distance constant. 
+In contrast, clusters of three and probably more particles are unstable.  Thus, we conjecture that under arbitrary initial conditions an arbitrary number of distant particles will 
+separate at large times into a collection of singlets and pairs if the solution is dilute. For suspensions of many particles this implies that hydrodynamic interactions increase the 
+probability of particles to be isolated or in pairs, rather than forming clusters composed of many particles. In dense suspensions, the interactions discussed above do not have 
+time to occur and we rather expect chaotic collisions of particles \citep{tl2014}.
+
+\section{Concluding remarks}
+
+In the present paper, we provided a boundary integral representation for the flow due to particles (rigid ones or droplets) freely-suspended in a channel flow. The particle number, size and shape and the inter-particle distances are arbitrary.
+We have thus demonstrated the utility of this representation.
+
+For an isolated particle, the proposed representation is useful for the study of the far-field flow. At the leading order, the far flow is dipolar flow with the dipole moment given by 
+a weighted integral of the stress tensor and the flow over the particle
+surface. This defines the far flow completely. The flow was previously available only for strongly confined pancake-like droplets that almost block the channel in the vertical direction.  We also determine the dipole moment integral
+numerically for neutrally buoyant rigid sphere. Further, we provide the multipole expansion from which the far flow can be found with any desired accuracy.
+
+For close particles, the representation is helpful for the study of hydrodynamic interactions. 
+It demonstrates clearly that the range of validity of the lubrication theory is larger than expected from the usual
+approach \citep{Batchelor,lubr,szeri,bruce}. Our representation  also solves the problem of matching the ideal flow holding far from the particles with the fully viscous flow near the particle surface. The solution is expressed in terms of
+the unknown surface velocity and stress tensor. This sheds light on the use of the ideal flow approximation in previous works on disk-like particles \citep{tl2014,is} and helps to consider particles of other shapes.
+
+We introduced the equation of motion of particles interacting at long distances, refining previous derivation for droplets \citep{tl2014} and extending it to the case of arbitrary, 
+possibly different, interacting particles. We solved the three-body problem of hydrodynamic interactions for the case of identical symmetric particles aligned in the stream-wise 
+direction. This solution provides theoretical support for the pair exchange phenomenon observed previously in experiments \citep{tab0}. We provide special solutions for the three-body problem and demonstrate that it is plausible that these solutions describe the long-time asymptotic evolution for arbitrary initial conditions. We further demonstrate the application of the theory to the many body problem.
+
+We did not consider potential lateral migration induced by dydrodynamic interactions. It can be readily seen that a pair of distant spherical particles with different vertical coordinates will separate laterally because the coordinate-dependent mobility matrices and dipole moments will differ for these particles. The study of this instability will be the object of future work.
+
+The representation proposed here is a good starting point for a mean-field description of strong hydrodynamic interactions of close particles. We notice after Eq.~(\ref{inrepmany}) that the effect of the interactions can be described by a  change of the stress-tensors and velocities at the particle surfaces. Thus the model description of the interaction boils down to the model description of surface stress tensors and velocity. This can be done by introducing the mean field $\nabla p$ whose direction can differ from the direction of the undisturbed flow. We assume that the stress tensor and flow on the surface of each particle is that for an isolated particle in the Poiseuille flow with pressure gradient $\nabla p$ (e.g., the particle velocity is equal to minus the mobility matrix times $\nabla p$). Using this in Eq.~(\ref{inrepmany}) one can find the flow in terms of $\nabla p$. A closed integral equation for $\nabla p$ can then be obtained from the Stokes flow equations. The study of this equation is planned as future work.
+
+This study was majorly motivated by recent experiments on the formation of droplet clusters in a microfluidic channel \citep{tab0,tabeling}. The theoretical modeling in \cite{tabeling} assumed that flow-assisted clustering of weakly confined spherical droplets in close proximity is driven  by the combination of non-hydrodynamic (adhesive, e.g., depletion forces) and hydrodynamic interactions of dipolar nature similar to interactions of strongly confined (pancake-like) droplets in Hele-Shaw cells. The qualitative agreement between the results of the numerical simulations and experimental results in \cite{tabeling} suggested that \emph{ad hoc} modeling of hydrodynamic interactions by dipolar flow is admissible. The present study shows that far-field interactions of weakly confined droplets are indeed of dipolar nature, however their magnitude is too weak to lead to relative motion between freely suspended particles on the time scale of the experiment. Moreover, the present study, as well as the calculations of the interactions at small distances in \cite{tl2012,is}, suggest that hydrodynamic interactions  at close proximity cannot be described by dipolar flows. We thus believe that the reason for the qualitative agreement between the numerical results and the experiment (using unknown magnitude of the adhesive forces as an adjustable parameter) is that the adhesive force diverges at contact dominating the particle dynamics. The dipolar hydrodynamic interactions provided the source of sliding (tangential) motions of the particles necessary for the particle rearrangement and not provided by the adhesive (radial) forces. However, the particular functional form (e.g., dipolar or other) of these interactions seems to be of minor importance as long as these provide some tangential mobility. An accurate \emph{quantitative} predictive theory of flow-assisted clustering requires the knowledge of the near-field hydrodynamic interactions, including an accurate treatment of the non-uniform flow near the inlet. This will be the object of a future work.
+
+
+\section*{Acknowledgement}
+The work is supported by the Microflusa project. The Microflusa project receives funding from the European Union Horizon 2020 research and innovation programme
+under Grant Agreement No. 664823.
+
+%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--%{\begin{thebibliography}{99}
+%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--%
+%--%%Brownian
+%--%
+%--%\bibitem{carba} M. D. Carbajal-Tinoco, G. Cruz de Leon, and J. L. Arauz-Lara,  Phys. Rev. E \textbf{56}, 6962 (1997).
+%--%
+%--%\bibitem{d1}  H. Acuna Campa, M. D. Carbajal-Tinoco, J. L. Arauz-Lara, and M. Medina-Noyola, Phys. Rev. Lett. \textbf{80}, 5802 (1998).
+%--%
+%--%\bibitem{d5}  A. H. Marcus, J. Schofield, and S. A. Rice, Phys. Rev. E \textbf{60}, 5725 (1999).
+%--%
+%--%\bibitem{d2}  R. Pesche and G. Nagele, Phys. Rev. E \textbf{62}, 5432 (2000).
+%--%
+%--%\bibitem{d3}  R. Pesche, M. Kollmann, and G. Nagele, J. Chem. Phys. \textbf{114}, 8701–7 (2001).
+%--%
+%--%\bibitem{d4}  P. Lancon, G. Batrouni, L. Lobry, and N. Ostrowsky, Europhys. Lett. \textbf{54}, 28 (2001).
+%--%
+%--%\bibitem{d6}  J. Santana-Solano and J. L. Arauz-Lara, Phys. Rev. Lett. \textbf{87}, 038302 (2001).
+%--%
+%--%\bibitem{d7}  J. Santana-Solano and J. L. Arauz-Lara, Phys. Rev. E \textbf{65}, 021406 (2002).
+%--%
+%--%\bibitem{anom} B. Cui, H. Diamant, B. Lin, and S. A. Rice, Phys. Rev. Lett. \textbf{92}, 258301 (2004).
+%--%
+%--%\bibitem{7} I. Cohen, T. G. Mason, and D. A. Weitz, Phys. Rev. Lett. \textbf{93}, 046001 (2004).
+%--%
+%--%\bibitem{tlusty} T. Tlusty, Macromolec. \textbf{39}, 3927 (2006).
+%--%
+%--%\bibitem{tl2006} T. Beatus, T. Tlusty, and R. Bar-Ziv, Nat. Phys. \textbf{2}, 743 (2006).
+%--%
+%--%\bibitem{tl2012} T. Beatus, R. H. Bar-Ziv, and T. Tlusty, Phys. Rep. \textbf{516}, 103 (2012).
+%--%
+%--%\bibitem{is} I. Sarig, Y. Starosvetsky and A. D. Gat, J. Fluid Mech. \textbf{800}, 264 (2016).
+%--%
+%--%%flow
+%--%
+%--%\bibitem{f1} L. J. Durlofsky and J. F. Brady, J. Fluid. Mech. \textbf{200}, 39 (1989).
+%--%
+%--%\bibitem{f2}  P. Nott and J. Brady, J. Fluid Mech. \textbf{275}, 157–199 (1994).
+%--%
+%--%\bibitem{f3}  J. F. Morris and J. F. Brady, Int. J. Multiphase Flow \textbf{24}, 105 (1998).
+%--%
+%--%\bibitem{f4}  A. Singh and P. R. Nott, J. Fluid Mech. \textbf{412}, 279 (2000).
+%--%
+%--%\bibitem{f5}  J. F. Morris, Phys. Fluids \textbf{13}, 2457–62 (2001).
+%--%
+%--%\bibitem{f7} S. Bhattacharya, J. Blawzdziewicz, and E. Wajnryb, Phys. Fluids, \textbf{18}, 053301 (2006).
+%--%
+%--%\bibitem{tl2014} I. Shani, T. Beatus, R. H. Bar-Ziv, and T. Tlusty,  Nature Phys. \textbf{10}, 140 (2014).
+%--%
+%--%\bibitem{tab0}  B. Shen, M. Leman, M. Reyssat, and P. Tabeling, Exp. in Fluids \textbf{55}, 1728 (2014).
+%--%
+%--%\bibitem{tabeling} B. Shen, J. Ricouvier, F. Malloggi, and P. Tabeling, Adv. Sci. \textbf{3}, 1600012 (2016).
+%--%
+%--%%other
+%--%
+%--%\bibitem{sb} J. W. Swan and J. F. Brady, Phys. Fluids. \textbf{22}, 103301 (2010).
+%--%
+%--%\bibitem{Batchelor} G. K. Batchelor, {\it An introduction to fluid dynamics}, (Cambridge university press, 2000).
+%--%
+%--%\bibitem{lubr} B. Tavakol, D. P. Holmes, G. Froehlicher, and H. A. Stone, arXiv:1403.2343.
+%--%
+%--%\bibitem{szeri}  A. Z. Szeri, {\it Fluid film lubrication: theory and design}, (Cambridge University Press, 2005).
+%--%
+%--%\bibitem{bruce} R. W. Bruce, ed., {\it Handbook of Lubrication and Tribology}, (CRC press, 2012).
+%--%
+%--%\bibitem{ll} L. D. Landau and E. M. Lifshitz, {\it Fluid mechanics}, (1987).
+%--%
+%--%\bibitem{hb} J. Happel and  H. Brenner, {\it Low Reynolds number hydrodynamics: with special applications to particulate media}, (Springer Science and Business Media, 2012).
+%--%
+%--%\bibitem{ps} C. Pozrikidis, {\it Boundary integral and singularity methods for linearized viscous flow}, (Cambridge University Press, 1992).
+%--%
+%--%\bibitem{LironMochon} N. Liron and S. Mochon, J. Eng. Math. \textbf{10}, 287 (1976).
+%--%
+%--%\bibitem{levich} V. G. Levich, {\it Physicochemical hydrodynamics }, (Advance Publications, 1977).
+%--%
+%--%\bibitem{leal} L. G. Leal, {\it Advanced transport phenomena: fluid mechanics and convective transport processes}, (Cambridge University Press, 2007).
+%--%
+%--%\bibitem{1rd2} F. P. Bretherton, J. Fluid Mech. \textbf{14}, 284 (1962).
+%--%
+%--%\bibitem{grad} I. S. Gradshteyn and I. M. Ryzhik, {\it Table of integrals, series, and products}, (Academic press, 2014).
+%--%
+%--%%numerics
+%--%
+%--%\bibitem{ibm}  W.-P. Breugem, J. Comp. Phys. \textbf{231}, 4469 (2012).
+%--%
+%--%\bibitem{ruth} R. Lambert, F. Picano, W.-P. Breugem and L. Brandt, J. Fluid Mech., \textbf{733}, 528-557, (2013).
+%--%
+%--%\bibitem{picano} F. Picano, W.-P. Breugem and L. Brandt, J. Fluid Mech., \textbf{764}, 463-487, (2015).
+%--%
+%--%\bibitem{bim_1p}  M. E. Staben, A. Z. Zinchenko, and R. H. Davis, Phys. Fluids. \textbf{15}, 061711 (2003).
+%--%
+%--%\bibitem{cl} J. D. Jackson, {\it Classical electrodynamics} (John Wiley and Sons, 1962).
 %--%
 %--%
-%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%--%\iffalse
 %--%
-%--%Adding notes to tables can be complicated.  Perhaps the easiest method is to generate these manually.\footnote[4]{Footnotes should appear here. These might include comments relevant to but not central to the matter under discussion, limited experimental and spectral data, and crystallographic data.}
-%--%
-%--%\begin{table*}
-%--%\small
-%--%  \caption{\ An example of a caption to accompany a table \textendash\ table captions do not end in a full point}
-%--%  \label{tbl:example2}
-%--%  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllllll}
-%--%    \hline
-%--%    Header one & Header two & Header three & Header four & Header five & Header six  & Header seven\\
-%--%    \hline
-%--%    1 & 2 & 3 & 4 & 5 & 6  & 7\\
-%--%    8 & 9 & 10 & 11 & 12 & 13 & 14 \\
-%--%    15 & 16 & 17 & 18 & 19 & 20 & 21\\
-%--%    \hline
-%--%  \end{tabular*}
-%--%\end{table*}
-%--%
-%--%\section{Equations}
-%--%
-%--%Equations can be typeset inline \textit{e.g.}\ $ y = mx + c$ or displayed with and without numbers:
-%--%
-%--% \[ A = \pi r^2 \]
-%--%
-%--%\begin{equation}
-%--%  \frac{\gamma}{\epsilon x} r^2 = 2r
-%--%\end{equation}
-%--%
-%--%You can also put lists into the text. You can have bulleted or numbered lists of almost any kind. 
-%--%The \texttt{mhchem} package can also be used so that formulae are easy to input: \texttt{\textbackslash ce\{H2SO4\}} gives \ce{H2SO4}. 
-%--%
-%--%For footnotes in the main text of the article please number the footnotes to avoid duplicate symbols. \textit{e.g.}\ \texttt{\textbackslash footnote[num]\{your text\}}. The corresponding author $\ast$ counts as footnote 1, ESI as footnote 2, \textit{e.g.}\ if there is no ESI, please start at [num]=[2], if ESI is cited in the title please start at [num]=[3] \textit{etc.} Please also cite the ESI within the main body of the text using \dag.
-%--%
-%--%\fi
-%--%
-%--%%%%END OF MAIN TEXT%%%
-%--%
-%--%%The \balance command can be used to balance the columns on the final page if desired. It should be placed anywhere within the first column of the last page.
-%--%
-%--%\balance
-%--%
-%--%%If notes are included in your references you can change the title from 'References' to 'Notes and references' using the following command:
-%--%%\renewcommand\refname{Notes and references}
-%--%
-%--%%%%REFERENCES%%%
-%--%\bibliography{main} %You need to replace "rsc" on this line with the name of your .bib file
-%--%\bibliographystyle{rsc} %the RSC's .bst file
-%--%
-%--%
+%--%%%%\emph{}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--%\end{thebibliography}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--%\begin{appendices} %
+\appendix
+%\chapter{First Appendix}
+
+\section{Calculation of the far-field term $f_l(\bm x_0)$}\label{f}
+
+In this appendix, we present a direct calculation of the far-field term $f_l(\bm x_0)$ in Eq.~(\ref{in}). We find from volume integration of Eq.~(\ref{fd}) the boundary term,
+\begin{eqnarray}&&\!\!\!
+f_l(\bm x_0)=\frac{1}{8\pi\eta} \int_{-L}^L dy\int_0^h dz \left[S_{il}(L-x_0, y-y_0, z, z_0)\right.\nonumber\\&&\!\!\!\left.\sigma_{ix}(L, y, z)-S_{il}(-L-x_0, y-y_0, z, z_0)\sigma_{ix}(-L, y, z)\right]\nonumber\\&&\!\!\!+\frac{1}{8\pi\eta} \int_{-L}^L dx\int_0^h dz \left[S_{il}(x-x_0, L-y_0, z, z_0)\right.\nonumber\\&&\!\!\!\left.\sigma_{iy}(x, L, z)-S_{il}(x-x_0, -L-y_0, z, z_0)\sigma_{iy}(x, -L, z)\right]\nonumber\\&&\!\!\!-\frac{1}{8\pi} \int_{-L}^L dy\int_0^h dz \left[T_{ilx}(L-x_0, y-y_0, z, z_0)u_{i}(L, y, z)\right.\nonumber\\&&\!\!\!\left.-T_{ilx}(-L-x_0, y-y_0, z, z_0)u_{i}(-L, y, z)\right]-\frac{1}{8\pi}\nonumber\\&&\!\!\! \times\int_{-L}^L dx\int_0^h dz \left[T_{ily}(x-x_0, L-y_0, z, z_0)u_{i}(x, L, z)\right.\nonumber\\&&\!\!\!\left.-T_{ily}(x-x_0, -L-y_0, z, z_0)u_{i}(x, -L, z)\right];\ \ L\to\infty.\nonumber
+\end{eqnarray}
+The Stokeslet decays exponentially in the $z-$direction so $f_z=0$. To find the remaining components we use
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+\sigma_{ix}(L, y, z)=-L\nabla_x p^0\delta_{ix}+\frac{(2z-h)\nabla_x p^0\delta_{iz} }{2}.
+\end{eqnarray}
+We find that $f_x$ is determined by the asymptotic solution for channel flow and is not affected by the presence of the spherical particle,
+\begin{eqnarray}&&
+f_x(\bm x_0)=-\frac{L\nabla_x p^0}{8\pi\eta} \int_{-L}^L dy\int_0^h dz \left[S_{xx}(L, y-y_0, z, z_0)\right.\nonumber\\&&\left.+S_{xx}(-L, y-y_0, z, z_0)\right]\nonumber\\&&-\frac{\nabla_x p^0}{8\pi\eta} \int_{-L}^L dx\int_0^h dz x\left[S_{yx}(x-x_0, L, z, z_0)\right.\nonumber\\&&\left.-S_{yx}(x-x_0, -L, z, z_0)\right]\nonumber\\&&-\frac{1}{8\pi} \int_{-L}^L dy\int_0^h dz \frac{z(z-h)\nabla_x p^0}{2\eta}\left[T_{xxx}(L, y-y_0, z, z_0)\right.\nonumber\\&&\left.-T_{xxx}(-L, y-y_0, z-z_0)\right]\nonumber\\&&-\frac{1}{8\pi} \int_{-L}^L dx\int_0^h dz \frac{z(z-h)\nabla_x p^0}{2\eta}\left[T_{xxy}(x-x_0, L, z, z_0)\right.\nonumber\\&&\left.-T_{xxy}(x-x_0, -L, z-z_0)\right];\ \ L\to\infty.
+\end{eqnarray}
+Thus, this must be the unperturbed channel flow as readily verified. Rescaling the integration variable by $L$ and keeping leading order terms we have,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+f_x(\bm x_0)=-\frac{L^2\nabla_x p^0}{8\pi\eta} \int_{-1}^1 dy\int_0^h dz \left[S_{xx}(L, Ly, z, z_0)\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\left.+S_{xx}(-L, Ly, z, z_0)\right]\nonumber\\&&\!\!\!\!\!\!\!\!\!\!-\frac{L^2\nabla_x p^0}{8\pi\eta} \int_{-1}^1 dx\int_0^h dz x\left[S_{yx}(Lx, L, z, z_0)\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\left.-S_{yx}(Lx, -L, z, z_0)\right]\nonumber\\&&\!\!\!\!\!\!\!\!\!\!-\frac{L}{8\pi} \int_{-1}^1 dy\int_0^h dz \frac{z(z-h)\nabla_x p}{2\eta}\left[T_{xxx}(L, Ly, z, z_0)\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\left.-T_{xxx}(-L, Ly, z-z_0)\right]\nonumber\\&&\!\!\!\!\!\!\!\!\!\!-\frac{L}{8\pi} \int_{-1}^1 dx\int_0^h dz \frac{z(z-h)\nabla_x p}{2\eta}\left[T_{xxy}(Lx, L, z, z_0)\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\left.-T_{xxy}(Lx, -L, z-z_0)\right].
+\end{eqnarray}
+So far the calculation involved the complete Stokeslet solution. To determine $f_l$ we can use the asymptotic form of the Stokeslet at large distances, which is  for the stress tensor,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+T_{ilk}=-24\frac{r_l}{\rho^2}(z_0/ h^2)(1-z_0/h)\delta_{ik}+O\left(\frac{1}{\rho^2}\right).
+\end{eqnarray}
+Using these formulas for $S_{ik}$ and $T_{ilk}$, one can write
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+f_x=\frac{\nabla_x p^0}{8\pi\eta} \int_{-1}^1 dy\int_0^h dz \frac{24z(z-h)z_0(z_0-h)(y^2-1)}{(1+y^2)^2 h^3}\nonumber\\&&\!\!\!\!\!\!\!\!\!\!-\frac{\nabla_x p}{4\pi\eta} \int_{-1}^1 dx\int_0^h dz x^2\left[
+\frac{24z(z-h)z_0(z_0-h)}{(1+x^2)^2 h^3}\right]
+\nonumber\\&&\!\!\!\!\!\!\!\!\!\!-\frac{1}{4\pi} \int_{-1}^1 dy\int_0^h dz \frac{z(z-h)\nabla_x p}{2\eta}\left[24\frac{z_0(z_0-h)}{(1+y^2)h^3}\right]\nonumber.
+\end{eqnarray}
+Integrating over $z$, this can be written as,
+\begin{eqnarray}&&\!\!\!\!\!\!\!\!\!\!
+f_x=\frac{\nabla_x p z_0(z_0-h)}{2\eta}\left( \int_{-1}^1 \frac{dy}{\pi(1+y^2)}\left[\frac{2}{1+y^2}-1\right]\right.\nonumber\\&&\!\!\!\!\!\!\!\!\!\!\left.+\frac{1}{\pi} \int_{-1}^1 dx \frac{2x^2}{(1+x^2)^2}+\frac{1}{\pi} \int_{-1}^1 dy \left[\frac{1}{(1+y^2)}\right]\right).%=\frac{\nabla_x p z_0(z_0-h)}{2\eta}\nonumber.
+\end{eqnarray}
+Performing the integrals we confirm that indeed $f_x$ is the flow given by Eq.~(\ref{ps}).
+%which
+
+
+
+
+
+\section{Numerical integration of $\bm s$}\label{numm}
+
+We compute the weighted dipole moment $\bm s$ in Eq.~(\ref{dlpa}) by directly simulating a rigid spherical particle of radius $a$ transported in a doubly-periodic channel using the immersed boundary method (IBM), see \cite{ibm,ruth,picano} for more details and validations. 
+
+In the IBM, there are two meshes; one Eulerian mesh for the flow and one
+%slightly contracted
+Lagrangian mesh for the moving particle. The two meshes are coupled through a multidirect forcing scheme that ensures the approximate no-slip/no-penetration condition on the particle surface.
+
+The motion of the particle is described by the Newton-Euler equations, given for the translational velocity  by
+%(\textit{cf.}
+Eq.\ \eqref{eqmp}).
+%\begin{equation}
+%    \rho_p V_p \frac{d {\bm u_c}}{dt} =
+%    \int_{\partial V} {\bm \tau} \cdot {\bm n} dA + (\rho_p-\rho_f)V_p{\bm g} - V_p \nabla p_e +{\bm F_c},
+%    \label{newton}
+%\end{equation}
+%where ${\bm u_c}$ is the particle center velocity, $V_p$ is the volume of the particle, $\rho$ is the density, $\nabla p_e$ is a constant pressure gradient that drives the channel flow, $\tau_{ik} = -(p-p_e)\delta_{ik} + \eta(\nabla_i u_k +\nabla_k u_i)$ is the stress tensor without $p_e$, and ${\bm F_c}$ is the collision force or any other fictitious force. When the particle and the fluid have the same density, and in the abscence of any collision force, Eq.\ \eqref{newton} reduces to
+%\begin{equation}
+%    \rho_p V_p \frac{d {\bm u_c}}{dt} =
+%    \int_{\partial V} {\bm \tau} \cdot {\bm n} dA - V_p \nabla p_e,
+%    \label{newton 1}
+%\end{equation}
+%or equivalently
+%\begin{equation}
+%    \rho_p V_p \frac{d {\bm u_c}}{dt} =
+%    \int_{\partial V} {\bm \sigma} \cdot {\bm n} dA,
+%    \label{newton 2}
+%\end{equation}
+%%using the divergence theorem.
+%where ${\bm u_c}$ is the particle center velocity, $V_p$ its volume, $\rho_p$ its density, and $\bm \sigma$ again the viscous stress tensor (we use here somewhat di.
+The equation does not contain the gravitational force which is assumed to be balanced either by the particle interactions with the bottom wall (the case of particle near the wall) or by buoyancy (the case of density-matched particle). We also assume that particle-wall collisions are absent (\textit{cf.} Eq.\ (3a) in \cite{ibm}).
+%is simplified by requiring matching density between the particle and the carrier fluid (\textit{i.e.} no settling) as well as the
+
+The flow outside the particle is governed by the incompressible Navier-Stokes (NS) equations with the no-slip boundary conditions on the surface of the rigid particle described in connection with Eq.\ \eqref{ds}. Although the steady state flow obeys the Stokes equations, computation of the transients demands inclusion of the time derivative in the NS equations. In our simulations, the full NS equations are computed at a small Reynolds number ($\sim10^{-1}$), \textit{viz.}
+\begin{equation}
+    Re\bigg(\frac{\partial {\bm u}}{\partial t} + \nabla \cdot ({\bm u \bm u}) \bigg)=
+    \nabla \cdot {\bm \sigma} + {\bm f},
+    \label{NS}
+\end{equation}
+where $Re=\rho_f U_b (2a)/\eta$ is the Reynolds number, $U_b$ the channel bulk velocity, $\rho_f$ ($=\rho_p$) the fluid density and ${\bm f}$ the IBM force enforcing that the no-slip boundary condition (in this formulation pressure is rescaled by $Re$.) We discretize these equations using a second-order finite volume scheme. Finding the flow at given translational and rotational particle velocities we obtain the viscous stress which is used for updating these velocities as in Eq.\ \eqref{eqmp}. Numerically, the LHS of Eq.\ \eqref{eqmp} is computed at each time step by summing the forces exerted on all the Lagrangian points, in addition to the volumetric forces inside the particle (see Eq.\ (8a) in \cite{ibm} for the full expression). In our case, this is simply
+\begin{equation}
+     m\frac{d\bm v}{dt}  \approx
+    -\sum_{l=1}^{N_l} {\bm F}_l \Delta V_l + \rho_f\frac{d}{dt}\bigg(\int_{V_p} {\bm u}dV \bigg),
+    \label{ibm}
+\end{equation}
+where %\red{$\rho_f$ ($=\rho_p$) is the fluid density, $\bm u$ the fluid velocity,}
+$-{\bm F}_l$ the force acting on the $l$ Lagrangian point  centred at a shell element of volume $\Delta V_l$, and $N_l$ the total number of Lagrangian points.
+
+At the steady state,
+\begin{equation}
+    \int_{S}
+   {\bm \sigma} \cdot \bm {dS}\approx -\sum_{l=1}^{N_l} {\bm F}_l \Delta V_l,
+    \label{ibm 1}
+\end{equation}
+%ANTHINY!
+corresponding to the solution of the 
+%where the $d/dt$ term has been dropped %The differential form of Eq.\ \eqref{ibm 1} is also valid in the steady state as can be seen from the Navier-Stokes equation,
+%in agreement with the possibility of using in the 
+steady state the Stokes equations, Eq.\ \eqref{ds}. 
+
+Provided that the interpolation and spreading between ${\bm f}_{i,j,k}$ and $-{\bm F}_l$ preserves the local stress, we obtain the dimensionless weighted dipole moment $\tilde{\bm s}$ needed to compute particle interacions as
+\begin{equation}
+    \tilde{{\bm s}} = -\sum_{l=1}^{N_l} z_l(h-z_l) {\bm F_{l}} \Delta V_l.
+    \label{formula}
+\end{equation}
+The dimensional ${\bm s}$ is thus $\eta U_b (2a)^3\tilde{\bm s}$.\\
+
+%\footnote{Alternatively, Eq.\ \eqref{strength 1} can also be integrated directly on the Eulerian mesh through the use of a \textit{Dirac} $\delta$-function supported on the particle surface. However, the results are much less accurate than that from Eq.\ \eqref{formula} and are not discussed here.}
+%
+%
+%\section{Three droplets problem} \label{red}
+%
+%The general solution of the equations of motion for three particles in one plane or three confined droplets involves four degrees of freedom. Here we present a reduction to three degrees of freedom, which may make numerical integration easier.
+%
+%We consider the case where the three particles have arbitrary positions in the plane as described by Eqs.~(\ref{grv}). We introduce for four-dimensional vector $(\bm r_{12}, \bm r_{13})$ the decomposition in magnitude $r$ and the direction ${\hat n}$ in four-dimensional space, $|{\hat n}|=1$ so that $(\bm r_{12}, \bm r_{13})=r{\hat n}$. We introduce ${\hat n}=({\hat n}_1, {\hat n}_2)$ where the two-dimensional vectors ${\hat n}_i$ obey ${\hat n}_1^2+{\hat n}_2^2=1$. We thus have,
+%\begin{eqnarray}&&
+%\frac{ds}{dt}=\frac{q}{r^3(t)};\ \ \frac{d\ln r}{ds}=\frac{\left(\bm {\hat x}\cdot{\hat n}_1\right){\hat n}_2^2-2\left({\hat n}_2\cdot\bm {\hat x}\right) {\hat n}_2\cdot{\hat n}_1}{{\hat n}_2^4}
+%\nonumber\\&&
+%-\frac{\bm {\hat x}\cdot\left({\hat n}_1+{\hat n}_2\right)\left({\hat n}_2-{\hat n}_1\right)^2-2 \left(\left({\hat n}_2-{\hat n}_1\right)\!\cdot\!\bm {\hat x}\right) \left({\hat n}_2^2-{\hat n}_1^2\right)}{\left({\hat n}_2-{\hat n}_1\right)^4}\nonumber\\&&+\frac{\!\left(\bm {\hat x}\!\cdot\!{\hat n}_2\right)\!{\hat n}_1^2\!-\!2 \!\left({\hat n}_1\!\cdot\!\bm {\hat x}\right)\! {\hat n}_2\!\cdot\!{\hat n}_1}{{\hat n}_1^4}.
+%\end{eqnarray}
+%We find, using that $\bm r_{23}=r\left({\hat n}_2-{\hat n}_1\right)$, that the evolution of ${\hat n}_1$ is given by
+%\begin{eqnarray}&&
+%\frac{d{\hat n}_1}{ds}=\frac{{\hat n}_2^2\left(\bm {\hat x}-\left(\bm {\hat x}\!\cdot\!{\hat n}_1\right){\hat n}_1\right)-2 \left({\hat n}_2\!\cdot\!\bm {\hat x}\right)\left({\hat n}_2-\! {\hat n}_1\! ({\hat n}_2\!\cdot\!{\hat n}_1)\right)}{{\hat n}_2^4}\nonumber\\&&
+%-\frac{\!\left(\bm {\hat x}\!\cdot\!{\hat n}_2\right)\!{\hat n}_1^2\!-\!2 \!\left({\hat n}_1\!\cdot\!\bm {\hat x}\right)\! {\hat n}_2\!\cdot\!{\hat n}_1}{{\hat n}_1^4}{\hat n}_1
+%-\frac{\left(\bm {\hat x}-\bm {\hat x}\cdot\left({\hat n}_1+{\hat n}_2\right){\hat n}_1\right)}{\left({\hat n}_2-{\hat n}_1\right)^2}
+%\nonumber\\&&
+%+\frac{2 \left(\left({\hat n}_2-{\hat n}_1\right)\!\cdot\!\bm {\hat x}\right)\left({\hat n}_2-2{\hat n}_1{\hat n}_2^2\right)}{\left({\hat n}_2-{\hat n}_1\right)^4}.\nonumber
+%\end{eqnarray}
+%where in the last line we used ${\hat n}_1^2+{\hat n}_2^2=1$. The equation for ${\hat n}_2$ is obtained by interchanging ${\hat n}_1$ and ${\hat n}_2$ in the RHS,
+%\begin{eqnarray}&&
+%\frac{d{\hat n}_2}{ds}=\frac{{\hat n}_1^2\left(\bm {\hat x}-\left(\bm {\hat x}\!\cdot\!{\hat n}_2\right){\hat n}_2\right)-2 \left({\hat n}_1\!\cdot\!\bm {\hat x}\right)\left({\hat n}_1-\! {\hat n}_2\! ({\hat n}_1\!\cdot\!{\hat n}_2)\right)}{{\hat n}_1^4}\nonumber\\&&
+%-\frac{\!\left(\bm {\hat x}\!\cdot\!{\hat n}_1\right)\!{\hat n}_2^2\!-\!2 \!\left({\hat n}_2\!\cdot\!\bm {\hat x}\right)\! {\hat n}_1\!\cdot\!{\hat n}_2}{{\hat n}_2^4}{\hat n}_2
+%-\frac{\left(\bm {\hat x}-\bm {\hat x}\cdot\left({\hat n}_1+{\hat n}_2\right){\hat n}_2\right)}{\left({\hat n}_2-{\hat n}_1\right)^2}
+%\nonumber\\&&
+%+\frac{2 \left(\left({\hat n}_1-{\hat n}_2\right)\!\cdot\!\bm {\hat x}\right)\left({\hat n}_1-2{\hat n}_2{\hat n}_1^2\right)}{\left({\hat n}_2-{\hat n}_1\right)^4}.\nonumber
+%\end{eqnarray}
+%We can introduce ${\hat n_1}=\cos\theta(\cos\phi_1, \sin\phi_1)$ and ${\hat n}_2=\sin\theta(\cos\phi_2, \sin\phi_2)$. In this case,  the above equations determine the time evolution of the angles. Once this is solved $\ln r$ is determined from the following
+%\begin{eqnarray}&&
+%\frac{d\ln r}{ds}=-\frac{\cos\theta\cos(2\phi_2-\phi_1)}{\sin^2\theta}\!-\frac{\sin\theta\cos(2\phi_1-\phi_2)}{\cos^2\theta}\nonumber\\&&
+%-\frac{1}{1-\cos(\phi_2-\phi_1)\sin 2\theta}\left[\cos\theta\cos\phi_1+\sin\theta\cos\phi_2\right.\nonumber\\&&\left.
+%+\frac{2\left(\sin\theta\cos\phi_2-\cos\theta \cos\phi_1\right)\cos 2\theta}{1-\cos(\phi_2-\phi_1)\sin 2\theta}\right].
+%\end{eqnarray}
+%The analytical solution of this system appears as hardly feasible but it can be used for numerical simulations.
+
+
+
+%--%\end{appendices}
+
 %--%\end{document}
+
+
