@@ -3,71 +3,177 @@
 %===============================================================================
 \chapter{Introduction}
 %===============================================================================
-%
+
 
 
 In \cite{Batchelor} we believe.
 
 
 %-------------------------------------------------------------------------------
-\section{Photonic crystals}
-%%
-%Our contributions are as follows. We validate that the foremost wireless
-%algorithm for the understanding of the lookaside buffer by O.  Moore
-%\cite{cite:0} is maximally efficient. Further, we explore new real-time
-%methodologies ({Hyp}), which we use to show that the little-known
-%knowledge-based algorithm for the exploration of the Turing machine by Taylor
-%et al. \cite{cite:0} runs in
-%%
-%\begin{equation}
-%	\Omega (\log \log \log {n} ^ { \log \log n })
-%	\label{eq:eq1}
-%\end{equation}
-%%
-%time. This outcome might seem unexpected but has ample historical precedence.
-%
-%The rest of this paper is organized as follows. Primarily,  we motivate the
-%need for DNS. On a similar note, we disprove the refinement of 2 bit
-%architectures.  We place our work in context with the existing work in this
-%area. Ultimately, we conclude.
 
-\section{Suspension flows}
+\section{Flow-assist droplet assembly}
+
+material science,
+photonic crystals,
+microfluidics,
+lab-on-a-chip.
+
 
 \section{Liquid-infused surfaces}
 
-\section{Multiphase flows}
+drag reduction,
+surface engineering,
+superhydrophobicity,
+lubricant-infused surfaces.
+
+
+\section{Suspension flows}
+
+particle suspensions,
+complex fluids,
+rheology,
+shear thickening.
 
 \thesisstructure Add here a brief description of the structure of the thesis.
+
+
 
 %===============================================================================
 \chapter{Microhydrodynamics}
 %===============================================================================
 
 
+In this chapter, we give a brief theoretical background of the topics studied.
+
+mention the abuse of terms between droplets and particles.
+
+
 %-------------------------------------------------------------------------------
-\section{Stokeslet}
 
-\section{Lubricalet}
+\section{Stokes flow and its symmetries}
 
-\section{Multipole expansion}
+small Reynolds number,
+linearity,
+reversibility,
+minimum dissipation theorem,
+Lorentz reciprocal theorem.
 
+
+\section{Single particle in Stokes flow}
+
+Green's function (Stoekslet),
+scaling laws (decay),
+confinement,
+multipole expansion,
+boundary integral methods.
+
+
+\section{Particle interactions}
+
+Batchelor and Green (1972),
+swapping,
+dancing,
+range of interactions,
+dipolar theory,
+lubrication approximation.
+
+
+\section{Rheology}
+
+microstructure,
+many-body problems (theoretical difficulties),
+macroscopic properties, averages and bulk stresses (see Brady and Bossis).
+
+The behaviour of systems involving the motion of small particles relative to a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST), or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major implications in practice. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
 
 
 
 %===============================================================================
-\chapter{Numerical methods}
+\chapter{Numerical Methods}
 %===============================================================================
-%
-\section{The interface-correction level set/ghost fluid method}
 
-\section{The immersed boundary method}
 
-\section{The discrete-element lubrication/contact dynamics model}
+
+limitation of theoretical approaches,
+necessity of numerical solutions.
+
+Despite the practical importance, theoretical development of suspension rheology remains chanllenging and only a few analytical solutions have been found in the dilute regime, see \eg \cite{Einstein_1906, batchelor_green_1972b}. This is partially due to a lack of precise knowledge or control of various interactions at the particle level, partially due to the mathematical difficulties involved in many-body problems. On the other hand, solving a system of interacting particles is relatively straightforward in an algorithmic perspective. In fact, the last decades have seen tremendous advancement in both numerical simulations and computer hardware.
+
+governing equations.
+
+numerical solutions.
+
+
+%-------------------------------------------------------------------------------
+
+\section{Fluid-resolved methods}
+
+level set methods,
+(interface-correction level set/ghost fluid method),
+volume-of-fluid methods,
+phase-field methods,
+immersed boundary methods.
+
+
+\section{Particle-based methods}
+
+The central equation to solve is
+\begin{equation} 
+ \begin{aligned} \label{eq:force-balance}
+  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^p, 
+ \end{aligned}
+\end{equation}
+where ${\bm m}$ is a generalized mass/moment-of-inertia matrix of dimension $6N \times 6N$, ...
+Brownian motions are neglected.
+
+The Stokesian dynamics formulate the problem as
+\begin{equation} 
+ \begin{aligned} \label{eq:sd-hydro}
+  \begin{pmatrix}
+   {\bm F}^H \\
+   {\bm S}^H
+  \end{pmatrix}
+  = - \mathscr{R} \cdot
+  \begin{pmatrix}
+   {\bm U}-{\bm U}^\infty \\
+   -{\bm E}^\infty
+  \end{pmatrix},
+ \end{aligned}
+\end{equation}
+where
+\begin{equation} 
+ \begin{aligned}
+  \mathscr{R} =
+  \begin{pmatrix}
+   {\bm R}_{FU} & {\bm R}_{FE} \\
+   {\bm R}_{SU} & {\bm R}_{SE}
+  \end{pmatrix},
+ \end{aligned}
+\end{equation}
+is the ``grand resistance'' matrix. It is calculated as
+\begin{equation} 
+ \begin{aligned}
+  \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty.
+ \end{aligned}
+\end{equation}          
+Es.\ \eqref{eq:sd-hydro} is then inverted and integrated in time to obtain the dynamics.
+
+dissipative particle dynamics methods,
+discrete element methods,
+the discrete-element lubrication/contact dynamics (DLCD) model.
+
+
+In the context of rheology and soft condensed matter, some of the numerical models that have been developed include molecular dynamics (MD) \citep{Alder_Wainwright_1959,Verlet1967}, dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}, and discrete element methods (DEM) \citep{Brady_Bossis1988, Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few.
+
+
 
 %===============================================================================
-\chapter{Conclusions and outlook}
+\chapter{Summary}
 %===============================================================================
-%
+
+
+
+
 
 
 %%===============================================================================
