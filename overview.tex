@@ -47,22 +47,76 @@ In this chapter, we give a brief theoretical background of the topics studied.
 
 mention the abuse of terms between droplets and particles.
 
+The incompressible Navier-Stokes equation
+\begin{subequations}
+ \begin{equation}
+   \nabla \cdot {\bm u} = 0,
+  \label{eq:div-free}
+ \end{equation}
+ \begin{equation}
+   \rho \bigg(\frac{\partial {\bm u}}{\partial t} + {\bm u} \cdot \nabla {\bm u} \bigg) = -\nabla p + \mu \nabla ^2  {\bm u} + {\bm f},
+  \label{eq:NS}
+ \end{equation}
+\end{subequations}
+governs the dynamics of Newtonian fluids (which is what we consider throughout the thesis).
+where...
+
+boundary conditions... between fluid and solid: continuity of the tangential velocity, \ie the no-slip condition (molecular slip ignored).
+with an interface... surface tension... free surface... a boundary condition for the stress (see \cite{Batchelor} Sec.\ 3.3).
+
+
+the Reynolds, Weber, and Froude numbers, defined as
+\begin{equation}
+  \begin{aligned}
+    Re = \frac{\tilde{\rho} \tilde{U} \tilde{L}}{\tilde{\mu}},\quad \quad We = \frac{\tilde{\rho} \tilde{U}^2 \tilde{L}}{\tilde{\sigma}},\quad \quad Fr=\frac{\tilde{U}^2}{\tilde{g}\tilde{L}},      
+  \label{eq:non-di-num}    
+  \end{aligned}
+\end{equation}
+\noindent where $\tilde{U}$, $\tilde{L}$, $\tilde{\rho_1}$, $\tilde{\mu_1}$, and $\tilde{g}$ denote the reference dimensional velocity, length, density, dynamic viscosity, and gravitational acceleration. Note that $\rho_1=1$ and $\mu_1=1$ (i.e.\ we define fluid 1 as the reference fluid).
+Perhaps also mention the Stouhal number.
+
+
 
 %-------------------------------------------------------------------------------
 
 \section{Stokes flow and its symmetries}
 
-small Reynolds number,
-linearity,
-reversibility,
-minimum dissipation theorem,
-Lorentz reciprocal theorem.
+When small Reynolds number, Eq.\ \eqref{eq:NS} reduces to the Stokes equation,
+\begin{equation}
+   -\nabla p + \mu \nabla ^2  {\bm u} + {\bm f} = {\bm 0},
+ \label{eq:Stokes}
+\end{equation}
+or, equivalently
+\begin{equation}
+   \nabla \cdot  {\bm \sigma} + {\bm f} = {\bm 0},
+ \label{eq:Stokes1}
+\end{equation}
+where...
+
+Stokes flow has the following symmetries and properties.
+\begin{enumerate}
+ \item \emph{Linearity}, which renders the applicability of superposition principle. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
+ \item \emph{Reversibility}, which follows from the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, then the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. Note that, the simple reversibility symmetry can be very useful in deducing qualitative results without doing any calulation, see \eg the much celebrated note of \cite{Purcell1977}
+ \item \emph{Stress equilibrium}, which states that any force exerted within the fluid is transmitted instantaneously to the boundary or, if there is no boundary, to infinity \citep{graham_2018}.
+ \item \emph{Lorentz reciprocal relation}, which relates two solutions, $({\bm u}', {\bm \sigma}')$ and $({\bm u}'', {\bm \sigma}'')$ (they may differ by boundary conditions), of the Stokes equation by,
+ \begin{equation}
+  \small
+  \begin{aligned}
+   \int_V \bigg({\bm u}' \cdot (\nabla  \cdot {\bm \sigma}'') - {\bm u}'' \cdot (\nabla  \cdot {\bm \sigma}')\bigg) dV  & =\\
+   \int_S \bigg({\bm u}' \cdot ({\bm n} \cdot {\bm \sigma}'') - {\bm u}'' \cdot ({\bm n} \cdot {\bm \sigma}')\bigg) dS, & 
+  \end{aligned} \label{eq:lorentz-recip}
+ \end{equation}
+ where $V$ is some enclosed volume with surface $S$.
+ \item \emph{Minimum dissipation principle}, which is a variational principle that asserts that the flow that minimizes energy dissipation rate subject to incompressibility and certain boundary conditions is the Stokes flow in that geometry.
+\end{enumerate}
 
 
 \section{Single particle in Stokes flow}
 
 Green's function (Stoekslet),
+stresslet (symmetric and traceless),
 scaling laws (decay),
+Fax\'{e}n's law,
 confinement,
 multipole expansion,
 boundary integral methods.
@@ -120,13 +174,18 @@ immersed boundary methods.
 The central equation to solve is
 \begin{equation} 
  \begin{aligned} \label{eq:force-balance}
-  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^p, 
+  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^P, 
  \end{aligned}
 \end{equation}
-where ${\bm m}$ is a generalized mass/moment-of-inertia matrix of dimension $6N \times 6N$, ...
-Brownian motions are neglected.
+where ${\bm m}$ is a generalized mass/moment-of-inertia matrix of dimension $6N \times 6N$,
+${\bm U}$ is the particle translational/rotational velocity vector of dimension $6N$,
+and ${\bm F}$ represent the $6N$ force/torque vectors owing to hydrodynamics (denoted with superscript $\footnotesize H$) or other interactions (denoted with superscript $\footnotesize P$). Specifically, ${\bm F}^P$ may include contact, electrostatic, van der Waars, or magnetic forces, \etc. In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that fluctuation-dissipation theorem is satified. In the present thesis, Brownian motions are neglected.
 
-The Stokesian dynamics formulate the problem as
+For inertialess particles in Stokes flow, the task is to solve Eq.\ \eqref{eq:force-balance} subject to ${\bm m} \cdot (d{\bm U}/dt) \to 0$. Various techniques exist as summarized below.
+
+\subsection{Stokesian dynamics}
+
+The Stokesian dynamics \citep{Brady_Bossis1988} employs the fact that, when the particle Reynolds number is small and the bulk flow is linear, the hydrodynamic forces and stresses exerted on the particles by the fluid can be expressed as
 \begin{equation} 
  \begin{aligned} \label{eq:sd-hydro}
   \begin{pmatrix}
@@ -150,7 +209,11 @@ where
   \end{pmatrix},
  \end{aligned}
 \end{equation}
-is the ``grand resistance'' matrix. It is calculated as
+is termed the ``grand resistance'' matrix. 
+If $\mathscr{R}$ is known, 
+formulate the problem as
+
+It is calculated as
 \begin{equation} 
  \begin{aligned}
   \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty.
@@ -158,12 +221,18 @@ is the ``grand resistance'' matrix. It is calculated as
 \end{equation}          
 Es.\ \eqref{eq:sd-hydro} is then inverted and integrated in time to obtain the dynamics.
 
-dissipative particle dynamics methods,
-discrete element methods,
-the discrete-element lubrication/contact dynamics (DLCD) model.
+
+\subsection{Dissipative particle dynamics}
+
+dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}
 
 
-In the context of rheology and soft condensed matter, some of the numerical models that have been developed include molecular dynamics (MD) \citep{Alder_Wainwright_1959,Verlet1967}, dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}, and discrete element methods (DEM) \citep{Brady_Bossis1988, Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few.
+\subsection{Discrete element methods}
+
+
+discrete element methods (DEM) \citep{Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few.
+ the discrete-element lubrication/contact dynamics (DLCD) model.
+
 
 
 
