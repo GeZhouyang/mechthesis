@@ -1,19 +1,19 @@
 %------------------------------------------------------------------------------
 % Define title, author(s), affiliation and publishing status
 %
-\papertitle[DLCM for dense particle suspensions] % Short title used in healines (optional)
+\papertitle[Note of DLCD for dense suspensions] % Short title used in healines (optional)
 {%
- A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
+ Implementation note on a minimal discrete-element lubrication/contact dynamics model for dense suspensions% THE COMMENT SYMBOL AT THE END OF THIS LINE IS NEEDED
 }%
 %
-\papertoctitle{A discrete-element lubrication/contact dynamics model for simulation of dense particle suspensions in shear flows} % Title for toc
+\papertoctitle{Implementation note on a minimal discrete-element lubrication/contact dynamics model for dense \\suspensions} % Title for toc
 %
-\paperauthor[Ge, Tammisola, Brandt] % Short authors used in headlines and List Of Papers
+\paperauthor[Ge \& Brandt] % Short authors used in headlines and List Of Papers
 {%
-  Zhouyang Ge, Outi Tammisola, Luca Brandt%
+  Zhouyang Ge \& Luca Brandt%
 }%
 %
-\listpaperauthor{Z. Ge, O. Tammisola, L. Brandt}% (optional) Short authors used in List Of Papers
+\listpaperauthor{Z. Ge, L. Brandt}% (optional) Short authors used in List Of Papers
 %
 \paperaffiliation
 {%
@@ -35,7 +35,7 @@
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-   This report documents the implementation detail of a discrete-element lubrication/contact dynamics model (DLCM) intended for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, and solves directly the particle dynamics in the overdamped limit by balancing conservative and dissipative interactions at the pair level. Potential limitations include omissions of fluid/particle inertia and long-range hydrodynamic interactions. The implementation has been tested for $\mathcal{O}(10^3)$ particles under volume fractions from 45\% to 65\%, showing continuous and discontinuous shear thickening that are in excellent agreement with literature results.
+   This report documents the implementation detail of a minimal discrete-element lubrication/contact dynamics (DLCD) model intended for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, and solves directly the particle dynamics in the overdamped limit by balancing conservative and dissipative interactions at the pair level. Potential limitations include omissions of fluid/particle inertia and long-range hydrodynamic interactions. The implementation has been tested for $200\sim 500$ particles under volume fractions from 40\% to 64\%, showing jamming transition, continuous and discontinuous shear thickening that are in excellent agreement with literature results.
 }%
 %
 \graphicspath{{paper7/}}%
@@ -54,7 +54,7 @@
 %------------------------------------------------------------------------------
 %
 \begin{paperabstract}
-	A discrete-element lubrication/contact dynamics model (DLCM) is implemented for simulation of dense particle suspensions in shear flows. The method is meshless, explicit, solves directly the particle dynamics in the overdamped limit, and is suitable for particles under quasi-static motion determined by balancing conservative and dissipative interactions at the pair level. Comparing to Stokesian dynamics models, the present method neglects long-range hydrodynamic interactions but admits the particle contact and friction, hence is computationally more efficient at high concentrations. Up to $\mathcal{O}(10^3)$ particles under volume fractions from 45\% to 65\% have been tested and compared with literature results, showing continuous and discontinuous shear thickening behaviours, thus verifying the implementation. We also extend the methodology to non-spherical particles using an approximate form of the hydrodynamic forces and the GJK algorithm for collision detection. The proposed model is straight-forward to implement and can be used to study the shear jamming and other complex rheologies of suspension flows.
+	We describe and summarize a class of minimal numerical models emerged from recent development of simulation methods for dense particle suspensions in overdamped linear flows. The main ingredients include (i) a frame-invariant, short-range lubrication model for spherical particles, and (ii) a soft-core, stick/slide frictional contact model activated when particles overlap. We implement a version of the model using a modified velocity-Verlet algorithm that explicitly solves the $N$-body dynamical system in $\mathcal{O}(cN)$ operations, where $c$ is a kernel constant depending on the cutoff of particle interactions. The implementation is validated against literature results on jamming transition and shear thickening suspensions from 40\% to 64\% volume fractions. Potential strategies to extend the present methodology to non-spherical particles are also suggested for very concentrated suspensions.
 
 \end{paperabstract}
 
