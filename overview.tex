@@ -43,9 +43,9 @@ shear thickening.
 %===============================================================================
 
 
-This chapter summarizes the mathematical formulation and some basic theoretical ideas of microhydrodynamics and particle interactions.
+This chapter summarizes the mathematical formulation and basic theoretical ideas of microhydrodynamics and particle interactions.
 By \emph{particle}, we loosely mean a solid or liquid body of micron to millimetre in size, which may also be referred to as \emph{droplet} for abuse of language.
-As preliminaries, most of the contents are given without elaboration or proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, graham_2018} for greater details.
+As preliminaries, most of the contents are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, graham_2018} for greater details.
 
 \bigskip
 
@@ -69,7 +69,7 @@ Eq.\ \eqref{eq:Navier-Sotkes}, together with appropiate boundary conditions, gov
 \end{equation}
 where $\bm \sigma$ is the stress tensor, and $\bm I$ the identity matrix.
 
-Depending on the bounding material, conditions on the velocity or stress may be prescribed as the boundary condition. In the case of a solid boundary, it is usually the \emph{no-slip} velocity condition; while in the case of a liquid boundary, the following stress condition shall be satisfied,
+Depending on the bounding material, conditions on the velocity or stress may be prescribed as the boundary condition. In the case of a solid wall, it is usually the \emph{no-slip} velocity condition; while in the case of a liquid interface, the following stress condition shall be satisfied,
 \begin{equation} \label{eq:stress-bc}
   {\bm n} \cdot ({\bm \sigma}_+ - {\bm \sigma}_- )  = \gamma \kappa {\bm n} - \nabla \gamma,
 \end{equation}
@@ -116,12 +116,12 @@ Physically, the Stokes equation describes systems that are characterized by smal
 For instance, the Reynolds number based on a 10 $\mu$m droplet traveling at a speed of 10 $\mu$m/s in water ($\rho=10^3$ kg/m$^{3}$, $\mu=10^{-3}$ Pa$\cdot$s) is $10^{-4}$;
 and if there is no imposed frequency, the Strouhal number will be 1, thus both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
 
-Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} can dramatically simplify the solution.
+Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} dramatically simplifies the solution.
 In general, the Stokes flow has the following symmetries and properties.
 
 \begin{enumerate}
- \item \emph{Linearity}, which makes solutions to the Stokes equation superimposible. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
- \item \emph{Reversibility}, which follows from the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, then the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. While seemingly redundant, the reversibility symmetry can be very powerful in making \emph{reductio ad absurdum} type-of arguments, see \eg the classical note of \cite{Purcell1977}
+ \item \emph{Linearity}. This immediately renders the superposition principle applicable. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
+ \item \emph{Reversibility}, or \emph{time reversal symmetry}. This is a consequence of the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. While seemingly redundant, the reversibility symmetry can be very powerful in making \emph{reductio ad absurdum} type-of arguments, see \eg the classical note of \cite{Purcell1977}
  \item \emph{Stress equilibrium}, which states that any force exerted within the fluid is transmitted instantaneously to the boundary or, if there is no boundary, to infinity \citep{graham_2018}.
  \item \emph{Lorentz reciprocal identity}, which relates two solutions, $({\bm u}', {\bm \sigma}')$ and $({\bm u}'', {\bm \sigma}'')$ (they may differ by boundary conditions), of the Stokes equation by,
  \begin{equation}
@@ -132,13 +132,21 @@ In general, the Stokes flow has the following symmetries and properties.
   \end{aligned} \label{eq:lorentz-recip}
  \end{equation}
  where $V$ is some enclosed volume with surface $S$.
- \item \emph{Minimum dissipation principle}, which is a variational principle that asserts that the flow that minimizes the energy dissipation rate subject to incompressibility under certain boundary conditions is the Stokes flow under the same boundary conditions.
+ \item \emph{Minimum dissipation principle}. This variational principle asserts that the flow minimizing the energy dissipation rate subject to incompressibility under certain boundary conditions is the Stokes flow under the same boundary conditions.
 \end{enumerate}
 
 
 \section{Single particle in Stokes flow}
 
-Green's function (Stoekslet),
+If $\bm f$ in Eq.\ \eqref{eq:Stokes} is a point force exerted at position ${\bm x}_0$, \ie ${\bm f}=\delta({\bm x}-{\bm x}_0)$, the solution of the Stokes equation in unbounded domain reads,
+\begin{equation}
+ \begin{aligned}
+   {\bm u}({\bm x}) = {\bm G}({\bm r}) \cdot {\bm F},
+ \end{aligned}
+\end{equation}
+where ${\bm r}={\bm x}-{\bm x}_0$ and 
+The free-space Green's function: the Stoekslet,
+
 stresslet (symmetric and traceless),
 scaling laws (decay),
 Fax\'{e}n's law,
