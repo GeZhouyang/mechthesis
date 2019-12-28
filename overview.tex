@@ -120,8 +120,8 @@ Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} dramatic
 In general, the Stokes flow has the following symmetries and properties.
 
 \begin{enumerate}
- \item \emph{Linearity}. This immediately renders the superposition principle applicable. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
- \item \emph{Reversibility}, or \emph{time reversal symmetry}. This is a consequence of the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. While seemingly redundant, the reversibility symmetry can be very powerful in making \emph{reductio ad absurdum} type-of arguments, see \eg the classical note of \cite{Purcell1977}
+ \item \emph{Linearity}, which makes analytical solutions possible in simple cases, and the superposition principle applicable. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
+ \item \emph{Reversibility}, or \emph{time reversal symmetry}. This is a consequence of the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. While seemingly redundant, the reversibility symmetry can be very powerful in making \emph{reductio ad absurdum} type-of arguments, see \eg the classical note of \cite{Purcell1977}.
  \item \emph{Stress equilibrium}, which states that any force exerted within the fluid is transmitted instantaneously to the boundary or, if there is no boundary, to infinity \citep{graham_2018}.
  \item \emph{Lorentz reciprocal identity}, which relates two solutions, $({\bm u}', {\bm \sigma}')$ and $({\bm u}'', {\bm \sigma}'')$ (they may differ by boundary conditions), of the Stokes equation by,
  \begin{equation}
@@ -136,23 +136,80 @@ In general, the Stokes flow has the following symmetries and properties.
 \end{enumerate}
 
 
-\section{Single particle in Stokes flow}
+\section{Single particle in unbounded Stokes flows}
 
-If $\bm f$ in Eq.\ \eqref{eq:Stokes} is a point force exerted at position ${\bm x}_0$, \ie ${\bm f}=\delta({\bm x}-{\bm x}_0)$, the solution of the Stokes equation in unbounded domain reads,
-\begin{equation}
+When particles are present in the fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Therefore, theoretical analyses are usually limited to simplified or idealized conditions. Below, we try to gain some intuitions by considering the simplest case, \ie a single particle in unbounded Stokes flows.
+
+Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta. This can correspond to a small sedimenting particle viewed from a distance. Then the solution of the Stokes equation due to this forcing can be written as
+\begin{equation} \label{eq:stokes-green}
  \begin{aligned}
-   {\bm u}({\bm x}) = {\bm G}({\bm r}) \cdot {\bm F},
+   {\bm u}({\bm x}) = {\bm G}({\bm x}) \cdot {\bm F},
  \end{aligned}
 \end{equation}
-where ${\bm r}={\bm x}-{\bm x}_0$ and 
-The free-space Green's function: the Stoekslet,
+where  
+\begin{equation}
+ \begin{aligned}
+   {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm r}{\bm r} }{ \abs{{\bm x}}^3 } \bigg),
+ \end{aligned}
+\end{equation}
+is the free-space Green's function, also known as the \emph{Stokeslet}.
 
-stresslet (symmetric and traceless),
-scaling laws (decay),
-Fax\'{e}n's law,
-confinement,
-multipole expansion,
-boundary integral methods.
+Now, if the particle has a finite radius $a$ and the background fluid has a linear velocity ${\bm u}^\infty$ in the absence of the particle, we can perform a Taylor expansion of $\bm G$ and integrate Eq.\ \eqref{eq:stokes-green} over the particle surface to obtain a solution of the following form (in index notation)
+\footnote{In this simplified example, we require the point ${\bm x}$ to be far from the particle so that the terms involving the Green's function can be taken outside the integral, see \cite{graham_2018}.}
+\begin{equation} \label{eq:multipole}
+ \begin{aligned}
+   {u}_i({\bm x})-{u}_i^\infty({\bm x}) = -{G}_{ij}({\bm x}) {F}_j^{d} + \frac{\partial G_{ij}}{\partial x_l}({\bm x}) {D}_{jl} +
+   \mathcal{O}\bigg(\frac{a^3}{\abs{{\bm x}}^3}\bigg),
+ \end{aligned}
+\end{equation}
+where ${\bm F}^{d}$ denotes the total drag force exerted on the particle by the fluid, and ${\bm D}$ is an integral expression representing the force dipole.
+%\begin{equation} 
+% \begin{aligned}
+%   {D}_{jl} = \int_{S_p} x'_l n_k \sigma_{kj}({\bm x}') dS({\bm x}').
+% \end{aligned}
+%\end{equation}
+For purposes of analytical calculations, it is customary to decompose ${\bm D}$ into a traceless symmetric part ${\bm S}$, called the \emph{stresslet}, and an antisymmetric part ${\bm R}$, called the \emph{rotlet}, \viz
+\begin{subequations}
+ \begin{equation}
+   {\bm S} = {\bm D}^S - \frac{1}{3} \Tr({\bm D}) {\bm I},
+ \end{equation}
+ \begin{equation}
+  {\bm R} = {\bm D}^A.
+ \end{equation}
+\end{subequations}
+The second term on the right-hand side of Eq.\ \eqref{eq:multipole} can then be expressed as
+\begin{equation} 
+ \begin{aligned}
+   \frac{\partial G_{ij}}{\partial x_l}({\bm x}) {D}_{jl} = T_{lij}^{STR}({\bm x}) S_{jl} + T_{lij}^{ROT}({\bm x}) R_{jl},
+ \end{aligned}
+\end{equation}
+where
+\begin{subequations}
+ \begin{equation}
+   T_{jik}^{STR}({\bm x}) = -\frac{1}{8\pi\mu} \frac{3x_i x_j x_k}{\abs{{\bm x}}^5},
+ \end{equation}
+ \begin{equation}
+   T_{jik}^{ROT}({\bm x}) = -\frac{1}{8\pi\mu} \frac{\delta_{ik} x_j - \delta_{ij} x_k}{\abs{{\bm x}}^3}.
+ \end{equation}
+\end{subequations}
+
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away.
+
+Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the Fax\'{e}n's laws,
+\begin{subequations} \label{eq:faxen}
+ \begin{equation}
+   {\bm F}^{d} = 6\pi\mu a\bigg( (1+\frac{a^2}{6}\nabla^2){\bm u^\infty - {\bm U}} \bigg) ,
+ \end{equation}
+ \begin{equation}
+  {\bm T}^{d} = 8\pi\mu a^3 ({\bm \omega}^\infty - {\bm \Omega}),
+ \end{equation}
+ \begin{equation}
+   {\bm S} = \frac{20}{3}\pi\mu a^3 \bigg( 1+\frac{a^2}{10}\nabla^2 \bigg) {\bm E}^\infty ,
+ \end{equation}
+\end{subequations}
+where ${\bm E}^\infty$ is the rate-of-strain tensor \citep{Batchelor}.
+
+%boundary integral methods.
 
 
 \section{Particle interactions}
@@ -163,6 +220,7 @@ dancing,
 range of interactions,
 dipolar theory,
 lubrication approximation.
+confinement (as another particle)
 
 
 \section{Rheology}
