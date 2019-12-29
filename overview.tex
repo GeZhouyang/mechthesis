@@ -151,7 +151,7 @@ Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supp
 where  
 \begin{equation}
  \begin{aligned}
-   {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm r}{\bm r} }{ \abs{{\bm x}}^3 } \bigg),
+   {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm x}{\bm x} }{ \abs{{\bm x}}^3 } \bigg),
  \end{aligned}
 \end{equation}
 is the free-space Green's function, also known as the \emph{Stokeslet}.
@@ -163,7 +163,7 @@ Now, if the particle has a finite radius $a$ and the background fluid has a line
    \mathcal{O}\bigg(\frac{a^3}{\abs{{\bm x}}^3}\bigg),
  \end{aligned}
 \end{equation}
-where ${\bm F}^{d}$ denotes the total drag force exerted on the particle by the fluid, and ${\bm D}$ is an integral expression representing the force dipole.
+where ${\bm F}^{d}$ denotes the total drag force exerted on the particle by the fluid, and ${\bm D}$ is an integral expression representing a force dipole ($\sim {\bm F}{\bm h}$, $\bm h$ being a separation vector).
 %\begin{equation} 
 % \begin{aligned}
 %   {D}_{jl} = \int_{S_p} x'_l n_k \sigma_{kj}({\bm x}') dS({\bm x}').
@@ -189,24 +189,24 @@ The second term on the right-hand side of Eq.\ \eqref{eq:multipole} can then be 
 where
 \begin{subequations}
  \begin{equation}
-   T_{jik}^{STR}({\bm x}) = -\frac{1}{8\pi\mu} \frac{3x_i x_j x_k}{\abs{{\bm x}}^5},
+   T_{ijk}^{STR}({\bm x}) = -\frac{1}{8\pi\mu} \frac{3x_i x_j x_k}{\abs{{\bm x}}^5},
  \end{equation}
  \begin{equation}
-   T_{jik}^{ROT}({\bm x}) = -\frac{1}{8\pi\mu} \frac{\delta_{ik} x_j - \delta_{ij} x_k}{\abs{{\bm x}}^3}.
+   T_{ijk}^{ROT}({\bm x}) = -\frac{1}{8\pi\mu} \frac{\delta_{jk} x_i - \delta_{ij} x_k}{\abs{{\bm x}}^3}.
  \end{equation}
 \end{subequations}
 
-Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away, where $r=\abs{{\bm x}}$. See Figure \ref{fig:lets} for an illustration.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/\abs{\bm x}$, while a force-free particle (\eg a self-propelled bacterium) has a $1/\abs{\bm x}^2$ decay thus leaving less trace at the same distance away. See Figure \ref{fig:lets} for an illustration.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
 
 \begin{figure}%[t]
   \centering
-  \includegraphics[width=0.49\columnwidth]{stokeslet.pdf}
-  \includegraphics[width=0.49\columnwidth]{stresslet.pdf}
-  \caption{Flow fields due a Stokeslet (left) and a stresslet (right) centered at the origin (red dot). The black arrows display the velocities with their directions indicated by the gray arrows. Note the symmetries and the difference in velocity magnitudes of the two flows.}
+  \includegraphics[width=0.49\columnwidth]{stokeslet1.pdf}
+  \includegraphics[width=0.49\columnwidth]{stresslet1.pdf}
+  \caption{Flow fields due a Stokeslet (left) and a stresslet (right) centered at the origin (red dot). The black arrows display the velocities, while their directions are also indicated by the gray arrows. The flow fields are both axi- and fore-aft symmetric. Note the difference in the velocity magnitude of the two flows.}
   \label{fig:lets}
 \end{figure}
 
-Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the \emph{Fax\'{e}n's laws},
+Finally, for a sphere of radius $a$, translating with velocity $\bm U$ and rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the \emph{Fax\'{e}n's laws},
 \begin{subequations} \label{eq:faxen}
  \begin{equation}
    {\bm F}^{d} = 6\pi\mu a\bigg( (1+\frac{a^2}{6}\nabla^2){\bm u^\infty - {\bm U}} \bigg) ,
@@ -223,18 +223,32 @@ where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)
 %boundary integral methods.
 
 
-\section{Particle interactions}
+\section{Droplet interactions}
 
-Batchelor and Green (1972),
-swapping,
-dancing,
-range of interactions,
-dipolar theory,
+In practical situations it is seldom the case droplets or particles remain in isolation. They interact with each other through hydrodynamic forces or other applied or physico-chemical interactions. 
+
+First let's consider the simplest interaction. Two particles in unbounded linear Stokes flows. Here, linear means ...
+\cite{batchelor_green_1972} worked out this case. put their figure here (or a nice one online).
+Two modes of interaction: open trajectory (passing) or closed trajectory (rotating).
+
+\cite{Zinchenko1983,Zinchenko1984} showed similar cases for liquid droplets.
+
+With a distant wall, we show possibility of a stationary position.
+Also dancing and swapping (\emph{Paper 4}). figure.
+Here the wall can be considered as the third particle.
+
+With two walls, \cite{zurita-gotor_2007}
+swapping.
+We also show static pair under depletion force (\emph{Paper 2}).
+
+even more confined:
+dipolar theory \citep{Cui2004,Beatus2006,Janssen2012,Uspal2013,Desreumaux,zhu_gallaire_2016,q2d_Beatus,Diamant},
 lubrication approximation.
-confinement (as another particle)
+
+range of interactions,
 
 
-\section{Rheology}
+\section{Suspension rheology}
 
 microstructure,
 many-body problems (theoretical difficulties),
