@@ -43,13 +43,13 @@ shear thickening.
 %===============================================================================
 
 
-This chapter summarizes the mathematical formulation and basic theoretical ideas of microhydrodynamics and particle interactions.
+This chapter summarizes the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
 By \emph{particle}, we loosely mean a solid or liquid body of micron to millimetre in size, which may also be referred to as \emph{droplet} for abuse of language.
-As preliminaries, most of the contents are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, graham_2018} for greater details.
+As preliminaries, most of the contents below are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, graham_2018} for greater details.
 
 \bigskip
 
-To begin with, recall the incompressible Navier-Stokes equation
+To begin with, recall the incompressible \emph{Navier-Stokes equations}
 \begin{subequations} \label{eq:Navier-Sotkes}
  \begin{equation}
    \nabla \cdot {\bm u} = 0,
@@ -61,7 +61,7 @@ To begin with, recall the incompressible Navier-Stokes equation
  \end{equation}
 \end{subequations}
 relating the flow velocity $\bm u$ with the pressure $p$ in the presence of some force density $\bm f$, where $\rho$ and $\mu$ are the density and dynamic viscosity of the fluid, respectively.
-Eq.\ \eqref{eq:Navier-Sotkes}, together with appropiate boundary conditions, governs the dynamics of a Newtonian fluid (which is what we consider throughout the thesis) that satisfies
+Eqs.\ \eqref{eq:Navier-Sotkes}, together with appropriate boundary conditions, govern the dynamics of a Newtonian fluid that satisfies\footnote{The present thesis only concerns the Newtonian fluid as the solvent, though a particle suspension may exhbit non-Newtonian behaviours as we will see.}
 \begin{equation}
  \begin{aligned}
    {\bm \sigma} = -p {\bm I}+ \mu \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg),
@@ -69,11 +69,11 @@ Eq.\ \eqref{eq:Navier-Sotkes}, together with appropiate boundary conditions, gov
 \end{equation}
 where $\bm \sigma$ is the stress tensor, and $\bm I$ the identity matrix.
 
-Depending on the bounding material, conditions on the velocity or stress may be prescribed as the boundary condition. In the case of a solid wall, it is usually the \emph{no-slip} velocity condition; while in the case of a liquid interface, the following stress condition shall be satisfied,
+Depending on the bounding material, conditions on the velocity or stress may be prescribed as boundary conditions. In the case of a solid wall, it is usually the \emph{no-slip} velocity condition; while in the case of a liquid interface, the following stress condition shall be satisfied,
 \begin{equation} \label{eq:stress-bc}
   {\bm n} \cdot ({\bm \sigma}_+ - {\bm \sigma}_- )  = \gamma \kappa {\bm n} - \nabla \gamma,
 \end{equation}
-where $\bm n$ denotes the unit normal vector across the liquid interface (from $-$ to $+$), $\gamma$ the surface tension coefficent, and $\kappa$ the curvature of the interface (\eg $\kappa=2/a$ for a sphere of radius $a$). 
+where $\bm n$ denotes the unit normal vector across the liquid interface (from the $-$ side to the $+$ side), $\gamma$ the surface tension coefficient, and $\kappa$ the curvature of the interface (\eg $\kappa=2/a$ for a sphere of radius $a$). 
 
 Eq.\ \eqref{eq:NS} can be further non-dimensionalized, using the reference length $L$, velocity $U$, time $T$, pressure $P \equiv \mu U/L$, and force density $F \equiv P/L$ scales, into
 \begin{equation}
@@ -81,7 +81,7 @@ Eq.\ \eqref{eq:NS} can be further non-dimensionalized, using the reference lengt
    -\hat{\nabla} \hat{p} + \hat{\nabla} ^2  \hat{\bm u} + \hat{\bm f},
   \label{eq:NS-nondi}
 \end{equation}
-where the hat signifies dimensionless quantities, and Re and Sr represent the Reynolds and Strouhal numbers, defined as
+where the hat signifies dimensionless quantities, and Re and Sr represent the \emph{Reynolds} and \emph{Strouhal} numbers, defined as
 \begin{equation}
   \begin{aligned}
     \textrm{Re} = \frac{\rho UL}{\mu},\quad \quad \textrm{Sr} = \frac{UT}{L}.
@@ -100,7 +100,7 @@ A capilary number can also be defined to non-dimensionalize the surface tension,
 
 \section{Stokes flow and its symmetries}
 
-When both Re and ReSr$^{-1}$ are small, Eq.\ \eqref{eq:NS-nondi} reduces to the Stokes equation,
+When both Re and ReSr$^{-1}$ are small, Eq.\ \eqref{eq:NS-nondi} reduces to the \emph{Stokes equation},
 \begin{equation}
    -\nabla p + \mu \nabla ^2  {\bm u} + {\bm f} = {\bm 0},
  \label{eq:Stokes}
@@ -110,17 +110,18 @@ or, equivalently
    \nabla \cdot  {\bm \sigma} + {\bm f} = {\bm 0},
  \label{eq:Stokes1}
 \end{equation}
-which are written in the dimensional form.
+which we write in the dimensional form.
 
-Physically, the Stokes equation describes systems that are characterized by small length scales or are in slow motions typically encountered in microfluidic or biological applications.
+Physically, the Stokes equation describes systems that are characterized by small length scales or are in slow motions, which are typically encountered in microfluidic or biological applications.
 For instance, the Reynolds number based on a 10 $\mu$m droplet traveling at a speed of 10 $\mu$m/s in water ($\rho=10^3$ kg/m$^{3}$, $\mu=10^{-3}$ Pa$\cdot$s) is $10^{-4}$;
-and if there is no imposed frequency, the Strouhal number will be 1, thus both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
+and if there is no imposed frequency, the Strouhal number will be 1.
+Clearly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
 
 Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} dramatically simplifies the solution.
 In general, the Stokes flow has the following symmetries and properties.
 
 \begin{enumerate}
- \item \emph{Linearity}, which makes analytical solutions possible in simple cases, and the superposition principle applicable. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
+ \item \emph{Linearity}, which makes analytical solutions possible in simple cases and the superposition principle applicable in general. For example, if $({\bm u}_1,p_1)$ is a solution to ${\bm f}={\bm f}_1$ and $({\bm u}_2,p_2)$ is a solution to ${\bm f}={\bm f}_2$, then $(\alpha{\bm u}_1+\beta {\bm u}_2,\alpha p_1 + \beta p_2)$ is a solution to ${\bm f}=\alpha{\bm f}_1 + \beta {\bm f}_2$.
  \item \emph{Reversibility}, or \emph{time reversal symmetry}. This is a consequence of the linearity and entails that, if the forcing changes from ${\bm f}$ to $-{\bm f}$, the flow should reverse, \ie $({\bm u},p) \to (-{\bm u},-p)$. While seemingly redundant, the reversibility symmetry can be very powerful in making \emph{reductio ad absurdum} type-of arguments, see \eg the classical note of \cite{Purcell1977}.
  \item \emph{Stress equilibrium}, which states that any force exerted within the fluid is transmitted instantaneously to the boundary or, if there is no boundary, to infinity \citep{graham_2018}.
  \item \emph{Lorentz reciprocal identity}, which relates two solutions, $({\bm u}', {\bm \sigma}')$ and $({\bm u}'', {\bm \sigma}'')$ (they may differ by boundary conditions), of the Stokes equation by,
@@ -138,9 +139,10 @@ In general, the Stokes flow has the following symmetries and properties.
 
 \section{Single particle in unbounded Stokes flows}
 
-When particles are present in the fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Therefore, theoretical analyses are usually limited to simplified or idealized conditions. Below, we try to gain some intuitions by considering the simplest case, \ie a single particle in unbounded Stokes flows.
+When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in simplified conditions, an analytical solution often provides us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in the simplest condition, \ie a single particle in unbounded Stokes flows.
 
-Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta. This can correspond to a small sedimenting particle viewed from a distance. Then the solution of the Stokes equation due to this forcing can be written as
+\bigskip
+Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta, which might be a reasonable approximation to a small sedimenting particle viewed from a distance. Then, the solution of the Stokes equation due to this forcing can be written as
 \begin{equation} \label{eq:stokes-green}
  \begin{aligned}
    {\bm u}({\bm x}) = {\bm G}({\bm x}) \cdot {\bm F},
@@ -154,8 +156,7 @@ where
 \end{equation}
 is the free-space Green's function, also known as the \emph{Stokeslet}.
 
-Now, if the particle has a finite radius $a$ and the background fluid has a linear velocity ${\bm u}^\infty$ in the absence of the particle, we can perform a Taylor expansion of $\bm G$ and integrate Eq.\ \eqref{eq:stokes-green} over the particle surface to obtain a solution of the following form (in index notation)
-\footnote{In this simplified example, we require the point ${\bm x}$ to be far from the particle so that the terms involving the Green's function can be taken outside the integral, see \cite{graham_2018}.}
+Now, if the particle has a finite radius $a$ and the background fluid has a linear velocity ${\bm u}^\infty$ in the absence of the particle, we can perform a Taylor expansion of $\bm G$ and integrate Eq.\ \eqref{eq:stokes-green} over the particle surface to obtain a solution of the following form (in index notation)\footnote{In this simple example, we require the point ${\bm x}$ to be far from the particle so that the terms involving the Green's function can be taken outside the integral, see \cite{graham_2018}.}
 \begin{equation} \label{eq:multipole}
  \begin{aligned}
    {u}_i({\bm x})-{u}_i^\infty({\bm x}) = -{G}_{ij}({\bm x}) {F}_j^{d} + \frac{\partial G_{ij}}{\partial x_l}({\bm x}) {D}_{jl} +
@@ -193,9 +194,9 @@ where
  \end{equation}
 \end{subequations}
 
-Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away.
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away, where $r=\abs{{\bm x}}$. See Figure ? for illustration.
 
-Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the Fax\'{e}n's laws,
+Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the \emph{Fax\'{e}n's laws},
 \begin{subequations} \label{eq:faxen}
  \begin{equation}
    {\bm F}^{d} = 6\pi\mu a\bigg( (1+\frac{a^2}{6}\nabla^2){\bm u^\infty - {\bm U}} \bigg) ,
