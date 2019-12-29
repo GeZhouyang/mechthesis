@@ -175,9 +175,11 @@ For purposes of analytical calculations, it is customary to decompose ${\bm D}$ 
    {\bm S} = {\bm D}^S - \frac{1}{3} \Tr({\bm D}) {\bm I},
  \end{equation}
  \begin{equation}
-  {\bm R} = {\bm D}^A.
+  {\bm R} = {\bm D}^A,
  \end{equation}
 \end{subequations}
+where $D_{ij}^S=(D_{ij}+D_{ji})/2$ and $D_{ij}^A=(D_{ij}-D_{ji})/2$.
+
 The second term on the right-hand side of Eq.\ \eqref{eq:multipole} can then be expressed as
 \begin{equation} 
  \begin{aligned}
@@ -194,7 +196,15 @@ where
  \end{equation}
 \end{subequations}
 
-Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away, where $r=\abs{{\bm x}}$. See Figure ? for illustration.
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/r$, while a force-free particle (\eg a self-propelled bacterium) has a $1/r^2$ decay thus leaving less trace at the same distance away, where $r=\abs{{\bm x}}$. See Figure \ref{fig:lets} for an illustration.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.49\columnwidth]{stokeslet.pdf}
+  \includegraphics[width=0.49\columnwidth]{stresslet.pdf}
+  \caption{Flow fields due a Stokeslet (left) and a stresslet (right) centered at the origin (red dot). The black arrows display the velocities with their directions indicated by the gray arrows. Note the symmetries and the difference in velocity magnitudes of the two flows.}
+  \label{fig:lets}
+\end{figure}
 
 Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating with angular velocity $\bm \Omega$, its total drag, torque, and stresslet are given by the \emph{Fax\'{e}n's laws},
 \begin{subequations} \label{eq:faxen}
@@ -208,7 +218,7 @@ Finally, for a sphere of radius $a$, translating with velocity $\bm U$, rotating
    {\bm S} = \frac{20}{3}\pi\mu a^3 \bigg( 1+\frac{a^2}{10}\nabla^2 \bigg) {\bm E}^\infty ,
  \end{equation}
 \end{subequations}
-where ${\bm E}^\infty$ is the rate-of-strain tensor \citep{Batchelor}.
+where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)/2$ is the rate-of-strain tensor.
 
 %boundary integral methods.
 
