@@ -223,20 +223,21 @@ where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)
 
 \section{Droplet interactions in shear flows}
 
-The preceding section presents the most basic solutions of the Stokes flow when there is only one particle in the fluid.
+The preceding section presents the most basic solutions of the Stokes equation in the presence of only one particle.
 In practice, however, it is rarely the case particles or droplets exist in isolation.
-Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms giving rise to a multitude of phenomena in natural or artificial conditions.
+Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms, giving rise to a multitude of phenomena in natural or artificial conditions.
 For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
-To offer at least partial insights on the hydrodynamics, we highlight recent theoretical development of droplet interactions in bulk microflows, starting from the simplest case where two particles are immersed in unbounded simple shear flows.
+To offer at least some partial insights on the hydrodynamics, we highlight recent theoretical development of droplet interactions in bulk microflows, starting from the simplest case of two particles immersed in unbounded simple shear flows.
 
-Among the early studies of suspension flows, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary size ratio subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
+Among the early studies of suspension hydrodynamics, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary size ratio subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
 ${\bm u}^\infty \sim {\bm E}^\infty \cdot {\bm x} + {\bm \omega}^\infty \times {\bm x}$ as $\abs{{\bm x}} \to \infty$.
-The solution entails the relative velocity of the two sphere centers and the force dipole strengths of the two spheres (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several scalar parameters functions of their relative position and size ratio alone.
-In the special case where the two spheres are of equal size, the relative velocity can be integrated numerically to yield a trajectory map similar to Figure \ref{fig:BG-traj}.
+The solution entails the relative velocity of the two sphere centers and their force dipole strengths (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several geometric parameters functions of the spheres' relative position and size ratio.
+In the special case of two equal-sized spheres suspended in a simple shear flow, the relative velocity can be integrated numerically to yield a trajectory diagram as in Figure \ref{fig:BG-traj}.
 Here, two types of trajectories can be observed:
-(i) an \emph{open} trajectory where the faster particle overtakes the slower one, but afterwards, they never meet again; and
+(i) an \emph{open} trajectory where one particle approaches the other particle from one side, overtakes it, and continues in the same direction to infinity; and
 (ii) a \emph{closed} trajectory where two particles stay bound and rotate around each other permanently regardless of how far they may separate temporarily.
-It is interesting to note that, under such ideal conditions, the closed trajectory has an infinite volume; if the two particles are aligned in the flow direction at any time, they will stay bound.
+It was noted by the authors that, under such ideal conditions (\eg smooth surface), the separatrix between open and closed trajectories encloses an infinite volume.
+Furthermore, if the two particles are once aligned in the flow direction, they will form a closed loop.
 
 \begin{figure}%[t]
   \centering
@@ -245,7 +246,10 @@ It is interesting to note that, under such ideal conditions, the closed trajecto
   \label{fig:BG-traj}
 \end{figure}
 
-\cite{Zinchenko1983,Zinchenko1984} showed that essentially the same feature holds for liquid droplets.
+\cite{Zinchenko1983,Zinchenko1984} considered the problem when the two particles are ``fluid spheres''.
+Specifically, he calculated the scalar parameters introduced in \cite{batchelor_green_1972} for two identical droplets, and showed that they are functions of the relative position and viscosity ratio, $\lambda$, defined as the ratio between the droplet and the solvent viscosities.
+For $\lambda=$ 0.25 to 20, the trajectory map in simple shear flows has similar topological features to the case of rigid particles,\footnote{Different types of trajectories were also hypothesized, which may only exist in the case of liquid drops. See \cite{Zinchenko1984} for details.} \ie an open region and a closed region, though its asymptotic limit depends on the viscosity ratio and short-range non-hydrodynamic interactions, cf.\ the DLVO theory.
+
 
 With a distant wall, we show possibility of a stationary position.
 Also dancing and swapping (\emph{Paper 4}). figure.
@@ -254,7 +258,7 @@ note the fact that the rate is very slow, since the relative velocity is small.
 
 \begin{figure}%[t]
   \centering
-  \includegraphics[width=0.9\columnwidth]{itzhak-boris.pdf}
+  \includegraphics[width=\columnwidth]{itzhak-boris.pdf}
   \caption{Trajectory map of two equal spheres in ...}
   \label{fig:itzhak-boris}
 \end{figure}
@@ -268,8 +272,8 @@ We also show static pair under depletion force (\emph{Paper 2}).
 
 \begin{figure}%[t]
   \centering
-  \includegraphics[width=0.3\columnwidth]{shell1.png}
-  \includegraphics[width=0.6\columnwidth]{traj.pdf}
+  \includegraphics[width=0.32\columnwidth]{shell1.png}
+  \includegraphics[width=0.65\columnwidth]{traj.pdf}
   \caption{Trajectory map of two droplets in ...}
   \label{fig:shear-align}
 \end{figure}
