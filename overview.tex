@@ -45,7 +45,7 @@ shear thickening.
 
 This chapter summarizes the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
 By \emph{particle}, we loosely mean a solid or liquid body of micron to millimetre in size, which may also be referred to as \emph{droplet} for abuse of language.
-As preliminaries, most of the contents below are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, graham_2018} for greater details.
+As preliminaries, most of the contents below are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, kim_karrila, graham_2018} for greater details.
 
 \bigskip
 
@@ -139,7 +139,7 @@ In general, the Stokes flow has the following symmetries and properties.
 
 \section{Single particle in unbounded Stokes flows}
 
-When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in simplified conditions, an analytical solution often provides us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in the simplest condition, \ie a single particle in unbounded Stokes flows.
+When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in a simplified condition, an analytical solution can often provide us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in the simplest condition, \ie a single particle in unbounded Stokes flows.
 
 \bigskip
 Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta, which might be a reasonable approximation to a small sedimenting particle viewed from a distance. Then, the solution of the Stokes equation due to this forcing can be written as
@@ -196,7 +196,7 @@ where
  \end{equation}
 \end{subequations}
 
-Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/\abs{\bm x}$, while a force-free particle (\eg a self-propelled bacterium) has a $1/\abs{\bm x}^2$ decay thus leaving less trace at the same distance away. See Figure \ref{fig:lets} for an illustration.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/\abs{\bm x}$, while a force-free particle (\eg a self-propelled bacterium) has a $1/\abs{\bm x}^2$ decay thus leaving less trace at the same distance away. See Figure \ref{fig:lets} for illustrations.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
 
 \begin{figure}%[t]
   \centering
@@ -220,26 +220,59 @@ Finally, for a sphere of radius $a$, translating with velocity $\bm U$ and rotat
 \end{subequations}
 where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)/2$ is the rate-of-strain tensor.
 
-%boundary integral methods.
 
+\section{Droplet interactions in shear flows}
 
-\section{Droplet interactions}
+The preceding section presents the most basic solutions of the Stokes flow when there is only one particle in the fluid.
+In practice, however, it is rarely the case particles or droplets exist in isolation.
+Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms giving rise to a multitude of phenomena in natural or artificial conditions.
+For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
+To offer at least partial insights on the hydrodynamics, we highlight recent theoretical development of droplet interactions in bulk microflows, starting from the simplest case where two particles are immersed in unbounded simple shear flows.
 
-In practical situations it is seldom the case droplets or particles remain in isolation. They interact with each other through hydrodynamic forces or other applied or physico-chemical interactions. 
+Among the early studies of suspension flows, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary size ratio subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
+${\bm u}^\infty \sim {\bm E}^\infty \cdot {\bm x} + {\bm \omega}^\infty \times {\bm x}$ as $\abs{{\bm x}} \to \infty$.
+The solution entails the relative velocity of the two sphere centers and the force dipole strengths of the two spheres (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several scalar parameters functions of their relative position and size ratio alone.
+In the special case where the two spheres are of equal size, the relative velocity can be integrated numerically to yield a trajectory map similar to Figure \ref{fig:BG-traj}.
+Here, two types of trajectories can be observed:
+(i) an \emph{open} trajectory where the faster particle overtakes the slower one, but afterwards, they never meet again; and
+(ii) a \emph{closed} trajectory where two particles stay bound and rotate around each other permanently regardless of how far they may separate temporarily.
+It is interesting to note that, under such ideal conditions, the closed trajectory has an infinite volume; if the two particles are aligned in the flow direction at any time, they will stay bound.
 
-First let's consider the simplest interaction. Two particles in unbounded linear Stokes flows. Here, linear means ...
-\cite{batchelor_green_1972} worked out this case. put their figure here (or a nice one online).
-Two modes of interaction: open trajectory (passing) or closed trajectory (rotating).
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{BG-traj4.pdf}
+  \caption{Trajectory map of two equal spheres in unbounded simple shear flows. The dashed circle indicates the reference sphere, while the solid lines depict the relative trajectories of the second sphere in all planes of axisymmetry, which include the shear plane.}
+  \label{fig:BG-traj}
+\end{figure}
 
-\cite{Zinchenko1983,Zinchenko1984} showed similar cases for liquid droplets.
+\cite{Zinchenko1983,Zinchenko1984} showed that essentially the same feature holds for liquid droplets.
 
 With a distant wall, we show possibility of a stationary position.
 Also dancing and swapping (\emph{Paper 4}). figure.
 Here the wall can be considered as the third particle.
+note the fact that the rate is very slow, since the relative velocity is small.
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.9\columnwidth]{itzhak-boris.pdf}
+  \caption{Trajectory map of two equal spheres in ...}
+  \label{fig:itzhak-boris}
+\end{figure}
+
 
 With two walls, \cite{zurita-gotor_2007}
 swapping.
+
 We also show static pair under depletion force (\emph{Paper 2}).
+
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.3\columnwidth]{shell1.png}
+  \includegraphics[width=0.6\columnwidth]{traj.pdf}
+  \caption{Trajectory map of two droplets in ...}
+  \label{fig:shear-align}
+\end{figure}
 
 even more confined:
 dipolar theory \citep{Cui2004,Beatus2006,Janssen2012,Uspal2013,Desreumaux,zhu_gallaire_2016,q2d_Beatus,Diamant},
@@ -249,6 +282,7 @@ range of interactions,
 
 
 \section{Suspension rheology}
+\label{sec:sus-rheo}
 
 microstructure,
 many-body problems (theoretical difficulties),
