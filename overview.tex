@@ -228,14 +228,14 @@ The preceding section presents the most basic solutions of the Stokes equation i
 In practice, however, it is rarely the case particles or droplets exist in isolation.
 Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms, giving rise to a multitude of phenomena in natural or artificial conditions.
 For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
-To offer at least some partial insights on the hydrodynamics, we highlight recent theoretical development of droplet interactions in bulk microflows, starting from the simplest case of two particles immersed in unbounded simple shear flows.
+To offer at least some partial insights on the hydrodynamics, we highlight recent theoretical developments of droplet interactions in bulk microflows, starting from the simplest case of two particles immersed in unbounded simple shear flows.
 
 \subsection{Pair interactions in unbounded flows}
 
 Among the early studies of suspension hydrodynamics, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary sizes subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
 ${\bm u}^\infty \sim {\bm E}^\infty \cdot {\bm x} + {\bm \omega}^\infty \times {\bm x}$ as $\abs{{\bm x}} \to \infty$.
 The solution entails the relative velocity of the two sphere centers and their force dipole strengths (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several geometric parameters functions of the spheres' relative position and size ratio.
-In the special case of two equal-sized spheres suspended in simple shear flows, the relative velocity can be integrated numerically to yield a trajectory diagram as in Figure \ref{fig:BG-traj}.
+In the special case of two equal-sized spheres suspended in simple shear flows, the relative velocity can be integrated numerically to yield a phase diagram as in Figure \ref{fig:BG-traj}.
 Here, two types of trajectories can be observed:
 (i) an \emph{open} trajectory where one particle approaches the other particle from one side, overtakes it, and continues in the same direction to infinity; and
 (ii) a \emph{closed} trajectory where two particles stay bound and rotate around each other permanently regardless of how far they may separate temporarily.
@@ -259,25 +259,45 @@ That is, doubling the shear will result in twice as fast relative motion between
 Hence, these are truly slow, but long-range, interactions.
 In the case of liquid droplets, an additional constraint needs to be satisfied for the above analysis to hold, \ie Ca $\ll 1$.
 This is usually the case for microfluidic applications.
-Following the same example as considered in Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large shear rate of $10^3$ s$^{-1}$, then Ca $\sim 10^{-4}$, which is small enough for the droplet to remain spherical in the flow.
+For example, recall the example as considered in the beginning of Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large local shear rate of $\dot{\gamma}=10^3$ s$^{-1}$, then the capillary number Ca $=\mu(a\dot{\gamma})/\gamma \sim 10^{-4}$, which is small enough for the droplet to remain spherical in the flow.
 
 \subsection{Pair interactions in bounded flows}
-
-With a distant wall, we show possibility of a stationary position.
-Also dancing and swapping (\emph{Paper 4}). figure.
-Here the wall can be considered as the third particle.
-note the fact that the rate is very slow, since the relative velocity is small.
 
 \begin{figure}%[t]
   \centering
   \includegraphics[width=\columnwidth]{itzhak-boris.pdf}
-  \caption{Trajectory map of two equal spheres in ...}
+  \caption{
+  (left) Trajectory map of two equal spheres in simple shear flows bounded by a distant wall. The distance between the reference particle (located at the origin) and the wall is $z_0=5a$, where $a$ is the particle radius. $r_s$ and $r_c$ denote the saddle point and the neutral equilibrium point, respectively.
+  (right) Schematic illustrations of the stationary configuration (upper) and the dancing trajectory (lower).}
   \label{fig:itzhak-boris}
 \end{figure}
 
+When walls are present, particles not only interact with each other but also indirectly interact with the wall, or equivalently, interact with their reflection images such that the boundary conditions along the wall are satisfied \citep{blake_1971, LironMochon}.
+Consequently, pair interactions in bounded flows may differ at least quantitatively from the unbouned conditions.
 
+We first consider the simplest modification -- the inclusion of one wall.
+Using an boundary integral representation (\emph{Paper 3}), we recently solved the relative velocity of two rigid particles in simple shear flows above a distant wall (\emph{Paper 4}).
+The results are illustrated in Figure \ref{fig:itzhak-boris}.
+Here, the blue curves denote the closed trajectories, and the red curves denote the open ones.
+First, we see there are two disconnected closed regions; one being a degenerate of the BG trajectory, the other indicating rotation around a center (which we call ``dancing'' trajectories).
+The latter suggest the existence a stationary position.
+Note that the trajectories are axisymmetric. Thus, particles can travel together without relative motions in a whole range of configurations.
+The intersection between the blue and red curves represents the unstable saddle point.
+Furthermore, the red curves indicates previously identified ``swapping trajectories'' \citep{zurita-gotor_2007}.
+Overall, the phase portrait of two particles in wall-bounded shear flows is topologically different from BG.
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.55\columnwidth]{stresslet_reflection.png}
+  \caption{Swapping mechanism.}
+  \label{fig:stresslet-refl}
+\end{figure}
+
+Some mentioning of the swapping mechanism.
 With two walls, \cite{zurita-gotor_2007}
-swapping.
+
+also talk about my particle array.
+crossover from trapping to passing.
 
 We also show static pair under depletion force (\emph{Paper 2}).
 
