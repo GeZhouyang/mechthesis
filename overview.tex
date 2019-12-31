@@ -99,6 +99,7 @@ A capilary number can also be defined to non-dimensionalize the surface tension,
 %-------------------------------------------------------------------------------
 
 \section{Stokes flow and its symmetries}
+\label{sec:stokes-flows}
 
 When both Re and ReSr$^{-1}$ are small, Eq.\ \eqref{eq:NS-nondi} reduces to the \emph{Stokes equation},
 \begin{equation}
@@ -229,15 +230,18 @@ Particles tend to abound; and they often interact with each other through variou
 For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
 To offer at least some partial insights on the hydrodynamics, we highlight recent theoretical development of droplet interactions in bulk microflows, starting from the simplest case of two particles immersed in unbounded simple shear flows.
 
-Among the early studies of suspension hydrodynamics, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary size ratio subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
+\subsection{Pair interactions in unbounded flows}
+
+Among the early studies of suspension hydrodynamics, \cite{batchelor_green_1972} solved completely the dynamics of two rigid spheres of arbitrary sizes subject to a background fluid motion whose velocity at infinity is a linear function of position, \ie
 ${\bm u}^\infty \sim {\bm E}^\infty \cdot {\bm x} + {\bm \omega}^\infty \times {\bm x}$ as $\abs{{\bm x}} \to \infty$.
 The solution entails the relative velocity of the two sphere centers and their force dipole strengths (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several geometric parameters functions of the spheres' relative position and size ratio.
-In the special case of two equal-sized spheres suspended in a simple shear flow, the relative velocity can be integrated numerically to yield a trajectory diagram as in Figure \ref{fig:BG-traj}.
+In the special case of two equal-sized spheres suspended in simple shear flows, the relative velocity can be integrated numerically to yield a trajectory diagram as in Figure \ref{fig:BG-traj}.
 Here, two types of trajectories can be observed:
 (i) an \emph{open} trajectory where one particle approaches the other particle from one side, overtakes it, and continues in the same direction to infinity; and
 (ii) a \emph{closed} trajectory where two particles stay bound and rotate around each other permanently regardless of how far they may separate temporarily.
-It was noted by the authors that, under such ideal conditions (\eg smooth surface), the separatrix between open and closed trajectories encloses an infinite volume.
-Furthermore, if the two particles are once aligned in the flow direction, they will form a closed loop.
+It was noted by the authors that, under such ideal conditions (\eg smooth particle surface), the separatrix between open and closed trajectories encloses an infinite volume.
+Furthermore, if the two particles are once aligned in the flow direction, they will form a closed loop forever.
+% or we can call this a naive man's projection of his relationship ;)
 
 \begin{figure}%[t]
   \centering
@@ -250,6 +254,14 @@ Furthermore, if the two particles are once aligned in the flow direction, they w
 Specifically, he calculated the scalar parameters introduced in \cite{batchelor_green_1972} for two identical droplets, and showed that they are functions of the relative position and viscosity ratio, $\lambda$, defined as the ratio between the droplet and the solvent viscosities.
 For $\lambda=$ 0.25 to 20, the trajectory map in simple shear flows has similar topological features to the case of rigid particles,\footnote{Different types of trajectories were also hypothesized, which may only exist in the case of liquid drops. See \cite{Zinchenko1984} for details.} \ie an open region and a closed region, though its asymptotic limit depends on the viscosity ratio and short-range non-hydrodynamic interactions, cf.\ the DLVO theory.
 
+We note that, in both cases, the relative particle velocity is proportional to the shear rate of the underlying flow.
+That is, doubling the shear will result in twice as fast relative motion between the particles, though the relative velocity remains much smaller than the absolute velocity in the lab frame (typically two orders-of-magnitude smaller).
+Hence, these are truly slow, but long-range, interactions.
+In the case of liquid droplets, an additional constraint needs to be satisfied for the above analysis to hold, \ie Ca $\ll 1$.
+This is usually the case for microfluidic applications.
+Following the same example as considered in Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large shear rate of $10^3$ s$^{-1}$, then Ca $\sim 10^{-4}$, which is small enough for the droplet to remain spherical in the flow.
+
+\subsection{Pair interactions in bounded flows}
 
 With a distant wall, we show possibility of a stationary position.
 Also dancing and swapping (\emph{Paper 4}). figure.
@@ -277,6 +289,8 @@ We also show static pair under depletion force (\emph{Paper 2}).
   \caption{Trajectory map of two droplets in ...}
   \label{fig:shear-align}
 \end{figure}
+
+\subsection{Droplet interactions in highly confined geometries}
 
 even more confined:
 dipolar theory \citep{Cui2004,Beatus2006,Janssen2012,Uspal2013,Desreumaux,zhu_gallaire_2016,q2d_Beatus,Diamant},
