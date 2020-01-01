@@ -139,11 +139,12 @@ In general, the Stokes flow has the following symmetries and properties.
 
 
 \section{Single particle in unbounded Stokes flows}
+\label{sec:single-p}
 
-When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in a simplified condition, an analytical solution can often provide us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in the simplest condition, \ie a single particle in unbounded Stokes flows.
+When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in a simplified condition, an analytical solution often provide us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in its simplest setup, \ie a single particle in unbounded Stokes flows.
 
 \bigskip
-Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta, which might be a reasonable approximation to a small sedimenting particle viewed from a distance. Then, the solution of the Stokes equation due to this forcing can be written as
+Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta. This might represent a reasonable approximation of a small sedimenting particle viewed from a distance. Then, the solution of the Stokes equation due to this forcing can be written as
 \begin{equation} \label{eq:stokes-green}
  \begin{aligned}
    {\bm u}({\bm x}) = {\bm G}({\bm x}) \cdot {\bm F},
@@ -236,7 +237,7 @@ Among the early studies of suspension hydrodynamics, \cite{batchelor_green_1972}
 ${\bm u}^\infty \sim {\bm E}^\infty \cdot {\bm x} + {\bm \omega}^\infty \times {\bm x}$ as $\abs{{\bm x}} \to \infty$.
 The solution entails the relative velocity of the two sphere centers and their force dipole strengths (related to the effective viscosity of the suspension, see Section \ref{sec:sus-rheo}), and is given in terms of several geometric parameters functions of the spheres' relative position and size ratio.
 In the special case of two equal-sized spheres suspended in simple shear flows, the relative velocity can be integrated numerically to yield a phase diagram as in Figure \ref{fig:BG-traj}.
-Here, two types of trajectories can be observed:
+Here, two types of trajectories can be identified:
 (i) an \emph{open} trajectory where one particle approaches the other particle from one side, overtakes it, and continues in the same direction to infinity; and
 (ii) a \emph{closed} trajectory where two particles stay bound and rotate around each other permanently regardless of how far they may separate temporarily.
 It was noted by the authors that, under such ideal conditions (\eg smooth particle surface), the separatrix between open and closed trajectories encloses an infinite volume.
@@ -255,60 +256,74 @@ Specifically, he calculated the scalar parameters introduced in \cite{batchelor_
 For $\lambda=$ 0.25 to 20, the trajectory map in simple shear flows has similar topological features to the case of rigid particles,\footnote{Different types of trajectories were also hypothesized, which may only exist in the case of liquid drops. See \cite{Zinchenko1984} for details.} \ie an open region and a closed region, though its asymptotic limit depends on the viscosity ratio and short-range non-hydrodynamic interactions, cf.\ the DLVO theory.
 
 We note that, in both cases, the relative particle velocity is proportional to the shear rate of the underlying flow.
-That is, doubling the shear will result in twice as fast relative motion between the particles, though the relative velocity remains much smaller than the absolute velocity in the lab frame (typically two orders-of-magnitude smaller).
+That is, doubling the shear will result in twice as fast relative motions between the particles, though the relative velocity remains much smaller than the absolute velocity in the lab frame (typically two orders-of-magnitude smaller).
 Hence, these are truly slow, but long-range, interactions.
 In the case of liquid droplets, an additional constraint needs to be satisfied for the above analysis to hold, \ie Ca $\ll 1$.
 This is usually the case for microfluidic applications.
-For example, recall the example as considered in the beginning of Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large local shear rate of $\dot{\gamma}=10^3$ s$^{-1}$, then the capillary number Ca $=\mu(a\dot{\gamma})/\gamma \sim 10^{-4}$, which is small enough for the droplet to remain spherical in the flow.
+For instance, recall the case considered in the beginning of Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large local shear rate of $\dot{\gamma}=10^3$ s$^{-1}$, then the capillary number Ca $=\mu(a\dot{\gamma})/\gamma \sim 10^{-4}$. Clearly, it is small enough for the droplet to remain spherical in the flow.
 
-\subsection{Pair interactions in bounded flows}
+\subsection{Pair interactions in wall-bounded flows}
 
 \begin{figure}%[t]
   \centering
   \includegraphics[width=\columnwidth]{itzhak-boris.pdf}
   \caption{
-  (left) Trajectory map of two equal spheres in simple shear flows bounded by a distant wall. The distance between the reference particle (located at the origin) and the wall is $z_0=5a$, where $a$ is the particle radius. $r_s$ and $r_c$ denote the saddle point and the neutral equilibrium point, respectively.
+  (left) Trajectory map of two equal spheres in simple shear flows bounded by a distant wall. The distance between the reference particle (located at the origin) and the wall is $z_0=5$ (in units of particle radius, same for the labels of the plot). $r_s$ and $r_c$ denote the saddle point and the neutral equilibrium point, respectively.
   (right) Schematic illustrations of the stationary configuration (upper) and the dancing trajectory (lower).}
   \label{fig:itzhak-boris}
 \end{figure}
 
-When walls are present, particles not only interact with each other but also indirectly interact with the wall, or equivalently, interact with their reflection images such that the boundary conditions along the wall are satisfied \citep{blake_1971, LironMochon}.
-Consequently, pair interactions in bounded flows may differ at least quantitatively from the unbouned conditions.
+When boundaries cannot be neglected in a binary encounter, how will the particle interactions be modified from the \cite{batchelor_green_1972} (BG) solution?
+Before answering this question, observe that walls may be mathematically replaced with carefully chosen reflection images of the original particles such that the boundary conditions along the walls remain unchanged \citep{blake_1971, LironMochon}.
+Therefore, we expect pair interactions in bounded flows to differ qualitatively from the unbouned ones.
 
-We first consider the simplest modification -- the inclusion of one wall.
-Using an boundary integral representation (\emph{Paper 3}), we recently solved the relative velocity of two rigid particles in simple shear flows above a distant wall (\emph{Paper 4}).
-The results are illustrated in Figure \ref{fig:itzhak-boris}.
-Here, the blue curves denote the closed trajectories, and the red curves denote the open ones.
-First, we see there are two disconnected closed regions; one being a degenerate of the BG trajectory, the other indicating rotation around a center (which we call ``dancing'' trajectories).
-The latter suggest the existence a stationary position.
-Note that the trajectories are axisymmetric. Thus, particles can travel together without relative motions in a whole range of configurations.
-The intersection between the blue and red curves represents the unstable saddle point.
-Furthermore, the red curves indicates previously identified ``swapping trajectories'' \citep{zurita-gotor_2007}.
-Overall, the phase portrait of two particles in wall-bounded shear flows is topologically different from BG.
+Beginning with the simplest case where only one wall is remotely present, we recently derived the relative velocity of two rigid particles as a sum of the BG's velocity and a wall-correction term (\emph{Paper 4}). The solution is constructed from an boundary integral representation of channel flows using multipole expansions similar to Eq.\ \eqref{eq:multipole}, see \emph{Paper 3} for details.
+Figure \ref{fig:itzhak-boris} illustrates the main results.
+Here, the lines depicts the relative trajectories of the second particle in the shear plane, where the velocity is in the $x$ direction and increases with $z$. The wall is located at $z=-z_0$.
+Remarkably, there exist two types of closed trajectories (in blue) and two types of open trajectories (in red).
+Close to the origin, a degenerate of the BG-type closed trajectory is singly connected to an open trajectory at an unstable saddle point at distance $r_s$ from the origin.
+The latter is not admissible in BG, as the particles swap their $z$ coordinates after a binary encounter rather than returning to their original positions.
+It has been termed the ``swapping trajectory'' previously and was recognized as a wall-induced cross-streamline particle migration mechanism, attributing to anomalously large self-diffusivity observed in some dilute suspension measurements \citep{Zarraga_Leighton2002, zurita-gotor_2007}.
+Our derivation and numerical simulations independently verify this result.
+
+Extending further away from the reference particle, we identify a new class of closed trajectories along which the second particle rotates around a neural equilibrium center. Note that, despite a distant wall, the trajectories remain axisymmetric with respect to the $x$ axis. Thus, all points on the circle $x^2+y^2=r_c^2$ are stationary configurations.
+Slightly moving away from the center point, the second particles will revolve perpectually as it is convected by the flow; hence, we call them the ``dancing trajectories'' (see Figure \ref{fig:itzhak-boris}, right).
+The positions of these critical points are approximately related to the wall separation alone. Specifically, $r_s=(32z_0^3/15)^{1/5}$ and $r_c \approx 4z_0$.
+Overall, the wall is a singular perturbation to the free-space particle interaction.
 
 \begin{figure}%[t]
   \centering
   \includegraphics[width=0.55\columnwidth]{stresslet_reflection.png}
-  \caption{Swapping mechanism.}
+  \caption{Schematic of the wall reflection of the stresslet flow induced by one particle and its qualitative effect on the other particle. Reproduced from \cite{zurita-gotor_2007} (\lb{Permission???}).}
   \label{fig:stresslet-refl}
 \end{figure}
 
-Some mentioning of the swapping mechanism.
-With two walls, \cite{zurita-gotor_2007}
-
-also talk about my particle array.
-crossover from trapping to passing.
-
-We also show static pair under depletion force (\emph{Paper 2}).
-
+Before we proceed to more confined geometries, it is helpful to reflect on the physcial insights that can be gained from the theoretical analyses.
+First, in a dilute suspension of inertialess particles in Stokes flows, up to leading order in the particle-particle and particle-wall separations, the trajectory of one particle is the same as the fluid streamline resulting from the rest of the particle(s)/wall(s). Therefore, a comparison of the particle and fluid velocities has at least a qualitative meaning, or even quantitatively if the separations are large \citep{zurita-gotor_2007}.\footnote{This, of course, will be invalid if there are sufficient symmetry-breaking short-range interactions, see \eg \emph{Paper 2}.}
+This can be more readily seen from the opposite statement, \viz if the particle trajectories are available, then the flow field can be qualitatively constructed using the particles as tracers.
+Second, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses of basic solutions of the Stokes equation.
+For example, \cite{zurita-gotor_2007} performed a relatively simple analysis to explain the flow reversal pattern (\ie the swapping trajectories) by calculating the scattering flow.
+As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (since the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
+Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
+To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state, where $H$ is the channel height (same setup and notation otherwise).
+Qualitatively, the former results from cross-stream migrations that resembles the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall. 
 
 \begin{figure}%[t]
   \centering
-  \includegraphics[width=0.32\columnwidth]{shell1.png}
-  \includegraphics[width=0.65\columnwidth]{traj.pdf}
-  \caption{Trajectory map of two droplets in ...}
-  \label{fig:shear-align}
+  \includegraphics[width=0.9\columnwidth]{H3.pdf}
+  \caption{Evolution of a particle chain under various initial vertical positions (indicated by the color). The periodic channel has a height of $H=6$ and a length of $L=8$, both in units of particle radius. The solid and dashed lines denote the up- and downstream particles in the two-particle system, respectively. For $0.32 \lessapprox z_0/H \lessapprox 0.68$ (only a half plane is shown due to symmetry), the lines diverge (see the right panel) indicating a permanent separation.}
+  \label{fig:xover}
 \end{figure}
+
+%%neglect this since it's not theoretical
+%We also show static pair under depletion force (\emph{Paper 2}).
+%\begin{figure}%[t]
+%  \centering
+%  \includegraphics[width=0.32\columnwidth]{shell1.png}
+%  \includegraphics[width=0.65\columnwidth]{traj.pdf}
+%  \caption{Trajectory map of two droplets in ...}
+%  \label{fig:shear-align}
+%\end{figure}
 
 \subsection{Droplet interactions in highly confined geometries}
 
