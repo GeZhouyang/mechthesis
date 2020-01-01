@@ -15,7 +15,7 @@ In \cite{Batchelor} we believe.
 
 material science,
 photonic crystals,
-microfluidics,
+microfluidics \citep{Squires_Quakes_2005},
 lab-on-a-chip.
 
 
@@ -116,7 +116,7 @@ which we write in the dimensional form.
 Physically, the Stokes equation describes systems that are characterized by small length scales or are in slow motions, which are typically encountered in microfluidic or biological applications.
 For instance, the Reynolds number based on a 10 $\mu$m droplet traveling at a speed of 10 $\mu$m/s in water ($\rho=10^3$ kg/m$^{3}$, $\mu=10^{-3}$ Pa$\cdot$s) is $10^{-4}$;
 and if there is no imposed frequency, the Strouhal number will be 1.
-Clearly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
+Manifestly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
 
 Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} dramatically simplifies the solution.
 In general, the Stokes flow has the following symmetries and properties.
@@ -156,7 +156,7 @@ where
    {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm x}{\bm x} }{ \abs{{\bm x}}^3 } \bigg),
  \end{aligned}
 \end{equation}
-is the free-space Green's function, also known as the \emph{Stokeslet}.
+is the free-space Green's function, also known as the \emph{Stokeslet} or \emph{Oseen-Burgers tensor}.
 
 Now, if the particle has a finite radius $a$ and the background fluid has a linear velocity ${\bm u}^\infty$ in the absence of the particle, we can perform a Taylor expansion of $\bm G$ and integrate Eq.\ \eqref{eq:stokes-green} over the particle surface to obtain a solution of the following form (in index notation)\footnote{In this simple example, we require the point ${\bm x}$ to be far from the particle so that the terms involving the Green's function can be taken outside the integral, see \cite{graham_2018}.}
 \begin{equation} \label{eq:multipole}
@@ -277,13 +277,13 @@ When boundaries cannot be neglected in a binary encounter, how will the particle
 Before answering this question, observe that walls may be mathematically replaced with carefully chosen reflection images of the original particles such that the boundary conditions along the walls remain unchanged \citep{blake_1971, LironMochon}.
 Therefore, we expect pair interactions in bounded flows to differ qualitatively from the unbouned ones.
 
-Beginning with the simplest case where only one wall is remotely present, we recently derived the relative velocity of two rigid particles as a sum of the BG's velocity and a wall-correction term (\emph{Paper 4}). The solution is constructed from an boundary integral representation of channel flows using multipole expansions similar to Eq.\ \eqref{eq:multipole}, see \emph{Paper 3} for details.
+Beginning with the simplest case where only one wall is remotely present, \cite{Fouxon_Rubinstein2019} recently derived the relative velocity of two rigid particles as a sum of the BG's velocity and a wall-correction term (\emph{Paper 4}). The solution is constructed from an boundary integral representation of channel flows using multipole expansions similar to Eq.\ \eqref{eq:multipole}, see \cite{Fouxon_2017} (\emph{Paper 3}) for details.
 Figure \ref{fig:itzhak-boris} illustrates the main results.
 Here, the lines depicts the relative trajectories of the second particle in the shear plane, where the velocity is in the $x$ direction and increases with $z$. The wall is located at $z=-z_0$.
 Remarkably, there exist two types of closed trajectories (in blue) and two types of open trajectories (in red).
 Close to the origin, a degenerate of the BG-type closed trajectory is singly connected to an open trajectory at an unstable saddle point at distance $r_s$ from the origin.
-The latter is not admissible in BG, as the particles swap their $z$ coordinates after a binary encounter rather than returning to their original positions.
-It has been termed the ``swapping trajectory'' previously and was recognized as a wall-induced cross-streamline particle migration mechanism, attributing to anomalously large self-diffusivity observed in some dilute suspension measurements \citep{Zarraga_Leighton2002, zurita-gotor_2007}.
+The latter is not admissible in BG, as the particles swap their $z$ coordinates after a binary encounter rather than returning to the original positions.
+Such open trajectories have been previously termed ``swapping trajectories'' and recognized as a wall-induced cross-streamline particle migration mechanism, attributing to the anomalously large self-diffusivity observed in a dilute suspension measurement \citep{Zarraga_Leighton2002, zurita-gotor_2007}.
 Our derivation and numerical simulations independently verify this result.
 
 Extending further away from the reference particle, we identify a new class of closed trajectories along which the second particle rotates around a neural equilibrium center. Note that, despite a distant wall, the trajectories remain axisymmetric with respect to the $x$ axis. Thus, all points on the circle $x^2+y^2=r_c^2$ are stationary configurations.
@@ -298,15 +298,15 @@ Overall, the wall is a singular perturbation to the free-space particle interact
   \label{fig:stresslet-refl}
 \end{figure}
 
-Before we proceed to more confined geometries, it is helpful to reflect on the physcial insights that can be gained from the theoretical analyses.
+\bigskip
+Before we proceed to more confined geometries, it may be helpful to reflect on the physcial insights that can be gained from the theoretical analyses.
+
 First, in a dilute suspension of inertialess particles in Stokes flows, up to leading order in the particle-particle and particle-wall separations, the trajectory of one particle is the same as the fluid streamline resulting from the rest of the particle(s)/wall(s). Therefore, a comparison of the particle and fluid velocities has at least a qualitative meaning, or even quantitatively if the separations are large \citep{zurita-gotor_2007}.\footnote{This, of course, will be invalid if there are sufficient symmetry-breaking short-range interactions, see \eg \emph{Paper 2}.}
 This can be more readily seen from the opposite statement, \viz if the particle trajectories are available, then the flow field can be qualitatively constructed using the particles as tracers.
+
 Second, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses of basic solutions of the Stokes equation.
 For example, \cite{zurita-gotor_2007} performed a relatively simple analysis to explain the flow reversal pattern (\ie the swapping trajectories) by calculating the scattering flow.
 As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (since the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
-Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
-To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state, where $H$ is the channel height (same setup and notation otherwise).
-Qualitatively, the former results from cross-stream migrations that resembles the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall. 
 
 \begin{figure}%[t]
   \centering
@@ -314,6 +314,11 @@ Qualitatively, the former results from cross-stream migrations that resembles th
   \caption{Evolution of a particle chain under various initial vertical positions (indicated by the color). The periodic channel has a height of $H=6$ and a length of $L=8$, both in units of particle radius. The solid and dashed lines denote the up- and downstream particles in the two-particle system, respectively. For $0.32 \lessapprox z_0/H \lessapprox 0.68$ (only a half plane is shown due to symmetry), the lines diverge (see the right panel) indicating a permanent separation.}
   \label{fig:xover}
 \end{figure}
+
+Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
+To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$), where $H$ is the channel height (same setup and notation otherwise, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}).
+Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
+See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous, more vivid demonstrations.
 
 %%neglect this since it's not theoretical
 %We also show static pair under depletion force (\emph{Paper 2}).
@@ -325,13 +330,25 @@ Qualitatively, the former results from cross-stream migrations that resembles th
 %  \label{fig:shear-align}
 %\end{figure}
 
+
 \subsection{Droplet interactions in highly confined geometries}
+\label{subsec:drop-confined}
 
-even more confined:
-dipolar theory \citep{Cui2004,Beatus2006,Janssen2012,Uspal2013,Desreumaux,zhu_gallaire_2016,q2d_Beatus,Diamant},
-lubrication approximation.
+significant progress of physical understandings of spatial confinement on hydrodynamic interactions in the last two decades \citep{Cui_etal_2002, Cui2004, Diamant_2005, Davit_2008}
 
+first-principles theory based on conservation laws \citep{Diamant}.
+q2D.
+dipolar interaction, his eq. (8).
+The hydrodynamic interaction between the particles exhibits three anomalies. (i) The transverse coupling is negative; i.e., particles exert ``antidrag'' on one another when moving perpendicular to their connecting line. (ii) The interaction decays with interparticle distance r as $1/r^2$, faster than in unconfined suspensions but slower than near a single wall. (iii) At large distances, the pair interaction is independent of concentration within the experimental accuracy. 
 range of interactions,
+
+review \citep{q2d_Beatus},
+
+lubrication approximation?
+
+
+detailed flow field \citep{zhu_gallaire_2016}
+
 
 
 \section{Suspension rheology}
@@ -437,6 +454,15 @@ discrete element methods (DEM) \citep{Mari_Seto_2014JoR, Cheal_Ness_2018}, to na
  the discrete-element lubrication/contact dynamics (DLCD) model.
 
 
+
+
+%===============================================================================
+\chapter{Miscellaneous}
+%===============================================================================
+
+\section{Effective slip}
+
+\section{Droplets in turbulence}
 
 
 %===============================================================================
