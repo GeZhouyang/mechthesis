@@ -6,7 +6,7 @@
 
 
 
-In \cite{Batchelor} we believe.
+Over the last two decades, there has been a renewed interest in hydrodynamic interactions of droplets or polymers under strong spatial confinement, partially owing to the rapid progress in lab-on-a-chip technology \citep{Squires_Quakes_2005}, partially driven by the fundamental quest after out-of-equilibrium phenomena \citep{Cui_etal_2002, Cui2004, Diamant_2005, tlusty, Davit_2008, q2d_Beatus}, and partially due to its various potential applications in material science and life science \citep{tabeling, organs-on-chips}. The present thesis is largely motivated by the same reasons.
 
 
 %-------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ In \cite{Batchelor} we believe.
 
 material science,
 photonic crystals,
-microfluidics \citep{Squires_Quakes_2005},
+microfluidics \citep{Squires_Quakes_2005, microfluidics},
 lab-on-a-chip.
 
 
@@ -156,7 +156,7 @@ where
    {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm x}{\bm x} }{ \abs{{\bm x}}^3 } \bigg),
  \end{aligned}
 \end{equation}
-is the free-space Green's function, also known as the \emph{Stokeslet} or \emph{Oseen-Burgers tensor}.
+is the free-space Green's function, also known as the \emph{Stokeslet} or \emph{Oseen tensor}.
 
 Now, if the particle has a finite radius $a$ and the background fluid has a linear velocity ${\bm u}^\infty$ in the absence of the particle, we can perform a Taylor expansion of $\bm G$ and integrate Eq.\ \eqref{eq:stokes-green} over the particle surface to obtain a solution of the following form (in index notation)\footnote{In this simple example, we require the point ${\bm x}$ to be far from the particle so that the terms involving the Green's function can be taken outside the integral, see \cite{graham_2018}.}
 \begin{equation} \label{eq:multipole}
@@ -262,7 +262,7 @@ In the case of liquid droplets, an additional constraint needs to be satisfied f
 This is usually the case for microfluidic applications.
 For instance, recall the case considered in the beginning of Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water (the surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature) under a relatively large local shear rate of $\dot{\gamma}=10^3$ s$^{-1}$, then the capillary number Ca $=\mu(a\dot{\gamma})/\gamma \sim 10^{-4}$. Clearly, it is small enough for the droplet to remain spherical in the flow.
 
-\subsection{Pair interactions in wall-bounded flows}
+\subsection{Pair interactions under weak confinement}
 
 \begin{figure}%[t]
   \centering
@@ -304,7 +304,7 @@ Before we proceed to more confined geometries, it may be helpful to reflect on t
 First, in a dilute suspension of inertialess particles in Stokes flows, up to leading order in the particle-particle and particle-wall separations, the trajectory of one particle is the same as the fluid streamline resulting from the rest of the particle(s)/wall(s). Therefore, a comparison of the particle and fluid velocities has at least a qualitative meaning, or even quantitatively if the separations are large \citep{zurita-gotor_2007}.\footnote{This, of course, will be invalid if there are sufficient symmetry-breaking short-range interactions, see \eg \emph{Paper 2}.}
 This can be more readily seen from the opposite statement, \viz if the particle trajectories are available, then the flow field can be qualitatively constructed using the particles as tracers.
 
-Second, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses of basic solutions of the Stokes equation.
+Second, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses utilizing basic solutions of the Stokes equation.
 For example, \cite{zurita-gotor_2007} performed a relatively simple analysis to explain the flow reversal pattern (\ie the swapping trajectories) by calculating the scattering flow.
 As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (since the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
 
@@ -318,7 +318,7 @@ As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stres
 Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
 To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$), where $H$ is the channel height (same setup and notation otherwise, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}).
 Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
-See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous and more vivid demonstrations.
+See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid demonstrations.
 
 %%neglect this since it's not theoretical
 %We also show static pair under depletion force (\emph{Paper 2}).
@@ -331,50 +331,70 @@ See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous and more vivid demon
 %\end{figure}
 
 
-\subsection{Droplet interactions in highly confined geometries}
+\subsection{Droplet interactions in quasi-two-dimensional geometries}
 \label{subsec:drop-confined}
 
-significant progress of physical understandings of spatial confinement on hydrodynamic interactions in the last two decades \citep{Cui_etal_2002, Cui2004, Diamant_2005, tlusty, Davit_2008}
+The last two decades has witnessed a significant progress in the physical understanding of spatial confinement on hydrodynamic interactions owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}. At a first glance, increasing the confinement seems to complicate the analytics as the boundary becomes part of the problem (as opposed to being infinitely away), see \eg \cite{LironMochon, Fouxon_Rubinstein2019}. However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we examplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are made simple by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
 
-start from the lubrication approximation.
-show some dimensional analyses.
-q2D.
+\bigskip
+Consider the flow between two paralell plates where the gap $H$ is much smaller than the other two dimensions (say $x$ and $y$); such geometry is commonly known as the \emph{Hele Shaw cell}. Then, from the lubrication theory, the velocity of the flow within the thin layer is approximately prescribed as 
+ \begin{equation} \label{eq:hele-shaw}
+  \begin{aligned}
+    {\bm u}(x,y,z) \approx -\frac{z(H-z)}{2\mu} \nabla p(x,y),
+  \end{aligned}
+ \end{equation}
+where the vertical components of the velocity and pressure are neglected, though ${\bm u}$ remains $z$-dependent. Hence, the flow is quasi-two-dimentional.
 
-going back to point forcing. far-field approximations.
-heuristic arguments based on conservation laws \citep{Diamant}.
-dipolar interaction, his eq. (8). very small prefactor. 
-\begin{equation}
+Under such conditions, the velocity field is irrotational and satisfies the boundary conditions of zero normal components at a rigid boundary in the horizontal plane \citep{Batchelor}. That is, a moving droplet (shaped as a pancake in q2D) shall have zero mass flux through its edge, not no-slip. With these requirements, it can be shown that the flow, created by the drop far from its surface, is proportional to
+%Similar to the derivation for the Stokeslet, the flow ${\bm u}$ due to a moving droplet can be approxmiately derived, which has the following far-field structure
+\begin{equation} \label{eq:dipolar}
  \begin{aligned}
    {\bm B}^s({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -\frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg),
    \quad \textrm{for} \quad \abs{\bm x} \gg H,
  \end{aligned}
 \end{equation}
+where $\alpha$ is a dimensionless prefactor depending on the confinement \citep{Diamant}.
 
+Physically, the above equation describes a 2D \emph{mass dipole} that displaces the surrounding fluid as the droplet moves.
+Mathematically, it is the q2D Oseen tensor that approximates the velocity due to forcing on a moving droplet from afar, \ie ${\bm u} \sim {\bm B}{\bm F}$.
+Specifically, ${\bm u}$ decays with the distance as $1/\abs{\bm x}^2$, which is faster than the free-space Stokeslet flow, but surprisingly slower than the flow caused by a moving particle near a single plate \citep{Cui2004}.
+Heuristic arguments based on conservation laws have been proposed to explain these scaling differences, see \cite{Diamant} for details.
 
-The hydrodynamic interaction between the particles exhibits three anomalies. (i) The transverse coupling is negative; i.e., particles exert ``antidrag'' on one another when moving perpendicular to their connecting line. (ii) The interaction decays with interparticle distance r as $1/r^2$, faster than in unconfined suspensions but slower than near a single wall. (iii) At large distances, the pair interaction is independent of concentration within the experimental accuracy. 
-range of interactions,
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.49\columnwidth]{dipolar.pdf}
+  \includegraphics[width=0.49\columnwidth]{soap.pdf}
+  \caption{Flow fields due a moving particle in a Hele-Shaw channel (left) and in a soap film (right). Both systems are quasi-two-dimensional.}
+  \label{fig:q2d}
+\end{figure}
 
-soap film \citep{Leonardo_etal_2008, Diamant}
+To see the structure more clearly, we plot the dipolar flow resulting from a horizontal force in Figure \ref{fig:q2d} (left).
+Here, the most salient feature is the negative transverse coupling of the droplet motion, \ie droplets exert ``antidrag'' on one another when moving perpendicular to their connecting line \citep{Cui2004}.
+This pattern, however, can also be reversed if the droplets are driven by the flow. In that case, droplets lagging behind the undisturbed Hele Shaw flow will convey each to downstream directions to which they also travel \citep{Beatus2006}.
+%Identification of this dipolar interaction mechanism has led to many microfluidic-based droplet manipulations, see \cite{q2d_Beatus} for a recent review.
+%(iii) At large distances, the pair interaction is independent of concentration within the experimental accuracy. 
+We note that the magnitude of typical dipolar flows are very small comparing to the driven flow in a dilute suspension. Even in the limit of $a/H \to 0$, where $a$ is the particle radius, the prefactor in Eq.\ \eqref{eq:dipolar} is analytically found to be $\alpha=3/(32\pi)\approx 0.030$ \citep{LironMochon}.
+However, if the droplet nearly blocks the channel, the resulting flow will be plug-like and has a constant velocity \citep{q2d_Beatus}.
+
+\bigskip
+An interesting variation of the aforementioned q2D system is to change the boundary from solid plates to free surfaces. Physically, this could be realized by trapping colloidal particles within a soap film using optical tweezers \citep{Leonardo_etal_2008}.
+
+The Oseen tensor describing the long-range interactions within such a system is given as \citep{Leonardo_etal_2008, Diamant}
 \begin{equation}
  \begin{aligned}
    {\bm B}^f({\bm x}) \approx \frac{1}{4\pi\mu H} \bigg[ \big( \ln(\nicefrac{1}{\kappa r}) -1 \big) {\bm I} +\frac{{\bm x}{\bm x} }{ \abs{{\bm x}}^2} \bigg],
    \quad \textrm{for} \quad \abs{\bm x} \gg H,
  \end{aligned}
 \end{equation}
+where $\kappa^{-1}$ is a cutoff length necessitated by the latteral system size or finite liquid inertia, \ie the radial velocity component vanishes for $\abs{\bm x} \geq \kappa^{-1}$.\footnote{By definition, $\kappa^{-1} \gg H$.}
+Upon visualization of the resulting flow field, it is obvious that particle interactions have a much longer tail in free-standing liquid films. Furthermore, the transverse motions remain strongly coupled at distances where the longitudinal mode has mostly decayed.
+The slow logrithmic decay comparing to the dipolar flow in a Hele Shaw cell is physically owing to the momentum conservations at the liquid boundaries, as opposed to momentum absorption by the rigid plates, which has certain implications for protein transport in biomembranes \citep{Diamant}.
 
-\begin{figure}%[t]
-  \centering
-  \includegraphics[width=0.49\columnwidth]{dipolar.pdf}
-  \includegraphics[width=0.49\columnwidth]{soap.pdf}
-  \caption{Flow fields due a moving particle in a Hele-Shaw channel (left) and in a soap film (right). Both systems are appoximately quasi-two-dimensional.}
-  \label{fig:q2d}
-\end{figure}
-
-review \citep{q2d_Beatus},
-
-
-detailed flow field \citep{zhu_gallaire_2016}
-near-field?
+\bigskip
+Finally, we emphase that the above analyses are strictly limited to far-field interactions as a consequence of the dimensionality reduction.
+To consider near-field interactions, the full Navier-Stokes or Stokes equations may have to be solved to accurately resolve the detailed flow fields near the droplet, see \eg \cite{zhu_gallaire_2016, flow-assist}. 
+In general, q2D analyses are applicable if the system contains a limiting length scale smaller than any other relavant distances, and if a long time evolution is of interest.
+3D calculations, however inconvenient, cannot be avoided in most other situations.
 
 
 \section{Suspension rheology}
