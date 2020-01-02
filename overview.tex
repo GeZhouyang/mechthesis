@@ -225,7 +225,7 @@ where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)
 
 \section{Droplet interactions in shear flows}
 
-The preceding section presents the most basic solutions of the Stokes equation in the presence of only one particle.
+The preceding section presents the most basic solutions of the Stokes equation in the presence of one particle.
 In practice, however, it is rarely the case particles or droplets exist in isolation.
 Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms, giving rise to a multitude of phenomena in natural or artificial conditions.
 For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
@@ -294,7 +294,7 @@ Overall, the wall is a singular perturbation to the free-space particle interact
 \begin{figure}%[t]
   \centering
   \includegraphics[width=0.55\columnwidth]{stresslet_reflection.png}
-  \caption{Schematic of the wall reflection of the stresslet flow induced by one particle and its qualitative effect on the other particle. Reproduced from \cite{zurita-gotor_2007} (\lb{Permission???}).}
+  \caption{Schematic of the wall reflection of the stresslet flow (cf.\ Figure \ref{fig:lets}) induced by one particle and its qualitative effect on the other particle. Reproduced from \cite{zurita-gotor_2007} (\lb{Permission???}).}
   \label{fig:stresslet-refl}
 \end{figure}
 
@@ -318,7 +318,7 @@ As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stres
 Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
 To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$), where $H$ is the channel height (same setup and notation otherwise, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}).
 Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
-See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous, more vivid demonstrations.
+See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous and more vivid demonstrations.
 
 %%neglect this since it's not theoretical
 %We also show static pair under depletion force (\emph{Paper 2}).
@@ -334,21 +334,47 @@ See \cite{Beatus2006, Janssen2012, Uspal2013} for analogous, more vivid demonstr
 \subsection{Droplet interactions in highly confined geometries}
 \label{subsec:drop-confined}
 
-significant progress of physical understandings of spatial confinement on hydrodynamic interactions in the last two decades \citep{Cui_etal_2002, Cui2004, Diamant_2005, Davit_2008}
+significant progress of physical understandings of spatial confinement on hydrodynamic interactions in the last two decades \citep{Cui_etal_2002, Cui2004, Diamant_2005, tlusty, Davit_2008}
 
-first-principles theory based on conservation laws \citep{Diamant}.
+start from the lubrication approximation.
+show some dimensional analyses.
 q2D.
-dipolar interaction, his eq. (8).
+
+going back to point forcing. far-field approximations.
+heuristic arguments based on conservation laws \citep{Diamant}.
+dipolar interaction, his eq. (8). very small prefactor. 
+\begin{equation}
+ \begin{aligned}
+   {\bm B}^s({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -\frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg),
+   \quad \textrm{for} \quad \abs{\bm x} \gg H,
+ \end{aligned}
+\end{equation}
+
+
 The hydrodynamic interaction between the particles exhibits three anomalies. (i) The transverse coupling is negative; i.e., particles exert ``antidrag'' on one another when moving perpendicular to their connecting line. (ii) The interaction decays with interparticle distance r as $1/r^2$, faster than in unconfined suspensions but slower than near a single wall. (iii) At large distances, the pair interaction is independent of concentration within the experimental accuracy. 
 range of interactions,
 
-review \citep{q2d_Beatus},
+soap film \citep{Leonardo_etal_2008, Diamant}
+\begin{equation}
+ \begin{aligned}
+   {\bm B}^f({\bm x}) \approx \frac{1}{4\pi\mu H} \bigg[ \big( \ln(\nicefrac{1}{\kappa r}) -1 \big) {\bm I} +\frac{{\bm x}{\bm x} }{ \abs{{\bm x}}^2} \bigg],
+   \quad \textrm{for} \quad \abs{\bm x} \gg H,
+ \end{aligned}
+\end{equation}
 
-lubrication approximation?
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.49\columnwidth]{dipolar.pdf}
+  \includegraphics[width=0.49\columnwidth]{soap.pdf}
+  \caption{Flow fields due a moving particle in a Hele-Shaw channel (left) and in a soap film (right). Both systems are appoximately quasi-two-dimensional.}
+  \label{fig:q2d}
+\end{figure}
+
+review \citep{q2d_Beatus},
 
 
 detailed flow field \citep{zhu_gallaire_2016}
-
+near-field?
 
 
 \section{Suspension rheology}
