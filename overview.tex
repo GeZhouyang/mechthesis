@@ -61,7 +61,7 @@ To begin with, recall the incompressible \emph{Navier-Stokes equations}
  \end{equation}
 \end{subequations}
 relating the flow velocity $\bm u$ with the pressure $p$ in the presence of some force density $\bm f$, where $\rho$ and $\mu$ are the density and dynamic viscosity of the fluid, respectively.
-Eqs.\ \eqref{eq:Navier-Sotkes}, together with appropriate boundary conditions, govern the dynamics of a Newtonian fluid that satisfies\footnote{The present thesis only concerns the Newtonian fluid as the solvent, though a particle suspension may exhbit non-Newtonian behaviours as we will see.}
+Eqs.\ \eqref{eq:Navier-Sotkes}, together with appropriate boundary conditions, govern the dynamics of a Newtonian fluid that satisfies\footnote{The present thesis only concerns Newtonian fluids as the solvent, though, combined with particles, the suspension may exhbit non-Newtonian bulk behaviours. See Section \ref{sec:sus-rheo}.}
 \begin{equation}
  \begin{aligned}
    {\bm \sigma} = -p {\bm I}+ \mu \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg),
@@ -151,7 +151,7 @@ Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supp
  \end{aligned}
 \end{equation}
 where  
-\begin{equation}
+\begin{equation} \label{eq:stokeslet}
  \begin{aligned}
    {\bm G}({\bm x}) = \frac{1}{8\pi\mu } \bigg( \frac{{\bm I}}{\abs{\bm x}}+\frac{ {\bm x}{\bm x} }{ \abs{{\bm x}}^3 } \bigg),
  \end{aligned}
@@ -335,7 +335,7 @@ See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid
 \subsection{Droplet interactions in quasi-two-dimensional geometries}
 \label{subsec:drop-confined}
 
-The last two decades has witnessed a significant progress in the physical understanding of spatial confinement on hydrodynamic interactions owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}. At a first glance, increasing the confinement seems to complicate the analytics as the boundary becomes part of the problem (as opposed to being infinitely away), see \eg \cite{LironMochon, Fouxon_Rubinstein2019}. However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we examplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are simplified by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
+The last two decades has witnessed a boom of studies on hydrodynamic interactions in strongly confined geometries owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}. At a first glance, increasing the confinement seems to complicate the problem as the boundary conditions becomes non-negligible (as opposed to being infinitely away), see \eg \cite{LironMochon, Fouxon_Rubinstein2019}. However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we examplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are simplified by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
 
 \bigskip
 Consider the flow between two paralell plates where the gap $H$ is much smaller than the other two dimensions (say $x$ and $y$); such geometry is commonly known as the \emph{Hele Shaw cell}. Then, from the lubrication theory, the velocity of the flow within the thin layer is approximately prescribed as 
@@ -387,26 +387,107 @@ The Oseen tensor describing the long-range interactions within such a system is 
    \quad \textrm{for} \quad \abs{\bm x} \gg H,
  \end{aligned}
 \end{equation}
-where $\kappa^{-1}$ is a cutoff length necessitated by the latteral system size or finite liquid inertia, \ie the radial velocity component vanishes for $\abs{\bm x} \geq \kappa^{-1}$.\footnote{By definition, $\kappa^{-1} \gg H$.}
-Upon visualization of the resulting flow field (Figure \ref{fig:q2d}, right), it is obvious that particle interactions have a much longer tail in free-standing liquid films. Furthermore, the transverse motions remain strongly coupled at distances where the longitudinal mode has mostly decayed.
+where $\kappa^{-1}$ is a cutoff length, \ie the radial velocity component vanishes for $\abs{\bm x} \geq \kappa^{-1}$, and it is necessitated by the latteral system size or finite liquid inertia.\footnote{By definition, $\kappa^{-1} \gg H$.}
+Upon visualization of the resulting flow field (Figure \ref{fig:q2d}, right), it is obvious that particle interactions have a much longer range in free-standing liquid films. Furthermore, the transverse motions remain strongly coupled at distances where the longitudinal mode has mostly decayed.
 The slow logrithmic decay comparing to the dipolar flow in a Hele Shaw cell is physically owing to the momentum conservations at the liquid boundaries, as opposed to momentum absorption by the rigid plates \citep{Diamant}.
-This comparison may bear resemblence to protein transport in biomembranes. \lb{cite someone}
+This difference may have implications to protein transport in biological membranes \citep{Saffman3111}.
 
 \bigskip
 Finally, we emphase that the above analyses are strictly limited to far-field interactions as a consequence of the dimensionality reduction.
-To consider near-field interactions, the full Navier-Stokes or Stokes equations may have to be solved to accurately resolve the detailed flow fields near the droplet, see \eg \cite{zhu_gallaire_2016, flow-assist}. 
+To consider near-field interactions, the full Navier-Stokes or Stokes equations often have to be solved to accurately resolve the detailed flow fields near the droplet, see \eg \cite{zhu_gallaire_2016, flow-assist}. 
 In general, q2D analyses are applicable if the system contains a limiting length scale smaller than any other relavant distances, and if a long time evolution is of interest.
 3D calculations, however inconvenient, cannot be avoided in most other situations.
 
 
-\section{Suspension rheology}
+\section{Bulk properties and suspension rheology}
 \label{sec:sus-rheo}
 
-microstructure,
-many-body problems (theoretical difficulties),
-macroscopic properties, averages and bulk stresses (see Brady and Bossis).
+When the number of particles is large within a suspension, analytical calculations of their relative motions can quickly become forbidden due to the complexities of the $N$-body problem.\footnote{Theoretically, $N = 3$ is the lower bound to break the time reversal symmetry.}
+This is because, despite the fact that we know how to calculate the interaction at the individual level, the collective dynamics are often in regimes that are far from equilibrium, for which there is no established theoretical framework to rely on.
+Even if we are primarily interested in averaged properties of a suspension, \emph{a priori} predictions can seldom be made as the \emph{microstructure}, \ie the spatial arrangement of each suspending particle, both determines and is determined by the bulk motion in a dynamic way \citep{Brady_Bossis1988}.
+Nevertheless, in the following, we will introduce a few macroscopic properties of particle suspensions and show how they can be related to certain \emph{measureable} or \emph{computable} system parameters. The purpose is to provide a basic physical understanding and, in particular, the rheological characterizations of a particulate system.
 
-The behaviour of systems involving the motion of small particles relative to a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST), or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major implications in practice. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
+\subsection{Sedimentation velocity}
+
+For a sedimenting suspension, the average velocity is given by
+\begin{equation}
+ \begin{aligned}
+   \langle {\bm U} \rangle = \langle {\bm M} \rangle \cdot {\bm F},
+ \end{aligned}
+\end{equation}
+where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing ${\bm F}$, such as gravity, to the particle velocity ${\bm U}$, cf.\ Eq.\ \eqref{eq:stokeslet}; and $\langle \cdot \rangle$ denotes an average over all particles followed by an average over all configurations. Instantaneously, ${\bm M}$ depends only on the particle configuration instead of the velocity \citep{hb}; its diagonal blocks represent the single-body drag coefficients, while its off-diagonal blocks embody the hydrodyanmic interactions between the particles. In addition, for rigid particles undergoing purely hydrodynamic interactions, ${\bm M}$ is symmetric and positive definite due to the dissipative nature of the system \citep{graham_2018}. This property facilitates the inversion of ${\bm M}$ as required in some computational models, see Section \ref{sec:num-dem}.
+
+\subsection{Diffusion tensor}
+
+The $N$-particle diffusion tensor $\bm D$ can be generalized from the Einstein relation \citep{Einstein1905} and is given by
+\begin{equation}
+ \begin{aligned}
+   {\bm D} = k_BT{\bm M},
+ \end{aligned}
+\end{equation}
+where $k_B$ is the Boltzmann constant, $T$ is the temperature, and ${\bm M}$ is again the mobility tensor. That is, diffusion and mobility have the same qualitative meaning for a particulate system.
+For non-Brownian suspensions, several particle diffusivities may be defined, though the motion of a particle is typically not diffusive except at short and long times \citep{Brady_Bossis1988}. In the long-time limit, the self-diffusivity ${\bm D}_\infty^s$ is defined as 
+\begin{equation}
+ \begin{aligned}
+   {\bm D}_\infty^s = \lim_{t \to \infty} \frac{1}{2} \frac{d}{dt} \bigg \langle \big({\bm x}_i - \langle {\bm x}_i \rangle \big)^2 \bigg \rangle,
+ \end{aligned}
+\end{equation}
+where ${\bm x}_i$ is the position of particle $i$, and $\langle \cdot \rangle$ denotes the ensemble average.
+
+\subsection{Stress tensor}
+
+One of the central tasks of rheology is to determine the bulk stress tensor $\langle \bm{\Sigma} \rangle$ of a flowing material
+\begin{equation} 
+  \begin{aligned}
+    \langle \bm{\Sigma} \rangle = -\bm{\Pi} +2\mu \bm{E}^\infty + \frac{N}{V} 
+    \bigg(\langle \bm{S}^H \rangle + \langle \bm{S}^B \rangle +\langle \bm{S}^A \rangle  \bigg), 
+  \end{aligned}
+\end{equation} 
+where $V$ is the enclosing volume, $N$ is the number of particles, and $\bm{S}$'s denote the stresslets due to various particle interactions, including the hydrodynamic ($H$), Brownian ($B$), and any other applied force ($A$), as written.
+Apart from the viscous stress tensor, $-\bm{\Pi} +2\mu \bm{E}^\infty$, due to the underlying flow, the rest of the terms are the particle contribution.
+In general, these stress components are functions of the suspension microstructure.
+In the case of the hydrodynamic stresslet, it can be computed as
+\begin{equation} 
+  \begin{aligned}
+    \langle \bm{S}^H \rangle = - \langle \bm{R}_{SU}\cdot(\bm{U}-\bm{U}^\infty) - \bm{R}_{SE}:\bm{E}^\infty \rangle , 
+  \end{aligned}
+\end{equation}
+where $\bm{R}_{SU}$ and $\bm{R}_{SE}$ are configuration-dependent resistance matrix that has the structure of $\bm{M}^{-1}$. For a further discussion of these computations, see Section \ref{subsec:sd}.
+%In a dynamic simulation, they may be equivalently expressed with the particle velocities, as velocities and positions are uniquely determined from each other in the overdamped limit. See Section \ref{subsec:sd} for the explicit formula of these stresslets.
+
+Now, we describe some useful definitions for rheology.
+\begin{enumerate}
+\item Effective viscosity
+
+Very dilute suspension (up to $\phi \approx 0.05$) \citep{Einstein_1906, Einstein1911}
+\begin{equation}
+ \begin{aligned}
+   \eta_r = 1 + 2.5\phi.
+ \end{aligned}
+\end{equation}
+
+Semi-dilute suspension (up to $\phi \approx 0.15$) \citep{batchelor_green_1972b}
+\begin{equation}
+ \begin{aligned}
+   \eta_r = 1 + 2.5\phi + 6.95\phi^2.
+ \end{aligned}
+\end{equation}
+
+some empirical fits, Eiler?
+see \cite{Brady_Bossis1988, guazzelli_pouliquen_2018} for reviews.
+
+\item Particle pressure
+
+boyle's model
+
+\item Normal stress differences
+\item Shear thickening, shear thinning
+
+something interesting to the industry \cite{Morton_Morris_2014, Morris_annurev2020}
+
+\end{enumerate}
+
+%The behaviour of systems involving the motion of small particles relative to a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST), or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major implications in practice. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
 
 
 
@@ -453,7 +534,7 @@ and ${\bm F}$ represent the $6N$ force/torque vectors owing to hydrodynamics (de
 For inertialess particles in Stokes flow, the task is to solve Eq.\ \eqref{eq:force-balance} subject to ${\bm m} \cdot (d{\bm U}/dt) \to 0$. Various techniques exist as summarized below.
 
 \subsection{Stokesian dynamics}
-
+\label{subsec:sd}
 The Stokesian dynamics \citep{Brady_Bossis1988} employs the fact that, when the particle Reynolds number is small and the bulk flow is linear, the hydrodynamic forces and stresses exerted on the particles by the fluid can be expressed as
 \begin{equation} 
  \begin{aligned} \label{eq:sd-hydro}
@@ -490,6 +571,7 @@ It is calculated as
 \end{equation}          
 Es.\ \eqref{eq:sd-hydro} is then inverted and integrated in time to obtain the dynamics.
 
+key word is the dynamics.
 
 \subsection{Dissipative particle dynamics}
 
