@@ -415,7 +415,7 @@ For a sedimenting suspension, the average velocity is given by
    \langle {\bm U} \rangle = \langle {\bm M} \rangle \cdot {\bm F},
  \end{aligned}
 \end{equation}
-where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing ${\bm F}$, such as gravity, to the particle velocity ${\bm U}$, cf.\ Eq.\ \eqref{eq:stokeslet}; and $\langle \cdot \rangle$ denotes an average over all particles followed by an average over all configurations. Instantaneously, ${\bm M}$ depends only on the particle configuration instead of the velocity \citep{hb}; its diagonal blocks represent the single-body drag coefficients, while its off-diagonal blocks embody the hydrodyanmic interactions between the particles. In addition, for rigid particles undergoing purely hydrodynamic interactions, ${\bm M}$ is symmetric and positive definite due to the dissipative nature of the system \citep{graham_2018}. This property facilitates the inversion of ${\bm M}$ as required in some computational models, see Section \ref{sec:num-dem}.
+where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing ${\bm F}$, such as gravity, to the particle velocity ${\bm U}$, cf.\ Eq.\ \eqref{eq:stokeslet}; and $\langle \cdot \rangle$ denotes an average over all particles followed by an average over all configurations. Instantaneously, ${\bm M}$ depends only on the particle configuration instead of the velocity \citep{durlofsky_brady_bossis_1987}; its diagonal blocks represent the single-body drag coefficients, while its off-diagonal blocks embody the hydrodyanmic interactions between the particles. In addition, for rigid particles undergoing purely hydrodynamic interactions, ${\bm M}$ is symmetric and positive definite due to the dissipative nature of the system \citep{graham_2018}. This property facilitates the inversion of ${\bm M}$ as required in some computational models, see Section \ref{sec:num-dem}.
 
 \subsection{Diffusion tensor}
 
@@ -426,65 +426,78 @@ The $N$-particle diffusion tensor $\bm D$ can be generalized from the Einstein r
  \end{aligned}
 \end{equation}
 where $k_B$ is the Boltzmann constant, $T$ is the temperature, and ${\bm M}$ is again the mobility tensor. That is, diffusion and mobility have the same qualitative meaning for a particulate system.
-For non-Brownian suspensions, several particle diffusivities may be defined, though the motion of a particle is typically not diffusive except at short and long times \citep{Brady_Bossis1988}. In the long-time limit, the self-diffusivity ${\bm D}_\infty^s$ is defined as 
+
+For non-Brownian suspensions, several particle diffusivities may be defined, though the motion of a particle is typically not diffusive except at short and long times \citep{Brady_Bossis1988}.
+In the short-time limit, the self-diffusivity ${\bm D}_0^s$ can be taken as the diagonal of $\bm{D}$ per particle and average over all particles; whereas in the long-time limit, the self-diffusivity ${\bm D}_\infty^s$ is usually defined with the mean-square displacement, \viz
 \begin{equation}
  \begin{aligned}
-   {\bm D}_\infty^s = \lim_{t \to \infty} \frac{1}{2} \frac{d}{dt} \bigg \langle \big({\bm x}_i - \langle {\bm x}_i \rangle \big)^2 \bigg \rangle,
+   {\bm D}_\infty^s = \lim_{t \to \infty} \frac{ \langle \big({\bm x}_i - {\bm x}_{i,0} )^2 \rangle_i }{2t},
  \end{aligned}
 \end{equation}
-where ${\bm x}_i$ is the position of particle $i$, and $\langle \cdot \rangle$ denotes the ensemble average.
+where ${\bm x}_i$ is the position of particle $i$ at $t \to \infty$, ${\bm x}_{i,0}$ is its starting position, and $\langle \cdot \rangle_i$ is an average over $i$. Note that self-diffusivities are vectors of the same size of the dimensionality of the space, $d$. For an isotropic suspension, it can also be expressed as a scalar by averaging the components of ${\bm D}^s$ over $d$.
 
 \subsection{Stress tensor}
 
-One of the central tasks of rheology is to determine the bulk stress tensor $\langle \bm{\Sigma} \rangle$ of a flowing material
-\begin{equation} 
+One of the central tasks of rheology is to determine the bulk stress tensor $\langle \bm{\Sigma} \rangle_i$ of a flowing material, expressed as \citep{batchelor_1970, batchelor_1977}
+\begin{equation} \label{eq:stress-tensor}
   \begin{aligned}
-    \langle \bm{\Sigma} \rangle = -\bm{\Pi} +2\mu \bm{E}^\infty + \frac{N}{V} 
-    \bigg(\langle \bm{S}^H \rangle + \langle \bm{S}^B \rangle +\langle \bm{S}^A \rangle  \bigg), 
+    \langle \bm{\Sigma} \rangle_i = -\bm{\Pi} +2\mu \bm{E}^\infty + \frac{N}{V} 
+    \bigg(\langle \bm{S}^H \rangle_i + \langle \bm{S}^B \rangle_i +\langle \bm{S}^A \rangle_i \bigg), 
   \end{aligned}
 \end{equation} 
-where $V$ is the enclosing volume, $N$ is the number of particles, and $\bm{S}$'s denote the stresslets due to various particle interactions, including the hydrodynamic ($H$), Brownian ($B$), and any other applied force ($A$), as written.
-Apart from the viscous stress tensor, $-\bm{\Pi} +2\mu \bm{E}^\infty$, due to the underlying flow, the rest of the terms are the particle contribution.
-In general, these stress components are functions of the suspension microstructure.
+where $V$ is the enclosing volume,
+$N$ is the number of particles,
+and $\bm{S}$'s denote the stresslets due to various particle interactions, including the hydrodynamic ($H$), Brownian ($B$), and any other applied ($A$) forces, as written.
+Apart from the viscous stress tensor, $-\bm{\Pi} +2\mu \bm{E}^\infty$, due to the underlying flow, the rest of the terms in Eq.\ \eqref{eq:stress-tensor} are the particle contribution.
+In general, these stress components are all related to the suspension microstructure.
 In the case of the hydrodynamic stresslet, it can be computed as
 \begin{equation} 
   \begin{aligned}
-    \langle \bm{S}^H \rangle = - \langle \bm{R}_{SU}\cdot(\bm{U}-\bm{U}^\infty) - \bm{R}_{SE}:\bm{E}^\infty \rangle , 
+    \langle \bm{S}^H \rangle_i = - \langle \bm{R}_{SU}\cdot(\bm{U}-\bm{U}^\infty) - \bm{R}_{SE}:\bm{E}^\infty \rangle_i , 
   \end{aligned}
 \end{equation}
-where $\bm{R}_{SU}$ and $\bm{R}_{SE}$ are configuration-dependent resistance matrix that has the structure of $\bm{M}^{-1}$. For a further discussion of these computations, see Section \ref{subsec:sd}.
-%In a dynamic simulation, they may be equivalently expressed with the particle velocities, as velocities and positions are uniquely determined from each other in the overdamped limit. See Section \ref{subsec:sd} for the explicit formula of these stresslets.
+where $\bm{R}_{SU}$ and $\bm{R}_{SE}$ are configuration-dependent resistance matrices that resemble $\bm{M}^{-1}$.
+See Section \ref{subsec:sd} for further discussions.
 
-Now, we describe some useful definitions for rheology.
+\bigskip
+Suppose that the bulk stress tensor has been determined, then a number of \emph{effective} rheological properties can be readily extracted as follows.
+Specifically, we focus on non-Brownian, rigid, neutrally buoyant spheres suspended in a Newtonian fluid with visocity $\mu$ undergoing a simple shearing motion in the $xy$ plane with shear rate $\dot{\gamma}$.
+
 \begin{enumerate}
-\item Effective viscosity
 
-Very dilute suspension (up to $\phi \approx 0.05$) \citep{Einstein_1906, Einstein1911}
-\begin{equation}
- \begin{aligned}
-   \eta_r = 1 + 2.5\phi.
- \end{aligned}
-\end{equation}
+\item Suspension viscosity $\eta_s=\bm{\Sigma}_{xy}/(\mu\dot{\gamma})$.
 
-Semi-dilute suspension (up to $\phi \approx 0.15$) \citep{batchelor_green_1972b}
-\begin{equation}
- \begin{aligned}
-   \eta_r = 1 + 2.5\phi + 6.95\phi^2.
- \end{aligned}
-\end{equation}
+\medskip
+When particles are added to a fluid, the increase of the suspension viscosity is linear with the shear rate if there is no other associated time scale in the system \citep{hinch_2011}.
+Moreover, dimensional analysis indicates that there is only one independent variable, the volume fraction of the particles, $\phi$.
+For very dilute suspensions (typically up to volume fraction $\phi \approx 0.05$), \cite{Einstein_1906, Einstein1911} has shown that $\eta_s = 1 + 2.5\phi$, assuming the particles only perturb the surrounding flow but do not interact with each other.
+Including pair interactions, \cite{batchelor_green_1972b} calculated the suspension viscosity up to the quadratic order. For semi-dilute suspensions (up to $\phi \approx 0.15$) in simple shear flows, it follows $\eta_s = 1 + 2.5\phi + 5\phi^2$.
+As the concentration continues increasing, analytical calculations of the stress tensor become difficult due to coupled hydrodynamic interactions and contact forces.
+Plenty of empirical relationships have been proposed, such as that of \cite{Eilers1941}, $\eta_r=\mu[1+(5\phi/4)/(1-\phi/\phi_J)]^2$, where $\phi_J$ is the jamming fraction.
+The latter may depend on the particle shape and friction coefficient.
+For example, random close packing of frictionless sphere predicts $\phi_J \approx 0.64$, while in experiments suspensions usually jam under 60\% volume fraction.
+See \cite{guazzelli_pouliquen_2018, Morris_annurev2020} for detailed reviews on the rheology of dense suspensions.
+\bigskip
 
-some empirical fits, Eiler?
-see \cite{Brady_Bossis1988, guazzelli_pouliquen_2018} for reviews.
+\item Particle pressure $\eta_n=-$Tr$(\bm{\Sigma})/(3\mu\dot{\gamma})$.
 
-\item Particle pressure
+\medskip
+Reminiscent of the osmotic pressure in a molecular fluid, particles in a suspension can generate an isotropic stress resulting from their hydrodynamic and other types of interactions \citep{brady--1993}.
+Defined as the minus one-third the trace of the first moment of the surface stress acting on the particle, \cite{Jeffrey_morris_93} derived the analytical expressions for the cases of one and two particle(s) in linear flows. In the former case, a Fax\'{e}n law for the pressure moment is given as $S=4\pi a^3 p^\infty$, where $p^\infty$ is the ambient pressure due to the point force, cf.\ Eq.\ \eqref{eq:faxen}.
+As the particle concentration increases, $\eta_n$ tends to diverge similarly to the suspension viscosity.
+In simple shear flows, a possible constitutive relationship is suggested as $\eta_n=[\phi/(\phi_J-\phi)]^2$ \citep{Boyer_Guaz_Poul_2011}.
+\bigskip
 
-boyle's model
+\item Normal stress differences $N_1=\bm{\Sigma}_{xx}-\bm{\Sigma}_{yy}$ and $N_2=\bm{\Sigma}_{yy}-\bm{\Sigma}_{zz}$.
 
-\item Normal stress differences
-\item Shear thickening, shear thinning
+\medskip
+When the suspension is non-dilute, normal stresses can deviate from each other as a result of the anisotropic microstructure or particle collision.
+This leads to the definitions of the first and second normal stress differences as above, where $x$, $y$, $z$ denote the flow, velocity-gradient, and negative-vorticity directions, respectively.
+$N_1$ and $N_2$ are usually normalized by the modulus of the shear stress, $\abs{\bm{\Sigma}_{xy}}$, since they also diverge as $\phi \to \phi_J$.
+The exact relationship between $N_1$ or $N_2$ and $\phi$ have not been clearly found. The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is large and nagative due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
+See \cite{seto_giusteri_2018} for further discussions.
 
-something interesting to the industry \cite{Morton_Morris_2014, Morris_annurev2020}
-
+%\item Shear thickening, shear thinning
 \end{enumerate}
 
 %The behaviour of systems involving the motion of small particles relative to a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST), or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major implications in practice. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
