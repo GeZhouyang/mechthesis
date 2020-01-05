@@ -8,6 +8,8 @@
 
 Over the last two decades, there has been a renewed interest in hydrodynamic interactions of droplets or polymers under strong spatial confinement, partially owing to the rapid progress in lab-on-a-chip technology \citep{Squires_Quakes_2005}, partially driven by the fundamental quest after out-of-equilibrium phenomena \citep{Cui_etal_2002, Cui2004, Diamant_2005, tlusty, Davit_2008, q2d_Beatus}, and partially due to its various potential applications in material science and life science \citep{tabeling, organs-on-chips}. The present thesis is largely motivated by the same reasons.
 
+numerical simulations the vanguard of technical develeopments...
+
 
 %-------------------------------------------------------------------------------
 
@@ -415,7 +417,7 @@ For a sedimenting suspension, the average velocity is given by
    \langle {\bm U} \rangle = \langle {\bm M} \rangle \cdot {\bm F},
  \end{aligned}
 \end{equation}
-where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing ${\bm F}$, such as gravity, to the particle velocity ${\bm U}$, cf.\ Eq.\ \eqref{eq:stokeslet}; and $\langle \cdot \rangle$ denotes an average over all particles followed by an average over all configurations. Instantaneously, ${\bm M}$ depends only on the particle configuration instead of the velocity \citep{durlofsky_brady_bossis_1987}; its diagonal blocks represent the single-body drag coefficients, while its off-diagonal blocks embody the hydrodyanmic interactions between the particles. In addition, for rigid particles undergoing purely hydrodynamic interactions, ${\bm M}$ is symmetric and positive definite due to the dissipative nature of the system \citep{graham_2018}. This property facilitates the inversion of ${\bm M}$ as required in some computational models, see Section \ref{sec:num-dem}.
+where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing ${\bm F}$, such as gravity, to the particle velocity ${\bm U}$, cf.\ Eq.\ \eqref{eq:stokeslet}; and $\langle \cdot \rangle$ denotes an average over all particles followed by an average over all configurations. Instantaneously, ${\bm M}$ depends only on the particle configuration instead of the velocity \citep{durlofsky_brady_bossis_1987}; its diagonal blocks represent the single-body drag coefficients, while its off-diagonal blocks embody the hydrodyanmic interactions between the particles. In addition, for rigid particles undergoing purely hydrodynamic interactions, ${\bm M}$ is symmetric and positive definite due to the dissipative nature of the system \citep{graham_2018}. This property facilitates the proper inversion of ${\bm M}$ to produce the many-body approximation to the resistance matrix as required in some reduced-order computational models, see Section \ref{sec:num-dem}.
 
 \subsection{Diffusion tensor}
 
@@ -492,7 +494,7 @@ In simple shear flows, a possible constitutive relationship is suggested as $\et
 
 \medskip
 When the suspension is non-dilute, normal stresses can deviate from each other as a result of the anisotropic microstructure or particle collision.
-This leads to the definitions of the first and second normal stress differences as above, where $x$, $y$, $z$ denote the flow, velocity-gradient, and negative-vorticity directions, respectively.
+This leads to the definitions of the first and second normal stress differences as above, where $x$, $y$, $z$ denote the flow, velocity-gradient, and negative vorticity directions, respectively.
 $N_1$ and $N_2$ are usually normalized by the modulus of the shear stress, $\abs{\bm{\Sigma}_{xy}}$, since they also diverge as $\phi \to \phi_J$.
 The exact relationship between $N_1$ or $N_2$ and $\phi$ have not been clearly found. The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is large and nagative due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
 See \cite{seto_giusteri_2018} for further discussions.
@@ -519,16 +521,29 @@ governing equations.
 
 numerical solutions.
 
+not a comprehensive survey, for that see \cite{prosp_trigg}.
+only a selection of methods that the author is familiar with.
+
 
 %-------------------------------------------------------------------------------
 
-\section{Fluid-resolved methods}
+\section{Fluid-resolving methods}
+\label{sec:fluid-methods}
 
-level set methods,
+solve the NS.
+
+a brief summary of some interface-capturing methods.
+
+\subsection{level set methods}
 (interface-correction level set/ghost fluid method),
-volume-of-fluid methods,
-phase-field methods,
-immersed boundary methods.
+
+\subsection{volume-of-fluid methods}
+
+\subsection{phase-field methods}
+
+\subsection{immersed boundary methods}
+
+boundary integral methods?
 
 
 \section{Particle-based methods}
@@ -537,18 +552,46 @@ immersed boundary methods.
 The central equation to solve is
 \begin{equation} 
  \begin{aligned} \label{eq:force-balance}
-  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^P, 
+  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A, 
  \end{aligned}
 \end{equation}
 where ${\bm m}$ is a generalized mass/moment-of-inertia matrix of dimension $6N \times 6N$,
 ${\bm U}$ is the particle translational/rotational velocity vector of dimension $6N$,
-and ${\bm F}$ represent the $6N$ force/torque vectors owing to hydrodynamics (denoted with superscript $\footnotesize H$) or other interactions (denoted with superscript $\footnotesize P$). Specifically, ${\bm F}^P$ may include contact, electrostatic, van der Waars, or magnetic forces, \etc. In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that fluctuation-dissipation theorem is satified. In the present thesis, Brownian motions are neglected.
+and ${\bm F}$ represent the $6N$ force/torque vectors owing to hydrodynamics (denoted with superscript $\footnotesize H$) or other interactions (denoted with superscript $\footnotesize A$). Specifically, ${\bm F}^A$ may include contact, electrostatic, van der Waars, or magnetic forces, \etc In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that fluctuation-dissipation theorem is satified. In the present thesis, Brownian motions are neglected.
 
 For inertialess particles in Stokes flow, the task is to solve Eq.\ \eqref{eq:force-balance} subject to ${\bm m} \cdot (d{\bm U}/dt) \to 0$. Various techniques exist as summarized below.
 
 \subsection{Stokesian dynamics}
 \label{subsec:sd}
-The Stokesian dynamics \citep{Brady_Bossis1988} employs the fact that, when the particle Reynolds number is small and the bulk flow is linear, the hydrodynamic forces and stresses exerted on the particles by the fluid can be expressed as
+
+To put it in context, consider the following integral representation of the velocity field in Stokes flow \citep{Ladyzhenskaya},
+\begin{equation} \label{eq:boundary-integral}
+ \begin{aligned}
+  u_i(\bm{x}) = u_i^\infty(\bm{x}) - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} G_{i,j} (\bm{x},\bm{x}_0) f_j(\bm{x}_0) dS_{x_0},
+ \end{aligned}
+\end{equation}
+where $\bm{u}^\infty(\bm{x})$ is the velocity at position $\bm{x}$ in the absence of particles,
+$S_\alpha$ is the surface of particle $\alpha$,
+$\bm{G}(\bm{x},\bm{x}_0)$ is the Stokeslet due to a point force at $\bm{x}_0$ (cf.\ Eq.\ \ref{eq:stokeslet}),
+$\bm f(\bm{x}_0)$ denotes its density,
+and the summation is over all $N$ particles.
+
+The boundary integral methods seek the numerical solution of Eq.\ \eqref{eq:boundary-integral} by dividing the surface of each particle into $M$ elements and then resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torqure conditions \citep{Pozrikidis}.
+Such approaches can be very accurate; and, since only the particle surface needs to be meshed, the computational cost is usually less than meshing the 3D space as presented in Section \ref{sec:fluid-methods}.
+However, it still involves $(3M+6)N$ variables per particle: three components of force density for each element, and six translational and angular velocity components per particle.
+
+Instead of evaluating these integrals, the Stokesian dynamics \citep{durlofsky_brady_bossis_1987} employs the multipole expansion to decompose the various flow contributions as follows,
+\begin{equation} \label{eq:sd-multipole}
+ \begin{aligned}
+  - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... =
+  \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O, 
+ \end{aligned}
+\end{equation}
+where $\bm{u}_F$, $\bm{u}_S$, $\bm{u}_T$, $\bm{u}_Q$, and $\bm{u}_O$ denote the flow due to the total forces, stresslets, total torques, quadrupoles, and octupoles, repectively. The quadrupoles and octupoles are included due to finite particle size.
+Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres to obtain a relationship between particle velocities and forces, cf.\ Eq.\ \eqref{eq:faxen}.
+All these can be embeded into a so-called grand mobility matrix, $\mathscr{M}^\infty$. Note that, $\mathscr{M}^\infty$ depends solely on the suspension microstructure.
+
+The Stokesian dynamics \citep{durlofsky_brady_bossis_1987} employs the fact that, when the particle Reynolds number is small and the bulk flow is linear, the hydrodynamic forces and stresses exerted on the particles by the fluid can be expressed as
 \begin{equation} 
  \begin{aligned} \label{eq:sd-hydro}
   \begin{pmatrix}
@@ -574,29 +617,46 @@ where
 \end{equation}
 is termed the ``grand resistance'' matrix. 
 If $\mathscr{R}$ is known, 
-formulate the problem as
 
 It is calculated as
-\begin{equation} 
+\begin{equation} \label{eq:sd-lub-correction}
  \begin{aligned}
   \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty.
  \end{aligned}
 \end{equation}          
 Es.\ \eqref{eq:sd-hydro} is then inverted and integrated in time to obtain the dynamics.
 
-key word is the dynamics.
+velocity is obtained from
+\begin{equation} \label{eq:sd-vel}
+ \begin{aligned}
+  \bm{U - U}^\infty = \bm{R}_{FU}^{-1} \cdot(-\bm{F}^A +\bm{R}_{FE}:\bm{E}^\infty).
+ \end{aligned}
+\end{equation}        
 
-\subsection{Dissipative particle dynamics}
+the algorithm:
+\begin{enumerate}
+\item construct the grand mobility matrix from the particle configuration. multipole expansion, Fax\'{e}n's formulae.
+\item obtain the grand resistance matrix by inverting $\mathscr{M}^\infty$ and adding the lubrication. Eq.\ \eqref{eq:sd-lub-correction}.
+\item obtain the velocity by inverting components in $\mathscr{R}$. Eq.\ \eqref{eq:sd-vel}.
+\item update position. $\Delta \bm{x}= \bm{U} \Delta t$ or any other suitable higher order schemes.
+\end{enumerate}
 
-dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}
+Each particle introduces 11 unknown variables (3 translational, 3 rotational velocities, and 5 in the stresslet since the stresslet is symmetric and traceless).
+Each matrix inversion has $\mathcal{O}((11N)^3)$ operations.
+overall still expansive.
 
 
-\subsection{Discrete element methods}
+\subsection{Lubrication/contact dynamics}
 
 
 discrete element methods (DEM) \citep{Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few.
  the discrete-element lubrication/contact dynamics (DLCD) model.
 
+
+
+\subsection{Dissipative particle dynamics}
+
+dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}
 
 
 
