@@ -567,7 +567,7 @@ For inertialess particles in Stokes flow, the task is to solve Eq.\ \eqref{eq:fo
 To put it in context, consider the following integral representation of the velocity field in Stokes flow \citep{Ladyzhenskaya},
 \begin{equation} \label{eq:boundary-integral}
  \begin{aligned}
-  u_i(\bm{x}) = u_i^\infty(\bm{x}) - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} G_{i,j} (\bm{x},\bm{x}_0) f_j(\bm{x}_0) dS_{x_0},
+  u_i(\bm{x}) - u_i^\infty(\bm{x}) = -\frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} G_{i,j} (\bm{x},\bm{x}_0) f_j(\bm{x}_0) dS_{x_0},
  \end{aligned}
 \end{equation}
 where $\bm{u}^\infty(\bm{x})$ is the velocity at position $\bm{x}$ in the absence of particles,
@@ -576,74 +576,88 @@ $\bm{G}(\bm{x},\bm{x}_0)$ is the Stokeslet due to a point force at $\bm{x}_0$ (c
 $\bm f(\bm{x}_0)$ denotes its density,
 and the summation is over all $N$ particles.
 
-The boundary integral methods seek the numerical solution of Eq.\ \eqref{eq:boundary-integral} by dividing the surface of each particle into $M$ elements and then resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torqure conditions \citep{Pozrikidis}.
-Such approaches can be very accurate; and, since only the particle surface needs to be meshed, the computational cost is usually less than meshing the 3D space as presented in Section \ref{sec:fluid-methods}.
-However, it still involves $(3M+6)N$ variables per particle: three components of force density for each element, and six translational and angular velocity components per particle.
+The local velocity $\bm{u}$ can be obtained numerically by dividing the surface of each particle into $M$ elements and resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torqure conditions.
+This approach belongs to a broad class of \emph{boundary integral methods} \citep{Pozrikidis}, which are highly accurate and computationally efficient, since the discretization is required only on the particle surface instead of in the flow domain, cf.\ Section \ref{sec:fluid-methods}.
+More specifically, the number of unknowns are $N_E=(3M+6)N$, \ie three components of force density for each element, and six translational and angular velocity components per particle.
+The computational time depends on the algorithm and boundary conditions. In the best case, it is $\mathcal{O}(N_E\log N_E)$; while it can be $\mathcal{O}(N_E^3)$ if using direct solution methods \citep{graham_2018}.
 
-Instead of evaluating these integrals, the Stokesian dynamics \citep{durlofsky_brady_bossis_1987} employs the multipole expansion to decompose the various flow contributions as follows,
+Now, instead of directly evaluating the integral over all particle surfaces, the method of Stokesian dynamics \citep{durlofsky_brady_bossis_1987} rewrites the right-hand side of Eq.\ \eqref{eq:boundary-integral} as a multipole expansion, \viz
 \begin{equation} \label{eq:sd-multipole}
  \begin{aligned}
-  - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... =
-  \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O, 
+  - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... \approx \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O , 
  \end{aligned}
 \end{equation}
-where $\bm{u}_F$, $\bm{u}_S$, $\bm{u}_T$, $\bm{u}_Q$, and $\bm{u}_O$ denote the flow due to the total forces, stresslets, total torques, quadrupoles, and octupoles, repectively. The quadrupoles and octupoles are included due to finite particle size.
-Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres to obtain a relationship between particle velocities and forces, cf.\ Eq.\ \eqref{eq:faxen}.
-All these can be embeded into a so-called grand mobility matrix, $\mathscr{M}^\infty$. Note that, $\mathscr{M}^\infty$ depends solely on the suspension microstructure.
+where $\bm{u}_F$, $\bm{u}_S$, $\bm{u}_T$, $\bm{u}_Q$, and $\bm{u}_O$ denote the flow due to the total forces, stresslets, total torques, quadrupoles, and octupoles, repectively.
+The last two moments are included to account for the finite particle size. They are important both for reducing the truncation error, which to the leading order scales as $\mathcal{O}(r^{-6})$, where $r$ is the distance between the observation point and the center of a sphere, and in maintaining the positive definiteness of the mobility matrix, shown right below \citep{durlofsky_brady_bossis_1987}.
+Note that, each particle now involves 11 unknown variables (6 velocity components and 5 stresslet components since the stresslet is symmetric and traceless), which is usually much less than $3M+6$ as required by the boundary integral method.
 
-The Stokesian dynamics \citep{durlofsky_brady_bossis_1987} employs the fact that, when the particle Reynolds number is small and the bulk flow is linear, the hydrodynamic forces and stresses exerted on the particles by the fluid can be expressed as
+Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres (cf.\ Eq.\ \ref{eq:faxen}) to obtain a relationship between particle velocities and forces, written in matrix form as
+\begin{equation} 
+ \begin{aligned} 
+  \begin{pmatrix}
+   {\bm U}-{\bm U}^\infty \\
+   -{\bm E}^\infty
+  \end{pmatrix}
+  = \mathscr{M^\infty} \cdot
+  \begin{pmatrix}
+   {\bm F}^H \\
+   {\bm S}^H
+  \end{pmatrix},
+ \end{aligned}
+\end{equation}
+where $\mathscr{M}^\infty$ is the so-called ``grand mobility'' matrix, containing the structure of all hydrodynamic interactions per particle configuration.
+
+Furthermore, the grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$ to rewrite the above equation as
 \begin{equation} 
  \begin{aligned} \label{eq:sd-hydro}
   \begin{pmatrix}
    {\bm F}^H \\
    {\bm S}^H
   \end{pmatrix}
-  = - \mathscr{R} \cdot
+  = \mathscr{R} \cdot
   \begin{pmatrix}
    {\bm U}-{\bm U}^\infty \\
    -{\bm E}^\infty
   \end{pmatrix},
  \end{aligned}
 \end{equation}
-where
+where $\mathscr{R}$ may be partitioned as
 \begin{equation} 
  \begin{aligned}
   \mathscr{R} =
   \begin{pmatrix}
    {\bm R}_{FU} & {\bm R}_{FE} \\
    {\bm R}_{SU} & {\bm R}_{SE}
-  \end{pmatrix},
+  \end{pmatrix}.
  \end{aligned}
-\end{equation}
-is termed the ``grand resistance'' matrix. 
-If $\mathscr{R}$ is known, 
-
-It is calculated as
-\begin{equation} \label{eq:sd-lub-correction}
- \begin{aligned}
-  \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty.
- \end{aligned}
-\end{equation}          
-Es.\ \eqref{eq:sd-hydro} is then inverted and integrated in time to obtain the dynamics.
-
-velocity is obtained from
+\end{equation} 
+If $\mathscr{R}$ is known, the particle velocity can be straightforwardly obtained from
 \begin{equation} \label{eq:sd-vel}
  \begin{aligned}
   \bm{U - U}^\infty = \bm{R}_{FU}^{-1} \cdot(-\bm{F}^A +\bm{R}_{FE}:\bm{E}^\infty).
  \end{aligned}
-\end{equation}        
+\end{equation}      
 
-the algorithm:
+There is one more crucial step of the Stokesian dynamics method.
+In the above construction of $\mathscr{M}^\infty$, lubrication interaction is not fully accounted for due to the omission of higher-order multipole moments (hence the superscript $^\infty$). To make a lubrication correction, $\mathscr{R}$ is calculated as
+\begin{equation} \label{eq:sd-lub-correction}
+ \begin{aligned}
+  \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty,
+ \end{aligned}
+\end{equation}
+where $\mathscr{R}_{2B}^\infty$ denotes the far-field parts of lubrication already embeded in $\mathscr{M}^\infty$, and the subscript $_{2B}$ indicates that lubrication is mainly a two-body interaction. See \cite{durlofsky_brady_bossis_1987, Brady_Bossis1988} for more detailed discussions.  
+
+Finally, the solution procedure of the Stokesian dynamics method can be summarized as follows.
 \begin{enumerate}
-\item construct the grand mobility matrix from the particle configuration. multipole expansion, Fax\'{e}n's formulae.
-\item obtain the grand resistance matrix by inverting $\mathscr{M}^\infty$ and adding the lubrication. Eq.\ \eqref{eq:sd-lub-correction}.
-\item obtain the velocity by inverting components in $\mathscr{R}$. Eq.\ \eqref{eq:sd-vel}.
-\item update position. $\Delta \bm{x}= \bm{U} \Delta t$ or any other suitable higher order schemes.
+\item Construct the grand mobility matrix $\mathscr{M}^\infty$ from the suspension microstructure.
+\item Obtain the grand resistance matrix $\mathscr{R}$ by inverting $\mathscr{M}^\infty$ and doing the lubrication correction as in Eq.\ \eqref{eq:sd-lub-correction}.
+\item Compute the particle velocity according to Eq.\ \eqref{eq:sd-vel}.
+\item Update the particle position using a temporal integration scheme, such as the simplest Euler's method $\bm{x}(t+\Delta t)= \bm{x}(t) +\bm{U} \Delta t$.
+\item Stop if the desired time step has been reached; otherwise, go back to Step 1.
 \end{enumerate}
 
-Each particle introduces 11 unknown variables (3 translational, 3 rotational velocities, and 5 in the stresslet since the stresslet is symmetric and traceless).
-Each matrix inversion has $\mathcal{O}((11N)^3)$ operations.
-overall still expansive.
+
+%overall still expansive.
 
 
 \subsection{Lubrication/contact dynamics}
