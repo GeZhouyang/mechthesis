@@ -269,7 +269,7 @@ When particles are at close contact, say the surface gap $h \ll a$, with $a$ bei
 
 When boundaries cannot be neglected in a binary encounter, how will the particle interactions be modified from the \cite{batchelor_green_1972} (BG) solution?
 Before answering this question, observe that walls may be mathematically replaced with carefully chosen reflection images of the original particles such that the boundary conditions along the walls remain unchanged \citep{blake_1971, LironMochon}.
-Therefore, we expect pair interactions in bounded flows to differ qualitatively from the unbouned ones.
+Therefore, we expect pair interactions in bounded flows to differ \emph{qualitatively} from the unbouned ones.
 
 Beginning with the simplest case where only one wall is remotely present, \cite{Fouxon_Rubinstein2019} recently derived the relative velocity of two rigid particles as a sum of the BG's velocity and a wall-correction term (\emph{Paper 4}). The solution is constructed from an boundary integral representation of channel flows using multipole expansions similar to Eq.\ \eqref{eq:multipole}, see \cite{Fouxon_2017} (\emph{Paper 3}) for details.
 Figure \ref{fig:itzhak-boris} illustrates the main results.
@@ -294,11 +294,11 @@ Slightly moving away from the center point, the second particles will revolve pe
 The positions of these critical points are approximately related to the wall separation alone. Specifically, $r_s=(32z_0^3/15)^{1/5}$ and $r_c \approx 4z_0$.
 Overall, the wall is a singular perturbation to the free-space particle interaction.
 
-\bigskip
-Before we proceed to more confined geometries, it may be helpful to reflect on the physcial insights that can be gained from the theoretical analyses.
-
-First, in a dilute suspension of inertialess particles in Stokes flows, up to leading order in the particle-particle and particle-wall separations, the trajectory of one particle is the same as the fluid streamline resulting from the rest of the particle(s)/wall(s). Therefore, a comparison of the particle and fluid velocities has at least a qualitative meaning, or even quantitatively if the separations are large \citep{zurita-gotor_2007}.\footnote{This, of course, will be invalid if there are sufficient symmetry-breaking short-range interactions, see \eg \emph{Paper 2}.}
-This can be more readily seen from the opposite statement, \viz if the particle trajectories are available, then the flow field can be qualitatively constructed using the particles as tracers.
+\medskip
+A few final remarks are in order before we proceed to more confined geometries.
+%, it may be helpful to reflect on the physcial insights that can be gained from the theoretical analyses.
+Firstly, in a dilute suspension of inertialess particles in Stokes flows, up to leading order in the particle-particle and particle-wall separations, the trajectory of one particle is the same as the fluid streamline resulting from the rest of the particle(s)/wall(s). Therefore, a comparison of the particle and fluid velocities has at least a qualitative meaning, or even quantitatively if the separations are large \citep{zurita-gotor_2007}.\footnote{This, of course, will be invalid if there are sufficient symmetry-breaking short-range interactions, see \eg \emph{Paper 2}.}
+This can be more readily seen from the opposite statement, \ie if the particle trajectories are available, then the flow field can be qualitatively constructed using the particles as tracers.
 
 \begin{figure}%[t]
   \centering
@@ -307,11 +307,11 @@ This can be more readily seen from the opposite statement, \viz if the particle 
   \label{fig:stresslet-refl}
 \end{figure}
 
-Second, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses utilizing basic solutions of the Stokes equation.
+Secondly, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses utilizing basic solutions of the Stokes equation.
 For example, \cite{zurita-gotor_2007} performed a relatively simple analysis to explain the flow reversal pattern (\ie the swapping trajectories) by calculating the scattering flow.
 As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (since the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
 
-Finally, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
+Thirdly, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
 To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$), where $H$ is the channel height (same setup and notation otherwise, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}).
 Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
 See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid demonstrations.
@@ -339,7 +339,7 @@ See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid
 
 The last two decades has witnessed a boom of studies on hydrodynamic interactions in strongly confined geometries owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}. At a first glance, increasing the confinement seems to complicate the problem as the boundary conditions becomes non-negligible (as opposed to being infinitely away), see \eg \cite{LironMochon, Fouxon_Rubinstein2019}. However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we examplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are simplified by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
 
-\bigskip
+\medskip
 Consider the flow between two paralell plates where the gap $H$ is much smaller than the other two dimensions (say $x$ and $y$); such geometry is commonly known as the \emph{Hele Shaw cell}. Then, from the lubrication theory, the velocity of the flow within the thin layer is approximately prescribed as 
  \begin{equation} \label{eq:hele-shaw}
   \begin{aligned}
@@ -379,7 +379,7 @@ This pattern, however, can also be reversed if the droplets are driven by the fl
 We note that the magnitude of typical dipolar flows are very small comparing to the driven flow in a dilute suspension. Even in the limit of $a/H \to 0$, where $a$ is the particle radius, the prefactor in Eq.\ \eqref{eq:dipolar} is analytically found to be $\alpha=3/(32\pi)\approx 0.030$ \citep{LironMochon}.
 However, if the droplet nearly blocks the channel, the resulting flow will be plug-like and has a constant velocity \citep{q2d_Beatus}.
 
-\bigskip
+\medskip
 An interesting variation of the aforementioned q2D system is to change the boundary from solid plates to free surfaces. Physically, this could be realized by trapping colloidal particles within a soap film using optical tweezers \citep{Leonardo_etal_2008}.
 
 The Oseen tensor describing the long-range interactions within such a system is given as \citep{Leonardo_etal_2008, Diamant}
@@ -394,7 +394,7 @@ Upon visualization of the resulting flow field (Figure \ref{fig:q2d}, right), it
 The slow logrithmic decay comparing to the dipolar flow in a Hele Shaw cell is physically owing to the momentum conservations at the liquid boundaries, as opposed to momentum absorption by the rigid plates \citep{Diamant}.
 This difference may have implications to protein transport in biological membranes \citep{Saffman3111}.
 
-\bigskip
+\medskip
 Finally, we emphase that the above analyses are strictly limited to far-field interactions as a consequence of the dimensionality reduction.
 To consider near-field interactions, the full Navier-Stokes or Stokes equations often have to be solved to accurately resolve the detailed flow fields near the droplet, see \eg \cite{zhu_gallaire_2016, flow-assist}. 
 In general, q2D analyses are applicable if the system contains a limiting length scale smaller than any other relavant distances, and if a long time evolution is of interest.
@@ -508,12 +508,11 @@ See \cite{seto_giusteri_2018} for further discussions.
 %===============================================================================
 
 
-This chapter presents a selection of numerical methods that can be employed to solve the coupled fluid and particle dynamics.
-First, we discuss standard Navier-Stokes solvers along with different interface-capturing methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations (DNS)}.
-Then, we discuss a special class of methods that solves the particle dynamics without directly resolving the flow, thus much faster, but valid only in Stokes flows. Depending on the level of simplifications, these may be considered as \emph{coarse-grained} dynamics.
-In view of the large amount of available numerical methods and the vast development of computational fluid dynamics in the last several decades, the list is by no means complete.
-For more comprehensive surveys of various numerical techniques for multiphase flow problems, see \eg \cite{prosperetti_tryggvason_2007, Rosti2019}.
-
+The previous chapter depicts the physical pictures of droplet interactions and suspension flow in a few simplified conditions.
+In the current chapter, we peek in the technical details of various numerical methods when theoretical analyses are insufficent and the full equations have to be simulated to describe the coupled fluid and particle dynamics.
+First, we discuss standard Navier-Stokes solvers along with different interface-capturing/tracking methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations} (DNS).
+Then, we discuss a special class of methods that solves the particle dynamics without directly computing the flow, thus is much faster, but remains valid only in Stokes flows. Depending on the level of simplifications, these may fall under the category of \emph{coarse-grained} dynamics.
+In view of the large amount of numerical methods and the constant development of computational fluid dynamics in the last several decades, the list of methods is by no means complete. For more comprehensive surveys of available numerical techniques for multiphase flow problems, see \cite{prosperetti_tryggvason_2007, Rosti2019}.
 
 
 %-------------------------------------------------------------------------------
@@ -521,12 +520,13 @@ For more comprehensive surveys of various numerical techniques for multiphase fl
 \section{Fluid-resolving methods}
 \label{sec:fluid-methods}
 
+single phase NS.
 Solution of the Navier-Stokes equations.
-projection method, \etc
+projection method \citep{Chorin_1968}.
 
 Discretization.
-In space: finite difference, finite volume, finite element, spectral methods, \etc
-In time: RK, AB2, CN, \etc
+In space: finite difference, finite volume, finite element, spectral methods. 
+In time: RK, AB2, CN \citep{Fletcher}.
 
 A brief summary of some interface-capturing methods.
 
@@ -546,7 +546,7 @@ boundary integral methods?
 \section{Particle-based methods}
 \label{sec:num-dem}
 
-In a particle-based method, the central equation to solve is
+In particle-based methods, the central equation to solve is
 \begin{equation} 
  \begin{aligned} \label{eq:force-balance}
   {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A, 
@@ -558,10 +558,10 @@ and ${\bm F}$ represent the force/torque vectors owing to hydrodynamics (denoted
 Note that, for $N$ particles in 3D, both ${\bm U}$ and ${\bm F}$ have dimension $6N$, while ${\bm m}$ has size $6N \times 6N$.
 
 If the particle inertia is negligible, the left-hand side of Eq.\ \eqref{eq:force-balance} goes to zero, resulting in $\bm{F}^H \approx -\bm{F}^A$ and quasi-static particle dynamics.
-If the fluid inertia is also negligible, the Navier-Stokes equations reduces to the Stokes equations and $\bm{F}^H$ may be obtained without actually solving the fluid motions.
+If the fluid inertia is also negligible, the Navier-Stokes equations reduces to the Stokes equations and $\bm{F}^H$ may be obtained without even explicitly solving the fluid motions.
 In the following, we examine two such simplified techniques.
 One is more accurate and holds for any particulate system in general, albeit computationally expansive. This is the \emph{Stokesian dynamics} method.
-The other is derived from the former, with additional features to model particle contact; hence it is better suited for dense suspensions. We call the latter \emph{hybrid lubrication/granular dynamics} method.
+The other is derived from the former, but with additional features to model particle contact; hence, it is better suited for dense suspensions. We call the latter \emph{hybrid lubrication/granular dynamics} method.
 
 \subsection{Stokesian dynamics}
 \label{subsec:sd}
@@ -581,7 +581,7 @@ and the summation is over all $N$ particles.
 The local velocity $\bm{u}$ can be obtained numerically by dividing the surface of each particle into $M$ elements and resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torqure conditions.
 This approach belongs to a broad class of \emph{boundary integral methods} \citep{Pozrikidis}, which are highly accurate and computationally efficient, since the discretization is required only on the particle surface instead of in the flow domain, cf.\ Section \ref{sec:fluid-methods}.
 More specifically, the number of unknowns are $N_E=(3M+6)N$, \ie three components of force density for each element, and six translational and angular velocity components per particle.
-The computational time depends on the algorithm and boundary conditions. In the best case, it is $\mathcal{O}(N_E\log N_E)$; while it can be $\mathcal{O}(N_E^3)$ if using direct solution methods \citep{graham_2018}.
+The computational time depends on the algorithm and boundary conditions. In the best case, it is $\mathcal{O}(N_E\log N_E)$; while it can be as large as $\mathcal{O}(N_E^3)$ if using direct solution methods \citep{graham_2018}.
 
 Now, instead of directly evaluating the integral over all particle surfaces, the method of Stokesian dynamics \citep{durlofsky_brady_bossis_1987} rewrites the right-hand side of Eq.\ \eqref{eq:boundary-integral} as a multipole expansion, \viz
 \begin{equation} \label{eq:sd-multipole}
@@ -607,7 +607,7 @@ Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with
   \end{pmatrix},
  \end{aligned}
 \end{equation}
-where $\mathscr{M}^\infty$ is the so-called ``grand mobility'' matrix, containing the structure of all hydrodynamic interactions per particle configuration.
+where $\mathscr{M}^\infty$ is the far-field approximation to the so-called ``grand mobility'' matrix that contains the structure of all hydrodynamic interactions per particle configuration.
 
 Furthermore, the grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, transforming Eq.\ \eqref{eq:sd-mob-eq} to
 \begin{equation} 
@@ -641,8 +641,8 @@ If $\mathscr{R}$ is known, the particle velocity can be straightforwardly obtain
 \end{equation}
 Note that $\bm{F}^H$ has been replaced with $-\bm{F}^A$.
 
-There is one more crucial piece of the Stokesian dynamics method.
-In the above construction of $\mathscr{M}^\infty$, lubrication interaction is not fully accounted for due to the omission of higher-order multipole moments (hence the superscript $^\infty$). To make a lubrication correction, $\mathscr{R}$ is calculated as
+There is one more crucial step in the Stokesian dynamics method.
+In the above construction of $\mathscr{M}^\infty$, lubrication interaction is not fully accounted for due to the omission of higher-order multipole moments (hence the superscript $^\infty$). To correctly include all contributions from the lubrication, $\mathscr{R}$ is calculated as
 \begin{equation} \label{eq:sd-lub-correction}
  \begin{aligned}
   \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty,
@@ -663,29 +663,52 @@ Finally, the solution procedure of the Stokesian dynamics method can be summariz
 \subsection{Hybrid lubrication/granular dynamics}
 
 %The next level of simplification entails ...
-If the particle volume fraction is very high, say $\phi > 40\%$, the far-field, many-body hydrodynamic interaction will be less important than the pairwise, short-range lubrication force due to particle crowding. This justifies a further simplification of the mobility matrix by dropping all additional low-moment terms apart from the lubrication \citep{Ball_Melrose_1997}, \ie
+If the particle volume fraction is very high, say $\phi > 40\%$, the far-field, many-body hydrodynamic interaction will be less important than the pairwise, short-range lubrication force due to particle crowding. This suggests a further simplification of the mobility matrix by dropping all additional low-moment terms apart from the lubrication \citep{Ball_Melrose_1997}, \ie
 \begin{equation} 
  \begin{aligned}
   \mathscr{R} = \mathscr{R}_{2B} .
  \end{aligned}
 \end{equation}
-
 Specifically, $\mathscr{R}_{2B}$ is composed of blocks of second-, third-, and fourth-rank tensors that relate the force, torque, and stresslet acting on one particle to its neighbour \citep{kim_karrila}.
 In the case of unequal spheres, the results have been extensively calculated by \cite{jeffrey_onishi_1984, jeffrey1992} using the twin multipole expansion method.
-The detailed algebra is rather cumbersome. Here, we simply note that the components are essentially functions of the particles' velocities, size ratio, and surface gap ($h$). The diverging behaviour is strongest for the lubrication force in the normal direction ($F^{L,n} \sim 1/h$), while in the tangential directions, as well as for the lubrication torque, the divergence is in weaker form $\sim 1/\log(h)$. See \emph{Paper 7} for the detailed expressions.
+The detailed algebra is rather cumbersome. Here, we simply note that the components are essentially functions of the particles' velocities, size ratio, and surface gap ($h$). The diverging behaviour is strongest for the lubrication force in the normal direction ($F^{L,n} \sim 1/h$), whereas in the tangential directions, as well as for the lubrication torque, the divergence is in weaker form $\sim \log(1/h)$. See \emph{Paper 7} for the detailed expressions.
 
-For concentrated suspensions, lubrication interaction alone is not sufficient to reproduce certain experimental observations, such as the discontinuous shear thickening \citep{Morris_annurev2020}.
-When particles are very closely packed, contact interactions such as collision and friction are inevitable due to surface roughness\footnote{Analytically, a diverging lubrication would prevent particle contact, though that neither agrees with everyday experience nor holds beyond the continuum limit.}
-This motivates the merging of the reduced Stokesian dynamics with the granular dynamics approaches and has led to improved understanding of many of phenomena in dense suspensions \citep{Trulsson_Andreotti_Claudin, Mari_Seto_2014JoR, Cheal_Ness_2018}.
-In the latter model, the granular dynamics is often implemented as a stick/slide friction model employing springs and dashpots \citep{Luding2008}.
-These forces and torques are added in ${\bm F}^A$.
-%In addition, for a computational standpoint,
+While the hydrodynamic interactions have been further truncated, another mode of interaction needs to be supplemented.
+For concentrated suspensions, it is known that lubrication interaction alone is not sufficient to reproduce certain experimental observations, such as the discontinuous shear thickening of cornstarch solutions \citep{Morris_annurev2020}.
+On the other hand, granular dynamics, in which particles interact with each other via \emph{collision} and \emph{friction} forces, is often adopted for modelling of suspensions in dry media \citep{campbell_brennen_1985}.
+The \emph{hybrid} of the two approaches, where both lubrication and granular dynamics are considered, has recently emerged as a new simulation method and led to improved physical understandings of many phenomena in dense particle suspensions \citep{Trulsson_Andreotti_Claudin, Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018, Ness_Mari_Cates}.
 
-Computationally, the solution procedure of the hybrid lubrication/granular dynamics is similar to Stokesian dynamics, except that there is no need to invert the mobility matrix and the resistance matrix is sparse. This leads to computational speedup.
+In a hybrid lubrication/granular dynamics method, particles interact via short-range lubrication and contact forces in a pariwise additive fashion.\footnote{Analytically, a diverging lubrication would prevent particle contact, though that neither agrees with everyday experience nor holds beyond the continuum limit in the presence of surface roughness.}
+%When particles are very densely packed, contact interactions such as \emph{collision} and \emph{friction} are inevitable due to surface roughness, and these 
+%This motivates the merging of the reduced Stokesian dynamics with the granular dynamics approaches and
+There are several models to describe frictional contacts between particles. The currently popular one is the 
+%In the latter model, the granular dynamics is often implemented as a
+stick/slide friction model employing springs and dashpots \citep{Luding2008}, which for the case of spheres reads
+\begin{subequations} \label{eq:hlcd-contact}
+  \begin{equation} 
+    \begin{aligned}
+      {\bm F}^C_{i,j} = -k_n {\bm h}_{ij}  - \gamma_n \bm{U}_{ij,n} - k_t {\bm \xi}_{ij},
+    \end{aligned}
+    \label{col F}
+  \end{equation}
+  \begin{equation} 
+    \begin{aligned}
+      {\bm T}^C_{i,j} = a_{i} k_t ({\bm n}_{ij} \times {\bm \xi}_{ij}),
+    \end{aligned}
+  \end{equation}
+\end{subequations}
+where ${\bm h}_{ij}=h_{ij}{\bm n}_{ij}$ denotes the signed normal surface gap between particles $i$ and $j$ (positive when overlapping),
+${\bm \xi}_{ij}$ the signed tangential stretch (see \emph{Paper 7} for details),
+$k_n$ the normal spring constant,
+$\gamma_n$ the damping constant,
+and $k_t$ the tangential spring constant.
+Furthermore, the contact forces need to satisfy the Coulomb's law of friction, \ie $\abs{\bm{F}^C_{tan}} \leq \mu_c\abs{\bm{F}^C_{nor}}$, with $\mu_c$ being the friction coefficient. 
 
-Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}. That is, compute all forces and torques to get the acceleration, then integrate in time once to get the velocity and twice to get the position. 
-In the colloidal context, such a approach is sometimes termed as dissipative particle dynamics or Brownian dynamcis \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
-Provided that the particle Reynolds number remains much less than unity, it is equivalent to the quasi-static matrix inversion approach.
+The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ tupple in Eq.\ \eqref{eq:force-balance}, and solved numerically similar to the Stokesian dynamics method.
+From a computational standpoint, the present method does not require invert of the mobility matrix and the grand resistance matrix composed of pair interactions is sparse; hence a much less numerical cost.
+Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}. That is, computing all forces and torques to get the acceleration, then integrating in time once to get the velocity and twice to get the position.
+Similar techniques have been called dissipative particle dynamics or Brownian dynamcis, depending on the context \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
+Provided that the particle Reynolds number remains much less than unity, this is equivalent to the quasi-static matrix inversion approach.
 
 
 
