@@ -511,26 +511,51 @@ See \cite{seto_giusteri_2018} for further discussions.
 The previous chapter depicts the physical pictures of droplet interactions and suspension flow in a few simplified conditions.
 In the current chapter, we peek in the technical details of various numerical methods when theoretical analyses are insufficent and the full equations have to be simulated to describe the coupled fluid and particle dynamics.
 First, we discuss standard Navier-Stokes solvers along with different interface-capturing/tracking methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations} (DNS).
-Then, we discuss a special class of methods that solves the particle dynamics without directly computing the flow, thus is much faster, but remains valid only in Stokes flows. Depending on the level of simplifications, these may fall under the category of \emph{coarse-grained} dynamics.
+Then, we discuss a special class of methods that solves the particle dynamics without directly computing the flow, thus is much faster, but becomes invalid beyond the Stokes flow approximation. Depending on the level of simplifications, these may fall under the category of \emph{coarse-grained} dynamics.
 In view of the large amount of numerical methods and the constant development of computational fluid dynamics in the last several decades, the list of methods is by no means complete. For more comprehensive surveys of available numerical techniques for multiphase flow problems, see \cite{prosperetti_tryggvason_2007, Rosti2019}.
 
 
 %-------------------------------------------------------------------------------
 
-\section{Fluid-resolving methods}
+\section{Interface-resolved one-fluid methods}
 \label{sec:fluid-methods}
 
-single phase NS.
-Solution of the Navier-Stokes equations.
-projection method \citep{Chorin_1968}.
+The incompressible Navier Stokes equation, Eq.\ \eqref{eq:Navier-Sotkes}, can be solved numerically using the classical \emph{projection method} \citep{Chorin_1968} by repeatedly executing the following steps,
+\begin{subequations} \label{eq:projection-method}
+ \begin{equation} \label{eq:ab2}
+  \begin{aligned}
+   {\bm u}^* ={\bm u}^{(n)} +\Delta t \bigg(\frac{3}{2} {\bf RU}^{(n)}-\frac{1}{2} {\bf RU}^{(n-1)} \bigg),
+  \end{aligned}
+ \end{equation}
+ \begin{equation} 
+  \nabla^2 p^{(n+1)} = \frac{\nabla \cdot {\bm u}^*}{\Delta t},
+ \end{equation}
+ \begin{equation} 
+   {\bm u}^{(n+1)} = {\bm u}^* -\Delta t \nabla p^{(n+1)},
+ \end{equation}
+\end{subequations}
+where
+\begin{equation}
+  {\bf RU}^{(n)} = -{\bm u}^{(n)} \cdot \nabla {\bm u}^{(n)} +\nabla^2 {\bm u}^{(n)} +{\bm f}^{(n)}.
+\end{equation}
+In the above, superscripts $^{(n)}$, $^*$, and $^{(n+1)}$ denote the discrete time-levels with time step $\Delta t$;
+and $\rho$ and $\mu$ are assumed to be 1 for simplicity.
+The flow field $\bm u$ is updated in time via a fractional-step procedure, where the first sub-step, Eq.\ \eqref{eq:ab2}, utilizes the second-order Adams-Bashforth (AB2) scheme. Other temporal integration schemes, \eg the Runge-Kutta (RK) or Crank-Nicolson (CN) methods, can also be used depending on the condition of the equations.
+We note that AB2 has the advantage of being easy to implement (comparing to implicit schemes such as CN) and relatively fast (comparing to high-order schemes such as third-order RK).
 
-Discretization.
-In space: finite difference, finite volume, finite element, spectral methods. 
-In time: RK, AB2, CN \citep{Fletcher}.
+In order to evaluate the spatial derivatives in Eqs.\ \eqref{eq:projection-method}, the flow domain should be discretized so that various finite difference or weighted residual methods can be applied.
+In essense, finite difference methods express the derivative as a truncated Taylor series expansion, while weighted resiudual methods assume the solution can be represented analytically; specifically, the latter includes the finite volume, finite element, and spectral methods \citep{Fletcher}.
+Loosely speaking, finite difference and finite volume schemes are easy to implement on a structured grid; finite elment methods are more flexible on non-Cartesian grids; and spectral methods have the highest order-of-accuracy.
 
-A brief summary of some interface-capturing methods.
+The above entails the most basic algorithm for single-phase flow.
+When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase, which also modifies the underlying flow.
+Below, we give a brief overview of some interface-capturing/tracking methods that have been developed along this direction.
+The common feature of these methods is that they follow the the motion of finite-size particles without deforming the original grid.
+Hence, they can all be referred to as ``\emph{one-fluid}'' formulation.
+
 
 \subsection{level set methods}
+
 (interface-correction level set/ghost fluid method),
 
 \subsection{volume-of-fluid methods}
@@ -539,7 +564,6 @@ A brief summary of some interface-capturing methods.
 
 \subsection{immersed boundary methods}
 
-boundary integral methods?
 
 
 
