@@ -512,7 +512,7 @@ The previous chapter depicts the physical pictures of droplet interactions and s
 In the current chapter, we peek in the technical details of various numerical methods when theoretical analyses are insufficent and the full equations have to be simulated to describe the coupled fluid and particle dynamics.
 First, we discuss standard Navier-Stokes solvers along with different interface-capturing/tracking methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations} (DNS).
 Then, we discuss a special class of methods that solves the particle dynamics without directly computing the flow, thus is much faster, but becomes invalid beyond the Stokes flow approximation. Depending on the level of simplifications, these may fall under the category of \emph{coarse-grained} dynamics.
-In view of the large amount of numerical methods and the constant development of computational fluid dynamics in the last several decades, the list of methods is by no means complete. For more comprehensive surveys of available numerical techniques for multiphase flow problems, see \cite{prosperetti_tryggvason_2007, Rosti2019}.
+In view of the large amount of numerical methods and the constant development of computational fluid dynamics (CFD) in the last several decades, the list of methods is by no means complete. For more comprehensive surveys of available numerical techniques for multiphase flow problems, see \cite{prosperetti_tryggvason_2007, Rosti2019}.
 
 
 %-------------------------------------------------------------------------------
@@ -520,14 +520,14 @@ In view of the large amount of numerical methods and the constant development of
 \section{Interface-resolved one-fluid methods}
 \label{sec:fluid-methods}
 
-The incompressible Navier Stokes equation, Eq.\ \eqref{eq:Navier-Sotkes}, can be solved numerically using the classical \emph{projection method} \citep{Chorin_1968} by repeatedly executing the following steps,
+The incompressible Navier Stokes equations, Eqs.\ \eqref{eq:Navier-Sotkes}, can be solved numerically using the classical \emph{projection method} \citep{Chorin_1968} by repeatedly executing the following steps,
 \begin{subequations} \label{eq:projection-method}
  \begin{equation} \label{eq:ab2}
   \begin{aligned}
    {\bm u}^* ={\bm u}^{(n)} +\Delta t \bigg(\frac{3}{2} {\bf RU}^{(n)}-\frac{1}{2} {\bf RU}^{(n-1)} \bigg),
   \end{aligned}
  \end{equation}
- \begin{equation} 
+ \begin{equation} \label{eq:poisson}
   \nabla^2 p^{(n+1)} = \frac{\nabla \cdot {\bm u}^*}{\Delta t},
  \end{equation}
  \begin{equation} 
@@ -538,14 +538,16 @@ where
 \begin{equation}
   {\bf RU}^{(n)} = -{\bm u}^{(n)} \cdot \nabla {\bm u}^{(n)} +\nabla^2 {\bm u}^{(n)} +{\bm f}^{(n)}.
 \end{equation}
-In the above, superscripts $^{(n)}$, $^*$, and $^{(n+1)}$ denote the discrete time-levels with time step $\Delta t$;
+In the above, superscripts $^{(n)}$, $^*$, and $^{(n+1)}$ denote the discrete time-levels in step of $\Delta t$;
 and $\rho$ and $\mu$ are assumed to be 1 for simplicity.
-The flow field $\bm u$ is updated in time via a fractional-step procedure, where the first sub-step, Eq.\ \eqref{eq:ab2}, utilizes the second-order Adams-Bashforth (AB2) scheme. Other temporal integration schemes, \eg the Runge-Kutta (RK) or Crank-Nicolson (CN) methods, can also be used depending on the condition of the equations.
-We note that AB2 has the advantage of being easy to implement (comparing to implicit schemes such as CN) and relatively fast (comparing to high-order schemes such as third-order RK).
+The flow field, $\bm u$, is updated in time via a fractional-step procedure, where the first sub-step, Eq.\ \eqref{eq:ab2}, utilizes the second-order Adams-Bashforth (AB2) scheme. Other temporal integration schemes, \eg the Runge-Kutta (RK) or Crank-Nicolson (CN) methods, can also be used or mixed-and-used depending on the numerical stability and desired accurary.
+In moderate-Reynolds-number systems, AB2 is typically favored over other schemes as it is easy to implement (comparing to implicit schemes such as CN) and relatively fast (comparing to high-order schemes such as third-order RK).
 
-In order to evaluate the spatial derivatives in Eqs.\ \eqref{eq:projection-method}, the flow domain should be discretized so that various finite difference or weighted residual methods can be applied.
-In essense, finite difference methods express the derivative as a truncated Taylor series expansion, while weighted resiudual methods assume the solution can be represented analytically; specifically, the latter includes the finite volume, finite element, and spectral methods \citep{Fletcher}.
-Loosely speaking, finite difference and finite volume schemes are easy to implement on a structured grid; finite elment methods are more flexible on non-Cartesian grids; and spectral methods have the highest order-of-accuracy.
+In order to evaluate the spatial derivatives in Eqs.\ \eqref{eq:projection-method}, the flow domain should be discretized so that either finite difference or weighted residual methods can be applied.
+In essense, finite difference methods express the derivative as a truncated Taylor series expansion, while weighted resiudual methods assume that the solution can be represented analytically and they are usually formulated as one of the following better-known variants, including finite volume, finite element, or spectral methods \citep{Fletcher}.
+Loosely speaking, finite difference and finite volume schemes are easier to implement on a structured grid; finite elment methods are more flexible on non-Cartesian grids; and spectral methods have the highest order-of-accuracy.
+
+Depending on the numerical condition and specific implementation, solving Eqs.\ \eqref{eq:projection-method} can be costly. The most computationally intensive part is usually Eq.\ \eqref{eq:poisson}, where a Poisson equation for pressure must be solved numerically at each time step. Consequently, much work has gone into developing fast or iterative Poisson solvers that take advantage of fast Fourier transforms, Gauss elimination, or multigrid methods, see \cite{Buzbee_Golub_Nielson, Swarztrauber1977, multigrid_Brandt, Wesseling} for some early examples.
 
 The above entails the most basic algorithm for single-phase flow.
 When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase, which also modifies the underlying flow.
@@ -554,16 +556,69 @@ The common feature of these methods is that they follow the the motion of finite
 Hence, they can all be referred to as ``\emph{one-fluid}'' formulation.
 
 
-\subsection{level set methods}
+\subsection{Front-capturing methods}
 
-(interface-correction level set/ghost fluid method),
+First we describe three Eulerian methods.
+marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}
 
-\subsection{volume-of-fluid methods}
 
-\subsection{phase-field methods}
+\medskip
+\paragraph{\bf Volume-of-fluid methods}
+First proposed in the 1970s, the volume-of-fluid (VOF) method was one of the oldest interface-capturing methods for modelling of free-surface flow \citep{Debar1974, hirt_nichols_1975, hirt_nichols_1981a}, and it remains as the most widely used method for multiphase flow simulations within the CFD community \citep{Scardovelli_Zaleski_1999, gerris, pilliod_puckett_2004, xiao_honma_kono_2005a, mthinc2012, paris2019}.
+The principle idea is to, first, introduce a cell-averaged volume fraction, $C_{k}$, defined as
+\begin{equation}
+ \begin{aligned}
+   C_{k} = \frac{1}{\Delta V_k} \int_{\Omega_k} H(\bm{x}) dV,
+ \end{aligned}
+\end{equation}
+where $\Delta V_k$ is the volume of computational cell $k$, and $H(\bm{x})$ is a phase indicator function, given as
+\begin{equation}
+    H(\bm{x}_k)=
+    \begin{cases}
+        1 \quad \quad & \textrm{if $\bm{x}$ is in the reference fluid,} \\
+        0 \quad & \textrm{otherwise}, \\
+    \end{cases}
+\end{equation}
+and, then, obtain the temporal variation of the local volume fraction by solving the following equation,
+\begin{equation} \label{eq:vof-advect}
+ \begin{aligned}
+   \frac{\partial C_{k}}{\partial t} + \int_{\partial \Omega_k} (\bm{u \cdot n}_k) H(\bm{x}) dS =0,
+ \end{aligned}
+\end{equation}
+where $\bm{n}_k$ denote the six normal vectors (in a 3D Cartesian mesh) of surfaces $\partial \Omega_k$, and $\bm u$ is the local divergence-free velocity.
 
-\subsection{immersed boundary methods}
+Note that, in the above formulations, the \emph{total} volume of each fluid phase is conserved by construction.
+This is the minimum requirement for a long-time simulation to be meaningful and makes VOF appealing in a wide range of industrial problems, such as predicting the impact of ocean waves splashing on a ship or designing spray nozzles to enhance fuel mixing in engines.
+On the other hand, to correctly capture the \emph{local} interface motion, the volume flux in Eq.\ \eqref{eq:vof-advect} must be calculated accurately, which requires certain information of the local interface geometry, such as the normal direction and curvature.
+This further requirement is not straightforward knowing only the cell-averaged volume fraction, and many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
 
+\iffalse
+steps:
+\begin{enumerate}
+\item reconstruct the interface from the local volume fraction. (not required by algebraic VOF)
+\item advect the interface.
+\end{enumerate}
+\fi
+
+\medskip
+\paragraph{\bf Level set methods}
+
+interface-correction level set/ghost fluid method \citep{ICLS}
+
+
+\medskip
+\paragraph{\bf Phase-field methods}
+
+
+
+\subsection{Front-tracking methods}
+
+\cite{unverdi_tryggvason_1992a}.
+
+\medskip
+\paragraph{\bf Immersed boundary methods}
+
+\cite{mittal_iaccarino_2005a, Wim-Paul_JCP_2012}
 
 
 
