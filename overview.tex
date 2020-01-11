@@ -547,24 +547,35 @@ In order to evaluate the spatial derivatives in Eqs.\ \eqref{eq:projection-metho
 In essense, finite difference methods express the derivative as a truncated Taylor series expansion, while weighted resiudual methods assume that the solution can be represented analytically and they are usually formulated as one of the following better-known variants, including finite volume, finite element, or spectral methods \citep{Fletcher}.
 Loosely speaking, finite difference and finite volume schemes are easier to implement on a structured grid; finite elment methods are more flexible on non-Cartesian grids; and spectral methods have the highest order-of-accuracy.
 
-Depending on the numerical condition and specific implementation, solving Eqs.\ \eqref{eq:projection-method} can be costly. The most computationally intensive part is usually Eq.\ \eqref{eq:poisson}, where a Poisson equation for pressure must be solved numerically at each time step. Consequently, much work has gone into developing fast or iterative Poisson solvers that take advantage of fast Fourier transforms, Gauss elimination, or multigrid methods, see \cite{Buzbee_Golub_Nielson, Swarztrauber1977, multigrid_Brandt, Wesseling} for some early examples.
+Depending on the numerical condition and specific implementation, solving Eqs.\ \eqref{eq:projection-method} can be costly. The most computationally intensive part in a projection method is usually Eq.\ \eqref{eq:poisson}, where a Poisson equation for pressure must be solved numerically at each time step. Consequently, much work has gone into developing fast or iterative Poisson solvers that take advantage of fast Fourier transforms, Gauss elimination, or multigrid methods, see \cite{Buzbee_Golub_Nielson, Swarztrauber1977, multigrid_Brandt, Wesseling} for some early examples.
 
 The above entails the most basic algorithm for single-phase flow.
-When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase, which also modifies the underlying flow.
+When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase that modifies the underlying flow.
 Below, we give a brief overview of some interface-capturing/tracking methods that have been developed along this direction.
 The common feature of these methods is that they follow the the motion of finite-size particles without deforming the original grid.
 Hence, they can all be referred to as ``\emph{one-fluid}'' formulation.
 
 
+\subsection{Front-tracking methods}
+
+The more intuitive approach.
+\cite{unverdi_tryggvason_1992a}.
+
+\medskip
+\paragraph{\bf Immersed boundary methods}
+
+\cite{mittal_iaccarino_2005a, Wim-Paul_JCP_2012}
+
+
 \subsection{Front-capturing methods}
 
 First we describe three Eulerian methods.
-marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}
-
+marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}/
+Also ghost fluid method.
 
 \medskip
 \paragraph{\bf Volume-of-fluid methods}
-First proposed in the 1970s, the volume-of-fluid (VOF) method was one of the oldest interface-capturing methods for modelling of free-surface flow \citep{Debar1974, hirt_nichols_1975, hirt_nichols_1981a}, and it remains as the most widely used method for multiphase flow simulations within the CFD community \citep{Scardovelli_Zaleski_1999, gerris, pilliod_puckett_2004, xiao_honma_kono_2005a, mthinc2012, paris2019}.
+First proposed in the 1970s, the volume-of-fluid (VOF) method was one of the oldest interface-capturing methods for modelling of free-surface flow \citep{Debar1974, hirt_nichols_1975, hirt_nichols_1981a}, and it remains as one of the most widely used methods for multiphase flow simulations within the CFD community \citep{Scardovelli_Zaleski_1999, gerris, pilliod_puckett_2004, xiao_honma_kono_2005a, mthinc2012, paris2019}.
 The principle idea is to, first, introduce a cell-averaged volume fraction, $C_{k}$, defined as
 \begin{equation}
  \begin{aligned}
@@ -579,7 +590,7 @@ where $\Delta V_k$ is the volume of computational cell $k$, and $H(\bm{x})$ is a
         0 \quad & \textrm{otherwise}, \\
     \end{cases}
 \end{equation}
-and, then, obtain the temporal variation of the local volume fraction by solving the following equation,
+then, obtain the temporal variation of the local volume fraction by solving the following equation,
 \begin{equation} \label{eq:vof-advect}
  \begin{aligned}
    \frac{\partial C_{k}}{\partial t} + \int_{\partial \Omega_k} (\bm{u \cdot n}_k) H(\bm{x}) dS =0,
@@ -602,23 +613,50 @@ steps:
 
 \medskip
 \paragraph{\bf Level set methods}
+Another way to model interface evolution is to use level set methods \citep{sethian_1999a}.
+Originally devised by \cite{Osher_Sethian_levelset}, level set methods encompass a broad class of algorithms and numerical schemes for ``front propagation'' with a curvature-dependent speed.
+The mathematical machinery is rooted in the boundary-value and initial-value partial-differential-equations (PDE) perspective on moving interfaces.\footnote{It may seem similar to VOF methods in the sense that the both methods are Eulerian and the governing equations can be written in a similar way. However, the level set method embeds the \emph{geometry} of an interface, while VOF has the volume embedding. This, together with that level set is Lipschitz-continuous and VOF is discontinuous, makes the two approaches fundamentally different.}
+Its applications include geometry, computer vision, fluid mechanics, combustion, tissue growth, path optimazation, \etc
+In terms of fluid mechanics, specifically, the last three decades has seen continuous numerical development in appling level set methods to multiphase flows, see \eg \cite{Mulder_JCP_1992, Sussman_JCP_1994, Sussman_JCP_2000, Enright_JCP_2002, Olsson_JCP_2005, Marchandise_JCP_2007, Desjardins_JCP_2008, Desjardins_JCP_2009, Aanjaneya_JCP_2013, Luo_JCP_2015, ICLS}. See also \cite{Gibou_Fedkiv_Osher} for a recent review.
 
-interface-correction level set/ghost fluid method \citep{ICLS}
+The level set function, $\phi$, is classically defined as the signed distance to the interface $\Gamma$,
+\begin{equation} \label{eq:ls-def}
+    \phi({\bm x},t) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|,
+\end{equation}
+where $sgn({\bm x})$ is a sign function equal to $1$ or $-1$ depending on which side of the interface the observation point $\bm x$ lies, and ${\bm x}_\Gamma$ denotes the point on $\Gamma$ that has the shortest distance to $\bm x$.
+$\phi$ is then advected according to the following level set equation,
+\begin{equation} \label{eq:ls-eq}
+  \frac{\partial \phi}{\partial t} + F \abs{\nabla \phi} = 0,
+\end{equation}
+where $F$ is a speed function.
+From a PDE perspective, the above equation prescribes that the entire level set evolution is obtained by integrating $\phi({\bm x},t=0)$ forward in time.
+Hence, it is an initial value problem and numerical techniques developed for these problems are applicable.
+
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set, \viz
+\begin{subequations}
+ \begin{equation}
+    {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
+ \end{equation}
+ \begin{equation} \label{eq:curv}
+    \kappa = -\nabla \cdot {\bm n}.
+ \end{equation}
+\end{subequations}
+where the negative sign in Eq.\ \eqref{eq:curv} is due to convention.
+
+When solving Eq.\ \eqref{eq:ls-eq} for droplet motions, the most natural choice for $F$ is the local flow velocity projected in the normal direction, \ie $F=\bm{u \cdot n}$. However, any non-uniform flow will distort the level set field, making Eq.\ \eqref{eq:ls-def} invalid. To remedy this problem, thus making the numerical solution stable, it is customary to perform a ``reinitialization'' of $\phi$ every few time steps \citep{Sussman_JCP_1994}.
+Various techniques have been developed to do so by, \eg using fast marching methods \citep{sethian_1999a}, or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}. It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
+
+comment on mass loss.
+
+%coupled level set/VOF \citep{Sussman_JCP_2000}.
+%hybrid particle level set method \citep{Enright_JCP_2002}.
+%conservative level set \citep{Olsson_JCP_2005}.
+%interface-correction level set/ghost fluid method \citep{ICLS}
 
 
 \medskip
 \paragraph{\bf Phase-field methods}
 
-
-
-\subsection{Front-tracking methods}
-
-\cite{unverdi_tryggvason_1992a}.
-
-\medskip
-\paragraph{\bf Immersed boundary methods}
-
-\cite{mittal_iaccarino_2005a, Wim-Paul_JCP_2012}
 
 
 
