@@ -520,7 +520,7 @@ In view of the large amount of numerical methods and the constant development of
 \section{Interface-resolved one-fluid methods}
 \label{sec:fluid-methods}
 
-The incompressible Navier Stokes equations, Eqs.\ \eqref{eq:Navier-Sotkes}, can be solved numerically using the classical \emph{projection method} \citep{Chorin_1968} by repeatedly executing the following steps,
+The incompressible Navier-Stokes equations, Eqs.\ \eqref{eq:Navier-Sotkes}, can be solved numerically using the classical \emph{projection method} \citep{Chorin_1968} by repeatedly executing the following steps,
 \begin{subequations} \label{eq:projection-method}
  \begin{equation} \label{eq:ab2}
   \begin{aligned}
@@ -570,13 +570,14 @@ The more intuitive approach.
 \subsection{Front-capturing methods}
 
 First we describe three Eulerian methods.
-marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}/
+marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}
 Also ghost fluid method.
 
 \medskip
 \paragraph{\bf Volume-of-fluid methods}
-First proposed in the 1970s, the volume-of-fluid (VOF) method was one of the oldest interface-capturing methods for modelling of free-surface flow \citep{Debar1974, hirt_nichols_1975, hirt_nichols_1981a}, and it remains as one of the most widely used methods for multiphase flow simulations within the CFD community \citep{Scardovelli_Zaleski_1999, gerris, pilliod_puckett_2004, xiao_honma_kono_2005a, mthinc2012, paris2019}.
-The principle idea is to, first, introduce a cell-averaged volume fraction, $C_{k}$, defined as
+
+First proposed in the 1970s, the volume-of-fluid (VOF) method was one of the oldest interface-capturing methods for modelling free-surface flow \citep{Debar1974, hirt_nichols_1975, hirt_nichols_1981a}, and it remains as one of the most widely used methods for multiphase flow simulations within the CFD community \citep{Scardovelli_Zaleski_1999, gerris, pilliod_puckett_2004, xiao_honma_kono_2005a, mthinc2012, paris2019}.
+The principle idea is, first, introducing a cell-averaged volume fraction, $C_{k}$, defined as
 \begin{equation}
  \begin{aligned}
    C_{k} = \frac{1}{\Delta V_k} \int_{\Omega_k} H(\bm{x}) dV,
@@ -590,7 +591,7 @@ where $\Delta V_k$ is the volume of computational cell $k$, and $H(\bm{x})$ is a
         0 \quad & \textrm{otherwise}, \\
     \end{cases}
 \end{equation}
-then, obtain the temporal variation of the local volume fraction by solving the following equation,
+then, obtaining the temporal variation of the local volume fraction by solving the following equation,
 \begin{equation} \label{eq:vof-advect}
  \begin{aligned}
    \frac{\partial C_{k}}{\partial t} + \int_{\partial \Omega_k} (\bm{u \cdot n}_k) H(\bm{x}) dS =0,
@@ -599,9 +600,9 @@ then, obtain the temporal variation of the local volume fraction by solving the 
 where $\bm{n}_k$ denote the six normal vectors (in a 3D Cartesian mesh) of surfaces $\partial \Omega_k$, and $\bm u$ is the local divergence-free velocity.
 
 Note that, in the above formulations, the \emph{total} volume of each fluid phase is conserved by construction.
-This is the minimum requirement for a long-time simulation to be meaningful and makes VOF appealing in a wide range of industrial problems, such as predicting the impact of ocean waves splashing on a ship or designing spray nozzles to enhance fuel mixing in engines.
-On the other hand, to correctly capture the \emph{local} interface motion, the volume flux in Eq.\ \eqref{eq:vof-advect} must be calculated accurately, which requires certain information of the local interface geometry, such as the normal direction and curvature.
-This further requirement is not straightforward knowing only the cell-averaged volume fraction, and many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
+This is the minimum requirement for a long-time simulation to be meaningful and makes VOF appealing in a wide range of industrial problems, such as predicting the impact of ocean waves splashing on the ship hull or designing spray nozzles to enhance fuel mixing in engines.
+On the other hand, to correctly capture the local interface motion, the volume flux in Eq.\ \eqref{eq:vof-advect} must be calculated accurately, which requires certain information of the local interface \emph{geometry}, such as the normal direction and curvature.
+This further requirement is not straightforward knowing only the cell-averaged volume fraction, therefore, many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
 
 \iffalse
 steps:
@@ -613,26 +614,28 @@ steps:
 
 \medskip
 \paragraph{\bf Level set methods}
-Another way to model interface evolution is to use level set methods \citep{sethian_1999a}.
-Originally devised by \cite{Osher_Sethian_levelset}, level set methods encompass a broad class of algorithms and numerical schemes for ``front propagation'' with a curvature-dependent speed.
-The mathematical machinery is rooted in the boundary-value and initial-value partial-differential-equations (PDE) perspective on moving interfaces.\footnote{It may seem similar to VOF methods in the sense that the both methods are Eulerian and the governing equations can be written in a similar way. However, the level set method embeds the \emph{geometry} of an interface, while VOF has the volume embedding. This, together with that level set is Lipschitz-continuous and VOF is discontinuous, makes the two approaches fundamentally different.}
+
+Another way to model interface evolution is to use level set (LS) methods \citep{sethian_1999a}.
+Originally devised by \cite{Osher_Sethian_levelset}, LS methods encompass a broad class of algorithms and numerical schemes for ``front propagation'' with curvature-dependent speeds.
+The mathematical machinery is rooted in the boundary-value and initial-value partial-differential-equations (PDE) perspective on moving interfaces.\footnote{It may seem similar to VOF methods in the sense that the both methods are Eulerian and the governing equations can be written in a similar way. However, the level set method embeds the \emph{geometry} of an interface, while VOF has the \emph{volume} embedding. This, together with that level set is Lipschitz-continuous and VOF is discontinuous, makes the two approaches fundamentally different.}
 Its applications include geometry, computer vision, fluid mechanics, combustion, tissue growth, path optimazation, \etc
-In terms of fluid mechanics, specifically, the last three decades has seen continuous numerical development in appling level set methods to multiphase flows, see \eg \cite{Mulder_JCP_1992, Sussman_JCP_1994, Sussman_JCP_2000, Enright_JCP_2002, Olsson_JCP_2005, Marchandise_JCP_2007, Desjardins_JCP_2008, Desjardins_JCP_2009, Aanjaneya_JCP_2013, Luo_JCP_2015, ICLS}. See also \cite{Gibou_Fedkiv_Osher} for a recent review.
+In terms of fluid mechanics, specifically, the last three decades has witnessed continuous numerical development in appling level set methods to multiphase flows, see \eg \cite{Mulder_JCP_1992, Sussman_JCP_1994, Sussman_JCP_2000, Enright_JCP_2002, Olsson_JCP_2005, Marchandise_JCP_2007, Desjardins_JCP_2008, Desjardins_JCP_2009, Aanjaneya_JCP_2013, Luo_JCP_2015, ICLS}. See also \cite{Gibou_Fedkiv_Osher} for a recent review.
 
 The level set function, $\phi$, is classically defined as the signed distance to the interface $\Gamma$,
 \begin{equation} \label{eq:ls-def}
     \phi({\bm x},t) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|,
 \end{equation}
 where $sgn({\bm x})$ is a sign function equal to $1$ or $-1$ depending on which side of the interface the observation point $\bm x$ lies, and ${\bm x}_\Gamma$ denotes the point on $\Gamma$ that has the shortest distance to $\bm x$.
-$\phi$ is then advected according to the following level set equation,
+That is, the interface can be parameterized by $\phi$ as $\Gamma = \{ {\bm x} ~ \rvert ~ \phi({\bm x},t) = 0 \}$.
+The interface position is then advected according to the following level set equation,
 \begin{equation} \label{eq:ls-eq}
   \frac{\partial \phi}{\partial t} + F \abs{\nabla \phi} = 0,
 \end{equation}
 where $F$ is a speed function.
-From a PDE perspective, the above equation prescribes that the entire level set evolution is obtained by integrating $\phi({\bm x},t=0)$ forward in time.
-Hence, it is an initial value problem and numerical techniques developed for these problems are applicable.
+From a PDE perspective, the above equation asserts that the entire level set evolution can be obtained by integrating $\phi({\bm x},t=0)$ forward in time.
+In other words, Eq.\ \eqref{eq:ls-eq} is an initial value problem without boundary conditions.
 
-Geometrically, the normal and the curvature of the interface can be readily derived from the level set, \viz
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,
 \begin{subequations}
  \begin{equation}
     {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
@@ -641,23 +644,51 @@ Geometrically, the normal and the curvature of the interface can be readily deri
     \kappa = -\nabla \cdot {\bm n}.
  \end{equation}
 \end{subequations}
-where the negative sign in Eq.\ \eqref{eq:curv} is due to convention.
+The negative sign in Eq.\ \eqref{eq:curv} is due to convention.
 
-When solving Eq.\ \eqref{eq:ls-eq} for droplet motions, the most natural choice for $F$ is the local flow velocity projected in the normal direction, \ie $F=\bm{u \cdot n}$. However, any non-uniform flow will distort the level set field, making Eq.\ \eqref{eq:ls-def} invalid. To remedy this problem, thus making the numerical solution stable, it is customary to perform a ``reinitialization'' of $\phi$ every few time steps \citep{Sussman_JCP_1994}.
-Various techniques have been developed to do so by, \eg using fast marching methods \citep{sethian_1999a}, or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}. It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
+When solving the level set equation for multiphase flow, the most natural choice for $F$ is the local flow velocity projected in the normal direction, \ie $F=\bm{u \cdot n}$, reducing Eq.\ \eqref{eq:ls-eq} to
+\begin{equation} \label{eq:ls-avd}
+  \frac{\partial \phi}{\partial t} + \bm{u} \cdot \nabla \phi = 0.
+\end{equation}
+However, any non-uniform flow will distort the LS field, making Eq.\ \eqref{eq:ls-def} invalid after a few advection steps and making the numerical solution ubstable.
+To remedy this problem, it is customary to perform an infrequent level set ``reinitialization'' to reshape $\phi$ into a distance function while preserving the interface location \citep{Sussman_JCP_1994}.
+Various techniques have been developed to do so by \eg using fast marching methods \citep{sethian_1999a}, or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}. It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
 
-comment on mass loss.
-
-%coupled level set/VOF \citep{Sussman_JCP_2000}.
-%hybrid particle level set method \citep{Enright_JCP_2002}.
-%conservative level set \citep{Olsson_JCP_2005}.
-%interface-correction level set/ghost fluid method \citep{ICLS}
+At this point, it is important to mention a critical numerical issue of the level set methodology. That is, even if Eq.\ \eqref{eq:ls-avd} is solved on an incompressible velocity field, there is no guarantee that the numerical solution will conserve the total enclosed volume; in practice, there is often significant ``mass loss''.
+The reason for this problem is a combination of numerical dissipation, under-resolution, and lack of \emph{built-in} mass conservation properties in the numerical scheme.
+Plenty of methods have thus been proposed to overcome such issues by using higher-order numerical schemes, coupling the LS with VOF or lagrangian particles, imposing additinal mass constraints, \etc See \cite{ICLS} (\emph{Paper 1}) for a brief overview.
 
 
 \medskip
-\paragraph{\bf Phase-field methods}
+\paragraph{\bf Phase field methods}
 
+The last class of methods that we will describe is derived from theories of capillarity and critical phonomena.
+Here, by introducing of a so-called order parameter, a single-component fluid with varying density or a binary fluid with two immiscible components are modelled by a phase field separated by an interface of \emph{finite thickness} \citep{Anderson_McFadden_Wheeler}.
+Historically, the proposition of a finite-width interface dates back to as early as \cite{Poisson1831}. Since then, various theories have been developed by Maxwell, Gibbs, Lord Rayleigh, van der Waals, etc.; see \eg \cite{van-der-waals1893, Cahn1961}.
+We note that the physical notion of finite width is particularly relevant for fluids that are near its critical point, or for processes involving moving contact lines or breakup/coalescence where a sharp interface description will be faced with singularities \citep{Zhang_Mohseni_2018, Eggers1997}.
+For this reason, phase field methods are also regarded as \emph{diffuse interface} methods.
 
+Putting aside its physical origin in capillary and kinetic theories, phase field methods have recently attracted a renewed interest in the numerical modelling of twophase flow \citep{jacqmin_1999a, Jacqmin2000, Badalassi_etal_2003, Ding_Spelt_Shu2007, Shen_Yang_2010, dong_shen_2012a, Wang_Shu_Shao_Wu_Niu_2015, Martin, Mirjalili_Ivey_Mani_2020}.
+There are several ways to formulate the governing equation for the interface evolution. One popular version is the following Cahn-Hilliard equation,
+\begin{equation} \label{eq:C-H}
+  \frac{\partial c}{\partial t} + {\bm u}\cdot \nabla c =\tilde{m}\nabla ^2 \psi,
+\end{equation}
+where $c$ is a dimensionless order parameter smoothly varying from $+1$ in one fluid to $-1$ in the other within a thickness of $\epsilon$,
+$\tilde{m}$ is the mobility coefficient,
+and $\psi$ is the fluid chemical potential, given as
+\begin{equation} \label{eq:ch-chem}
+  \psi = \frac{3\tilde{\sigma} \epsilon}{4} 
+  \bigg(\frac{2}{\epsilon^2}(c^3-c) -\nabla ^2 c \bigg),
+\end{equation}
+with $\tilde{\sigma}$ being the surface tension.
+Clearly, there is a distinction between phase field methods and VOF or LS based on the equations alone --
+the diffusion term appearing in the transport of phase field within the interfacial region requires proper boundary conditions on $c$, whereas VOF or LS are purely hyperbolic, cf.\ Eqs.\ \eqref{eq:vof-advect} and \eqref{eq:ls-avd}.
+This, together with the fourth derivative of $c$ resulting from the chemical potential expression, both leads to a number of desired properties and imposes certain numerical constraints of phase field methods.
+See \cite{Mirjalili_Ivey_Mani_2020} for a recent discussion.
+
+Finally, we note that the interface thickness often loses its physical meaning in typical engineering twophase flow simulations. 
+For example, the thickness of a water-oil interface may be estimated from the mean free path of the water/oil molecules. According to molecular theory, it is $\sim 3$ \AA \enspace in room environment. Now, even if we consider a microfluidic flow where the droplet radius is $\sim 3$ $\mu$m, there is still a $10^{4}$ difference in the length scale, meaning that one droplet needs $\mathcal{O}(10^{4})$ grid points in each spatial direction -- a clearly unrealistic resolution.
+Therefore, interface thickness in phase field simulations bears only numerical meaning.
 
 
 \section{Particle-based methods}
