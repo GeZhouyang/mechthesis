@@ -510,7 +510,7 @@ See \cite{seto_giusteri_2018} for further discussions.
 
 The previous chapter depicts the physical pictures of droplet interactions and suspension flow in a few simplified conditions.
 In the current chapter, we peek in the technical details of various numerical methods when theoretical analyses are insufficent and the full equations have to be simulated to describe the coupled fluid and particle dynamics.
-First, we discuss standard Navier-Stokes solvers along with different interface-capturing/tracking methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations} (DNS).
+First, we discuss standard Navier-Stokes solvers along with different interface-tracking/capturing methods. Simulations adopting these approaches intend to resolve all spatial and temporal scales within the system, and sometimes qualify as \emph{direct numerical simulations} (DNS).
 Then, we discuss a special class of methods that solves the particle dynamics without directly computing the flow, thus is much faster, but becomes invalid beyond the Stokes flow approximation. Depending on the level of simplifications, these may fall under the category of \emph{coarse-grained} dynamics.
 In view of the large amount of numerical methods and the constant development of computational fluid dynamics (CFD) in the last several decades, the list of methods is by no means complete. For more comprehensive surveys of available numerical techniques for multiphase flow problems, see \cite{prosperetti_tryggvason_2007, Rosti2019}.
 
@@ -551,20 +551,58 @@ Depending on the numerical condition and specific implementation, solving Eqs.\ 
 
 The above entails the most basic algorithm for single-phase flow.
 When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase that modifies the underlying flow.
-Below, we give a brief overview of some interface-capturing/tracking methods that have been developed along this direction.
-The common feature of these methods is that they follow the the motion of finite-size particles without deforming the original grid.
-Hence, they can all be referred to as ``\emph{one-fluid}'' formulation.
+Below, we give a brief overview of some interface-tracking/capturing methods that have been developed along this direction.
+The common feature of these methods is that they follow the the motion of finite-size particles without deforming the original grid where the fluid variables are defined on.
+Hence, they can all be referred to as ``\emph{one-fluid}'' methods.
 
 
 \subsection{Front-tracking methods}
 
-The more intuitive approach.
-\cite{unverdi_tryggvason_1992a}.
+Using discrete marker points to specify and track particle motions, front-tracking methods constitute an intuitive description of finite-size particles and have been used in multiphase flow simulations since the inception of digital computers \citep{Daly1969, unverdi_tryggvason_1992a, tryggvason_bunner_esmaeeli_juric_al-rawahi_tauber_han_nas_jan_2001a}. [add more] \quad
+The general methodology is to (i) prescribe the particle location by distributing a set of Lagrangian points on the particle surface, (ii) advect them using the local flow velocity, and (iii) compute the extra forces at the updated particle position.
+In the case of liquid droplets, (ii) and (iii) can be written as
+\begin{equation}
+ \begin{aligned}
+   \frac{d \bm{X}_i}{dt} = \bm{u}(\bm{X}_i),
+ \end{aligned}
+\end{equation}
+\begin{equation} \label{eq:surf-tension}
+ \begin{aligned}
+   \bm{f} = \gamma \kappa \bm{n} \delta (\bm{X}_i) ,
+ \end{aligned}
+\end{equation}
+where $\bm{X}_i$, $i=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the internal boundary conditions due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways and will be described momentarily.
+
+Despite the conceptual simplicity, there are several technical details that require careful treatment in a numerical simulation.
+First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian particles may need to be redistributed, added, or deleted to ensure numerical stabilty and accuracy.
+This may be particularly cumbersome when droplets coalesce or breakup.
+Second, advection of the marker points requires interpolation of the velocity field.
+Third, the internal boundary conditions are to be computed on the fluid mesh, thus a ``spreading'' procedure is nessesary to couple the particle influence back. This is usually done with smeared delta function, such as that of \cite{Peskin}.
+
+We explain these in details below for a special class of front-tracking methods.
 
 \medskip
 \paragraph{\bf Immersed boundary methods}
 
-\cite{mittal_iaccarino_2005a, Wim-Paul_JCP_2012}
+Originally due to \cite{Peskin}.
+The different methods are often grouped in two categories, continuous and direct forcing: in the first approach the forcing is incorporated into the continuous equations before discretisation, whereas in the second approach the forcing is introduced after the equations are discretised. 
+development \citep{fadlun_verzicco_orlandi_mohd-yusof_2000a, Uhlmann, pinelli_naqavi_piomelli_favier_2010a, Wim-Paul_JCP_2012, favier_revell_pinelli_2014a}.
+review \citep{mittal_iaccarino_2005a}.
+
+Newton-Euler equations:
+\begin{subequations} \label{eq:newton-euler}
+  \begin{equation} 
+    \begin{aligned} \label{eq:force-balance}
+      \sum_M {\bm F}_i^M = m_i \frac{d{\bm u}_i}{dt}, 
+    \end{aligned}
+  \end{equation}
+  \begin{equation} 
+    \begin{aligned}
+      \sum_M {\bm T}_i^M = {\bm I}_i \frac{d{\bm \omega}_i}{dt} + {\bm \omega}_i\times({\bm I}_i{\bm \omega}_i),
+    \end{aligned}
+  \end{equation}
+\end{subequations}
+where ${\bm F}_i$ and ${\bm T}_i$ denote the force and torque exerted on the center-of-mass of particle $i$; $m_i$ and ${\bm I}_i$ are its mass and moment-of-inertia tensor in the body frame (scalar for spheres); ${\bm u}_i$ and ${\bm \omega}_i$ denote its translational and angular velocities, respectively. The force and torque are summed over various modes of particle-fluid and particle-particle interactions that include the following single-body or pairwise \emph{hydrodynamic}, \emph{contact}, and \emph{physico-chemical} contributions.
 
 
 \subsection{Front-capturing methods}
@@ -635,16 +673,15 @@ where $F$ is a speed function.
 From a PDE perspective, the above equation asserts that the entire level set evolution can be obtained by integrating $\phi({\bm x},t=0)$ forward in time.
 In other words, Eq.\ \eqref{eq:ls-eq} is an initial value problem without boundary conditions.
 
-Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$, cf.\ \cite{Desjardins_JCP_2008, ICLS}. This is due to different sign conventions and care should be taken in using the curvature value.}
 \begin{subequations}
  \begin{equation}
     {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
  \end{equation}
  \begin{equation} \label{eq:curv}
-    \kappa = -\nabla \cdot {\bm n}.
+    \kappa = \nabla \cdot {\bm n}.
  \end{equation}
 \end{subequations}
-The negative sign in Eq.\ \eqref{eq:curv} is due to convention.
 
 When solving the level set equation for multiphase flow, the most natural choice for $F$ is the local flow velocity projected in the normal direction, \ie $F=\bm{u \cdot n}$, reducing Eq.\ \eqref{eq:ls-eq} to
 \begin{equation} \label{eq:ls-avd}
@@ -691,7 +728,7 @@ For example, the thickness of a water-oil interface may be estimated from the me
 Therefore, interface thickness in phase field simulations bears only numerical meaning.
 
 
-\section{Particle-based methods}
+\section{Meshless particle-based methods}
 \label{sec:num-dem}
 
 In particle-based methods, the central equation to solve is
