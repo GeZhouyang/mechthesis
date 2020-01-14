@@ -558,8 +558,11 @@ Hence, they can all be referred to as ``\emph{one-fluid}'' methods.
 
 \subsection{Front-tracking methods}
 
-Using discrete marker points to specify and track particle motions, front-tracking methods constitute an intuitive description of finite-size particles and have been used in multiphase flow simulations since the inception of digital computers \citep{Daly1969, unverdi_tryggvason_1992a, tryggvason_bunner_esmaeeli_juric_al-rawahi_tauber_han_nas_jan_2001a}. [add more] \quad
-The general methodology is to (i) prescribe the particle location by distributing a set of Lagrangian points on the particle surface, (ii) advect them using the local flow velocity, and (iii) compute the extra forces at the updated particle position.
+Using discrete marker points to specify and track particle motions, front-tracking type-of methods are perhaps the most intuitive approach for modelling finite-size particles and have been used in multiphase flow simulations since the inception of super computers \citep{Daly1969, Peskin, Glimm_1982, unverdi_tryggvason_1992a, tryggvason_bunner_esmaeeli_juric_al-rawahi_tauber_han_nas_jan_2001a, Pozrikidis_JCP2001, Muradoglu_Tryggvason_2014}.
+The general methodology is to
+(i) prescribe the particle location by distributing a set of Lagrangian points on the particle surface (see Figure \ref{fig:front-track}),
+(ii) advect them using the local flow velocity, and
+(iii) update the fluid properties and compute the extra forces at the updated particle position.
 In the case of liquid droplets, (ii) and (iii) can be written as
 \begin{equation}
  \begin{aligned}
@@ -571,15 +574,20 @@ In the case of liquid droplets, (ii) and (iii) can be written as
    \bm{f} = \gamma \kappa \bm{n} \delta (\bm{X}_i) ,
  \end{aligned}
 \end{equation}
-where $\bm{X}_i$, $i=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the internal boundary conditions due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways and will be described momentarily.
+where $\bm{X}_i$, $i=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the normal stress jump condition due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways as will be described momentarily.
 
 Despite the conceptual simplicity, there are several technical details that require careful treatment in a numerical simulation.
-First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian particles may need to be redistributed, added, or deleted to ensure numerical stabilty and accuracy.
-This may be particularly cumbersome when droplets coalesce or breakup.
-Second, advection of the marker points requires interpolation of the velocity field.
-Third, the internal boundary conditions are to be computed on the fluid mesh, thus a ``spreading'' procedure is nessesary to couple the particle influence back. This is usually done with smeared delta function, such as that of \cite{Peskin}.
+First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian particles may need to be redistributed, added, or deleted from time to time to ensure numerical stabilty and accuracy.
+This is particularly cumbersome when droplets coalesce or breakup.
+Second, advection of the marker points requires interpolation of the velocity field, as the moving grid is generally non-aligned with the background fixed mesh.
+Third, the internal boundary conditions (no-slip or surface tension) are to be computed on the fixed mesh, thus a ``spreading'' procedure is nessesary to couple the particle and fluid dynamics. This is usually done with smeared delta function. Now we explain these in more details under a specific class of front-tracking methods.
 
-We explain these in details below for a special class of front-tracking methods.
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{marker-points.pdf}
+  \caption{Marker points on a triangular droplet.}
+  \label{fig:front-track}
+\end{figure}
 
 \medskip
 \paragraph{\bf Immersed boundary methods}
@@ -610,6 +618,18 @@ where ${\bm F}_i$ and ${\bm T}_i$ denote the force and torque exerted on the cen
 First we describe three Eulerian methods.
 marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}
 Also ghost fluid method.
+Figure \ref{fig:front-capture}.
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=\columnwidth]{front-capture-comp.pdf}
+  \caption{Comparison of the three front-capturing methods for a 1D droplet of radius 0.5, centered at $x=1.033$. Markers indicate the nodal values of the representative functions. Dashed lines depict the boundary of the droplet.
+  (upper) The volume-of-fluid representation, where $C=1$ inside the droplet.
+  (middle) The level set representation, where $\phi >0$ outside the droplet.
+  (lower) The phase field representation, where the profile is given by $c=0.5[1-\mathrm{tanh}(\phi/\epsilon)]$, with $\epsilon=0.1$.}
+  \label{fig:front-capture}
+\end{figure}
+
 
 \medskip
 \paragraph{\bf Volume-of-fluid methods}
@@ -642,13 +662,6 @@ This is the minimum requirement for a long-time simulation to be meaningful and 
 On the other hand, to correctly capture the local interface motion, the volume flux in Eq.\ \eqref{eq:vof-advect} must be calculated accurately, which requires certain information of the local interface \emph{geometry}, such as the normal direction and curvature.
 This further requirement is not straightforward knowing only the cell-averaged volume fraction, therefore, many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
 
-\iffalse
-steps:
-\begin{enumerate}
-\item reconstruct the interface from the local volume fraction. (not required by algebraic VOF)
-\item advect the interface.
-\end{enumerate}
-\fi
 
 \medskip
 \paragraph{\bf Level set methods}
@@ -673,7 +686,7 @@ where $F$ is a speed function.
 From a PDE perspective, the above equation asserts that the entire level set evolution can be obtained by integrating $\phi({\bm x},t=0)$ forward in time.
 In other words, Eq.\ \eqref{eq:ls-eq} is an initial value problem without boundary conditions.
 
-Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$, cf.\ \cite{Desjardins_JCP_2008, ICLS}. This is due to different sign conventions and care should be taken in using the curvature value.}
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$, cf.\ \cite{Desjardins_JCP_2008, ICLS}. This is merely due to different sign conventions for the level set.}
 \begin{subequations}
  \begin{equation}
     {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
