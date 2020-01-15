@@ -558,29 +558,31 @@ Hence, they can all be referred to as ``\emph{one-fluid}'' methods.
 
 \subsection{Front-tracking methods}
 
-Using discrete marker points to specify and track particle motions, front-tracking type-of methods are perhaps the most intuitive approach for modelling finite-size particles and have been used in multiphase flow simulations since the inception of super computers \citep{Daly1969, Peskin, Glimm_1982, unverdi_tryggvason_1992a, tryggvason_bunner_esmaeeli_juric_al-rawahi_tauber_han_nas_jan_2001a, Pozrikidis_JCP2001, Muradoglu_Tryggvason_2014}.
+Using discrete marker points to specify and track particle motions, front-tracking type-of methods are perhaps the most intuitive approach for modelling finite-size particles and have been used in multiphase flow simulations since the inception of super computers \citep{Daly1969, Viecelli_1969, Peskin, Glimm_1982, unverdi_tryggvason_1992a, tryggvason_bunner_esmaeeli_juric_al-rawahi_tauber_han_nas_jan_2001a, Pozrikidis_JCP2001, Muradoglu_Tryggvason_2014}.
 The general methodology is to
 (i) prescribe the particle location by distributing a set of Lagrangian points on the particle surface (see Figure \ref{fig:front-track}),
 (ii) advect them using the local flow velocity, and
 (iii) update the fluid properties and compute the extra forces at the updated particle position.
 In the case of liquid droplets, (ii) and (iii) can be written as
-\begin{equation}
+\begin{equation} \label{eq:lagrangian}
  \begin{aligned}
-   \frac{d \bm{X}_i}{dt} = \bm{u}(\bm{X}_i),
+   \frac{d \bm{X}_l}{dt} = \bm{u}(\bm{X}_l),
  \end{aligned}
 \end{equation}
 \begin{equation} \label{eq:surf-tension}
  \begin{aligned}
-   \bm{f} = \gamma \kappa \bm{n} \delta (\bm{X}_i) ,
+   \bm{f} = \gamma \kappa \bm{n} \delta (\bm{X}_l) ,
  \end{aligned}
 \end{equation}
-where $\bm{X}_i$, $i=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the normal stress jump condition due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways as will be described momentarily.
+where $\bm{X}_l$, $l=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the normal stress jump condition due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways as will be described momentarily.
 
 Despite the conceptual simplicity, there are several technical details that require careful treatment in a numerical simulation.
 First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian particles may need to be redistributed, added, or deleted from time to time to ensure numerical stabilty and accuracy.
 This is particularly cumbersome when droplets coalesce or breakup.
 Second, advection of the marker points requires interpolation of the velocity field, as the moving grid is generally non-aligned with the background fixed mesh.
-Third, the internal boundary conditions (no-slip or surface tension) are to be computed on the fixed mesh, thus a ``spreading'' procedure is nessesary to couple the particle and fluid dynamics. This is usually done with smeared delta function. Now we explain these in more details under a specific class of front-tracking methods.
+Third, the internal boundary conditions (no-slip or surface tension) are to be computed on the fixed mesh, thus a ``spreading'' procedure is nessesary to couple the particle and fluid dynamics. This is usually done with a smeared delta function.
+
+With these in mind, now we describe a specific class of front-tracking methods.
 
 \begin{figure}%[t]
   \centering
@@ -589,28 +591,78 @@ Third, the internal boundary conditions (no-slip or surface tension) are to be c
   \label{fig:front-track}
 \end{figure}
 
+
+\begin{algorithm}[h!]
+ \ccc{\footnotesize //time marching} \\
+ \For{$n=0,1,\dots,N$}{
+  ${\bm u}_{ijk}^0 = {\bm u}_{ijk}^{(n)}$,
+  ${\bf RU}_{ijk}^0 = {\bf RU}_{ijk}^{(n)}$, ${\bf RU}_{ijk}^{-1} = {\bf RU}_{ijk}^{0}$  \\
+  $\bm{X}^{0}=\bm{X}^{(n)}$, $\bm{U}^{0}=\bm{U}_p^{(n)}+ {\bm \Omega}_p^{(n)} \times \bm{R}$, $\bm{\Omega}_p^{0}=\bm{\Omega}_p^{(n)}$ \\
+  $\bm{F}_p^{0}=\bm{F}_p^{(n)}$, $\bm{T}_p^{0}=\bm{T}_p^{(n)}$ \\
+  
+  \ccc{\footnotesize //the RK3 loop} \\
+  \For{$q=1,2,3$}{ 
+   ${\bm u}_{ijk}^* = {\bm u}_{ijk}^{q-1} + \Delta t \big(-(\alpha_q+\beta_q)\nabla P_{ijk}^{q-3/2}+\alpha_q{\bf RU}_{ijk}^{q-1}+\beta_q{\bf RU}_{ijk}^{q-2} \big)$ \\
+   ${\bm u}_{ijk}^{**,-1} = {\bm u}_{ijk}^*$ \\
+   
+   \ccc{\footnotesize //the mutli-direct forcing loop} \\
+   \For{$s=0,1,\dots,N_s$}{
+   
+    \ccc{\footnotesize //the Lagrangian particle loop} \\
+    \For{$l=1,2,\dots,N_l$}{
+    $\bm{U}_{l}^{**,s-1} = \sum_{ijk} {\bm u}_{ijk}^{**,s-1} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}^{q-1}) \Delta x \Delta y \Delta z$ \\
+    $\bm{F}_{l}^{q-1/2,s} = \bm{F}_{l}^{q-1/2,s-1} + \frac{\bm{U}_{p}(\bm{X}_{l}^{q-1})-\bm{U}_{l}^{**,s-1}}{\Delta t} $ \\
+    }
+    
+    $\bm{f}_{ijk}^{q-1/2,s} = \sum_{l} \bm{F}_{l}^{q-1/2,s} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}^{q-1}) \Delta V_l $ \ccc{\footnotesize //spreading} \\
+    $\bm{u}_{ijk}^{**,s} = {\bm u}_{ijk}^* + \Delta t \bm{f}_{ijk}^{q-1/2,s} $ \\
+   }
+  $\nabla^2 \tilde{P} = \frac{1}{(\alpha_q+\beta_q) \Delta t} \nabla \cdot {\bm u}^{**,N_s}$ \ccc{\footnotesize //projection} \\
+  ${\bm u}^{q} = {\bm u}^{**,N_s} -(\alpha_q+\beta_q)\Delta t \nabla \tilde{P}$ \ccc{\footnotesize //correction} \\
+  $P^{q-1/2} = P^{q-3/2} + \tilde{P}$ \\
+
+  \ccc{\footnotesize //integration of Newton-Euler} \\
+  Evaluate $\bm{F}_{p}^{q}$ and $\bm{T}_{p}^{q}$ from the current particle configuration \\
+  ${\bm U}_p^{q} = {\bm U}_p^{q-1} -\frac{\Delta t}{V_p}\sum_l  \bm{F}_{l}^{q-1/2,N_s} \Delta V_l +\frac{(\alpha_q+\beta_q) \Delta t}{2V_p}(\bm{F}_{p}^{q}+\bm{F}_{p}^{q-1})+\dots$ \\
+  $\bm{X}^{q}=\bm{X}^{q-1}+\frac{(\alpha_q+\beta_q) \Delta t}{2}(\bm{U}_{p}^{q}+\bm{U}_{p}^{q-1})$ \\
+  ${\bm \Omega}_p^{q} = {\bm \Omega}_p^{q-1} -\frac{\Delta t}{I_p}\sum_l \bm{r}_l^{q-1} \times \bm{F}_{l}^{q-1/2,N_s} \Delta V_l +\frac{(\alpha_q+\beta_q) \Delta t}{2I_p}(\bm{T}_{p}^{q}+\bm{T}_{p}^{q-1})+\dots$ \\
+  }
+  
+  ${\bm u}_{ijk}^{(n+1)}={\bm u}_{ijk}^3$, ${\bf RU}_{ijk}^{(n+1)}={\bf RU}_{ijk}^3$  \\
+  $\bm{X}^{(n+1)}=\bm{X}^{3}$, $\bm{U}_p^{(n+1)}=\bm{U}_p^{3}$, $\bm{\Omega}_p^{(n+1)}=\bm{\Omega}_p^{3}$ \\
+  $\bm{F}_p^{(n+1)}=\bm{F}_p^{3}$, $\bm{T}_p^{(n+1)}=\bm{T}_p^{3}$ \\
+ }
+ \caption{A multi-direct forcing immersed boundary method for the coupled Navier-Stokes/Newton-Euler equations.}
+ \label{al:ibm}
+\end{algorithm}
+
+
 \medskip
 \paragraph{\bf Immersed boundary methods}
 
-Originally due to \cite{Peskin}.
-The different methods are often grouped in two categories, continuous and direct forcing: in the first approach the forcing is incorporated into the continuous equations before discretisation, whereas in the second approach the forcing is introduced after the equations are discretised. 
-development \citep{fadlun_verzicco_orlandi_mohd-yusof_2000a, Uhlmann, pinelli_naqavi_piomelli_favier_2010a, Wim-Paul_JCP_2012, favier_revell_pinelli_2014a}.
-review \citep{mittal_iaccarino_2005a}.
-
-Newton-Euler equations:
+Pioneered by \cite{Peskin}, immersed boundary (IB) methods were originally used for modelling cardiac mechanics and associated blood flow, and have ever since been continuously modified and refined for multiphase flow simulations involving moving boundaries \citep{fadlun_verzicco_orlandi_mohd-yusof_2000a, Uhlmann, mittal_iaccarino_2005a, pinelli_naqavi_piomelli_favier_2010a, Wim-Paul_JCP_2012, favier_revell_pinelli_2014a}.
+Here, the governing equations for the particle motion are the Newton-Euler equations,
 \begin{subequations} \label{eq:newton-euler}
   \begin{equation} 
     \begin{aligned} \label{eq:force-balance}
-      \sum_M {\bm F}_i^M = m_i \frac{d{\bm u}_i}{dt}, 
+      m_p \frac{d{\bm U}_p}{dt} = \int_{s} \bm{\sigma \cdot n} dA + {\bm F}_p, 
     \end{aligned}
   \end{equation}
   \begin{equation} 
     \begin{aligned}
-      \sum_M {\bm T}_i^M = {\bm I}_i \frac{d{\bm \omega}_i}{dt} + {\bm \omega}_i\times({\bm I}_i{\bm \omega}_i),
+      {\bm I}_p \frac{d{\bm \Omega}_p}{dt} + {\bm \Omega}_p\times({\bm I}_p{\bm \Omega}_p) =
+      \int_{s} \bm{r} \times (\bm{\sigma \cdot n}) dA + {\bm T}_p,
     \end{aligned}
   \end{equation}
 \end{subequations}
-where ${\bm F}_i$ and ${\bm T}_i$ denote the force and torque exerted on the center-of-mass of particle $i$; $m_i$ and ${\bm I}_i$ are its mass and moment-of-inertia tensor in the body frame (scalar for spheres); ${\bm u}_i$ and ${\bm \omega}_i$ denote its translational and angular velocities, respectively. The force and torque are summed over various modes of particle-fluid and particle-particle interactions that include the following single-body or pairwise \emph{hydrodynamic}, \emph{contact}, and \emph{physico-chemical} contributions.
+where ${\bm U}_p$ and ${\bm \Omega}_p$ denote the translational and angular velocities of particle $p$;
+$m_p$ and ${\bm I}_p$ are its mass and moment-of-inertia tensor in the body frame (scalar for spheres); and 
+${\bm F}_p$ and ${\bm T}_p$ stand for the total force and torque (except for the viscous stress contributions, which are represented by the integral terms) exerted on the particle center-of-mass.
+
+The feedback of the particle on the fluid flow are embedded in a diffuse body-forcing term, $\bm f$.
+Depending on whether it is incorporated into the continuous equations before or after discretisation, IB methods can be broadly divided into \emph{continuous forcing} and \emph{direct forcing}.
+Regardless of the approach, the spreading of the Lagrangian force onto the Euler mesh is realized with regularized Dirac delta functions, which may take different forms and satisfy $\sum_{ijk} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}) \Delta x \Delta y \Delta z=1$ for all $\bm{X}_{l}$.
+To illustrate how it can be implemented, a pseudo code correspoinding to the direct forcing IB method for spherical particles using a third-order Runge-Kutta temporal integration is provided in Algorithm \ref{al:ibm}. There, the notation is similar to the previous formulations, cf.\ Eqs. \eqref{eq:projection-method} and \eqref{eq:lagrangian}, except that ${\bf RU}$ does not include $\bm f$; and some terms are simplified or omitted for ease of reading. See \cite{ Wim-Paul_JCP_2012} for the full details.
 
 
 \subsection{Front-capturing methods}
