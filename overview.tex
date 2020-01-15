@@ -576,7 +576,7 @@ In the case of liquid droplets, (ii) and (iii) can be written as
 \end{equation}
 where $\bm{X}_l$, $l=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} correspoinds to the normal stress jump condition due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways as will be described momentarily.
 
-Despite the conceptual simplicity, there are several technical details that require careful treatment in a numerical simulation.
+Despite the conceptual simplicity, there are several technical details that require careful treatment in an implementation.
 First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian particles may need to be redistributed, added, or deleted from time to time to ensure numerical stabilty and accuracy.
 This is particularly cumbersome when droplets coalesce or breakup.
 Second, advection of the marker points requires interpolation of the velocity field, as the moving grid is generally non-aligned with the background fixed mesh.
@@ -597,7 +597,7 @@ With these in mind, now we describe a specific class of front-tracking methods.
  \For{$n=0,1,\dots,N$}{
   ${\bm u}_{ijk}^0 = {\bm u}_{ijk}^{(n)}$,
   ${\bf RU}_{ijk}^0 = {\bf RU}_{ijk}^{(n)}$, ${\bf RU}_{ijk}^{-1} = {\bf RU}_{ijk}^{0}$  \\
-  $\bm{X}^{0}=\bm{X}^{(n)}$, $\bm{U}^{0}=\bm{U}_p^{(n)}+ {\bm \Omega}_p^{(n)} \times \bm{R}$, $\bm{\Omega}_p^{0}=\bm{\Omega}_p^{(n)}$ \\
+  $\bm{X}_l^{0}=\bm{X}_l^{(n)}$, $\bm{U}_p^{0}=\bm{U}_p^{(n)}$, $\bm{\Omega}_p^{0}=\bm{\Omega}_p^{(n)}$ \\
   $\bm{F}_p^{0}=\bm{F}_p^{(n)}$, $\bm{T}_p^{0}=\bm{T}_p^{(n)}$ \\
   
   \ccc{\footnotesize //the RK3 loop} \\
@@ -611,7 +611,7 @@ With these in mind, now we describe a specific class of front-tracking methods.
     \ccc{\footnotesize //the Lagrangian particle loop} \\
     \For{$l=1,2,\dots,N_l$}{
     $\bm{U}_{l}^{**,s-1} = \sum_{ijk} {\bm u}_{ijk}^{**,s-1} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}^{q-1}) \Delta x \Delta y \Delta z$ \\
-    $\bm{F}_{l}^{q-1/2,s} = \bm{F}_{l}^{q-1/2,s-1} + \frac{\bm{U}_{p}(\bm{X}_{l}^{q-1})-\bm{U}_{l}^{**,s-1}}{\Delta t} $ \\
+    $\bm{F}_{l}^{q-1/2,s} = \bm{F}_{l}^{q-1/2,s-1} + \frac{\bm{U}_{p}^{q-1}-\bm{U}_{l}^{**,s-1}}{\Delta t} $ \\
     }
     
     $\bm{f}_{ijk}^{q-1/2,s} = \sum_{l} \bm{F}_{l}^{q-1/2,s} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}^{q-1}) \Delta V_l $ \ccc{\footnotesize //spreading} \\
@@ -629,7 +629,7 @@ With these in mind, now we describe a specific class of front-tracking methods.
   }
   
   ${\bm u}_{ijk}^{(n+1)}={\bm u}_{ijk}^3$, ${\bf RU}_{ijk}^{(n+1)}={\bf RU}_{ijk}^3$  \\
-  $\bm{X}^{(n+1)}=\bm{X}^{3}$, $\bm{U}_p^{(n+1)}=\bm{U}_p^{3}$, $\bm{\Omega}_p^{(n+1)}=\bm{\Omega}_p^{3}$ \\
+  $\bm{X}_l^{(n+1)}=\bm{X}_l^{3}$, $\bm{U}_p^{(n+1)}=\bm{U}_p^{3}$, $\bm{\Omega}_p^{(n+1)}=\bm{\Omega}_p^{3}$ \\
   $\bm{F}_p^{(n+1)}=\bm{F}_p^{3}$, $\bm{T}_p^{(n+1)}=\bm{T}_p^{3}$ \\
  }
  \caption{A multi-direct forcing immersed boundary method for the coupled Navier-Stokes/Newton-Euler equations.}
@@ -661,16 +661,13 @@ ${\bm F}_p$ and ${\bm T}_p$ stand for the total force and torque (except for the
 
 The feedback of the particle on the fluid flow are embedded in a diffuse body-forcing term, $\bm f$.
 Depending on whether it is incorporated into the continuous equations before or after discretisation, IB methods can be broadly divided into \emph{continuous forcing} and \emph{direct forcing}.
-Regardless of the approach, the spreading of the Lagrangian force onto the Euler mesh is realized with regularized Dirac delta functions, which may take different forms and satisfy $\sum_{ijk} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}) \Delta x \Delta y \Delta z=1$ for all $\bm{X}_{l}$.
-To illustrate how it can be implemented, a pseudo code correspoinding to the direct forcing IB method for spherical particles using a third-order Runge-Kutta temporal integration is provided in Algorithm \ref{al:ibm}. There, the notation is similar to the previous formulations, cf.\ Eqs. \eqref{eq:projection-method} and \eqref{eq:lagrangian}, except that ${\bf RU}$ does not include $\bm f$; and some terms are simplified or omitted for ease of reading. See \cite{ Wim-Paul_JCP_2012} for the full details.
+Regardless of the approach, the spreading of the Lagrangian force onto the Eulerian mesh is realized with regularized Dirac delta functions, which may take different forms as long as $\sum_{ijk} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}) \Delta x \Delta y \Delta z=1$ is satisfied for all $\bm{X}_{l}$.
+To illustrate the overall algorithm, a pseudo code correspoinding to a direct forcing IB method for spherical particles using a third-order Runge-Kutta temporal integration is provided in Algorithm \ref{al:ibm}. We note that the notation is similar to the previous formulations, cf.\ Eqs. \eqref{eq:projection-method} and \eqref{eq:lagrangian}, except that ${\bf RU}$ does not include $\bm f$; and some terms are simplified or omitted for ease of reading. See \cite{ Wim-Paul_JCP_2012} for the full details.
 
 
 \subsection{Front-capturing methods}
 
-First we describe three Eulerian methods.
-marker functions, boundary conditions (surface tension) \citep{Brackbill_JCP_1992}
-Also ghost fluid method.
-Figure \ref{fig:front-capture}.
+Instead of meshing and tracking the moving boundary on a separate grid, an alternative approach is to capture the particle motion on the same grid but with an additional function. Such function may correspond to the local volume fraction of a dispersed phase, or measure a geometric quantity at the local position relative to an interface. Conceptually, this is the \emph{Eulerian} specification of a given flow field, and many numerical methods fall under such framework. In the following, we will describe three such methods for ``front-capturing'' (see Figure \ref{fig:front-capture}). A brief historical background will be given first, followed by the definition of the front-capturing function and its governing equation. We will also highlight the major advantages and disadvantages of each method without going into much details. Finally, when coupled with a flow solver, the internal boundary conditions can be treated similarly as in front-tracking methods, cf.\ \eqref{eq:surf-tension}. We skip these details and refer the reader to \cite{Brackbill_JCP_1992, Fedkiw_JCP_1999, Lalanne_JCP_2015, Gibou_Fedkiv_Osher, ICLS} for further details.
 
 \begin{figure}%[t]
   \centering
@@ -712,7 +709,7 @@ where $\bm{n}_k$ denote the six normal vectors (in a 3D Cartesian mesh) of surfa
 Note that, in the above formulations, the \emph{total} volume of each fluid phase is conserved by construction.
 This is the minimum requirement for a long-time simulation to be meaningful and makes VOF appealing in a wide range of industrial problems, such as predicting the impact of ocean waves splashing on the ship hull or designing spray nozzles to enhance fuel mixing in engines.
 On the other hand, to correctly capture the local interface motion, the volume flux in Eq.\ \eqref{eq:vof-advect} must be calculated accurately, which requires certain information of the local interface \emph{geometry}, such as the normal direction and curvature.
-This further requirement is not straightforward knowing only the cell-averaged volume fraction, therefore, many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
+This further requirement is not straightforward knowing only the cell-averaged volume fraction (cf.\ Figure \ref{fig:front-capture}), therefore, many efforts have been devoted to developing methods that either reconstruct the interface in an extra step (these methods are called geometric VOF) or represent the interface in certain ways such that the volume flux can be computed directly (these methods are called algebraic VOF). See \cite{mirjalili_jain_dodd_2017a} for a recent overview of the different methods.
 
 
 \medskip
@@ -792,6 +789,9 @@ Finally, we note that the interface thickness often loses its physical meaning i
 For example, the thickness of a water-oil interface may be estimated from the mean free path of the water/oil molecules. According to molecular theory, it is $\sim 3$ \AA \enspace in room environment. Now, even if we consider a microfluidic flow where the droplet radius is $\sim 3$ $\mu$m, there is still a $10^{4}$ difference in the length scale, meaning that one droplet needs $\mathcal{O}(10^{4})$ grid points in each spatial direction -- a clearly unrealistic resolution.
 Therefore, interface thickness in phase field simulations bears only numerical meaning.
 
+\medskip
+In summary...
+\lb{add a generic pseudo code for all front-capturing methods.}
 
 \section{Meshless particle-based methods}
 \label{sec:num-dem}
@@ -966,7 +966,7 @@ Provided that the particle Reynolds number remains much less than unity, this is
 \chapter{Miscellaneous}
 %===============================================================================
 
-\section{Effective slip}
+\section{Moving contact line}
 
 \section{Droplets in turbulence}
 
