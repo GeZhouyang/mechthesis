@@ -303,7 +303,7 @@ This can be more readily seen from the opposite statement, \ie if the particle t
 \begin{figure}%[t]
   \centering
   \includegraphics[width=0.55\columnwidth]{stresslet_reflection.png}
-  \caption{Schematic of the wall reflection of the stresslet flow (cf.\ Figure \ref{fig:lets}) induced by one particle and its qualitative effect on the other particle. Reproduced from \cite{zurita-gotor_2007} (\lb{Permission???}).}
+  \caption{Schematic of the wall reflection of the stresslet flow (cf.\ Figure \ref{fig:lets}) induced by one particle and its qualitative effect on the other particle. Reproduced with permission from \cite{zurita-gotor_2007}, \textcopyright \enspace Cambridge University Press.}
   \label{fig:stresslet-refl}
 \end{figure}
 
@@ -1006,9 +1006,104 @@ Provided that the particle Reynolds number remains much less than unity, this is
 \chapter{Miscellaneous}
 %===============================================================================
 
-\section{Moving contact line}
+In this chapter, we describe two additional topics that were investigated during the course of the present work.
+As side projects, they share with the rest of the thesis in that the flow involved are multiphase and characterized by relatively small length scales; hence, they can be, and have been, studied using similar numerical methods.
+Beyond that, there is no further connection.
+In the following, we will first give the physical motivation of each problem, then summarize the overall understanding and research methodology prior to our study.
+The new results are reported in \emph{Paper 5 \& 6}.
+
+
+\section{Surface effective slippage}
+
+The last several decades of development in material science and nanotechnology has greatly enhanced our ability to probe, pattern, fabricate and modify mechanical structures with chemical treatments in nano-to-micron length scales.
+Superhydrophobic surfaces (SHS) (Figure \ref{fig:micro-surface}), which perfectly repel water due to gas entrapment within the roughness, have been studied extensively in both natural and laboratory settings \citep{plant_superhydro_1997, Onda_etal_1996}, and has led to what was called a ``gold rush'' to search and design surfaces with extreme non-wettability \citep{Bocquet}.
+Such properties may not only be utilized to reduce drag in liquid or marine vessel transport \citep{Watanabe, Ou, Choi_Kim, Lee}, but also has the potential to achieve self-cleaning, anti-fouling, or heat transfer enhancement \citep{Blossey2003, Roach_etal_2008}.
+In addition, its alternative -- liquid-infused surfaces (LIS) -- which replace the air cushion with a liquid layer, has also attracted increasing attention due to its robustness \citep{Solomon, Rosenberg, Wexler}.
+Plenty of applications have been conceived with great excitement.
+
+\begin{figure}%[t]
+  \centering
+  \includegraphics[height=6cm]{lotus.png}
+  \includegraphics[height=6cm]{micro-pillars.png}
+  \caption{(left) Hierarchical structure of a lotus leaf (Nelumbo nucifera). (right) Patterned micro-pillars. Image adapted with permission from \cite{Bocquet}, \textcopyright \enspace Springer Nature.}
+  \label{fig:micro-surface}
+\end{figure}
+
+From the fluid mechanics perspective, questions invoked by these findings naturally include
+(i) what mechanism leads to the drag reduction, and
+(ii) how it can be optimized given other constraints.
+The constraints involve surface chemistry, contamination, degradation, fabrication defects, wetting, etc., making the problem truly multiscale and multiphysics.
+Basic research along this line, including \emph{Paper 6}, is motivated to resolve at least part of these issues.
+
+Theoretically, the resistence of a solid surface to fluid flows can be characterized by the \emph{slip length}, $\lambda_s$, defined as
+\begin{equation}
+ \begin{aligned}
+  \bm{u}_s = \lambda_s \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg) \cdot \bm{n},
+ \end{aligned}
+\end{equation}
+where $\bm{u}$ is the flow velocity, $\bm{u}_s$ the slip velocity on the solid surface, and $\bm n$ the normal vector pointing from the solid to the fluid.
+In the case of a planar simple shear flow, it can be reduced to
+\begin{equation}
+ \begin{aligned}
+  u_s = \lambda_s \dot{\gamma},
+ \end{aligned}
+\end{equation}
+where $\dot{\gamma}=\partial u/\partial y$ is the shear rate.
+%This simple relation is also called the Navier slip.
+In most situations, $\lambda_s$ is a constant material property whose value is very close to zero, or on the order-of-magnitude of the molecular interaction range under moderate shear \citep{Thompson_Troian_1997}.
+However, even with a no-slip boundary condition, many of the aforementioned studies have demonstrated a large measurable slippage over SHS.
+Close inspection of the surface structure suggests that it is the patterning combined with their hydrophobic property that yields the apparent slip.
+This is beautifully depicted in Figure \ref{fig:micro-surface}, which shows the natural meadow-looking roughness on a lotus leaf and an artificial array of micron-scale pillars. 
+
+To quantify the slippage analytically, one can define an \emph{effective slip length}, $\lambda_e$, as
+\begin{equation} \label{eff slip}
+  \lambda_e = \frac{\bar{u}(H)}{\dot{\gamma}}-H,
+\end{equation}
+where $\bar{u}(H)$ is the average streamwise velocity at a small distance $H$ above the substrate.
+Physically, $\lambda_e$ is equal to the distance below the surface at which the velocity would extrapolate to zero.
+Under this simple description, many studies have been conducted to obtaining theoretical expressions of the effective slip for two-dimensional longitudinal or transverse grooves \citep{Lauga_Stone, Sbragalia_Prosperetti, Davis_Lauga, Ng_Wang, Schonecker, Nizkaya, Crowdy_tran, Crowdy_long}.
+The general procedure is to solve the Stokes equations in a periodic domain subject to a mixture of no-slip and finite-slip boundary conditions. To facilitate analytical calculations, some simplifications may have to be made, such as a static interface shape and pinning of the contact line.
+In general, different geometry- and viscosity-ratio-dependent expressions for $\lambda_e$ are found, depending on the configuration.
+
+While these solutions are helpful in guiding the optimal surface desgin, they neglect an important ingredient -- wetting of the fluid.
+One reason that superhydrophobic or liquid-infused surfaces are still mostly limited to laboratory testings at present is the various failure modes, often associated with wetting in some form.
+Specifically, SHS is known to be sensitive to external pressure under which the entrapped bubble can collapse \citep{Bocquet}; whereas LIS is prone to shear-driven failures, \ie the process of the lubricant being drained from the surface grooves \citep{Wexler}.
+Therefore, the dynamics is equally, if not more, important comparing to the static slippage property.
+Unfortunately, precise control of wetting in experiments is still very challenging due to sensitivity to surface conditions; and the theoretical agreement remains inadequate \citep{deGennes_wetting}.
+In light of these difficulties, numerical studies with controlled parameters in non-ideal situations are expected bridge the gap between analytical understandings and experimental findings.
+
 
 \section{Droplets in turbulence}
+
+Predicting the size of droplets or bubbles is of great importance ...
+In oceans ... Breaking ocean waves entrain air bubbles that enhance air–sea gas flux, produce aerosols, generate ambient noise and scavenge biological surfactants \citep{deane_stokes_2002a}.
+In clouds ... understanding how the size distribution variesspatially and temporally in a cloud is one of the major challenges in the atmosphericsciences.
+the droplet size distribu-tion is the defining characteristic of a cloud, determining how the cloud interactswith  electromagnetic  radiation,  how  fast  precipitation  will  form,  and  so  forth. \citep{Shaw_2003}.
+in emulsions is important in many industrial, biological, and environmental systems, as it determines the stability, rheology, and area available in the emulsion for physical or chemical processes that occur at the interface \citep{boxall_etal_2012}.
+
+theoretical understanding \cite{hinze_1955a}.
+
+also just to do some turbulence simulations.
+
+The understanding of liquid-liquid emulsions is important in many industrial processes \eg hydrocarbon separation, suspension crystallization, and emulsion polymerization. These flows are characterized by density and viscosity ratios on the order of unity (\eg water and oil mixtures) and a source of agitation (\eg an impeller) that creates a turbulent two-phase mixture consisting of a dispersed phase of droplets and a continuous phase. The resulting turbulence in the carrier phase is altered directly by the droplet feedback on the surrounding fluid and indirectly by droplet-droplet interactions. Many aspects of the complex interaction of the dispersed phase with the continuous phase are not well understood. In particular, there are questions related to the topological changes and to the role of the surface tension of the dispersed phase, the stationarity of the turbulent statistics, and the kinetic energy budget.
+
+Liquid-liquid emulsions have been the subject of numerous experimental \citep{berkman_calabrese_1988a, pacek_man_nienow_1998a, lovick_mouza_paras_lye_angeli_2005a} and computational studies \citep{perlekar_biferale_sbragaglia_srivastava_toschi_2012a, skartlien_sollum_schumann_2013a, komrakova_eskin_derksen_2015a, scarbolo_bianco_soldati_2015a, dodd_ferrante_2016a}. The computational studies can be broadly categorized as forced homogeneous isotropic turbulence \citep{perlekar_biferale_sbragaglia_srivastava_toschi_2012a, skartlien_sollum_schumann_2013a, komrakova_eskin_derksen_2015a}, decaying homogeneous isotropic turbulence \citep{dodd_ferrante_2016a} and turbulent wall flows \citep{scarbolo_bianco_soldati_2015a}. Forced homogeneous isotropic turbulence has the advantage of producing a statistically homogeneous and isotropic flow field that, in time, can reach a statistically stationary state. However, in forced homogeneous isotropic turbulence, the turbulent kinetic energy must be induced artificially via a forcing term in the Navier--Stokes equations. This is in contrast to a natural forcing mechanism that produces turbulent kinetic energy from finite Reynolds stresses interacting with a mean velocity gradient. While forcing homogeneous isotropic turbulence may be appropriate for studying the droplet size distributions, it has been argued that artificial forcing is inappropriate for studying two-way coupling effects \citep{elghobashi_2019a}. Therefore, for studying the turbulent kinetic energy budget, either decaying isotropic turbulence or turbulent shear flow might be preferable.
+
+In decaying isotropic turbulence, it was shown that the presence of finite-size droplets always enhances the decay rate of the turbulent kinetic energy \citep{dodd_ferrante_2016a}. Also, the deformation, breakup, or coalescence of the droplets introduces an additional term to the turbulent kinetic energy equation - the power of the surface tension - termed $\Psi_\sigma$ by \cite{dodd_ferrante_2016a}, which describes the rate of change of the interfacial energy, balancing the kinetic energy transfer between the external fluid and the flow inside the droplets. Correct identification of these pathways for the turbulent kinetic energy exchange is fundamental to understand the turbulence modulation by the droplets and then to model it.
+
+Building upon previous studies, we consider finite-size bubbles/droplets of Taylor length scale in homogeneous shear turbulence \citep{tavoularis_corrsin_1981b, tavoularis_corrsin_1981a, pumir_1996a, mashayek_1998a, sekimoto_dong_jimenez_2016a}. Homogeneous shear turbulence flow is conceivably the simplest case in which the flow remains statistically homogeneous in all spatial directions. Moreover, compared to forced isotropic turbulence, it has a natural energy production mechanism via a mean velocity gradient. We note that ideal homogeneous shear turbulence is self-similar, implying an unbounded energy growth within infinite domains \citep{sukheswalla_vaithianathan_collins_2013a}. This condition limits any numerical simulations to relatively short times, concerning only the initial shearing of isotropic turbulence \citep{rogers_moin_1987a, lee_kim_moin_1990a, sukheswalla_vaithianathan_collins_2013a}. However, as demonstrated by \cite{pumir_1996a} and \cite{sekimoto_dong_jimenez_2016a} in single-phase flow, the finite computational box introduces a large-scale confinement effect similar to that enforced by a wall; thus, a meaningful statistically stationary state can be reached over long periods, termed statistically stationary homogeneous shear turbulence (SS--HST). In particular, \cite{sekimoto_dong_jimenez_2016a} showed that long-term simulations of HST are ``minimal" in the sense of containing on average only a few large-scale structures: all the one-point statistics agree well with those of the logarithmic layer in turbulent channel flows, particularly when scaled with the friction velocity derived from the measured Reynolds stresses. The same holds for the wall-parallel spectra of the wall-normal velocity. The authors concluded that the similarities between the steady state homogeneous shear turbulence and other shear flows, particularly with the logarithmic layer of wall turbulence, make it a promising system to study shear turbulence in general. These observations, combined with the insights recently gained in the droplet-turbulence interaction in decaying homogeneous isotropic turbulence, motivate us to further investigate turbulence modulation due to droplets/bubbles in steady state homogeneous shear turbulence.
+
+In this paper, we present DNS of an emulsion created by droplets dispersed in homogeneous shear turbulence. By changing the initial size of the dispersed phase and the Weber number, we aim to answer the following questions:
+\begin{enumerate}
+\item[(a)] ~Can a statistically stationary state be reached when the dispersed phase actively undergoes breakup and coalescence in homogeneous shear turbulence?
+\item[(b)] ~If so, what determines the steady-state size distribution of the dispersed phase?
+\item[(c)] ~How does the dispersed phase change the turbulent kinetic energy budget?
+\end{enumerate}
+Homogeneous shear turbulence shares many similarities with other shear flows, including turbulent wall flows \citep{sekimoto_dong_jimenez_2016a}; therefore, by answering these questions, we expect to improve our understanding of the droplet-turbulence interaction and, hopefully, help future modelers gain intuition about more complex conditions. 
+
+
+In particular, we first show how the turbulent flow is modified by the droplets and how the droplets evolve in the turbulent flow, and then explain how these modifications occur by studying the turbulent kinetic energy balance in the two-phase flow. 
+
 
 
 %===============================================================================
