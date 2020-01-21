@@ -4,36 +4,92 @@
 \chapter{Introduction}
 %===============================================================================
 
+Droplets are one of the most basic forms of fluids and are ubiquitous in nature.
+From the falling rain drops to the rising aerosols, from the deforming embryo to the rolling tears, micron to millimetre sized droplets are an integral part of our everyday experience and, to a great extent, condition and nourish \emph{life}.
 
+Droplets are also important in many artificial and engineering applications.
+In material science, we can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties (see Figure \ref{fig:photonic-flow}).
+In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and, in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
+In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing and reducing pollutant emissions.
+And in publications, printed posters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
-Over the last two decades, there has been a renewed interest in hydrodynamic interactions of droplets or polymers under strong spatial confinement, partially owing to the rapid progress in lab-on-a-chip technology \citep{Squires_Quakes_2005}, partially driven by the fundamental quest after out-of-equilibrium phenomena \citep{Cui_etal_2002, Cui2004, Diamant_2005, tlusty, Davit_2008, q2d_Beatus}, and partially due to its various potential applications in material science and life science \citep{tabeling, organs-on-chips}. The present thesis is largely motivated by the same reasons.
+All the above-mentioned processes and technologies depend on the presence and motion of droplets.
+Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
+Traditionally, the study of liquid-embedded systems are mostly conducted by experimentists; fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
+However, the last few decades have observed a phenomenal paradigm shift in many research areas as the computer power grows exponentially and new algorithms continue to be proposed.
+Fluid dynamics is now in the vanguard of applying large-scale computations in resolving natural and engineering problems and is, in turn, pushing the boundary of computer science.
+Comparing to experimental measurements, computer simulations are non-invasive and offer the entire information that can be readily visualized up to model errors and the numerical precision.
+Physical parameters can also be freely adjusted to test conditions that are not easy to implement in lab experiments.
 
-numerical simulations the vanguard of technical developments...
+Motivated by these reasons, the present work embarks on a number of engineering problems using both high- and low-fidelity numerical simulations.
+The common ground at the bottom of these problems is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
+Due to the multidisciplinary of these applications, a complete description of all involved phenomena and technological chanlenges is out of the scope of this overview.
+A brief introduction of some of the problems is given below.
+%We develop algorithms, simulate fluids, and try to explain the physics.
 
 
 %-------------------------------------------------------------------------------
 
-\section{Flow-assist droplet assembly}
+\section{Fabricating photonic crystals}
 
-material science,
-photonic crystals,
-microfluidics \citep{Squires_Quakes_2005, microfluidics},
+\begin{figure}%[t]
+  \centering
+  \includegraphics[height=4.73cm]{photonics_cover.jpg}
+  \includegraphics[height=4.73cm]{flow-assist1.png}
+  \caption{(left) Cover photo of the January 2008 issue of Nature Photonics, showing an artistic rendering of a light beam passing through a 3D photonic crystal. \textcopyright \enspace Springer Nature. (right) Droplet assembly in a microfluidic chip; scale bar, 100 $\mu$m. Images courtesy of Dr.\ Bingqing Shen.}
+  \label{fig:photonic-flow}
+\end{figure}
+
+Photonic crystals (PhC) are materials patterned with a periodicity in dielectric constant and show great potential for building sophisticated optical circuitry that can route, filter, store or suppress optical signals (Figure \ref{fig:photonic-flow}, left).
+They resemble semiconductors in that photons can be manipulated in PhC in a similar fashion as electrons in silicon-based semiconductors.
+Furthermore, it has been theoretically predicted that PhC can exhibit a complete photonic bandgap (PBG), \ie a range of frequencies over which light cannot propagate in any direction within it \citep{Yablonovitch1987}.
+This unique property provide the basis for numerous optoelectronic applications, including low-threshold lasers, low-loss waveguides, on-chip optical circuitry and fibre optics \citep{Meade_etal_1994, Joannopoulos_etal_1997, Rinne_etal_2008}.
+
+Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps remains a practical challenge in the colloidal community \citep{Velev_etal_AM2009, Sacanna_etal_COCIS2011, Shen_AS_2016}.
+The issue is twofold.
+On the one hand, the most ideal structure of PhC takes the form of a diamond cubic, which has around 40\% bandgap opening.
+Therefore, if we want to assemble droplets into a functional PhC, all we need to do is to enclose nanoparticles of different refractive index, then bring them to the correct lattice position.
+However, diamond crystals are extremely difficult to assemble due to its low packing fraction ($\sim 34\%$) comparing to other crystal structures (\eg a face-centered cubic of equal spheres has a packing fraction of about 74\%); there is simply too much gap. In addition, it is very sensitive to structural defects which can easily propogate inside the crystal, removing the PBG property.
+On the other hand, even if we could build diamond crystals, current techniques are limited by Brownian motions as the driving force to bring neighbouring droplets into contact \citep{pine...}. This significantly slows down the prodcution.
+%such circuitry presents a great challenge as defects need to be carefully incorporated into the photonic-crystal structure with great precision. Although this has been accomplished for two-dimensional designs that confine light in a plane, it is still an ongoing challenge for so-called complete-bandgap materials, where the defects need to be embedded into a three-dimensional structure. 
+
+In the last five years, it is proposed that such issues may be addressed by the microfluidic technology...
+fast, deterministic, robust;
+don't understand why, blind search.
+an opportunity for cfd.
+
+\iffalse
+Here, we report one
+microfluidic-based strategy and discuss its prospect
+in terms of 3D photonic crystal fabrication3.
+
+material science.
+photonic crystals.
+theoretically ready, practically hard to make.
+microfluidics 
 lab-on-a-chip.
 
+Creating new materials, with photonic properties (such as opening complete band gaps) has challenged  for decades. With the support of a European project (MICROFLUSA), involving three universities (TECHNION, KTH), we address this challenge with microfluidic technology.
 
-\section{Liquid-infused surfaces}
+We have demonstrated that it is possible to produce elementary clusters of droplets (builiding blocks of future materials), with controlled morphologies (trimers, diamond, tetrahedrons, pentahedrons,...), and solidify them, directly in a microfluidic device. More recently, we focus on disordered materials. We have shown that disordered bidisperse assemblies of droplets exhibit hyperuniform properties, that can be optimized (J.Ricouvier et al, PRL, Dec 2017). We follow this line of thought by assembling, directly in microfluidic devices, 2D and 3D droplet-based structures that, despite their disorder, are good candidates for opening band gaps. We hope, in this manner, to create self-assembled disordered materials with band gaps, in a wide range of wavelenghts, i.e from the visible to the THz. This work is carried out with numerical simulations performed at Technion University (Israel).
+​\fi
 
-drag reduction,
+
+\section{Designing liquid-infused surfaces}
+
+Functional surfaces.
 surface engineering,
+drag reduction, self-cleaning, anti-fouling.
 superhydrophobicity,
 lubricant-infused surfaces.
 
 
-\section{Suspension flows}
+\section{Flow of dense particle suspensions}
 
-particle suspensions,
-complex fluids,
-rheology,
+Complex fluids. Chemical products. Food.
+particle suspensions.
+rheology.
+efficiency.
 shear thickening.
 
 \thesisstructure Add here a brief description of the structure of the thesis.
@@ -73,7 +129,7 @@ where $\bm \sigma$ is the stress tensor, and $\bm I$ the identity matrix.
 
 Depending on the bounding material, conditions on the velocity or stress may be prescribed as boundary conditions. In the case of a solid wall, it is usually the \emph{no-slip} velocity condition; while in the case of a liquid interface, the following stress condition shall be satisfied,
 \begin{equation} \label{eq:stress-bc}
-  {\bm n} \cdot ({\bm \sigma}_+ - {\bm \sigma}_- )  = \gamma \kappa {\bm n} - \nabla \gamma,
+  ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma,
 \end{equation}
 where $\bm n$ denotes the unit normal vector across the liquid interface (from the $-$ side to the $+$ side), $\gamma$ the surface tension coefficient, and $\kappa$ the curvature of the interface (\eg $\kappa=2/a$ for a sphere of radius $a$). 
 
@@ -132,7 +188,7 @@ In general, the Stokes flow has the following symmetries and properties.
   \small
   \begin{aligned}
    \int_V \bigg({\bm u}' \cdot (\nabla  \cdot {\bm \sigma}'') - {\bm u}'' \cdot (\nabla  \cdot {\bm \sigma}')\bigg) dV  & =\\
-   \int_S \bigg({\bm u}' \cdot ({\bm n} \cdot {\bm \sigma}'') - {\bm u}'' \cdot ({\bm n} \cdot {\bm \sigma}')\bigg) dS, & 
+   \int_S \bigg({\bm u}' \cdot ({\bm \sigma}'' \cdot {\bm n}) - {\bm u}'' \cdot ({\bm \sigma}'  \cdot {\bm n})\bigg) dS, & 
   \end{aligned} \label{eq:lorentz-recip}
  \end{equation}
  where $V$ is some enclosed volume with surface $S$.

@@ -483,8 +483,8 @@
 %
 \def\mechdocument{Technical Reports}%
 \def\mechaddress{%
-	Department of Mechanics\par%
 	Royal Institute of Technology\par%
+	Department of Mechanics\par%
 	SE-100 44 Stockholm, Sweden\par%
 }%	
 \def\makecoverpage{%
