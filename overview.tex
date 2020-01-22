@@ -10,21 +10,21 @@ From the falling rain drops to the rising aerosols, from the deforming embryo to
 Droplets are also important in many artificial and engineering applications.
 In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties (see Figure \ref{fig:photonic-flow}).
 In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and, in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
-In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing and reducing pollutant emissions.
-And in publications, printed posters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
+In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing, improve combustion efficiency, and reduce pollutant emissions.
+And in publications, printed posters, newsletters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
 All the above-mentioned processes or technologies depend on the presence and motion of droplets.
 Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
 Traditionally, the study of liquid-embedded systems are mostly conducted by experimentists; fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
-However, the last few decades have also observed a phenomenal paradigm shift in many research areas owing to the exponential growth of computer power and continuous development of new algorithms.
+However, the last few decades have also observed a phenomenal paradigm shift in many research areas owing to the exponential growth of computer power and continuous development of numerical algorithms.
 Fluid dynamics is now in the vanguard of applying large-scale computations in resolving natural and engineering problems and is, in turn, pushing the boundary of computer science.
 Comparing to experimental measurements, computer simulations are non-invasive and offer the entire information that can be readily visualized up to model errors and the numerical precision.
 Physical parameters can also be freely adjusted to test conditions that are not easy to implement in lab experiments.
 
 Motivated by these reasons, the present work embarks on a number of problems that originates from material fabrication, surface engineering and fluid transport.
 We develop and utilise both high- and low-fidelity numerical models to simulate the underlying processes with the aims of complementing experimental studies and elucidating the physical mechanism.
-The common ground at the bottom of these inquiries is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
-Their specific backgrounds are given below.
+The common ground at the bottom of these enquiries is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
+Their specific backgrounds are given below (see also Chapter \ref{chp:misc}).
 
 
 %-------------------------------------------------------------------------------
@@ -46,44 +46,49 @@ This unique property provides the basis for numerous optoelectronic applications
 
 Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps remains a practical challenge in the colloidal community \citep{Velev_etal_AM2009, Sacanna_etal_COCIS2011, Shen_AS_2016}.
 The issue is twofold.
-On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{This percentage corresponds to the portion of frequencies that propogation of light is forbidden.}
-Therefore, if one wishes to fabricate PhC from colloidal droplets, the holy grail to aim is positioning droplets in a diamond cubic with alternating dielectric constants.
+On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{The percentage corresponds to the portion of frequencies that propogation of light is forbidden.}
+Therefore, for a long time, the holy grail for photonic researchers has been designing a protocol that can position colloidal droplets in a diamond cubic with alternating dielectric constants.
 In practice, however, diamond crystals are extremely difficult to assemble because of the large gaps in between; specifically, a diamond cubic of equal spheres has at most 34\% packing fraction, while a face-centered cubic can reach 74\%. This makes PBG hard to achieve in 3D considering its sensitivity to structural defects.
-On the other hand, even if one does aim for the diamond structure, current techniques relying on Brownian motions and ``patchy particles'' are too slow to build PhC in the range of visible light \citep{Yi_etal_CM2013}. In some sense, droplets are assembled by chance, which favors anisotropic structures with a higher rotational entropy \citep{Meng2010}.
+On the other hand, even if one does aim for the diamond structure, current techniques relying on Brownian motions and ``patchy particles'' are too slow to build PhC in the range of visible light \citep{Yi_etal_CM2013}. In some sense, droplets assembled this way are assembled by chance, which favors anisotropic structures with a higher rotational entropy \citep{Meng2010}.
 %such circuitry presents a great challenge as defects need to be carefully incorporated into the photonic-crystal structure with great precision. Although this has been accomplished for two-dimensional designs that confine light in a plane, it is still an ongoing challenge for so-called complete-bandgap materials, where the defects need to be embedded into a three-dimensional structure. 
 
 In the last six years, an alternative approach has emerged -- an approach based on the experiments of \cite{tab0, Shen_AS_2016}, which proposes to use high-throughput microfluidic channels to first produce elementary clusters of droplets with controlled morphologies (trimers, diamond, tetrahedrons, etc.) then solidify and stack them into larger photonic crystals with a finite bandgap; see Figure \ref{fig:photonic-flow} (right).
-The advantages of this \emph{flow-assisted} assembly strategy are the potential large production rate and robust control.
-The questions remained to be answered include (i) why the droplets self-organize into those clusters and, if we understand that, (ii) how to harness this self-assembly mechnaism.
-These questions are explored and answered in \emph{Paper 1-4}.
-
-
-
-\iffalse
-\section{Designing liquid-infused surfaces}
-
-Functional surfaces.
-surface engineering,
-drag reduction, self-cleaning, anti-fouling.
-superhydrophobicity,
-lubricant-infused surfaces.
-​\fi
+The advantages of this \emph{flow-assisted} assembly strategy are the potentially large production rate and robust control.
+The remaining questions include
+(i) why the droplets self-organize into those clusters and, if we understand that,
+(ii) how to harness this self-assembly mechnaism to build photonic materials.
+The answers are discussed in \emph{Paper 1-4}.
 
 
 \section{Modelling dense particle suspensions}
 
-Complex fluids. Chemical products. Food.
-particle suspensions.
-rheology.
-efficiency.
-shear thickening.
+Dense suspensions are mixtures of particles in a fluid medium where the former strongly interact via short-range lubrication or non-hydrodynamic forces.
+There are a number of practical or theoretical reasons to model such systems, which are perhaps best described by the following paragraph quoted from the KITP program on \emph{Physics of Dense Suspensions} held in the spring of 2018:
+\footnote{URL: \texttt{https://www.kitp.ucsb.edu/activities/suspensions18}. Accessed on 2020-01-22.}
 
-\thesisstructure Add here a brief description of the structure of the thesis.
+\medskip
+{\small
+``Dense, or high-solid-loading, suspensions of particulates in liquids are found in a range of applications across many industrial sectors and in geophysical flows. The size range of the particles may vary from the colloidal (say, 10 nm to 10 $\mu$m, where Brownian motion dominates) to the granular (say, 10 $\mu$m to 10 mm). At low solid loading, suspensions are typically fluid-like, but at high loadings, their behavior is complex and diverse. In particular, a number of flow transitions can occur as the applied stress or shear rate increases -- from solid to flowing, from a low- to high-viscosity state, or from flowing to jammed. There is great practical interest in unraveling the origins of these and other non-linear flow phenomena in suspensions spanning the whole range of particle sizes. Such advances will form the basis of a predictive science of suspensions in diverse contexts, from cement mixing to advanced additive manufacturing. At the same time, elucidating the physical basis for such behavior will be challenging, and is of great fundamental interest to a large community of soft matter and statistical physicists interested in non-equilibrium phenomena.''}
 
+\medskip
+In partial response to the challenge, we numerically explore dense suspensions under different imposed flow conditions and geometric constraints.
+In particular, we study particles in the noncolloidal regime, and ask:
+(i) how to minimally characterise the microstructural evolution in an unsteady flow. Candidate answers include the complex viscosity, particle diffusivity, suspension fabric, size distribution of local clusters, structure factor, \etc \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}.
+(ii) Can qualitatively different global behaviours, such as a rate-dependent rheology vs.\ a rate-independent rheology, occur to the same suspension under different flow protocols (Ge \textit{et al.}, in preparation)? And
+(iii) how does the particle geometry affect the rheology and jamming of a suspension at fixed volume fractions?
+Solving these problems requires a numerical methodolgy that is both accurate enough to test different physical hypotheses and efficient enough to generate data at a wide range of parameters. The implementation detail of one such algorithm is documented in \emph{Paper 7}.
+
+
+\thesisstructure
+In the remaining of \emph{Part I}, an extended overview on droplet interactions and suspension flow is summarized from previous studies in the literature.
+In Chapter \ref{chp:micro-hydro}, we formulate the microhydrodynamics mathematically and spotlight the essential physics for one, two and more particles in various flow or geometries. These are the prerequisites for understanding droplet interactions in more complicated conditions.
+In Chapter \ref{chp:num-methods}, we introduce two categories of numerical methodologies that either solve the governing equations directly or approximate the solution in reduced order. Each category is then divided into several classes, which have further variantions and are mentioned succinctly.
+These are followed by a short detour in Chapter \ref{chp:misc}, where two additional topics that are studied alongside the main subject are also described.
+Finally, Chapter \ref{chp:summary} concludes the first part of the thesis, and \emph{Part II} contains the original results.
 
 
 %===============================================================================
-\chapter{Microhydrodynamics}
+\chapter{Microhydrodynamics}  \label{chp:micro-hydro}
 %===============================================================================
 
 
@@ -157,7 +162,7 @@ or, equivalently
 \end{equation}
 which we write in the dimensional form.
 
-Physically, the Stokes equation describes systems that are characterized by small length scales or are in slow motions, which are typically encountered in microfluidic or biological applications.
+Physically, the Stokes equation describes systems that are characterised by small length scales or are in slow motions, which are typically encountered in microfluidic or biological applications.
 For instance, the Reynolds number based on a 10 $\mu$m droplet traveling at a speed of 10 $\mu$m/s in water ($\rho=10^3$ kg/m$^{3}$, $\mu=10^{-3}$ Pa$\cdot$s) is $10^{-4}$;
 and if there is no imposed frequency, the Strouhal number will be 1.
 Manifestly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
@@ -546,7 +551,7 @@ See \cite{seto_giusteri_2018} for further discussions.
 
 
 %===============================================================================
-\chapter{Numerical Methods}
+\chapter{Numerical Methods}  \label{chp:num-methods}
 %===============================================================================
 
 
@@ -1045,11 +1050,12 @@ Provided that the particle Reynolds number remains much less than unity, this is
 
 
 %===============================================================================
-\chapter{Miscellaneous}
+\chapter{Miscellaneous}  \label{chp:misc}
 %===============================================================================
 
+
 In this chapter, we describe two additional topics that were investigated during the course of the present work.
-As side projects, they share with the rest of the thesis in that the flow involved are multiphase and characterized by relatively small length scales; hence, they can be, and have been, studied using similar numerical methods.
+As side projects, they share with the rest of the thesis in that the flow involved are multiphase and characterised by relatively small length scales; hence, they can be, and have been, studied using similar numerical methods.
 Beyond that, there is no further connection.
 In the following, we will first give the physical motivation of each problem, then summarize the overall understanding and research methodology prior to our study.
 The new results are reported in \emph{Paper 5 \& 6}.
@@ -1077,7 +1083,7 @@ From the fluid mechanics perspective, questions invoked by these findings natura
 The constraints involve surface chemistry, contamination, degradation, fabrication defects, wetting, etc., making the problem truly multiscale and multiphysics.
 Basic research along this line, including \emph{Paper 6}, is motivated to resolve at least part of these issues.
 
-Theoretically, the resistance of a solid surface to fluid flows can be characterized by the \emph{slip length}, $\lambda_s$, defined as
+Theoretically, the resistance of a solid surface to fluid flows can be characterised by the \emph{slip length}, $\lambda_s$, defined as
 \begin{equation}
  \begin{aligned}
   \bm{u}_s = \lambda_s \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg) \cdot \bm{n},
@@ -1144,7 +1150,7 @@ Nevertheless, numerical studies like the one we conducted shall provide addition
 
 
 %===============================================================================
-\chapter{Summary}
+\chapter{Summary}  \label{chp:summary}
 %===============================================================================
 
 

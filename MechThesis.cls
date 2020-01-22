@@ -483,8 +483,8 @@
 %
 \def\mechdocument{Doctoral Thesis}%
 \def\mechaddress{%
-	Royal Institute of Technology\par%
 	Department of Engineering Mechanics\par%
+	KTH Royal Institute of Technology\par%
 	SE-100 44 Stockholm, Sweden\par%
 }%	
 \def\makecoverpage{%
