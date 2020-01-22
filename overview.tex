@@ -4,28 +4,27 @@
 \chapter{Introduction}
 %===============================================================================
 
-Droplets are one of the most basic forms of fluids and are ubiquitous in nature.
-From the falling rain drops to the rising aerosols, from the deforming embryo to the rolling tears, micron to millimetre sized droplets are an integral part of our everyday experience and, to a great extent, condition and nourish \emph{life}.
+Droplets, one of the most basic forms of fluids, are abundant and ubiquitous in nature.
+From the falling rain drops to the rising aerosols, from the deforming embryo to the rolling tears, micron to millimetre sized droplets are an integral part of our everyday experience, conditioning and nourishing \emph{life}.
 
 Droplets are also important in many artificial and engineering applications.
-In material science, we can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties (see Figure \ref{fig:photonic-flow}).
+In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties (see Figure \ref{fig:photonic-flow}).
 In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and, in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
 In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing and reducing pollutant emissions.
 And in publications, printed posters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
-All the above-mentioned processes and technologies depend on the presence and motion of droplets.
+All the above-mentioned processes or technologies depend on the presence and motion of droplets.
 Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
 Traditionally, the study of liquid-embedded systems are mostly conducted by experimentists; fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
-However, the last few decades have observed a phenomenal paradigm shift in many research areas as the computer power grows exponentially and new algorithms continue to be proposed.
+However, the last few decades have also observed a phenomenal paradigm shift in many research areas owing to the exponential growth of computer power and continuous development of new algorithms.
 Fluid dynamics is now in the vanguard of applying large-scale computations in resolving natural and engineering problems and is, in turn, pushing the boundary of computer science.
 Comparing to experimental measurements, computer simulations are non-invasive and offer the entire information that can be readily visualized up to model errors and the numerical precision.
 Physical parameters can also be freely adjusted to test conditions that are not easy to implement in lab experiments.
 
-Motivated by these reasons, the present work embarks on a number of engineering problems using both high- and low-fidelity numerical simulations.
-The common ground at the bottom of these problems is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
-Due to the multidisciplinary of these applications, a complete description of all involved phenomena and technological chanlenges is out of the scope of this overview.
-A brief introduction of some of the problems is given below.
-%We develop algorithms, simulate fluids, and try to explain the physics.
+Motivated by these reasons, the present work embarks on a number of problems that originates from material fabrication, surface engineering and fluid transport.
+We develop and utilise both high- and low-fidelity numerical models to simulate the underlying processes with the aims of complementing experimental studies and elucidating the physical mechanism.
+The common ground at the bottom of these inquiries is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
+Their specific backgrounds are given below.
 
 
 %-------------------------------------------------------------------------------
@@ -36,45 +35,31 @@ A brief introduction of some of the problems is given below.
   \centering
   \includegraphics[height=4.73cm]{photonics_cover.jpg}
   \includegraphics[height=4.73cm]{flow-assist1.png}
-  \caption{(left) Cover photo of the January 2008 issue of Nature Photonics, showing an artistic rendering of a light beam passing through a 3D photonic crystal. \textcopyright \enspace Springer Nature. (right) Droplet assembly in a microfluidic chip; scale bar, 100 $\mu$m. Images courtesy of Dr.\ Bingqing Shen.}
+  \caption{(left) Cover photo of the January 2008 issue of Nature Photonics, showing an artistic rendering of a light beam passing through a 3D photonic crystal. \textcopyright \enspace Springer Nature. (right) Self-assembly of two to four droplets in a microfluidic chip; scale bar, 100 $\mu$m. Images courtesy of Dr.\ Bingqing Shen.}
   \label{fig:photonic-flow}
 \end{figure}
 
-Photonic crystals (PhC) are materials patterned with a periodicity in dielectric constant and show great potential for building sophisticated optical circuitry that can route, filter, store or suppress optical signals (Figure \ref{fig:photonic-flow}, left).
-They resemble semiconductors in that photons can be manipulated in PhC in a similar fashion as electrons in silicon-based semiconductors.
-Furthermore, it has been theoretically predicted that PhC can exhibit a complete photonic bandgap (PBG), \ie a range of frequencies over which light cannot propagate in any direction within it \citep{Yablonovitch1987}.
-This unique property provide the basis for numerous optoelectronic applications, including low-threshold lasers, low-loss waveguides, on-chip optical circuitry and fibre optics \citep{Meade_etal_1994, Joannopoulos_etal_1997, Rinne_etal_2008}.
+Photonic crystals (PhC) are materials patterned with a periodicity in dielectric constant and show great potential for building sophisticated optical circuitry that can route, filter, store or suppress optical signals; see Figure \ref{fig:photonic-flow} (left).
+They resemble semiconductors in that photons can be manipulated in PhC in a similar fashion as electrons are controlled in silicon-based semiconductors.
+Furthermore, it has been theoretically predicted that PhC can exhibit a complete photonic bandgap (PBG), \ie a range of frequencies over which light cannot propagate in any direction within the material \citep{Yablonovitch1987}.
+This unique property provides the basis for numerous optoelectronic applications, including low-threshold lasers, low-loss waveguides, on-chip optical circuitry and fibre optics \citep{Meade_etal_1994, Joannopoulos_etal_1997, Rinne_etal_2008}.
 
 Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps remains a practical challenge in the colloidal community \citep{Velev_etal_AM2009, Sacanna_etal_COCIS2011, Shen_AS_2016}.
 The issue is twofold.
-On the one hand, the most ideal structure of PhC takes the form of a diamond cubic, which has around 40\% bandgap opening.
-Therefore, if we want to assemble droplets into a functional PhC, all we need to do is to enclose nanoparticles of different refractive index, then bring them to the correct lattice position.
-However, diamond crystals are extremely difficult to assemble due to its low packing fraction ($\sim 34\%$) comparing to other crystal structures (\eg a face-centered cubic of equal spheres has a packing fraction of about 74\%); there is simply too much gap. In addition, it is very sensitive to structural defects which can easily propogate inside the crystal, removing the PBG property.
-On the other hand, even if we could build diamond crystals, current techniques are limited by Brownian motions as the driving force to bring neighbouring droplets into contact \citep{pine...}. This significantly slows down the prodcution.
+On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{This percentage corresponds to the portion of frequencies that propogation of light is forbidden.}
+Therefore, if one wishes to fabricate PhC from colloidal droplets, the holy grail to aim is positioning droplets in a diamond cubic with alternating dielectric constants.
+In practice, however, diamond crystals are extremely difficult to assemble because of the large gaps in between; specifically, a diamond cubic of equal spheres has at most 34\% packing fraction, while a face-centered cubic can reach 74\%. This makes PBG hard to achieve in 3D considering its sensitivity to structural defects.
+On the other hand, even if one does aim for the diamond structure, current techniques relying on Brownian motions and ``patchy particles'' are too slow to build PhC in the range of visible light \citep{Yi_etal_CM2013}. In some sense, droplets are assembled by chance, which favors anisotropic structures with a higher rotational entropy \citep{Meng2010}.
 %such circuitry presents a great challenge as defects need to be carefully incorporated into the photonic-crystal structure with great precision. Although this has been accomplished for two-dimensional designs that confine light in a plane, it is still an ongoing challenge for so-called complete-bandgap materials, where the defects need to be embedded into a three-dimensional structure. 
 
-In the last five years, it is proposed that such issues may be addressed by the microfluidic technology...
-fast, deterministic, robust;
-don't understand why, blind search.
-an opportunity for cfd.
+In the last six years, an alternative approach has emerged -- an approach based on the experiments of \cite{tab0, Shen_AS_2016}, which proposes to use high-throughput microfluidic channels to first produce elementary clusters of droplets with controlled morphologies (trimers, diamond, tetrahedrons, etc.) then solidify and stack them into larger photonic crystals with a finite bandgap; see Figure \ref{fig:photonic-flow} (right).
+The advantages of this \emph{flow-assisted} assembly strategy are the potential large production rate and robust control.
+The questions remained to be answered include (i) why the droplets self-organize into those clusters and, if we understand that, (ii) how to harness this self-assembly mechnaism.
+These questions are explored and answered in \emph{Paper 1-4}.
+
+
 
 \iffalse
-Here, we report one
-microfluidic-based strategy and discuss its prospect
-in terms of 3D photonic crystal fabrication3.
-
-material science.
-photonic crystals.
-theoretically ready, practically hard to make.
-microfluidics 
-lab-on-a-chip.
-
-Creating new materials, with photonic properties (such as opening complete band gaps) has challenged  for decades. With the support of a European project (MICROFLUSA), involving three universities (TECHNION, KTH), we address this challenge with microfluidic technology.
-
-We have demonstrated that it is possible to produce elementary clusters of droplets (builiding blocks of future materials), with controlled morphologies (trimers, diamond, tetrahedrons, pentahedrons,...), and solidify them, directly in a microfluidic device. More recently, we focus on disordered materials. We have shown that disordered bidisperse assemblies of droplets exhibit hyperuniform properties, that can be optimized (J.Ricouvier et al, PRL, Dec 2017). We follow this line of thought by assembling, directly in microfluidic devices, 2D and 3D droplet-based structures that, despite their disorder, are good candidates for opening band gaps. We hope, in this manner, to create self-assembled disordered materials with band gaps, in a wide range of wavelenghts, i.e from the visible to the THz. This work is carried out with numerical simulations performed at Technion University (Israel).
-​\fi
-
-
 \section{Designing liquid-infused surfaces}
 
 Functional surfaces.
@@ -82,9 +67,10 @@ surface engineering,
 drag reduction, self-cleaning, anti-fouling.
 superhydrophobicity,
 lubricant-infused surfaces.
+​\fi
 
 
-\section{Flow of dense particle suspensions}
+\section{Modelling dense particle suspensions}
 
 Complex fluids. Chemical products. Food.
 particle suspensions.
@@ -596,7 +582,7 @@ where
 \end{equation}
 In the above, superscripts $^{(n)}$, $^*$, and $^{(n+1)}$ denote the discrete time-levels in step of $\Delta t$;
 and $\rho$ and $\mu$ are assumed to be 1 for simplicity.
-The flow field, $\bm u$, is updated in time via a fractional-step procedure, where the first sub-step, Eq.\ \eqref{eq:ab2}, utilizes the second-order Adams-Bashforth (AB2) scheme. Other temporal integration schemes, \eg the Runge-Kutta (RK) or Crank-Nicolson (CN) methods, can also be used or mixed-and-used depending on the numerical stability and desired accuracy.
+The flow field, $\bm u$, is updated in time via a fractional-step procedure, where the first sub-step, Eq.\ \eqref{eq:ab2}, utilises the second-order Adams-Bashforth (AB2) scheme. Other temporal integration schemes, \eg the Runge-Kutta (RK) or Crank-Nicolson (CN) methods, can also be used or mixed-and-used depending on the numerical stability and desired accuracy.
 In moderate-Reynolds-number systems, AB2 is typically favored over other schemes as it is easy to implement (comparing to implicit schemes such as CN) and relatively fast (comparing to high-order schemes such as third-order RK).
 
 In order to evaluate the spatial derivatives in Eqs.\ \eqref{eq:projection-method}, the flow domain should be discretized so that either finite difference or weighted residual methods can be applied.
@@ -852,7 +838,7 @@ Plenty of methods have thus been proposed to overcome such issues by using highe
 
 Finally, we summarize the numerical algorithm of the interface-correction level set/ghost fluid method of \emph{Paper 1} in Algorithm \ref{al:ls}.
 Here, the level set field is integrated in time with a total-variation-diminishing third-order Runge-Kutta scheme; the spatial derivatives, ${AD}$, are computed with either fifth-order upstream-central (HOUC) or weighted essentially non-oscillatory (WENO) schemes. The mass correction and reinitialization are treated similarly.
-In the flow solver, the pressure Poisson equation is split into a constant-coefficient part and a variable-coefficient part to utilize the fast Fourier transform.
+In the flow solver, the pressure Poisson equation is split into a constant-coefficient part and a variable-coefficient part to utilise the fast Fourier transform.
 The surface tension is incorporated in the same equation using the ghost fluid method (denoted by $[\cdot]_\Gamma$).
 The full algorithm is presented in details in \emph{Paper 1}. Note the high-level simplicity of the level set method comparing to the immersed boundary method (Algorithm \ref{al:ibm}).
 
@@ -1073,7 +1059,7 @@ The new results are reported in \emph{Paper 5 \& 6}.
 
 The last several decades of development in material science and nanotechnology has greatly enhanced our ability to probe, pattern, fabricate and modify mechanical structures with chemical treatments in nano-to-micron length scales.
 Superhydrophobic surfaces (SHS) (Figure \ref{fig:micro-surface}), which perfectly repel water due to gas entrapment within the roughness, have been studied extensively in both natural and laboratory settings \citep{plant_superhydro_1997, Onda_etal_1996}, and has led to what was called a ``gold rush'' to search and design surfaces with extreme non-wettability \citep{Bocquet}.
-Such properties may not only be utilized to reduce drag in liquid or marine vessel transport \citep{Watanabe, Ou, Choi_Kim, Lee}, but also has the potential to achieve self-cleaning, anti-fouling, or heat transfer enhancement \citep{Blossey2003, Roach_etal_2008}.
+Such properties may not only be utilised to reduce drag in liquid or marine vessel transport \citep{Watanabe, Ou, Choi_Kim, Lee}, but also has the potential to achieve self-cleaning, anti-fouling, or heat transfer enhancement \citep{Blossey2003, Roach_etal_2008}.
 In addition, its alternative -- liquid-infused surfaces (LIS) -- which replace the air cushion with a liquid layer, has also attracted increasing attention due to its robustness \citep{Solomon, Rosenberg, Wexler}.
 Plenty of applications have been conceived with great excitement.
 

@@ -481,10 +481,10 @@
 %------------------------------------------------------------------------------
 %	Front matter macros
 %
-\def\mechdocument{Technical Reports}%
+\def\mechdocument{Doctoral Thesis}%
 \def\mechaddress{%
 	Royal Institute of Technology\par%
-	Department of Mechanics\par%
+	Department of Engineering Mechanics\par%
 	SE-100 44 Stockholm, Sweden\par%
 }%	
 \def\makecoverpage{%
