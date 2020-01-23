@@ -81,10 +81,10 @@ Solving these problems requires a numerical methodolgy that is both accurate eno
 
 \thesisstructure
 In the remaining of \emph{Part I}, an extended overview on droplet interactions and suspension flow is summarized from previous studies in the literature.
-In Chapter \ref{chp:micro-hydro}, we formulate the microhydrodynamics mathematically and spotlight the essential physics for one, two and more particles in various flow or geometries. These are the prerequisites for understanding droplet interactions in more complicated conditions.
+In Chapter \ref{chp:micro-hydro}, we formulate the microhydrodynamics mathematically and spotlight the essential physics for one, two and more particles in various flow fields or geometries. These are the prerequisites for understanding droplet interactions in more complicated conditions.
 In Chapter \ref{chp:num-methods}, we introduce two categories of numerical methodologies that either solve the governing equations directly or approximate the solution in reduced order. Each category is then divided into several classes, which have further variantions and are mentioned succinctly.
-These are followed by a short detour in Chapter \ref{chp:misc}, where two additional topics that are studied alongside the main subject are also described.
-Finally, Chapter \ref{chp:summary} concludes the first part of the thesis, and \emph{Part II} contains the original results.
+These are followed by a short detour in Chapter \ref{chp:misc}, where two additional topics studied alongside the main subject are motivated and described.
+Finally, Chapter \ref{chp:summary} concludes the first part of the thesis, leading to \emph{Part II} where the original results are collected.
 
 
 %===============================================================================
@@ -1182,8 +1182,39 @@ Nevertheless, numerical studies like the one we conducted shall provide addition
 %===============================================================================
 
 
+The investigations presented in this thesis are motivated by the interest in understanding droplet interactions and suspension flow that originates from a number of applications, including material science, microfluidic technology and transport of complex fluids.
+The general physical picture and underlying mathematical formulation are described in Chapter \ref{chp:micro-hydro}, where we introduce the elementary properties of the Stokes flow and its approximate solutions in the presence of liquid droplets or solid particles in a few simple cases.
+These are the fundamentals of microhydrodynamics, essential for building a physical intuition and making back-of-the-envelope estimates when faced with more complicated engineering problems.
+Unfortunately, sometimes a problem may be too complicated to be solved analytically, or we may simply be misguided by our intuitions.
+In those cases, numerical simulations offer a relatively inexpensive means to visualise fluid motions and disentangle the various effects.
+Therefore, Chapter \ref{chp:num-methods} provides a mini-review of some currently popular methods that can be applied to simulate coupled multiphase systems.
+This is the main subject of the present work -- we develop methods, implement algorithms, and simulate droplets or particles in fluids to reproduce experiments or verify theories.
+The specific aim may differ by applications; what remains the same is the numerical approach to problem solving as well as a curiosity-driven effort to uncover more physical principles.
 
+\begin{figure}%[b]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{paper-diagram.pdf}
+  \caption{Diagrammatic representation of the papers in Part II parameterized by the number of droplets ($N$) that are or could potentially be studied, and by the distance (indicated by color) to being purely experimental ($-1$) or purely theoreticaly ($1$); 0 corresponds to purely numerical. Note that \emph{Paper 6} does not have a meaningful definition of $N$.}
+  \label{fig:p-diagram}
+\end{figure}
 
+The detailed results of the present work are given in the next part of the thesis in the format of journal articles or technical reports.
+Among them, 
+Papers 1--4 entail droplet interactions,
+Papers 5 \& 6 are miscellaneous, and
+Paper 7 concerns suspension flow.
+Separate summaries of each paper are given in the beginning of Part II.
+A diagrammatic categorization is also illustrated in Figure \ref{fig:p-diagram}.
+Overall, the common limitation of the conducted studies is the lack of a simple quantitative model that predicts the main phenomenon.
+It is quite often the case that weak qualitative conclusions are drawn from the simulations, and a new set of simulations may have to be performed in very different conditions.
+
+Finally, as a outlook to future studies, lessons learned from the present thesis include:
+(i) Flow-assisted droplet assembly for photonic crystals is not straightforward. Perhaps disorder materials.
+(ii) Level set methods are mass-leaking; not recommended for solving engineering problems for its own sake. But it is still fun to develop methods and it may have other applications, such as modelling tissue growth.
+(iii) IB simulations for particle interactions are very slow. Patience.
+(iv) Droplets in turbulence is an exciting new avenue, a lot to simulate and model.
+(v) Wetting is important but nasty.
+(vi) Dense suspension is very exciting, many parameters to do, very interesting from a theoretical point of view, also can be a testbed for new methods.
 
 
 %%===============================================================================
