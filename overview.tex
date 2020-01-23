@@ -8,10 +8,10 @@ Droplets, one of the most basic forms of fluids, are abundant and ubiquitous in 
 From the falling rain drops to the rising aerosols, from the deforming embryo to the rolling tears, micron to millimetre sized droplets are an integral part of our everyday experience, conditioning and nourishing \emph{life}.
 
 Droplets are also important in many artificial and engineering applications.
-In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties (see Figure \ref{fig:photonic-flow}).
+In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties.
 In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and, in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
 In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing, improve combustion efficiency, and reduce pollutant emissions.
-And in publications, printed posters, newsletters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
+Even in publications, printed posters, newsletters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
 All the above-mentioned processes or technologies depend on the presence and motion of droplets.
 Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
@@ -109,7 +109,7 @@ To begin with, recall the incompressible \emph{Navier-Stokes equations}
   \label{eq:NS}
  \end{equation}
 \end{subequations}
-relating the flow velocity $\bm u$ with the pressure $p$ in the presence of some force density $\bm f$, where $\rho$ and $\mu$ are the density and dynamic viscosity of the fluid, respectively.
+relating the flow velocity $\bm u$ with the pressure $p$ in the presence of some force density $\bm f$, where $\rho$ and $\mu$ are the density and dynamic viscosity of the fluid.
 Eqs.\ \eqref{eq:Navier-Sotkes}, together with appropriate boundary conditions, govern the dynamics of a Newtonian fluid that satisfies\footnote{The present thesis only concerns Newtonian fluids as the solvent, though, combined with particles, the suspension may exhibit non-Newtonian bulk behaviours. See Section \ref{sec:sus-rheo}.}
 \begin{equation}
  \begin{aligned}
@@ -122,7 +122,8 @@ Depending on the bounding material, conditions on the velocity or stress may be 
 \begin{equation} \label{eq:stress-bc}
   ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma,
 \end{equation}
-where $\bm n$ denotes the unit normal vector across the liquid interface (from the $-$ side to the $+$ side), $\gamma$ the surface tension coefficient, and $\kappa$ the curvature of the interface (\eg $\kappa=2/a$ for a sphere of radius $a$). 
+where $\bm n$ denotes the unit normal vector across the liquid interface (from the $-$ side to the $+$ side), $\gamma$ the surface tension coefficient, and $\kappa$ the curvature of the interface (\eg $\kappa=2/a$ for a sphere of radius $a$).
+The above equation states that both normal and tangential stresses can be discontinuous across an interface.
 
 Eq.\ \eqref{eq:NS} can be further non-dimensionalized, using the reference length $L$, velocity $U$, time $T$, pressure $P \equiv \mu U/L$, and force density $F \equiv P/L$ scales, into
 \begin{equation}
@@ -136,7 +137,7 @@ where the hat signifies dimensionless quantities, and Re and Sr represent the \e
     \textrm{Re} = \frac{\rho UL}{\mu},\quad \quad \textrm{Sr} = \frac{UT}{L}.
   \end{aligned}
 \end{equation}
-A capillary number can also be defined to non-dimensionalize the surface tension,
+A capillary number can also be defined to non-dimensionalize the surface tension appearing in Eq.\ \eqref{eq:stress-bc},
 \begin{equation}
   \begin{aligned}
     \textrm{Ca} = \frac{\mu U}{\gamma}.
@@ -157,15 +158,15 @@ When both Re and ReSr$^{-1}$ are small, Eq.\ \eqref{eq:NS-nondi} reduces to the 
 \end{equation}
 or, equivalently
 \begin{equation}
-   \nabla \cdot  {\bm \sigma} + {\bm f} = {\bm 0},
+   \nabla \cdot  {\bm \sigma} + {\bm f} = {\bm 0}.
  \label{eq:Stokes1}
 \end{equation}
-which we write in the dimensional form.
+%which we write in the dimensional form.
 
 Physically, the Stokes equation describes systems that are characterised by small length scales or are in slow motions, which are typically encountered in microfluidic or biological applications.
 For instance, the Reynolds number based on a 10 $\mu$m droplet traveling at a speed of 10 $\mu$m/s in water ($\rho=10^3$ kg/m$^{3}$, $\mu=10^{-3}$ Pa$\cdot$s) is $10^{-4}$;
 and if there is no imposed frequency, the Strouhal number will be 1.
-Manifestly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$ are safely satisfied.
+Manifestly, both Re $\ll 1$ and ReSr$^{-1}$ $\ll 1$.
 
 Mathematically, the removal of the nonlinear term in Eq.\ \eqref{eq:NS} dramatically simplifies the solution.
 In general, the Stokes flow has the following symmetries and properties.
@@ -182,18 +183,23 @@ In general, the Stokes flow has the following symmetries and properties.
    \int_S \bigg({\bm u}' \cdot ({\bm \sigma}'' \cdot {\bm n}) - {\bm u}'' \cdot ({\bm \sigma}'  \cdot {\bm n})\bigg) dS, & 
   \end{aligned} \label{eq:lorentz-recip}
  \end{equation}
- where $V$ is some enclosed volume with surface $S$.
- \item \emph{Minimum dissipation principle}. This variational principle asserts that the flow minimizing the energy dissipation rate subject to incompressibility under certain boundary conditions is the Stokes flow under the same boundary conditions.
+ where $V$ is some enclosed volume with surface $S$. This identity is often useful in analytical calculations.
+ \item \emph{Minimum dissipation principle}. This variational principle asserts that the flow minimizing the energy dissipation rate subject to incompressibility under certain boundary conditions is the Stokes flow under the same boundary conditions. Turbulent flow, on the contrary, is very dissipative.
 \end{enumerate}
 
 
 \section{Single particle in unbounded Stokes flows}
 \label{sec:single-p}
 
-When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow. Theoretical analyses are thus limited to a handful of simple problems. However, even in a simplified condition, an analytical solution often provides us useful physical intuitions that may be applied to more complicated cases. Below, we list some elementary solutions of the Stokes equation in its simplest setup, \ie a single particle in unbounded Stokes flows.
+When particles are present in a fluid, the coupled dynamics is often significantly more complex than a single phase Stokes flow.
+Theoretical analyses are thus limited to a handful of simple problems.
+However, even in a simplified condition, an analytical solution often provides us useful physical intuitions that may be applied to more complicated cases.
+Below, we list some elementary solutions of the Stokes equation in its simplest setup, \ie a single particle in unbounded Stokes flows.
 
-\bigskip
-Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta. This might represent a reasonable approximation of a small sedimenting particle viewed from a distance. Then, the solution of the Stokes equation due to this forcing can be written as
+\medskip
+Imagine the force density ${\bm f}$ in Eq.\ \eqref{eq:Stokes} is singularly supported at the origin, \ie ${\bm f}({\bm x})={\bm F}\delta({\bm x})$, $\delta$ being the Dirac delta.
+This might represent a reasonable approximation of a small sedimenting particle viewed from a large distance.
+Then, the solution of the Stokes equation due to this forcing can be written as
 \begin{equation} \label{eq:stokes-green}
  \begin{aligned}
    {\bm u}({\bm x}) = {\bm G}({\bm x}) \cdot {\bm F},
@@ -247,13 +253,13 @@ where
  \end{equation}
 \end{subequations}
 
-Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/\abs{\bm x}$, while a force-free particle (\eg a self-propelled bacterium) has a $1/\abs{\bm x}^2$ decay thus leaving less trace at the same distance away. See Figure \ref{fig:lets} for illustrations.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
+Eq.\ \eqref{eq:multipole} is the \emph{multipole expansion} of the disturbance velocity, ${\bm u}-{\bm u}^\infty$. One immediate physical implication is that a forced particle (\eg a rising bubble) will generate a disturbance that decays as $1/\abs{\bm x}$, while a force-free particle (\eg a self-propelled bacterium) has a $1/\abs{\bm x}^2$ decay thus leaving less trace at the same distance. See Figure \ref{fig:lets} for illustrations.\footnote{The rotlet flow is simply a rigid-body rotation centered at the origin.}
 
 \begin{figure}%[t]
   \centering
   \includegraphics[width=0.49\columnwidth]{stokeslet1.pdf}
   \includegraphics[width=0.49\columnwidth]{stresslet1.pdf}
-  \caption{Flow fields due a Stokeslet (left) and a stresslet (right) centered at the origin (red dot). The black arrows display the velocities, while their directions are also indicated by the gray arrows. The flow fields are both axi- and fore-aft symmetric. Note the difference in the velocity magnitude of the two flows.}
+  \caption{Flow fields due a Stokeslet (left) and a stresslet (right) centered at the origin (red dot). The black arrows display the velocity magnitude, while their directions are also indicated by the gray arrows. The flow fields are both axi- and fore-aft symmetric. Note the difference in the velocity magnitude of the two flows.}
   \label{fig:lets}
 \end{figure}
 
@@ -276,7 +282,7 @@ where $\small {\bm E}^\infty=(\nabla {\bm u}^\infty + (\nabla {\bm u}^\infty)^T)
 
 The preceding section presents the most basic solutions of the Stokes equation in the presence of one particle.
 In practice, however, it is rarely the case particles or droplets exist in isolation.
-Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms, giving rise to a multitude of phenomena in natural or artificial conditions.
+Particles tend to abound; and they often interact with each other through various types of hydrodynamic or non-hydrodynamic mechanisms, giving rise to a multitude of phenomena in natural or engineering applications.
 For example, soap bubbles are always in a cluster due to the interfacial capillary attraction, while the same underlying principle can be applied to manipulate droplet motions on a surface to aid liquid handling \citep{vapour-sensing}.
 To offer at least some partial insights on the hydrodynamics, we highlight recent theoretical developments of droplet interactions in bulk microflows, starting from the simplest case of two particles immersed in unbounded simple shear flows.
 
@@ -302,14 +308,17 @@ Furthermore, if the two particles are once aligned in the flow direction, they w
 
 \cite{Zinchenko1983,Zinchenko1984} considered the problem when the two particles are ``fluid spheres''.
 Specifically, he calculated the scalar parameters introduced in \cite{batchelor_green_1972} for two identical droplets, and showed that they are functions of the relative position and viscosity ratio, $\lambda$, defined as the ratio between the droplet and the solvent viscosities.
-For $\lambda=$ 0.25 to 20, the phase diagram  in simple shear flows has similar topological features to the case of rigid particles,\footnote{Different types of trajectories were also hypothesized, which may only exist in the case of liquid drops. See \cite{Zinchenko1984} for details.} \ie an open region and a closed region, though its asymptotic limit depends on the viscosity ratio and short-range non-hydrodynamic interactions, cf.\ the DLVO theory.
+For $\lambda=$ 0.25 to 20, the phase diagram in simple shear flows has similar topological features to the case of rigid particles,%
+\footnote{Different types of trajectories were also hypothesized, which may only exist in the case of liquid drops. See \cite{Zinchenko1984} for details.}
+\ie an open region and a closed region, though its asymptotic limit depends on the viscosity ratio and short-range non-hydrodynamic interactions.%
+\footnote{In the original work of Zinchenko, he used the DLVO theory, which includes the van der Waals attraction and the electrostatic repulsion, for droplets in close contact. Other type of forces, such as the depletion attraction (cf.\ \emph{Papers 1 \& 2}), are also possible and may lead to different pair interactions.}
 
-For the above analysis to hold for liquid droplets, an additional constraint must be satisfied, \ie Ca $\ll 1$.
+For the above analysis to hold for liquid droplets, an additional constraint must be introduced, \ie Ca $\ll 1$.
 This is usually the case for microfluidic applications. For instance, recall the case considered in the beginning of Section \ref{sec:stokes-flows}, and suppose it is an oil droplet traveling in water under a relatively large local shear rate of $\dot{\gamma}=10^3$ s$^{-1}$. The surface tension coefficient would be around 0.05 N/m, depending on surfactants and the temperature, resulting in Ca $=\mu(a\dot{\gamma})/\gamma \sim 10^{-4}$. Clearly, the capillary number is small enough for the droplet to remain spherical in the flow.
 
 We note that, in both cases, the relative particle velocity is proportional to the shear rate of the underlying flow. That is, doubling the shear will result in twice as fast relative motions between the particles, though the relative velocity remains much smaller than the absolute velocity in the lab frame (typically two orders-of-magnitude smaller). Hence, these are truly slow, but long-range, interactions.
 
-When particles are at close contact, say the surface gap $h \ll a$, with $a$ being the particle radius. Then, the hydrodynamic interaction will be dominated by the lubrication term. Specifically, the lubrication force diverge as $a/h$ in the longitudinal direction, and as $\log(a/h)$ in the transverse directions \citep{jeffrey_onishi_1984, jeffrey1992}. Qualitatively, lubrication functions as a dashpot that prevents incoming particles from colliding and separating particles from overshooting. These will be further discussed and demonstrated in Section \ref{sec:num-dem} and \emph{Papers 7 \& 8}.
+When particles are at close contact, say the surface gap $h \ll a$, with $a$ being the particle radius. Then, the hydrodynamic interaction will be dominated by the lubrication term. Specifically, the lubrication force diverge as $a/h$ in the longitudinal direction, and as $\log(a/h)$ in the transverse directions \citep{jeffrey_onishi_1984, jeffrey1992}. Qualitatively, lubrication functions as a dashpot that prevents incoming particles from colliding and separating particles from overshooting. These will be further discussed and demonstrated in Section \ref{sec:num-dem} and \emph{Paper 7}.
 
 
 \subsection{Pair interactions under weak confinement}
@@ -324,7 +333,7 @@ Here, the lines depicts the relative trajectories of the second particle in the 
 Remarkably, there exist two types of closed trajectories (in blue) and two types of open trajectories (in red).
 Close to the origin, a degenerate of the BG-type closed trajectory is singly connected to an open trajectory at an unstable saddle point at distance $r_s$ from the origin.
 The latter is not admissible in BG, as the particles swap their $z$ coordinates after a binary encounter rather than returning to the original positions.
-Such open trajectories have been previously termed ``swapping trajectories'' and recognized as a wall-induced cross-streamline particle migration mechanism, attributing to the anomalously large self-diffusivity observed in a dilute suspension measurement \citep{Zarraga_Leighton2002, zurita-gotor_2007}.
+Such open trajectories have been previously termed ``swapping trajectories'' and recognized as a wall-induced cross-streamline particle migration mechanism, explaining the anomalously large self-diffusivity observed in a dilute suspension measurement \citep{Zarraga_Leighton2002, zurita-gotor_2007}.
 Our derivation and numerical simulations independently verify this result.
 
 \begin{figure}%[t]
@@ -336,7 +345,7 @@ Our derivation and numerical simulations independently verify this result.
   \label{fig:itzhak-boris}
 \end{figure}
 
-Extending further away from the reference particle, we identify a new class of closed trajectories along which the second particle rotates around a neural equilibrium center. Note that, despite a distant wall, the trajectories remain axisymmetric with respect to the $x$ axis. Thus, all points on the circle $x^2+y^2=r_c^2$ are stationary configurations.
+Extending further away from the reference particle, we identify a new class of closed trajectories along which the second particle rotates around a neutral equilibrium center. Note that, despite a distant wall, the trajectories remain axisymmetric with respect to the $z$ axis. Thus, all points on the circle $x^2+y^2=r_c^2$ are stationary configurations.
 Slightly moving away from the center point, the second particles will revolve perpetually as it is convected by the flow; hence, we call them the ``dancing trajectories'' (see Figure \ref{fig:itzhak-boris}, right).
 The positions of these critical points are approximately related to the wall separation alone. Specifically, $r_s=(32z_0^3/15)^{1/5}$ and $r_c \approx 4z_0$.
 Overall, the wall is a singular perturbation to the free-space particle interaction.
@@ -354,13 +363,19 @@ This can be more readily seen from the opposite statement, \ie if the particle t
   \label{fig:stresslet-refl}
 \end{figure}
 
-Secondly, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses utilizing basic solutions of the Stokes equation.
+Secondly, the effect of a rigid boundary on particle interactions can sometimes be intuitively predicted by image analyses utilising basic solutions of the Stokes equation.
 For example, \cite{zurita-gotor_2007} performed a relatively simple analysis to explain the flow reversal pattern (\ie the swapping trajectories) by calculating the scattering flow.
-As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (since the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
+As sketched in Figure \ref{fig:stresslet-refl}, the wall reflection of the stresslet flow (the particles are force-free) produces a vertical velocity component consistent with what is required for the position swapping (see \cite{zurita-gotor_2007} for the detailed calculations). This flow, despite being very small, is what causes the second particle to be shielded from the first one.
 
 Thirdly, we note that these observed particle interactions may be superimposed pairwise to infer the collective dynamics of a group of particles in similar conditions.
-To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$) to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$), where $H$ is the channel height (same setup and notation otherwise, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}).
-Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories, while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
+To illustrate this point, we simulated two rigid particles in a periodic channel (thus mimicking a 1D crystal) and
+observed a crossover from permanent separation of the particle pair (for $0.32 \lessapprox z_0/H \lessapprox 0.68$)
+to a trapping state (for $z_0/H \lessapprox 0.32$ or $z_0/H \gtrapprox 0.68$),
+where $H$ is the channel height;%
+\footnote{The computational setup and notations are the same as the case presented before, cf.\ Figures \ref{fig:itzhak-boris} and \ref{fig:stresslet-refl}.}
+see Figure \ref{fig:xover}.
+Qualitatively, the former results from cross-stream migrations that resemble the BG open trajectories,
+while the latter is due to position swappings with neighbouring particles strongly influenced by the wall.
 See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid demonstrations.
 
 \begin{figure}%[t]
@@ -384,7 +399,9 @@ See \cite{Beatus2006, Janssen2012, Uspal2013} for a few more analogous and vivid
 \subsection{Droplet interactions in quasi-two-dimensional geometries}
 \label{subsec:drop-confined}
 
-The last two decades has witnessed a boom of studies on hydrodynamic interactions in strongly confined geometries owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}. At a first glance, increasing the confinement seems to complicate the problem as the boundary conditions becomes non-negligible (as opposed to being infinitely away), see \eg \cite{LironMochon, Fouxon_Rubinstein2019}. However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we exemplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are simplified by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
+The last two decades has witnessed a boom of studies on hydrodynamic interactions in strongly confined geometries owing to the development of microfluidics \citep{Cui_etal_2002, Cui2004, tlusty, Davit_2008, q2d_Beatus}.
+At a first glance, increasing the confinement seems to complicate the problem as the boundary effects become less negligible, see \eg \cite{LironMochon, Fouxon_Rubinstein2019}.
+However, by returning to the physical origin of the equations, one can surprisingly gain a useful insight applicable to a wide range of geometries and particle sizes \citep{Diamant_2005}. Below, we exemplify two such conditions, one in which the interacting droplets are confined between two rigid planes, the other between free surfaces. The solutions are simplified by focusing on the far-field interactions and realizing that the problem is \emph{quasi-two-dimensional} (q2D). 
 
 \medskip
 Consider the flow between two parallel plates where the gap $H$ is much smaller than the other two dimensions (say $x$ and $y$); such geometry is commonly known as the \emph{Hele Shaw cell}. Then, from the lubrication theory, the velocity of the flow within the thin layer is approximately prescribed as 
@@ -395,8 +412,9 @@ Consider the flow between two parallel plates where the gap $H$ is much smaller 
  \end{equation}
 where the vertical components of the velocity and pressure are neglected, though ${\bm u}$ remains $z$-dependent. Hence, the flow is quasi-two-dimensional.
 
-Under such conditions, the velocity field is irrotational and satisfies the boundary conditions of zero normal components at a rigid boundary in the horizontal plane \citep{Batchelor}. That is, a moving droplet (shaped as a pancake in q2D) shall have zero mass flux through its edge, not no-slip. With these requirements, it can be shown that the flow, created by the drop far from its surface, is proportional to
-%Similar to the derivation for the Stokeslet, the flow ${\bm u}$ due to a moving droplet can be approxmiately derived, which has the following far-field structure
+Under such conditions, the velocity field is irrotational and satisfies the boundary conditions of zero normal components at a rigid boundary in the horizontal plane \citep{Batchelor}.
+That is, a moving droplet (shaped as a pancake in q2D) shall have zero mass flux through its edge, not no-slip.
+With these requirements, it can be shown that the flow created by the drop far from its surface is proportional to
 \begin{equation} \label{eq:dipolar}
  \begin{aligned}
    {\bm B}^s({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -\frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg),
@@ -406,7 +424,7 @@ Under such conditions, the velocity field is irrotational and satisfies the boun
 where $\alpha$ is a dimensionless prefactor depending on the confinement \citep{Diamant}.
 
 Physically, the above equation describes a 2D \emph{mass dipole} that displaces the surrounding fluid as the droplet moves.
-Mathematically, it is the q2D Oseen tensor that approximates the velocity due to forcing on a moving droplet from afar, \ie ${\bm u} \sim {\bm B}{\bm F}$.
+Mathematically, it is the q2D Oseen tensor that approximates the far-field velocity due to forcing on a moving droplet, \ie ${\bm u} \sim {\bm B}{\bm F}$.
 Specifically, ${\bm u}$ decays with the distance as $1/\abs{\bm x}^2$, which is faster than the free-space Stokeslet flow, but surprisingly slower than the flow caused by a moving particle near a single plate \citep{Cui2004}.
 Heuristic arguments based on conservation laws have been proposed to explain these scaling differences, see \cite{Diamant} for details.
 
@@ -420,11 +438,12 @@ Heuristic arguments based on conservation laws have been proposed to explain the
 
 To see the flow structure more clearly, we plot the dipolar flow resulting from a horizontal force in Figure \ref{fig:q2d} (left).
 Here, the most salient feature is the negative transverse coupling of the droplet motion, \ie droplets exert ``antidrag'' on one another when moving perpendicular to their connecting line \citep{Cui2004}.
-This pattern, however, can also be reversed if the droplets are driven by the flow. In that case, droplets lagging behind the undisturbed Hele Shaw flow will convey each to downstream directions to which they also travel \citep{Beatus2006}.
-%Identification of this dipolar interaction mechanism has led to many microfluidic-based droplet manipulations, see \cite{q2d_Beatus} for a recent review.
-%(iii) At large distances, the pair interaction is independent of concentration within the experimental accuracy. 
-We note that the magnitude of typical dipolar flows are very small comparing to the driven flow in a dilute suspension. Even in the limit of $a/H \to 0$, where $a$ is the particle radius, the prefactor in Eq.\ \eqref{eq:dipolar} is analytically found to be $\alpha=3/(32\pi)\approx 0.030$ \citep{LironMochon}.
-However, if the droplet nearly blocks the channel, the resulting flow will be plug-like and has a constant velocity \citep{q2d_Beatus}.
+This pattern, however, can also be reversed if the droplets are driven by the flow.
+In that case, droplets lag behind the bulk flow and the net effect of the dipolar flow is to drag a neighbouring droplet from the behind to the front, or from the middle to the side; see \cite{Beatus2006} for schematic illustrations.
+We note that the magnitude of typical dipolar flows are very small comparing to the driven flow in a dilute suspension.
+In the limit of $a/H \to 0$, where $a$ is the particle radius, the prefactor in Eq.\ \eqref{eq:dipolar} is analytically found to be $\alpha=3/(32\pi)\approx 0.030$ \citep{LironMochon}.
+The measured value at $a/H \approx 0.45$ is $\alpha \approx 0.019$ \citep{Diamant_2005}.
+However, if the droplet nearly blocks the entire channel cross-section, the resulting flow will be plug-like and has a constant velocity \citep{q2d_Beatus}.
 
 \medskip
 An interesting variation of the aforementioned q2D system is to change the boundary from solid plates to free surfaces. Physically, this could be realized by trapping colloidal particles within a soap film using optical tweezers \citep{Leonardo_etal_2008}.
@@ -436,13 +455,17 @@ The Oseen tensor describing the long-range interactions within such a system is 
    \quad \textrm{for} \quad \abs{\bm x} \gg H,
  \end{aligned}
 \end{equation}
-where $\kappa^{-1}$ is a cutoff length, \ie the radial velocity component vanishes for $\abs{\bm x} \geq \kappa^{-1}$, and it is necessitated by the lateral system size or finite liquid inertia.\footnote{By definition, $\kappa^{-1} \gg H$.}
-Upon visualization of the resulting flow field (Figure \ref{fig:q2d}, right), it is obvious that particle interactions have a much longer range in free-standing liquid films. Furthermore, the transverse motions remain strongly coupled at distances where the longitudinal mode has mostly decayed.
-The slow logarithmic decay comparing to the dipolar flow in a Hele Shaw cell is physically owing to the momentum conservation at the liquid boundaries, as opposed to momentum absorption by the rigid plates \citep{Diamant}.
+where $\kappa^{-1}$ is a cutoff length necessitated by the lateral system size or finite liquid inertia;
+\ie the radial velocity component vanishes for $\abs{\bm x} \geq \kappa^{-1}$.%\footnote{By definition, $\kappa^{-1} \gg H$.}
+Upon visualization of the resulting flow field (Figure \ref{fig:q2d}, right),
+it is obvious that particle interactions have a much longer range in free-standing liquid films.
+Furthermore, the transverse motions remain strongly coupled at distances where the longitudinal mode has mostly decayed.
+The slow logarithmic decay comparing to the dipolar flow in a Hele Shaw cell is physically resulting from the momentum conservation at the liquid boundaries,
+as opposed to momentum absorption by the rigid plates \citep{Diamant}.
 This difference may have implications to protein transport in biological membranes \citep{Saffman3111}.
 
 \medskip
-Finally, we emphasize that the above analyses are strictly limited to far-field interactions as a consequence of the dimensionality reduction.
+Finally, we emphasise that the above analyses are strictly limited to far-field interactions as a consequence of the dimensionality reduction.
 To consider near-field interactions, the full Navier-Stokes or Stokes equations often have to be solved to accurately resolve the detailed flow fields near the droplet, see \eg \cite{zhu_gallaire_2016, flow-assist}. 
 In general, q2D analyses are applicable if the system contains a limiting length scale smaller than any other relevant distances, and if a long time evolution is of interest.
 3D calculations, however inconvenient, cannot be avoided in most other situations.
@@ -454,7 +477,7 @@ In general, q2D analyses are applicable if the system contains a limiting length
 When the number of particles is large within a suspension, analytical calculations of their relative motions can quickly become forbidden due to the complexities of the $N$-body problem.\footnote{Theoretically, $N = 3$ is the lower bound to break the time reversal symmetry.}
 This is because, despite the fact that we know how to calculate the interaction at the individual level, the collective dynamics are often in regimes that are far from equilibrium, for which there is no established theoretical framework to rely on.
 Even if we are primarily interested in averaged properties of a suspension, \emph{a priori} predictions can seldom be made as the \emph{microstructure}, \ie the spatial arrangement of each suspending particle, both determines and is determined by the bulk motion in a dynamic way \citep{Brady_Bossis1988}.
-Nevertheless, in the following, we will introduce a few macroscopic properties of particle suspensions and show how they can be related to certain \emph{measurable} or \emph{computable} system parameters. The purpose is to provide a basic physical understanding and, in particular, the rheological characterizations of a particulate system.
+Nevertheless, in the following, we will introduce a few macroscopic properties of particle suspensions and show how they can be related to certain measurable or computable system parameters. The purpose is to provide a basic physical understanding and, in particular, the rheological characterizations of a particulate system.
 
 \subsection{Sedimentation velocity}
 
@@ -543,7 +566,7 @@ In simple shear flows, a possible constitutive relationship is suggested as $\et
 When the suspension is non-dilute, normal stresses can deviate from each other as a result of the anisotropic microstructure or particle collision.
 This leads to the definitions of the first and second normal stress differences as above, where $x$, $y$, $z$ denote the flow, velocity-gradient, and negative vorticity directions, respectively.
 $N_1$ and $N_2$ are usually normalized by the modulus of the shear stress, $\abs{\bm{\Sigma}_{xy}}$, since they also diverge as $\phi \to \phi_J$.
-The exact relationship between $N_1$ or $N_2$ and $\phi$ have not been clearly found. The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is large and negative due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
+The exact relationship between $N_1$ or $N_2$ and $\phi$ have not been clearly found. The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is negative and large in magnitude due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
 See \cite{seto_giusteri_2018} for further discussions.
 
 \end{enumerate}
@@ -597,7 +620,7 @@ Loosely speaking, finite difference and finite volume schemes are easier to impl
 Depending on the numerical condition and specific implementation, solving Eqs.\ \eqref{eq:projection-method} can be costly. The most computationally intensive part in a projection method is usually Eq.\ \eqref{eq:poisson}, where a Poisson equation for pressure must be solved numerically at each time step. Consequently, much work has gone into developing fast or iterative Poisson solvers that take advantage of fast Fourier transforms, Gauss elimination, or multigrid methods, see \cite{Buzbee_Golub_Nielson, Swarztrauber1977, multigrid_Brandt, Wesseling} for some early examples.
 
 The above entails the most basic algorithm for single-phase flow.
-When particles or droplets are present, the flow is \emph{multiphase} and additional equations may have to be introduced to describe the dispersed phase that modifies the underlying flow.
+When particles or droplets are present, the flow is \emph{multiphase} and additional equations need to be introduced to describe the dispersed phase that modifies the underlying flow.
 Below, we give a brief overview of some interface-tracking/capturing methods that have been developed along this direction.
 The common feature of these methods is that they follow the the motion of finite-size particles without deforming the original grid where the fluid variables are defined on.
 Hence, they can all be referred to as ``\emph{one-fluid}'' methods.
@@ -624,8 +647,8 @@ In the case of liquid droplets, (ii) and (iii) can be written as
 where $\bm{X}_l$, $l=1,2,\dots,N_L$ denote the positions of the Lagrangian points, $\bm u$ the local flow velocity, $\bm f$ the forcing term, $\gamma$ the surface tension coefficient, $\kappa$ the interface curvature, $\bm n$ the interface normal vector, and $\delta$ the Dirac delta function. Eq.\ \eqref{eq:surf-tension} corresponds to the normal stress jump condition due to surface tension, cf.\ Eq.\ \eqref{eq:stress-bc}. No-slip boundary conditions on solid particles can be represented in similar ways.
 
 Despite the conceptual simplicity, there are several technical details that require careful treatment when implementing front-tracking methods.
-First, due to deformation of the particle or non-uniformity of the flow field, the Lagrangian points may need to be redistributed, added, or deleted from time to time to ensure numerical stability and accuracy.
-This is particularly cumbersome when events of coalescence or breakup occur.
+First, due to deformation, breakup or coalescence of the particle, or simply due to the non-uniform flow, the Lagrangian points may need to be redistributed, added, or deleted from time to time to ensure numerical stability and accuracy.
+This is particularly cumbersome in a parallelised implementation.
 Second, advection of the marker points requires interpolation of the velocity field, as the moving grid is generally non-aligned with the background fixed mesh.
 Third, the internal boundary conditions (no-slip or surface tension) are to be constraint on the Eulerian mesh, thus a ``spreading'' procedure is necessary to feed the particle dynamics back to the flow. This is usually done with a smeared delta function.
 
@@ -704,18 +727,18 @@ Here, the governing equations for the particle motion are the Newton-Euler equat
 \end{subequations}
 where ${\bm U}_p$ and ${\bm \Omega}_p$ denote the translational and angular velocities of particle $p$;
 $m_p$ and ${\bm I}_p$ are its mass and moment-of-inertia tensor in the body frame (scalar for spheres); and 
-${\bm F}_p$ and ${\bm T}_p$ stand for the total force and torque (except for the viscous stress contributions, which are represented by the integral terms) exerted on the particle center-of-mass.
+${\bm F}_p$ and ${\bm T}_p$ stand for the total force and torque, such as collision or electrostatic repulsion, exerted on the particle center-of-mass (the viscous stress contributions are excluded as they are represented by the integral terms).
 
 The feedback of the particle on the fluid flow are embedded in a diffuse body-forcing term, $\bm f$.
-Depending on whether it is incorporated into the continuous equations before or after discretisation, IB methods can be broadly divided into \emph{continuous forcing} and \emph{direct forcing}.
+Depending on whether it is incorporated into the continuous equations before or after discretisation, IB methods can be broadly divided into continuous forcing and direct forcing.
 Regardless of the approach, the spreading of the Lagrangian force onto the Eulerian mesh is realized with regularized Dirac delta functions, which may take different forms as long as $\sum_{ijk} \delta_p( \bm{x}_{ijk}-\bm{X}_{l}) \Delta x \Delta y \Delta z=1$ is satisfied for all $\bm{X}_{l}$.
 
-To illustrate the overall algorithm, a pseudo code corresponding to the direct forcing IB method used in \emph{Paper 3} and \emph{Paper 4} for spherical particles is provided in Algorithm \ref{al:ibm}.
+To illustrate the overall algorithm, a pseudo code corresponding to the direct forcing IB method used in \emph{Papers 3 \& 4} for spherical particles is provided in Algorithm \ref{al:ibm}.
 Here, the code is structured in three nested loops:
-an outer time-marching loop to advance the unsteady solution,
-an intermediate third-order Runge-Kutta (RK3) loop to integrate the fluid velocity along with the particle motion,
+an outer time-marching loop advancing the unsteady solution,
+an intermediate third-order Runge-Kutta (RK3) loop integrating the fluid velocity along with the particle motion,
 and an inner loop for multi-direct forcing iterations.
-The notation is similar to previous formulations, cf.\ Eqs. \eqref{eq:projection-method} and \eqref{eq:lagrangian}, with minor omissions of terms or exceptions, such as the definition of ${\bf RU}$ (in Algorithm \ref{al:ibm}, it does not include $\bm f$).
+The notation is similar to previous formulations, cf.\ Eqs. \eqref{eq:projection-method} and \eqref{eq:lagrangian}, with minor omissions of terms or exceptions, such as the definition of ${\bf RU}$ (it does not include $\bm f$ in Algorithm \ref{al:ibm}).
 The objective is to give an overall picture of the complexity of the code. For full details, see \cite{ Wim-Paul_JCP_2012}.
 
 
@@ -723,8 +746,9 @@ The objective is to give an overall picture of the complexity of the code. For f
 
 Instead of meshing and tracking the moving boundary on a separate grid, an alternative approach is to capture the particle motion on the same grid at the expanse of an additional function. Such function may correspond to the local volume fraction of a dispersed phase, or measure a geometric quantity of the interface away from the particle.
 Conceptually, it specifies the multiphase flow in a full Eulerian manner, and is sometimes referred to as \emph{Eulerian-Eulerian} methods (front-tracking methods would be called \emph{Eulerian-Lagrangian} methods).
-Many numerical methods fall under the Eulerian-Eulerian framework. In the following, we will describe three of them (see Figure \ref{fig:front-capture}).
-As an outline, a brief historical background will be given first, followed by the definition of the ``front-capturing'' function and its governing equation. We will also highlight the major advantages and disadvantages of each method on a general basis.
+Many numerical methods fall under the Eulerian-Eulerian framework. In the following, we describe three of them (see Figure \ref{fig:front-capture}).
+As always, a brief historical background is given first, followed by the definition of the ``front-capturing'' function and its governing equation.
+We also highlight the major advantages and disadvantages of each method on a general basis.
 Finally, when coupling these front-capturing methods with a flow solver, the internal boundary conditions need to be imposed near the interface and, in principle, can be treated in exactly the same way as in front-tracking methods, cf.\ Eq.\ \eqref{eq:surf-tension}. We skip these details and refer the reader to \cite{Brackbill_JCP_1992, Fedkiw_JCP_1999, Lalanne_JCP_2015, Popinet_ARFM_2018, Gibou_Fedkiv_Osher, ICLS} for further discussions.
 
 \begin{figure}%[t]
@@ -793,7 +817,7 @@ where $F$ is a speed function.
 From a PDE perspective, the above equation asserts that the entire level set evolution can be obtained by integrating $\phi({\bm x},t=0)$ forward in time.
 In other words, Eq.\ \eqref{eq:ls-eq} is an initial value problem without boundary conditions.
 
-Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$, cf.\ \cite{Desjardins_JCP_2008, ICLS}. This is merely due to different sign conventions for the level set.}
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$. This is merely due to different sign conventions for the level set.}
 \begin{subequations} \label{eq:ls-geo}
  \begin{equation}
     {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
@@ -812,7 +836,7 @@ To remedy this problem, it is customary to perform an infrequent level set ``rei
 Various techniques have been developed to do so by \eg using fast marching methods \citep{sethian_1999a}, or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}. It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
 
 At this point, it is important to mention a critical numerical issue of classical level set methods. The problem is, even if Eq.\ \eqref{eq:ls-avd} is solved on an incompressible velocity field, there is no guarantee that the numerical solution will conserve the total enclosed volume; in practice, there is often significant ``mass loss''.
-The reason for this problem is a combination of numerical dissipation, under-resolution, and lack of \emph{built-in} mass conservation properties in the numerical scheme.
+The reason for this problem is a combination of numerical dissipation, under-resolution, and lack of built-in mass conservation properties in the numerical scheme.
 Plenty of methods have thus been proposed to overcome such issues by using higher-order numerical schemes, coupling the LS with VOF or lagrangian particles, imposing additional mass constraints, \etc See \cite{ICLS} (\emph{Paper 1}) for a brief overview.
 
 \begin{algorithm}[t]
@@ -852,12 +876,12 @@ The full algorithm is presented in details in \emph{Paper 1}. Note the high-leve
 \paragraph{\bf Phase field methods}
 
 The last class of methods that we will describe is derived from theories of capillarity and critical phenomena.
-Here, by introducing of a so-called order parameter, a single-component fluid with varying density or a binary fluid with two immiscible components are modelled by a phase field separated by an interface of \emph{finite thickness} \citep{Anderson_McFadden_Wheeler}.
+Here, by introducing a so-called order parameter, a single-component fluid with varying density or a binary fluid with two immiscible components are modelled by a phase field separated by an interface of finite thickness \citep{Anderson_McFadden_Wheeler}.
 Historically, the proposition of a finite-width interface dates back to as early as \cite{Poisson1831}. Since then, various theories have been developed by Maxwell, Gibbs, Lord Rayleigh, van der Waals, etc.; see \eg \cite{van-der-waals1893, Cahn1961}.
-We note that the physical notion of finite width is particularly relevant for fluids that are near its critical point, or for processes involving moving contact lines, breakup, or coalescence, where a sharp interface description will be faced with singularities \citep{Zhang_Mohseni_2018, Eggers1997}.
+We note that the physical notion of finite width is particularly relevant for fluids that are near their critical point, or for processes involving moving contact lines, breakup or coalescence, where a sharp interface description will be faced with singularities \citep{Zhang_Mohseni_2018, Eggers1997}.
 For this reason, phase field methods are also regarded as \emph{diffuse interface} methods.
 
-Putting aside its physical origin in capillary and kinetic theories, phase field methods have recently attracted a renewed interest in the numerical modelling of twophase flow \citep{jacqmin_1999a, Jacqmin2000, Badalassi_etal_2003, Ding_Spelt_Shu2007, Shen_Yang_2010, dong_shen_2012a, Wang_Shu_Shao_Wu_Niu_2015, Martin, Mirjalili_Ivey_Mani_2020}.
+Putting aside its physical origin in capillary and kinetic theories, phase field methods have recently attracted a renewed interest in the numerical modelling of twophase flows \citep{jacqmin_1999a, Jacqmin2000, Badalassi_etal_2003, Ding_Spelt_Shu2007, Shen_Yang_2010, dong_shen_2012a, Wang_Shu_Shao_Wu_Niu_2015, Martin, Mirjalili_Ivey_Mani_2020}.
 There are several ways to formulate the governing equation for the interface evolution. One popular version is the following Cahn-Hilliard equation,
 \begin{equation} \label{eq:C-H}
   \frac{\partial c}{\partial t} + {\bm u}\cdot \nabla c =\tilde{m}\nabla ^2 \psi,
@@ -891,7 +915,8 @@ In particle-based methods, the central equation to solve is
 \end{equation}
 where ${\bm m}$ is a generalized mass/moment-of-inertia matrix,
 ${\bm U}$ is the particle translational/rotational velocity vector,
-and ${\bm F}$ represent the force/torque vectors owing to hydrodynamics (denoted with superscript $^H$) or any applied interactions (denoted with superscript $^A$) that may include contact, electrostatic, van der Waals, or magnetic forces, \etc \footnote{In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that the fluctuation-dissipation theorem is satisfied.}
+and ${\bm F}$ represent the force/torque vectors owing to hydrodynamics (denoted with superscript $^H$) or any applied interactions (denoted with superscript $^A$) that may include contact, electrostatic, van der Waals, or magnetic forces, etc.%
+\footnote{In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that the fluctuation-dissipation theorem is satisfied.}
 Note that, for $N$ particles in 3D, both ${\bm U}$ and ${\bm F}$ have dimension $6N$, while ${\bm m}$ has size $6N \times 6N$.
 
 If the particle inertia is negligible, the left-hand side of Eq.\ \eqref{eq:force-balance} goes to zero, resulting in $\bm{F}^H \approx -\bm{F}^A$ and quasi-static particle dynamics.
@@ -928,7 +953,7 @@ Now, instead of directly evaluating the integral over all particle surfaces, the
 \end{equation}
 where $\bm{u}_F$, $\bm{u}_S$, $\bm{u}_T$, $\bm{u}_Q$, and $\bm{u}_O$ denote the flow due to the total forces, stresslets, total torques, quadrupoles, and octupoles, respectively.
 The last two moments are included to account for the finite particle size. They are important both for reducing the truncation error, which to the leading order scales as $\mathcal{O}(r^{-6})$, where $r$ is the distance between the observation point and the center of a sphere, and in maintaining the positive definiteness of the mobility matrix \citep{durlofsky_brady_bossis_1987}, shown right below.
-Note that, each particle now is associated with 11 unknown variables (6 velocity components and 5 stresslet components since the stresslet is symmetric and traceless), which is usually much less than $3M+6$ as required by the boundary integral method.
+Note that, each particle is associated with 11 unknown variables (6 velocity components and 5 stresslet components since the stresslet is symmetric and traceless), which is usually much less than $3M+6$ as required by the boundary integral method.
 
 Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres (cf.\ Eq.\ \ref{eq:faxen}) to obtain a relationship between particle velocities and forces, written in matrix form as
 \begin{equation} \label{eq:sd-mob-eq}
@@ -999,6 +1024,8 @@ Finally, the solution procedure of the Stokesian dynamics method can be summariz
 
 \subsection{Hybrid lubrication/granular dynamics}
 
+%%%%%%% ------------- IMPROVE THIS SECTION ---------------- %%%%%%%%%%
+
 %The next level of simplification entails ...
 If the particle volume fraction is very high, say $\phi > 40\%$, the far-field, many-body hydrodynamic interaction will be less important than the pairwise, short-range lubrication force due to particle crowding. This suggests a further simplification of the mobility matrix by dropping all additional low-moment terms apart from the lubrication \citep{Ball_Melrose_1997}, \ie
 \begin{equation} 
@@ -1012,8 +1039,8 @@ The detailed algebra is rather cumbersome. Here, we simply note that the compone
 
 While the hydrodynamic interactions have been further truncated, another mode of interaction needs to be supplemented.
 For concentrated suspensions, it is known that lubrication interaction alone is not sufficient to reproduce certain experimental observations, such as the discontinuous shear thickening of cornstarch solutions \citep{Morris_annurev2020}.
-On the other hand, granular dynamics, in which particles interact with each other via \emph{collision} and \emph{friction} forces, is often adopted for modelling of suspensions in dry media \citep{campbell_brennen_1985}.
-The \emph{hybrid} of the two approaches, where both lubrication and granular dynamics are considered, has recently emerged as a new simulation method and led to improved physical understandings of many phenomena in dense particle suspensions \citep{Trulsson_Andreotti_Claudin, Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018, Ness_Mari_Cates}.
+On the other hand, granular dynamics, in which particles interact with each other via collision and friction forces, is often adopted for modelling of suspensions in dry media \citep{campbell_brennen_1985}.
+The hybrid of the two approaches, where both lubrication and granular dynamics are considered, has recently emerged as a new simulation method and led to improved physical understandings of many phenomena in dense particle suspensions \citep{Trulsson_Andreotti_Claudin, Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018, Ness_Mari_Cates}.
 
 In a hybrid lubrication/granular dynamics method, particles interact via short-range lubrication and contact forces in a pairwise additive fashion.\footnote{Analytically, a diverging lubrication would prevent particle contact, though that neither agrees with everyday experience nor holds beyond the continuum limit in the presence of surface roughness.}
 %When particles are very densely packed, contact interactions such as \emph{collision} and \emph{friction} are inevitable due to surface roughness, and these 
@@ -1041,7 +1068,7 @@ $\gamma_n$ the damping constant,
 and $k_t$ the tangential spring constant.
 Furthermore, the contact forces need to satisfy the Coulomb's law of friction, \ie $\abs{\bm{F}^C_{tan}} \leq \mu_c\abs{\bm{F}^C_{nor}}$, with $\mu_c$ being the friction coefficient. 
 
-The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ tuple in Eq.\ \eqref{eq:force-balance}, and solved numerically similar to the Stokesian dynamics method.
+The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ tuple in Eq.\ \eqref{eq:force-balance} and be solved similarly to the Stokesian dynamics method.
 From a computational standpoint, the present method does not require invert of the mobility matrix and the grand resistance matrix composed of pair interactions is sparse; hence a much less numerical cost.
 Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}. That is, computing all forces and torques to get the acceleration, then integrating in time once to get the velocity and twice to get the position.
 Similar techniques have been called dissipative particle dynamics or Brownian dynamics, depending on the context \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
@@ -1057,7 +1084,7 @@ Provided that the particle Reynolds number remains much less than unity, this is
 In this chapter, we describe two additional topics that were investigated during the course of the present work.
 As side projects, they share with the rest of the thesis in that the flow involved are multiphase and characterised by relatively small length scales; hence, they can be, and have been, studied using similar numerical methods.
 Beyond that, there is no further connection.
-In the following, we will first give the physical motivation of each problem, then summarize the overall understanding and research methodology prior to our study.
+In the following, we first give the physical motivation of each problem, then summarise the overall understanding and research methodology prior to our study.
 The new results are reported in \emph{Paper 5 \& 6}.
 
 
@@ -1065,7 +1092,7 @@ The new results are reported in \emph{Paper 5 \& 6}.
 
 The last several decades of development in material science and nanotechnology has greatly enhanced our ability to probe, pattern, fabricate and modify mechanical structures with chemical treatments in nano-to-micron length scales.
 Superhydrophobic surfaces (SHS) (Figure \ref{fig:micro-surface}), which perfectly repel water due to gas entrapment within the roughness, have been studied extensively in both natural and laboratory settings \citep{plant_superhydro_1997, Onda_etal_1996}, and has led to what was called a ``gold rush'' to search and design surfaces with extreme non-wettability \citep{Bocquet}.
-Such properties may not only be utilised to reduce drag in liquid or marine vessel transport \citep{Watanabe, Ou, Choi_Kim, Lee}, but also has the potential to achieve self-cleaning, anti-fouling, or heat transfer enhancement \citep{Blossey2003, Roach_etal_2008}.
+Such properties may not only be utilised to reduce drag in liquid or marine vessel transport \citep{Watanabe, Ou, Choi_Kim, Lee}, but also has the potential to achieve self-cleaning, anti-fouling, or enhanced heat transfer functionalities \citep{Blossey2003, Roach_etal_2008}.
 In addition, its alternative -- liquid-infused surfaces (LIS) -- which replace the air cushion with a liquid layer, has also attracted increasing attention due to its robustness \citep{Solomon, Rosenberg, Wexler}.
 Plenty of applications have been conceived with great excitement.
 
@@ -1079,7 +1106,7 @@ Plenty of applications have been conceived with great excitement.
 
 From the fluid mechanics perspective, questions invoked by these findings naturally include,
 (i) what mechanism leads to the drag reduction, and
-(ii) how it can be optimized given other constraints.
+(ii) how it can be optimised given other constraints.
 The constraints involve surface chemistry, contamination, degradation, fabrication defects, wetting, etc., making the problem truly multiscale and multiphysics.
 Basic research along this line, including \emph{Paper 6}, is motivated to resolve at least part of these issues.
 
@@ -1110,7 +1137,7 @@ To quantify the slippage analytically, one can define an \emph{effective slip le
 where $\bar{u}(H)$ is the average streamwise velocity at a small distance $H$ above the substrate.
 Physically, $\lambda_e$ is equal to the distance below the surface at which the velocity would extrapolate to zero.
 Under this simple definition, many studies have been conducted to obtaining theoretical expressions of the effective slip for two-dimensional longitudinal or transverse grooves \citep{Lauga_Stone, Sbragalia_Prosperetti, Davis_Lauga, Ng_Wang, Schonecker, Nizkaya, Crowdy_tran, Crowdy_long}.
-The general procedure is to solve the Stokes equations in a periodic domain subject to a mixture of no-slip and finite-slip boundary conditions. To facilitate analytical calculations, some simplifications may have to be made, such as a static interface shape and pinning of the contact line.
+The general procedure is to solve the Stokes equations in a periodic domain subject to a mixture of no-slip and finite-slip boundary conditions. To facilitate analytical calculations, some simplifications may have to be made, such as a static interface shape and the pinning of the contact line.
 In general, different geometry- and viscosity-ratio-dependent expressions for $\lambda_e$ have been found, depending on the configuration.
 
 While these solutions are helpful in guiding the optimal surface design, they neglect an important ingredient -- wetting of the fluid.
@@ -1119,6 +1146,7 @@ Specifically, SHS is known to be sensitive to external pressure under which the 
 Therefore, the \emph{dynamics} is equally, if not more, important comparing to the static slippage property.
 Unfortunately, precise control of wetting in experiments is still very challenging due to sensitivity to surface conditions and instrument inaccuracies \citep{Liu_vuckovac_etal_2019}, let alone the longstanding theoretical disputes \citep{deGennes_wetting}.
 In light of these difficulties, numerical studies with controlled parameters in non-ideal situations are expected to bridge the gap between analytical calculations and experimental findings.
+\emph{Paper 6} is one such effort.
 
 
 \section{Droplets in turbulence}
@@ -1138,7 +1166,7 @@ In emulsions or colloidal suspensions, the distribution of the dispersed phase d
   \label{fig:wave-cloud}
 \end{figure}
 
-Given the ubiquity and importance, detailed numerical simulations on droplet-turbulence interactions are surprisingly scarce. It is not until the last few years that computational studies start to appear in the literature, see \cite{perlekar_biferale_sbragaglia_srivastava_toschi_2012a, skartlien_sollum_schumann_2013a, komrakova_eskin_derksen_2015a, scarbolo_bianco_soldati_2015a, dodd_ferrante_2016a}.
+Despite the ubiquity and importance, detailed numerical simulations on droplet-turbulence interactions are surprisingly scarce. It is not until the last few years that computational studies start to appear in the literature, \eg \cite{perlekar_biferale_sbragaglia_srivastava_toschi_2012a, skartlien_sollum_schumann_2013a, komrakova_eskin_derksen_2015a, scarbolo_bianco_soldati_2015a, dodd_ferrante_2016a}.
 Here, the advantages of performing these large-scale simulations are dual.
 On the one hand, interface-resolved, high-resolution simulations reveal a unprecedented level of details, offering arguably the full droplet and flow statistics within the afforded system. These results can then be used as benchmarks to test theoretical scalings and empirical models of the droplet distribution \citep{hinze_1955a, deane_stokes_2002a}.
 On the other hand, as simulation methods for multiphase flows are continuously being developed, the current results will serve as verification for later simulations.

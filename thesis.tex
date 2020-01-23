@@ -42,7 +42,10 @@
 
 \affiliation
 {%	Author's affiliation
-	Linn\'e FLOW Centre, Department of Engineering Mechanics\\KTH Royal Institute of Technology\\
+        Linn\'e FLOW Centre and
+        Swedish e-Science Research Centre (SeRC)\\
+        Department of Engineering Mechanics,
+        KTH Royal Institute of Technology\\
 	SE--100 44 Stockholm, Sweden%
 }%
 
@@ -53,7 +56,10 @@
 
 \anslutning
 {% Author's swedish affiliation (for swedish abstract)
-	Linn\'e FLOW Centre, Institutionen f\"or Mekanik\\Kungliga Tekniska H\"ogskolan\\
+        Linn\'e FLOW Centre och
+        Swedish e-Science Research Centre (SeRC)\\
+        Institutionen f\"or Mekanik,
+        Kungliga Tekniska H\"ogskolan\\
 	SE-100 44 Stockholm, Sverige%
 }%
 
@@ -106,7 +112,7 @@
 
 \begin{document}
 
-
+\iffalse
 %===============================================================================
 % Frontmatter
 %===============================================================================
@@ -114,7 +120,7 @@
 \frontmatter
 
 \input{frontmatter}
-
+\fi
 
 %===============================================================================
 % Part I: Overview and summary
@@ -136,7 +142,7 @@
 
 \tocpagebreak
 
-%\iffalse
+\iffalse
 %===============================================================================
 % Part II: Papers
 %===============================================================================
@@ -187,9 +193,10 @@
 %-------------------------------------------------------------------------------
 % Paper 8
 %
+\iffalse
 \include{paper8/paper}
-
-%\fi
+\fi
+\fi
 %===============================================================================
 %===============================================================================
 %                            END DOCUMENT
