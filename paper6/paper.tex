@@ -37,7 +37,18 @@
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-   In this paper, we combined two separate simulation methods for a numerical study of the effective slip and robustness of the transverse flows over a liquid-infused surface (LIS). Computationally, we introduced a multiscale numerical framework to model wetting and interfacial flows by solving the Cahn-Hilliard equations within a Stokes system. Physically, we conducted a parametric study of the performance of a LIS, quantified by its effective slip length and potential drainage. Our results indicate that filling fraction is the most sensitive parameter for the effective slip, while more viscous lubricants tend to retain permanently in the surface cavities.
+   In this paper, we combine two separate simulation methods (phase field and level set methods) to numerically study
+   the transverse flow over a 2D model liquid-infused surface (LIS).
+   Computationally, we introduce and verifie a multiscale numerical framework for wetting modelling
+   by locally solving the Cahn-Hilliard equations near the moving contact line within a larger Stokes system.
+   Physically, we conduct a parametric study of the performance of the LIS, quantified by its effective slip length and potential drainage.
+   Among the many parameters (the capillary number, viscosity ratio, contact angle, etc.) explored,
+   we identify that filling fraction is the most sensitive parameter for the effective slip;
+   the effects of other parameters are generally intertwined but weakened if the surface groove is not fully filled.
+   Furthermore, we report a shear-driven failure mode associated with lubricant drainage,
+   that is worse at higher lubricant viscosities if the lubricant is less viscous than the outer fluid,
+   but disappears if the lubricant is more viscous.
+   Overall, our study may serve as a conceptual guide for LIS design complementing experimental tests.
 }%
 %
 \graphicspath{{paper6/}}%

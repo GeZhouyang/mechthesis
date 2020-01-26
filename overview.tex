@@ -5,25 +5,39 @@
 %===============================================================================
 
 Droplets, one of the most basic forms of fluids, are abundant and ubiquitous in nature.
-From the falling rain drops to the rising aerosols, from the deforming embryo to the rolling tears, micron to millimetre sized droplets are an integral part of our everyday experience, conditioning and nourishing \emph{life}.
+From the falling rain drops to the rising aerosols,
+from the deforming embryo to the rolling tears,
+micron to millimetre sized droplets are an integral part of our everyday experience, conditioning and nourishing \emph{life}.
 
 Droplets are also important in many artificial and engineering applications.
-In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics}; these liquid drops can serve as microcontainers, encapsulating functional substances, and subsequently be manipulated and scaffolded into larger stuctures with desired properties.
-In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and, in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
-In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing, improve combustion efficiency, and reduce pollutant emissions.
-Even in publications, printed posters, newsletters or books, including this thesis, would not have the same quality without the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
+In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics};
+these liquid drops can serve as microcontainers, encapsulating functional substances,
+and subsequently be manipulated and scaffolded into larger structures with desired properties.
+In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and,
+in the future, may enable more effective drug development by building synthetic test platforms more faithful to the human body than
+the conventional Petri dish \citep{Squires_Quakes_2005, organs-on-chips}.
+In transportation, combustion engines rely on the breakup of liquid fuels into tiny drops to enhance mixing,
+improve combustion efficiency, and reduce pollutant emissions.
+Even in publications, printed posters, newsletters or books, including this thesis, would not have the same quality without
+the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
 All the above-mentioned processes or technologies depend on the presence and motion of droplets.
 Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
-Traditionally, the study of liquid-embedded systems are mostly conducted by experimentists; fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
-However, the last few decades have also observed a phenomenal paradigm shift in many research areas owing to the exponential growth of computer power and continuous development of numerical algorithms.
-Fluid dynamics is now in the vanguard of applying large-scale computations in resolving natural and engineering problems and is, in turn, pushing the boundary of computer science.
-Comparing to experimental measurements, computer simulations are non-invasive and offer the entire information that can be readily visualized up to model errors and the numerical precision.
+Traditionally, the study of liquid-embedded systems are mostly conducted by experimenters;
+fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
+However, the last few decades have also observed a phenomenal paradigm shift in many research areas owing to
+the exponential growth of computer power and continuous development of numerical algorithms.
+Fluid dynamics is now in the vanguard of applying large-scale computations in resolving natural and engineering problems and is,
+in turn, pushing the boundary of computer science.
+Comparing to experimental measurements, computer simulations are non-invasive and
+offer the entire information that can be readily visualized up to model errors and the numerical precision.
 Physical parameters can also be freely adjusted to test conditions that are not easy to implement in lab experiments.
 
 Motivated by these reasons, the present work embarks on a number of problems that originates from material fabrication, surface engineering and fluid transport.
-We develop and utilise both high- and low-fidelity numerical models to simulate the underlying processes with the aims of complementing experimental studies and elucidating the physical mechanism.
-The common ground at the bottom of these enquiries is that the processes all entail interactions of droplets in an ambient fluid or are governed by the dynamics near a fluid interface.
+We develop and utilise both high- and low-fidelity numerical models to simulate the underlying processes with the aims of
+complementing experimental studies and elucidating their physical mechanisms.
+The common ground at the bottom of these enquiries is that the processes all entail interactions of droplets in an ambient fluid or
+are governed by the dynamics near a fluid interface.
 Their specific backgrounds are given below (see also Chapter \ref{chp:misc}).
 
 
@@ -46,7 +60,7 @@ This unique property provides the basis for numerous optoelectronic applications
 
 Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps remains a practical challenge in the colloidal community \citep{Velev_etal_AM2009, Sacanna_etal_COCIS2011, Shen_AS_2016}.
 The issue is twofold.
-On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{The percentage corresponds to the portion of frequencies that propogation of light is forbidden.}
+On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{The percentage corresponds to the portion of frequencies that propagation of light is forbidden.}
 Therefore, for a long time, the holy grail for photonic researchers has been designing a protocol that can position colloidal droplets in a diamond cubic with alternating dielectric constants.
 In practice, however, diamond crystals are extremely difficult to assemble because of the large gaps in between; specifically, a diamond cubic of equal spheres has at most 34\% packing fraction, while a face-centered cubic can reach 74\%. This makes PBG hard to achieve in 3D considering its sensitivity to structural defects.
 On the other hand, even if one does aim for the diamond structure, current techniques relying on Brownian motions and ``patchy particles'' are too slow to build PhC in the range of visible light \citep{Yi_etal_CM2013}. In some sense, droplets assembled this way are assembled by chance, which favors anisotropic structures with a higher rotational entropy \citep{Meng2010}.
@@ -56,7 +70,7 @@ In the last six years, an alternative approach has emerged -- an approach based 
 The advantages of this \emph{flow-assisted} assembly strategy are the potentially large production rate and robust control.
 The remaining questions include
 (i) why the droplets self-organize into those clusters and, if we understand that,
-(ii) how to harness this self-assembly mechnaism to build photonic materials.
+(ii) how to harness this self-assembly mechanism to build photonic materials.
 The answers are discussed in \emph{Paper 1-4}.
 
 
@@ -76,15 +90,22 @@ In particular, we study particles in the noncolloidal regime, and ask:
 (i) how to minimally characterise the microstructural evolution in an unsteady flow. Candidate answers include the complex viscosity, particle diffusivity, suspension fabric, size distribution of local clusters, structure factor, \etc \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}.
 (ii) Can qualitatively different global behaviours, such as a rate-dependent rheology vs.\ a rate-independent rheology, occur to the same suspension under different flow protocols (Ge \textit{et al.}, in preparation)? And
 (iii) how does the particle geometry affect the rheology and jamming of a suspension at fixed volume fractions?
-Solving these problems requires a numerical methodolgy that is both accurate enough to test different physical hypotheses and efficient enough to generate data at a wide range of parameters. The implementation detail of one such algorithm is documented in \emph{Paper 7}.
+Solving these problems requires a numerical methodology that is both accurate enough to test different physical hypotheses and efficient enough to generate data at a wide range of parameters. The implementation detail of one such algorithm is documented in \emph{Paper 7}.
 
 
 \thesisstructure
-In the remaining of \emph{Part I}, an extended overview on droplet interactions and suspension flow is summarized from previous studies in the literature.
-In Chapter \ref{chp:micro-hydro}, we formulate the microhydrodynamics mathematically and spotlight the essential physics for one, two and more particles in various flow fields or geometries. These are the prerequisites for understanding droplet interactions in more complicated conditions.
-In Chapter \ref{chp:num-methods}, we introduce two categories of numerical methodologies that either solve the governing equations directly or approximate the solution in reduced order. Each category is then divided into several classes, which have further variantions and are mentioned succinctly.
-These are followed by a short detour in Chapter \ref{chp:misc}, where two additional topics studied alongside the main subject are motivated and described.
-Finally, Chapter \ref{chp:summary} concludes the first part of the thesis, leading to \emph{Part II} where the original results are collected.
+In the remaining of the thesis, an extended overview on droplet interactions and suspension flow is first summarized from previous studies in the literature.
+This is the \emph{Part I} of the thesis and contains four more chapters.
+In Chapter \ref{chp:micro-hydro}, we formulate the microhydrodynamics mathematically and
+spotlight the essential physics for one, two and more particles in various flow fields or geometries.
+These are the prerequisites for understanding droplet interactions in more complicated conditions.
+In Chapter \ref{chp:num-methods}, we introduce two categories of numerical methodologies that
+either solve the governing equations directly or approximate the solution in reduced order.
+Each category is then divided into several classes, which have further variations and are mentioned succinctly.
+These are followed by a short detour in Chapter \ref{chp:misc},
+where two additional topics studied alongside the main subject are motivated and described.
+Finally, Chapter \ref{chp:summary} concludes the first part of the thesis,
+leading us to \emph{Part II}, where the original results are collected in the form of papers.
 
 
 %===============================================================================
@@ -1190,7 +1211,7 @@ These are the fundamentals of microhydrodynamics,
 essential for developing a physical intuition and making back-of-the-envelope estimates when faced with more complicated engineering problems.
 Unfortunately, sometimes a problem may be too complicated to be solved analytically, or we may simply be misguided by our intuitions.
 In those cases, numerical simulations offer a relatively inexpensive means to visualise fluid motions and disentangle the various effects.
-Therefore, Chapter \ref{chp:num-methods} provides a mini-review of some currently popular methods that can be applied to simulate coupled multiphase systems.
+Chapter \ref{chp:num-methods} thus provides a mini-review of some currently popular methods that can be applied to simulate coupled multiphase systems.
 This is the main subject of the present work --
 we develop methods, implement algorithms, and simulate droplets or particles in fluids to reproduce experiments or verify theories.
 The specific aim may differ by applications;
@@ -1199,8 +1220,8 @@ what remain the same are the numerical approach to problem solving as well as a 
 \begin{figure}%[b]
   \centering
   \includegraphics[width=0.95\columnwidth]{paper-diagram.pdf}
-  \caption{Diagrammatic representation of the papers in Part II parameterized by the number of droplets ($N$) that are or could potentially be studied,
-  and by the distance (indicated by color) to being purely experimental ($-1$) or purely theoreticaly ($1$); 0 corresponds to purely numerical.
+  \caption{Diagrammatic representation of the papers in \emph{Part II} parameterized by the number of droplets ($N$) that are or could potentially be studied,
+  and by the distance (indicated by color) to being purely experimental ($-1$) or purely theoretically ($1$); 0 corresponds to purely numerical.
   The papers are labelled with short titles. Note that \emph{Paper 6} does not have a meaningful definition of $N$.}
   \label{fig:p-diagram}
 \end{figure}
@@ -1210,31 +1231,31 @@ Among them,
 papers 1--4 entail droplet interactions,
 papers 5 \& 6 are miscellaneous, and
 paper 7 concerns suspension flow.
-Separate retrospective summaries of each paper are given in the beginning of Part II.
+Separate retrospective summaries of each paper are given in the beginning of \emph{Part II}.
 A diagrammatic categorization is also illustrated in Figure \ref{fig:p-diagram}.
 Overall, the common limitations of the conducted studies are that simulations still fall much behind experiments in terms of physical complexity
-(which could be justified, but it is still not the same) and
-the lack of simple quantitative models that can be extracted from the results.
-In general, simulations provide additional evidences to conclude qualitatively,
-but a new set of simulations or experiments may have to be performed in different situations.
+-- which could sometimes be justified, but it is still not the same --
+and the lack of simple, quantitative models that can be extracted from the results.
+In general, our numerical work provides additional evidences to conclude qualitatively,
+but a new set of simulations or experiments may have to be performed if precise predictions need to be made in different situations.
 
-Finally, as an outlook, we summarise the lessons learned during the course of this thesis and name a few open questions worth further research:
+Finally, as an outlook, we summarise the lessons learned during all the projects and name a few open questions worth further investigation:
 \medskip
 
 \begin{itemize}
  \item Fabricating photonic crystals using flow-assisted droplet assembly could potentially achieve a moderate bang gap and be scaled up to meet industrial needs.
  The rest of the task is in engineering.
  Current focus of the photonic community seems to be shifted to searching for disordered hyperuniform materials
- that are easily to make and still possess bandgaps \citep{Torquato_review_2018, Joshua_2017PRL}.
+ that are easier to make and still possess bandgaps \citep{Torquato_review_2018, Joshua_2017PRL}.
  \medskip
 
  \item For multiphase flow simulations, classical level set methods are not mass conserving,
- thus many efforts (including the present work) have been spent to improve its accuracy.
- Despite all the progress, it remains a challenge to devise a general-purpose solver that can be applied to any multiphase flow problems without any tweaking,
+ thus many efforts (including the present work) have been spent to improve the accuracy.
+ Despite all the progress, it remains a challenge to devise a general-purpose solver that can be applied to any multiphase flow problems without tweaking,
  given the large separation of length scales and inherent singularities.
- In retrospect, the simulation of droplet assembly in microfluidic environments could be done with available open-source softwares instead of inventing a new method.
+ In retrospect, the simulation of droplet assembly in microfluidic environments could be done with available open-source software instead of inventing a new method.
  However, the latter process is rewarding for its own sake,
- and the resulting method may be adapted to study plenty of other unforeseen applications, such as tissue growth modelling.
+ and the resulting method may be adapted to study plenty of other unforeseen applications, such as tissue/tumor growth.
  
  %\item Droplets in turbulence is an exciting new avenue, a lot to simulate and model.
  \medskip
@@ -1248,110 +1269,13 @@ Finally, as an outlook, we summarise the lessons learned during the course of th
  and is related to both applied and fundamental questions.
  For example, questions like how particle geometry affects jamming,
  do active particles jam in the same way as passive particles,
- how do particle interactions and the medium topology come into play in long time limits (relavant to certain disease progression, \eg Alzheimer's disease), \etc
+ how do particle interactions and the medium topology come into play in long time limits (relevant to certain disease progression, \eg Alzheimer's disease), \etc
  are all unknown today.
  Investigating these problems requires development of new computational models and collaboration with specialists in different research areas,
  and may inspire new pathways to advance life science and biology in the future.
 \end{itemize}
 
 
-%%===============================================================================
-%\chapter{Test chapter, a very very very long title to test the table of contents}
-%%===============================================================================
-%
-%This chapter is meant for testing the correct referencing of figures, equations
-%and tables.
-%
-%% equations
-%%
-%\begin{equation}
-%	1 + 1 = 2
-%	\label{eq:test_eq1}
-%\end{equation}
-%
-%\begin{align}
-%	2 + 2 = 4
-%	\label{eq:test_eq2}
-%\end{align}
-%
-%\begin{equation}
-%	3 + 3 = 6
-%	\label{eq:test_eq3_intro}
-%\end{equation}
-%
-%% tables
-%%
-%\begin{table}
-%	\centering
-%	\begin{tabular}{c}
-%		1
-%	\end{tabular}
-%	\caption{Test table 1}
-%	\label{tab:test_tab1}
-%\end{table}
-%
-%\begin{table}
-%	\centering
-%	\begin{tabular}{c}
-%		2
-%	\end{tabular}
-%	\caption{Test table 2}
-%	\label{tab:test_tab2}
-%\end{table}
-%
-%\begin{table}
-%	\centering
-%	\begin{tabular}{c}
-%		3
-%	\end{tabular}
-%	\caption{Test table 3}
-%	\label{tab:test_tab3_intro}
-%\end{table}
-%
-%% figures
-%%
-%\begin{figure}[h!]
-%	\centering
-%	test figure 1
-%	\caption{Test figure 1}
-%	\label{fig:test_fig1}
-%\end{figure}
-%
-%\begin{figure}[h!]
-%	\centering
-%	test figure 2
-%	\caption{Test figure 2}
-%	\label{fig:test_fig2}
-%\end{figure}
-%
-%\begin{figure}[h!]
-%	\centering
-%	test figure 3
-%	\caption{Test figure 3}
-%	\label{fig:test_fig3_intro}
-%\end{figure}
-%
-%% test references
-%%
-%\hrule
-%\begin{itemize}
-%	\item reference to equation 1: \eqref{eq:test_eq1}
-%	\item reference to equation 2: \eqref{eq:test_eq2}
-%	\item reference to equation 3: \eqref{eq:test_eq3_intro}
-%\end{itemize}
-%\hrule
-%\begin{itemize}
-%	\item reference to table 1: \eqref{tab:test_tab1}
-%	\item reference to table 2: \eqref{tab:test_tab2}
-%	\item reference to table 3: \eqref{tab:test_tab3_intro}
-%\end{itemize}
-%\hrule
-%\begin{itemize}
-%	\item reference to figure 1: \eqref{fig:test_fig1}
-%	\item reference to figure 2: \eqref{fig:test_fig2}
-%	\item reference to figure 3: \eqref{fig:test_fig3_intro}
-%\end{itemize}
-%\hrule
 
 %===============================================================================
 % Acknowledgments
