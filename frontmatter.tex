@@ -46,13 +46,13 @@ rendering the fabrication of photonic crystals based on flow-assisted assembly s
 The next focus of the thesis is the implementation of a minimal discrete-element lubrication/contact dynamics (DLCD) model for simulation of dense particle suspensions.
 The main ingredients include a frame-invariant, short-range lubrication model for spherical particles,
 and a soft-core, stick/slide frictional contact model activated when particles overlap.
-However, since contact interactions dominate at high particle concentrations,
-we expect the present methodology to be applicable for studying the jamming and rheology of non-spherical particles or foams as well.
+Moreover, since contact interactions dominate at high particle concentrations,
+we expect the present methodology to be applicable for the jamming and rheology of non-spherical particles or foams as well.
 
 Finally, we include two miscellaneous studies concerning
-the effective slip and robustness of liquid-infused surfaces and statistics of droplets in a homogeneous turbulent shear flow.
+the effective slip and robustness of liquid-infused surfaces and droplets statistics in a homogeneous turbulent shear flow.
 Overall, results of these simulations provide detailed flow visualisations and qualitative dependence of the target functional on various governing parameters,
-facilitating experimental and theoretical investigations to design more robust drag-reducing surfaces and predict the mixing of emulsions.
+facilitating experimental and theoretical investigations to design more robust drag-reducing surfaces and predict droplet emulsification.
 
 %
 \keywords{droplets, depletion force, suspension, multiphase flow, microfluidics, soft matter, rheology, level set, ghost fluid, discrete element.}
@@ -68,14 +68,38 @@ facilitating experimental and theoretical investigations to design more robust d
 % to 250 characters because otherwise they will not fit in the mailing sheet.
 %
 \begin{abstrakt}
-	\r{A}tkomstpunkter m\r{a}ste arbeta. I sj\"{a}lva verket skulle f\r{a}
-	kryptografer h\r{a}ller inte med emulering av robotar, som
-	f\"{o}rkroppsligar de tekniska principer av komplexitetsteori. Hyp, v\r{a}r
-	nya applikation f\"{o}r f\"{o}rlustfri information är l\"{o}sningen på alla
-	dessa utmaningar.
-		%
-		\nyckelord{super-lasrar, rymdstationer, Kraften, kakor.}
-		%
+Droppar av mikron till millimeter, exakt genererade eller bibehållna i kontrollerad miljö, har stor potential i tekniska applikationer
+fungerar som det grundläggande elementet för att montera metamaterial, leverera läkemedel, värda ytaktivt medel, minska friktion och fuktig turbulens.
+Interaktion mellan droppar från parvis till kollektivnivå är den viktigaste faktorn för att kontrollera dessa processer,
+ändå är lite känt om de detaljerade mekanismerna i olika nonideala förhållanden.
+Den här avhandlingen kombinerar ett antal studier som syftar till att belysa de fysiska principerna för droppinteraktioner och suspensionflöde
+med både numeriska simuleringar med hög och låg trovärdighet.
+
+Vi studerar först flödesassisterade droppmontering i mikrofluidkanaler och försöker utnyttja droppinteraktioner för att producera fotoniska bandgapmaterial.
+En ny gränssnittskorrigeringsnivåuppsättning/spökvätskemetod (ICLS/GFM) är utvecklad för att direkt simulera vätskedroppar under utarmningskrafter.
+Jämfört med tidigare metoder sparar ICLS/GFM den globala massan för varje fluid med hjälp av ett enkelt masskorrigeringsschema,
+beräknar exakt ytspänningen och utarmningskrafterna under samma ram,
+och har sedan applicerats för att undersöka droppklusteringen som observerats i ett mikrofluidiskt experiment.
+Våra simuleringar, med stöd av teoretiska härledningar, tyder på att de kombinerade effekterna av
+starka utarmningskrafter, inneslutningsförmedlade skjuvlinjer och finjusterade inflödesförhållanden
+ansvarar för den snabba självmontering.
+Men samspelet mellan dessa 3D-effekter förhindrar en enkel parametrisk modell av droppinteraktionen,
+gör tillverkning av fotoniska kristaller baserad på flödesassisterad montering suboptimal i praktiken.
+
+Nästa fokus för avhandlingen är implementeringen av en minimal diskret-element smörjning/kontaktdynamik (DLCD) modell för simulering av täta partikelsuspensioner.
+Huvudingredienserna inkluderar en ram-invariant smörjmodell med kort räckvidd för sfäriska partiklar,
+och en friktionskontaktmodell med mjukkärna, stick/slide aktiverad när partiklar överlappar varandra.
+Eftersom kontaktinteraktioner dominerar vid höga partikelkoncentrationer,
+vi förväntar oss att den nuvarande metodologin också är tillämplig för fastställning och reologi av icke-sfäriska partiklar eller skum.
+
+Slutligen inkluderar vi två diverse studier rörande
+effektiv glidning och robusthet hos vätska-infunderade ytor och droppstatistik i ett homogent turbulent skjuvflöde.
+Sammantaget ger resultaten av dessa simuleringar detaljerade flödesvisualiseringar och kvalitativt beroende av målfunktionen på olika reglerande parametrar,
+underlätta experimentella och teoretiska undersökningar för att utforma mer robusta dragreducerande ytor och förutsäga droppemulsifiering.
+
+%
+\nyckelord{droppar, utarmningskraft, suspension, flerfasflöde, mikrofluidik, mjukt material, reologi, nivåuppsättning, spökvätska, diskret element.}
+%
 \end{abstrakt}
 
 
