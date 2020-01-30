@@ -67,34 +67,15 @@ facilitating experimental and theoretical investigations to design more robust d
 % to 250 characters because otherwise they will not fit in the mailing sheet.
 %
 \begin{abstrakt}
-Droppar av mikron till millimeter, exakt genererade eller bibehållna i kontrollerad miljö, har stor potential i många olika tekniska applikationer
-fungerar som det grundläggande elementet för att montera metamaterial, leverera läkemedel, värda ytaktivt medel, minska friktion och fuktig turbulens.
-Interaktion mellan droppar från parvis till kollektivnivå är den viktigaste faktorn för att kontrollera dessa processer,
-ändå är lite känt om de detaljerade mekanismerna i olika nonideala förhållanden.
-Den här avhandlingen kombinerar ett antal studier som syftar till att belysa de fysiska principerna för droppinteraktioner och suspensionflöde
-med både numeriska simuleringar med hög och låg trovärdighet.
+Mikro- till millimeter stora droppar, exakt genererade eller hållna i en kontrollerad miljö, har stor potential i många olika tekniska tillämpningar. De representerar en grundläggande teknik vid uppbyggnad av metamaterial, transport av läkemedel i kroppen, som bärare av ytaktiva medel, vid minskning av friktion och dämpning av turbulens. Växelverkan mellan droppar från parvis till kollektivnivå är den viktigaste faktorn för att kontrollera dessa processer; ändå är lite känt om de detaljerade mekanismerna vid olika icke-ideala förhållanden. I denna avhandling kombineras ett antal studier som syftar till att belysa de fysikaliska principerna för dropp-växelverkningar och suspensionsflöden med numeriska simuleringar av högre och lägre noggrannhet.
 
-Vi studerar först flödesassisterade droppmontering i mikrofluidkanaler och försöker utnyttja droppinteraktioner för att producera fotoniska bandgapmaterial.
-En ny gränssnittskorrigeringsnivåuppsättning/spökvätskemetod (ICLS/GFM) är utvecklad för att direkt simulera vätskedroppar under utarmningskrafter.
-Jämfört med tidigare metoder sparar ICLS/GFM den globala massan för varje fluid med hjälp av ett enkelt masskorrigeringsschema,
-beräknar exakt ytspänningen och utarmningskrafterna under samma ram,
-och har sedan applicerats för att undersöka droppklusteringen som observerats i ett mikrofluidiskt experiment.
-Våra simuleringar, med stöd av teoretiska härledningar, antyder att den observerade snabba självmonteringen uppstår från en kombination av
-starka utarmningskrafter, inneslutningsförmedlade skjuvlinjeringar av dropparna och fininställda inflödesförhållanden för mikrokanalen.
-Men samspelet mellan dessa 3D-effekter avskaffar en enkel droppinteraktionsmodell av parametriskt beroende,
-vilket gör utformningen av mikrofluidiska chips för fotoniska kristallfabrikationer som är svåra i praktiken.
+Vi studerar först flödesassisterad droppmontering i mikrofluidkanaler och försöker utnyttja dropp-växelverkningar för att producera fotoniska bandgapmaterial. En ny interface-correction level set/ghost fluid method (ICLS/GFM) är utvecklad för att direkt simulera vätskedroppar under inverkan av utarmningskrafter. Jämfört med tidigare metoder bevarar ICLS/GFM den totala massan för varje fluid med hjälp av ett enkelt masskorrigeringsschema, och beräknar exakt ytspänningen och utarmningskrafterna under samma omständigheter. Detta tillämpas sedan för att undersöka droppklustring, något som observerats i mikrofluidiska experiment. Våra simuleringar, med stöd av teoretiska härledningar, antyder att den observerade snabba klustringen uppstår på grund av en kombination av starka utarmningskrafter och inneslutningsförmedlade skjuvkrafter på dropparna samt finjusterade inflödesförhållanden för mikrokanalen. Men samspelet mellan dessa 3D-effekter omöjliggör en enkel parameterberoende dropp-växelverkningsmodell vilket gör att utformningen av mikrofluidiska chips för fotonisk kristallfabrikation är svår i praktiken.
 
-Nästa fokus för avhandlingen är implementeringen av en minimal diskretelementsmörjnings-/kontaktdynamikmodell för simulering av täta partikelsuspensioner.
-Två huvudingredienser i modellen inkluderar
-(i) en ram-invariant smörjmodell med kort räckvidd för sfäriska partiklar, och
-(ii) en mjukkärna, stick/slide friktionskontaktmodell aktiverad när partiklar överlappar varandra.
-Fysiskt eftersom kontaktinteraktioner dominerar vid höga partikelkoncentrationer,
-vi förväntar oss att metodologin också är tillämplig för att undersöka fastklämning av icke-sfäriska partiklar och reologi för skum.
+Nästa fokus i avhandlingen är implementeringen av en minimal diskretelementsmörjnings-/kontaktdynamikmodell för simulering av täta partikelsuspensioner. Två huvudingredienser i modellen är (i) en referensram-invariant smörjmodell med kort räckvidd för sfäriska partiklar, och (ii) en stick/slip friktionskontaktmodell med mjuk kärna som aktiveras när partiklar överlappar varandra. Eftersom kontakt-växelverkningar dominerar fysikaliskt vid höga partikelkoncentrationer, förväntar vi oss att metodologin också är tillämplig för att undersöka inklämning av icke-sfäriska partiklar och reologi för skum.
 
-Slutligen inkluderar vi två diverse studier rörande
-glidningsegenskapen hos vätska-infunderade ytor och droppstatistik i ett homogent turbulent skjuvflöde.
-Sammantaget ger resultaten av dessa simuleringar detaljerade flödesvisualiseringar och kvalitativt beroende av målfunktionen på olika reglerande parametrar,
-underlätta experimentella och teoretiska undersökningar för att utforma mer robusta dragreducerande ytor och förutsäga droppfördelningar i emulsioner.
+Slutligen inkluderar vi också två studier rörande glidningsegenskaper hos vätske-bemängda ytor och droppstatistik i ett homogent turbulent skjuvflöde. Sammantaget ger resultaten av dessa simuleringar detaljerade flödesvisualiseringar, kvalitativt beroende av målfunktionen på olika reglerande parametrar,
+underlättar, experimentellt och teoretiskt, utformningen av mer robusta dragreducerande ytor samt förutsäger droppfördelningar i emulsioner.
+
 %
 \nyckelord{droppar, suspension, flerfasflöde, mikrofluidik, mjukt material, reologi, utarmningskraft, nivåuppsättning, spökvätska, diskret element.}
 %
@@ -152,14 +133,14 @@ underlätta experimentella och teoretiska undersökningar för att utforma mer r
                 LB conceived the project.
                 M.E. Rosti (MER) implemented the method and performed the simulation.
 		MER and ZG performed the droplet statistics and scaling analyses.
-                S.S. Jain performed the droplet rendering.
-                M.S. Dodd performed the turbulent kinetic energy analysis.
+                S.S. Jain visualised the flow.
+                M.S. Dodd analysed the turbulent kinetic energy budget.
                 MER wrote the paper with inputs from the rest of the authors.
 
 	\paperitem
                 G. Kreiss initiated the project.
                 H. Holmgren implemented the code and performed the preliminary Stokes simulation.
-                M. Kronbichler performed the phase field simulation.
+                M. Kronbichler simulated the phase field equations.
 		ZG performed the final Stokes simulation and 
                 wrote the paper with inputs from the rest of the authors.
 
