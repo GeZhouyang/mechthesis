@@ -936,15 +936,20 @@ In particle-based methods, the central equation to solve is
 \end{equation}
 where ${\bm m}$ is a generalized mass/moment-of-inertia matrix,
 ${\bm U}$ is the particle translational/rotational velocity vector,
-and ${\bm F}$ represents the force/torque vectors owing to hydrodynamics (denoted with superscript $^H$) or any applied interactions (denoted with superscript $^A$) that may include contact, electrostatic, van der Waals, or magnetic forces, etc.%
-\footnote{In principle, stochastic forces can also be included in the general formulation, though its numerical treatments demand special care such that the fluctuation-dissipation theorem is satisfied.}
+and ${\bm F}$ represents the force/torque vectors owing to hydrodynamics (denoted with superscript $^H$)
+or any applied interactions (denoted with superscript $^A$) that may include contact, electrostatic, van der Waals, or magnetic forces, etc.%
+\footnote{In principle, stochastic forces can also be included in the general formulation,
+though its numerical treatments demand special care such that the fluctuation-dissipation theorem is satisfied.}
 Note that, for $N$ particles in 3D, both ${\bm U}$ and ${\bm F}$ have dimension $6N$, while ${\bm m}$ has size $6N \times 6N$.
 
-If the particle inertia is negligible, the left-hand side of Eq.\ \eqref{eq:force-balance} goes to zero, resulting in $\bm{F}^H \approx -\bm{F}^A$ and quasi-static particle dynamics.
-If the fluid inertia is also negligible, the Navier-Stokes equations reduces to the Stokes equations and $\bm{F}^H$ may be obtained without even explicitly solving the fluid motions.
+If the particle inertia is negligible, the left-hand side of Eq.\ \eqref{eq:force-balance} goes to zero,
+resulting in $\bm{F}^H \approx -\bm{F}^A$ and quasi-static particle dynamics.
+If the fluid inertia is also negligible, the Navier-Stokes equations reduces to the Stokes equations and
+$\bm{F}^H$ may be obtained without even explicitly solving the fluid motions.
 In the following, we examine two such simplified techniques.
 One is more accurate and holds for any particulate system in general, albeit computationally expensive. This is the so-called \emph{Stokesian dynamics}.
-The other is derived from the former, but with additional features to model particle contact; hence, it is better suited for dense suspensions. We call the latter \emph{hybrid lubrication/granular dynamics} method.
+The other is derived from the former, but with additional features to model particle contact; hence, it is better suited for dense suspensions.
+We dub it \emph{hybrid lubrication/granular dynamics} method.
 
 \subsection{Stokesian dynamics}
 \label{subsec:sd}
@@ -1047,31 +1052,53 @@ Finally, the solution procedure of the Stokesian dynamics method can be summariz
 
 \subsection{Hybrid lubrication/granular dynamics}
 
-%%%%%%% ------------- IMPROVE THIS SECTION ---------------- %%%%%%%%%%
-
-%The next level of simplification entails ...
-If the particle volume fraction is very high, say $\phi > 40\%$, the far-field, many-body hydrodynamic interaction will be less important than the pairwise, short-range lubrication force due to particle crowding.
+If the particle volume fraction is very high, say $\phi > 40\%$, the far-field,
+many-body hydrodynamic interaction will be less important than the pairwise, short-range lubrication force due to particle crowding.
 This suggests a further simplification of the mobility matrix by dropping all additional low-moment terms apart from the lubrication \citep{Ball_Melrose_1997}, \ie
 \begin{equation} 
  \begin{aligned}
   \mathscr{R} = \mathscr{R}_{2B} .
  \end{aligned}
 \end{equation}
-Specifically, $\mathscr{R}_{2B}$ is composed of blocks of second-, third-, and fourth-rank tensors that relate the force, torque, and stresslet acting on one particle to its closest neighbour \citep{kim_karrila}.
+Specifically, $\mathscr{R}_{2B}$ is composed of blocks of second-, third-, and fourth-rank tensors that
+relate the force, torque, and stresslet acting on one particle to its closest neighbour \citep{kim_karrila}.
 In the case of unequal spheres, the results have been extensively calculated by \cite{jeffrey_onishi_1984, jeffrey1992} using the twin multipole expansion method.
-The detailed algebra is rather cumbersome. Here, we simply note that the components are essentially functions of the particles' velocities, size ratio, and surface gap ($h$). The diverging behaviour is strongest for the lubrication force in the normal direction ($F^{L,n} \sim 1/h$), whereas in the tangential directions, as well as for the lubrication torque, the divergence is weaker, $\sim \log(1/h)$. See \emph{Paper 7} for the detailed expressions.
+The detailed algebra is rather cumbersome.
+Here, we simply note that the components are essentially functions of the particles' velocities, size ratio, and surface gap ($h$).
+The diverging behaviour is strongest for the lubrication force in the normal direction ($F^{L,n} \sim 1/h$),
+whereas in the tangential directions, as well as for the lubrication torque, the divergence is weaker, $\sim \log(1/h)$.
+See \emph{Paper 7} for the detailed expressions.
 
 While the hydrodynamic interactions have been further truncated, another mode of interaction needs to be supplemented.
-For concentrated suspensions, it is known that lubrication interaction alone is not sufficient to reproduce certain experimental observations, such as the discontinuous shear thickening of cornstarch solutions \citep{Morris_annurev2020}.
-On the other hand, granular dynamics, in which particles interact with each other via collision and friction forces, is often adopted for modelling of suspensions in dry media \citep{campbell_brennen_1985}.
-The hybrid of the two approaches, where both lubrication and granular dynamics are considered, has recently emerged as a new simulation method and led to improved physical understandings of many phenomena in dense particle suspensions \citep{Trulsson_Andreotti_Claudin, Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018, Ness_Mari_Cates}.
+For concentrated suspensions, it is known that lubrication interaction alone is not sufficient to reproduce certain experimental observations,
+such as the discontinuous shear thickening of cornstarch solutions \citep{Morris_annurev2020}.
+On the other hand, granular dynamics, in which particles interact with each other only via collision and friction forces,
+is often adopted for modelling of dense suspensions in dry media \citep{Cundall1974, Cundall_Strack1979, campbell_brennen_1985}.
+Plenty of numerical algorithms have been developed by this community%
+\footnote{The granular flow community broadly concerns the pharmaceutical, chemical, energy, food handling, mineral processing, powder metallurgy, and mining industries.},
+which usually fall under the name of discrete element methods; see \cite{DEM_review_2015} for a recent review.
+The hybrid of the two approaches, where both lubrication and granular dynamics are considered,
+has recently emerged as a new simulation method and led to improved physical understandings of many phenomena in dense particle suspensions
+\citep{Trulsson_Andreotti_Claudin, Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018, Ness_Mari_Cates}.
 
-In a hybrid lubrication/granular dynamics method, particles interact via short-range lubrication and contact forces in a pairwise additive fashion.\footnote{Analytically, a diverging lubrication would prevent particle contact, though that neither agrees with everyday experience nor holds beyond the continuum limit in the presence of surface roughness.}
-%When particles are very densely packed, contact interactions such as \emph{collision} and \emph{friction} are inevitable due to surface roughness, and these 
-%This motivates the merging of the reduced Stokesian dynamics with the granular dynamics approaches and
-There are several models to describe frictional contacts between particles. The currently popular one is the 
-%In the latter model, the granular dynamics is often implemented as a
-stick/slide friction model employing springs and dashpots \citep{Luding2008}, which for the case of spheres reads
+\begin{figure}%[t]
+  \centering
+  \includegraphics[width=0.9\columnwidth]{stick-slide.pdf}
+  \caption{Schematic illustration of the hybrid lubrication/granular stick/slide contact model.
+  (a) Before contact, particles interact only via lubrication.
+  (b) When particles first overlap, both lubrication and the normal collision are activated.
+  (c) For sustained contact, particles interact via lubrication, normal collision and tangential friction forces.
+  At small deformation, the friction is in static regime (\ie stick); while at larger displacements, particles enter the sliding regime.
+  The overlap is exaggerated.}
+  \label{fig:stick-slide}
+\end{figure}
+
+In a hybrid lubrication/granular dynamics method, particles interact via short-range lubrication and contact forces in a pairwise additive fashion%
+\footnote{Analytically, a diverging lubrication would prevent particle contact,
+though that neither feels intuitive according to everyday experience nor holds beyond the continuum limit in the presence of surface roughness.},
+see Figure \ref{fig:stick-slide}.
+There are several models to describe frictional contacts between particles.
+The currently popular one is the stick/slide friction model employing springs and dashpots \citep{Luding2008}, which for the case of spheres reads
 \begin{subequations} \label{eq:hlcd-contact}
   \begin{equation} 
     \begin{aligned}
@@ -1086,7 +1113,7 @@ stick/slide friction model employing springs and dashpots \citep{Luding2008}, wh
   \end{equation}
 \end{subequations}
 where ${\bm h}_{ij}=h_{ij}{\bm n}_{ij}$ denotes the signed normal surface gap between particles $i$ and $j$ (positive when overlapping),
-${\bm \xi}_{ij}$ the signed tangential stretch (see \emph{Paper 7} for details),
+${\bm \xi}_{ij}$ the signed tangential stretch (see \emph{Paper 7} for details, also Figure \ref{fig:stick-slide} for an illustration),
 $k_n$ the normal spring constant,
 $\gamma_n$ the damping constant,
 and $k_t$ the tangential spring constant.
