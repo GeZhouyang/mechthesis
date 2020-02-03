@@ -10,7 +10,7 @@ from the deforming embryo to the rolling tears,
 micron to millimetre sized droplets are an integral part of our everyday experience, conditioning and nourishing \emph{life}.
 
 Droplets are also important in many artificial and engineering applications.
-In material science, technicians can now routinely generate large amount of droplets in massively parallelised microfluidic channels \citep{microfluidics};
+In material science, technicians can now routinely generate large amounts of droplets in massively parallelised microfluidic channels \citep{microfluidics};
 these liquid drops can serve as microcontainers, encapsulating functional substances,
 and subsequently be manipulated and scaffolded into larger structures with desired properties.
 In life science, droplet-based microfluidic devices have already been used to automate genome sequencing and,
@@ -113,7 +113,7 @@ leading us to \emph{Part II}, where the original results are collected in the fo
 %===============================================================================
 
 
-This chapter summarizes the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
+This chapter summarises the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
 By \emph{particle}, we loosely mean a solid or liquid body of micron to millimetre in size, which may also be referred to as \emph{droplet} for abuse of language.
 As preliminaries, most of the contents below are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, kim_karrila, graham_2018} for greater details.
 
@@ -886,7 +886,7 @@ Plenty of methods have thus been proposed to overcome such issues by using highe
  \label{al:ls}
 \end{algorithm}
 
-Finally, we summarize the numerical algorithm of the interface-correction level set/ghost fluid method of \emph{Paper 1} in Algorithm \ref{al:ls}.
+Finally, we summarise the numerical algorithm of the interface-correction level set/ghost fluid method of \emph{Paper 1} in Algorithm \ref{al:ls}.
 Here, the level set field is integrated in time with a total-variation-diminishing third-order Runge-Kutta scheme; the spatial derivatives, ${AD}$, are computed with either fifth-order upstream-central (HOUC) or weighted essentially non-oscillatory (WENO) schemes. The mass correction and reinitialization are treated similarly.
 In the flow solver, the pressure Poisson equation is split into a constant-coefficient part and a variable-coefficient part to utilise the fast Fourier transform.
 The surface tension is incorporated in the same equation using the ghost fluid method (denoted by $[\cdot]_\Gamma$).
@@ -949,7 +949,7 @@ $\bm{F}^H$ may be obtained without even explicitly solving the fluid motions.
 In the following, we examine two such simplified techniques.
 One is more accurate and holds for any particulate system in general, albeit computationally expensive. This is the so-called \emph{Stokesian dynamics}.
 The other is derived from the former, but with additional features to model particle contact; hence, it is better suited for dense suspensions.
-We dub it \emph{hybrid lubrication/granular dynamics} method.
+We dub it \emph{hybrid lubrication/granular dynamics}.
 
 \subsection{Stokesian dynamics}
 \label{subsec:sd}
@@ -997,7 +997,7 @@ Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with
   \end{pmatrix},
  \end{aligned}
 \end{equation}
-where $\mathscr{M}^\infty$ is the far-field approximation to the so-called ``grand mobility'' matrix containing the structure of all hydrodynamic interactions per particle configuration.
+where $\mathscr{M}^\infty$ is the far-field approximation to the so-called ``grand mobility'' matrix, which contains the structure of all hydrodynamic interactions per particle configuration.
 
 Furthermore, the grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, transforming Eq.\ \eqref{eq:sd-mob-eq} to
 \begin{equation} 
@@ -1040,7 +1040,7 @@ In the construction of $\mathscr{M}^\infty$, lubrication interactions are not fu
 \end{equation}
 where $\mathscr{R}_{2B}^\infty$ denotes the far-field parts of lubrication already embedded in $\mathscr{M}^\infty$, and the subscript $_{2B}$ indicates that lubrication is mainly a two-body interaction. See \cite{durlofsky_brady_bossis_1987, Brady_Bossis1988} for more detailed discussions.  
 
-Finally, the solution procedure of the Stokesian dynamics method can be summarized as follows.
+Finally, the solution procedure of the Stokesian dynamics method can be summarised as follows.
 \begin{enumerate}
 \item Build the grand mobility matrix $\mathscr{M}^\infty$ from the suspension microstructure.
 \item Obtain the grand resistance matrix $\mathscr{R}$ by inverting $\mathscr{M}^\infty$ and adding the lubrication correction as in Eq.\ \eqref{eq:sd-lub-correction}.
@@ -1095,7 +1095,7 @@ has recently emerged as a new simulation method and led to improved physical und
 
 In a hybrid lubrication/granular dynamics method, particles interact via short-range lubrication and contact forces in a pairwise additive fashion%
 \footnote{Analytically, a diverging lubrication would prevent particle contact,
-though that neither feels intuitive according to everyday experience nor holds beyond the continuum limit in the presence of surface roughness.},
+though that neither agrees with everyday experience nor holds beyond the continuum limit in the presence of surface roughness.},
 see Figure \ref{fig:stick-slide}.
 There are several models to describe frictional contacts between particles.
 The currently popular one is the stick/slide friction model employing springs and dashpots \citep{Luding2008}, which for the case of spheres reads
@@ -1119,11 +1119,15 @@ $\gamma_n$ the damping constant,
 and $k_t$ the tangential spring constant.
 Furthermore, the contact forces need to satisfy the Coulomb's law of friction, \ie $\abs{\bm{F}^C_{tan}} \leq \mu_c\abs{\bm{F}^C_{nor}}$, with $\mu_c$ being the friction coefficient. 
 
-The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ tuple in Eq.\ \eqref{eq:force-balance} and be solved similarly to the Stokesian dynamics method.
-From a computational standpoint, the present method does not require to invert the mobility matrix and the grand resistance matrix composed of pair interactions is sparse; hence a much lower numerical cost.
-Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}. That is, computing all forces and torques to get the acceleration, then integrating in time once to get the velocity and twice to get the position.
+The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ vector in Eq.\ \eqref{eq:force-balance}
+and be solved similarly to the Stokesian dynamics method.
+From a computational standpoint, the present method does not require to invert the mobility matrix,
+and the grand resistance matrix composed of pair interactions is sparse;
+hence, it can be solve much faster numerically.
+Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}.
+That is, first computing all forces and torques to get the acceleration, then integrating in time once to obtain the velocity and twice to update the position.
 Similar techniques have been called dissipative particle dynamics or Brownian dynamics, depending on the context \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
-Provided that the particle Reynolds number remains much less than unity, this is equivalent to the quasi-static matrix inversion approach.
+Provided that the particle Reynolds number remains much less than unity, this is equivalent to the quasi-static matrix inversion approach used in Stokesian dynamics.
 
 
 
@@ -1157,7 +1161,7 @@ Plenty of applications have been conceived with great excitement.
 
 From the fluid mechanics perspective, questions invoked by these findings naturally include,
 (i) what mechanism leads to the drag reduction, and
-(ii) how it can be optimised given other constraints.
+(ii) how it can be optimised given all the constraints.
 The constraints involve surface chemistry, contamination, degradation, fabrication defects, wetting, etc., making the problem truly multiscale and multiphysics.
 Basic research along this line, including \emph{Paper 6}, is motivated to resolve at least part of these issues.
 
@@ -1207,7 +1211,7 @@ As it prevails in a broad range of length and time scales, predicting the statis
 Take the size distribution for example.
 In the ocean, air bubbles entrained in breaking waves enhance the air-sea gas flux, affect aerosol production, scavenge biological surfactants, and create ambient noise; knowing their creation mechanism and distribution in size can thus greatly improve our understanding of the nature and climate \citep{deane_stokes_2002a}.
 In the atmosphere, vapor condenses on particles and forms droplets; the droplet size distribution is the defining characteristics of a cloud, controlling how it interacts with electromagnetic radiation and how fast precipitation will form \citep{Shaw_2003}.
-In emulsions or colloidal suspensions, the distribution of the dispersed phase determines the stability, rheology, and area available for physical or chemical processes that occur at the interface \citep{boxall_etal_2012}. This is directly related to our daily life, as many processed food and cosmetic products are complex fluids in one way or another.
+In emulsions or colloidal suspensions, the distribution of the dispersed phase determines the stability, rheology and area available for physical or chemical processes that occur at the interface \citep{boxall_etal_2012}. This is directly related to our daily life, as many processed food and cosmetic products are complex fluids in one way or another.
 
 \begin{figure}%[t]
   \centering
@@ -1222,7 +1226,7 @@ Here, the advantages of performing these large-scale simulations are dual.
 On the one hand, interface-resolved, high-resolution simulations reveal a unprecedented level of details, offering arguably the full droplet and flow statistics within the afforded system. These results can then be used as benchmarks to test theoretical scalings and empirical models of the droplet distribution \citep{hinze_1955a, deane_stokes_2002a}.
 On the other hand, as simulation methods for multiphase flow are continuously being developed, the current results will serve as verification for later simulations.
 Based on these reasons, we performed direct numerical simulations of two immiscible and incompressible fluids in a homogeneous turbulent shear flow under various relative surface tensions (\ie Weber numbers) and initial conditions (\emph{Paper 5}).
-The choice of this base flow is rationalized by its natural turbulence sustaining mechanism and the relevance to the logarithmic layer of wall-bounded turbulent flow, see \eg \cite{pumir_1996a, sekimoto_dong_jimenez_2016a}.
+The choice of this base flow is rationalised by its natural turbulence sustaining mechanism and the relevance to the logarithmic layer of wall-bounded turbulent flow, see \eg \cite{pumir_1996a, sekimoto_dong_jimenez_2016a}.
 We admit that modelling of turbulence is difficult even by itself, let alone in the presence of droplets.
 Nevertheless, numerical studies like the one we conducted shall provide additional information to future modellers and shed new lights on the droplet-turbulence interactions.
 
@@ -1235,11 +1239,11 @@ Nevertheless, numerical studies like the one we conducted shall provide addition
 
 The investigations presented in this thesis are motivated by the interest in understanding droplet interactions and suspension flow
 that arise from a number of applications, including material science, microfluidic technology and transport of complex fluids.
-The general physical picture and underlying mathematical formulation are described in Chapter \ref{chp:micro-hydro},
+The general physical picture and underlying mathematical formulations are described in Chapter \ref{chp:micro-hydro},
 where we introduce elementary properties of the Stokes flow and its approximate solutions in the presence of liquid droplets or solid particles in a few simple cases.
 These are the fundamentals of microhydrodynamics,
 essential for developing a physical intuition and making back-of-the-envelope estimates when faced with more complicated engineering problems.
-Unfortunately, sometimes a problem may be too complicated to be solved analytically, or we may simply be misguided by our intuitions.
+Unfortunately, sometimes a problem may be too complicated to be solved by hand, or we may simply be misguided by our intuitions.
 In those cases, numerical simulations offer a relatively inexpensive means to visualise fluid motions and disentangle the various effects.
 Chapter \ref{chp:num-methods} thus provides a mini-review of some currently popular methods that can be applied to simulate coupled multiphase systems.
 This is the main subject of the present work --
@@ -1251,7 +1255,7 @@ what remain the same are the numerical approach to problem solving as well as a 
   \centering
   \includegraphics[width=0.95\columnwidth]{paper-diagram.pdf}
   \caption{Diagram reporting the different papers in \emph{Part II}, parameterized by the number of droplets ($N$) that are or could potentially be studied,
-  and by the distance (indicated by color) to being purely experimental ($-1$) or purely theoretically ($1$); 0 corresponds to purely numerical.
+  and by the distance (indicated by color) to being purely experimental ($-1$) or purely theoretical ($1$); 0 corresponds to purely numerical.
   The papers are labelled with short titles. Note that \emph{Paper 6} does not have a meaningful definition of $N$.}
   \label{fig:p-diagram}
 \end{figure}
@@ -1259,14 +1263,14 @@ what remain the same are the numerical approach to problem solving as well as a 
 The detailed results of the present work are given in the next part of the thesis in the format of journal articles or technical reports.
 Among them, 
 papers 1--4 entail droplet interactions,
-papers 5 \& 6 are miscellaneous, and
+papers 5 \& 6 are miscellaneous and
 paper 7 concerns suspension flow.
 Separate retrospective summaries of each paper are given in the beginning of \emph{Part II}.
-A diagrammatic summary is also illustrated in Figure \ref{fig:p-diagram}.
+A ``diagrammatic summary'' is also provided, as illustrated in Figure \ref{fig:p-diagram}.
 Overall, the common limitations of the conducted studies are that simulations still fall much behind experiments in terms of physical complexity
--- which could sometimes be justified, but it is still not the same --
+-- which could be justified, sometimes --
 and the lack of simple, quantitative models that can be extracted from the results.
-In general, our numerical work provides additional evidences to conclude qualitatively,
+In general, our numerical work provides additional evidences to draw qualitative conclusions,
 but a new set of simulations or experiments may have to be performed if precise predictions need to be made in different situations.
 
 Finally, as an outlook, we summarise the lessons learned during all the projects and name a few open questions worth further investigation:
@@ -1276,7 +1280,7 @@ Finally, as an outlook, we summarise the lessons learned during all the projects
  \item Fabricating photonic crystals using flow-assisted droplet assembly could potentially achieve a moderate bang gap and be scaled up to meet industrial needs.
  The rest of the task is in engineering.
  Current focus of the photonic community seems to be shifted to searching for disordered hyperuniform materials
- that are easier to make and still possess bandgaps \citep{Torquato_review_2018, Joshua_2017PRL}.
+ that are easier to make and still possess bandgaps \citep{ Joshua_2017PRL, Torquato_review_2018}.
  \medskip
 
  \item For multiphase flow simulations, classical level set methods are not mass conserving,
@@ -1295,14 +1299,13 @@ Finally, as an outlook, we summarise the lessons learned during all the projects
  \medskip
  
  \item Dense particle suspension is a very exciting research front,
- offers an immense parameter space to explore,
- and is related to both applied and fundamental questions.
+ offering an immense parameter space to explore and concerning both applied and fundamental questions.
  For example, questions like how particle geometry affects jamming,
  do active particles jam in the same way as passive particles,
  how do particle interactions and the medium topology come into play in long time limits (relevant to certain disease progression, \eg Alzheimer's disease), \etc
  are all unknown today.
  Investigating these problems requires development of new computational models and collaboration with specialists in different research areas,
- and may inspire new pathways to advance life science and biology in the future.
+ which may inspire new pathways to advance life science and biology in the future.
 \end{itemize}
 
 

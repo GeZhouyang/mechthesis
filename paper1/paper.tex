@@ -37,17 +37,16 @@
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-In this first work, we develop and implement an interface-correction level set/ghost fluid method (\texttt{ICLS/GFM})
+In this first work, we develop, implement and validate an interface-correction level set/ghost fluid method (ICLS/GFM)
 for high-fidelity simulations of liquid droplets in an immiscible carrier fluid.
-The main novelty is a global mass correction scheme that is conceptually simple,
-relatively straightforward to program,
-and efficient since the scheme does not need to be excuted at every time step.
-The method works best for well-resolved droplets as validated in the paper;
-however, extra care must be taken when applying it otherwise.
-In the same paper, we also formulate a hydrodynamic model for surfactant-induced depletion forces between neighbouring drops,
-removing the need to simulate suspending surfactants,
-hence further improving the computational efficiency.
-The overall methodology can be readily used to study droplet interactions in liquid flows,
+The main novelty is a mass-correction scheme for global volume conservation.
+It overcomes the classical ``mass loss'' issue of level set methods by constructing a correction-velocity that is easy to understand,
+straightforward to program and efficient to compute numerically.
+The method works best for droplets that are well-resolved as shown in the paper;
+however, additional validations may be required when applying it otherwise (\eg atomisation).
+In the same paper, we also formulate a hydrodynamic model for surfactant-induced depletion forces between neighbouring drops.
+Our model removes the need to simulate suspending nano-scale surfactants, hence further improving the computational efficiency.
+Overall, the methodology can be readily used to study droplet interactions in microfluidic devices, free-surface flows,
 and may be extended to simulate multiphase flows in porous media in general.
 }%
 %
