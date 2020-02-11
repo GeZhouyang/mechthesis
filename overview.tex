@@ -61,7 +61,7 @@ This unique property provides the basis for numerous optoelectronic applications
 Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps remains a practical challenge in the colloidal community \citep{Velev_etal_AM2009, Sacanna_etal_COCIS2011, Shen_AS_2016}.
 The issue is twofold.
 On the one hand, ideal PhC has the structure of a diamond cubic, which can have up to 40\% bandgap opening \citep{PRL1990}.\footnote{The percentage corresponds to the portion of frequencies that propagation of light is forbidden.}
-Therefore, for a long time, the holy grail for photonic researchers has been designing a protocol that can position colloidal droplets in a diamond cubic with alternating dielectric constants.
+Therefore, for a long time, the holy grail for photonic researchers has been designing a protocol that can position colloidal droplets in a diamond lattice with alternating dielectric constants.
 In practice, however, diamond crystals are extremely difficult to assemble because of the large gaps in between; specifically, a diamond cubic of equal spheres has at most 34\% packing fraction, while a face-centered cubic can reach 74\%. This makes PBG hard to achieve in 3D considering its sensitivity to structural defects.
 On the other hand, even if one does aim for the diamond structure, current techniques relying on Brownian motions and ``patchy particles'' are too slow to build PhC in the range of visible light \citep{Yi_etal_CM2013}. In some sense, droplets assembled this way are assembled by chance, which favors anisotropic structures with a higher rotational entropy \citep{Meng2010}.
 %such circuitry presents a great challenge as defects need to be carefully incorporated into the photonic-crystal structure with great precision. Although this has been accomplished for two-dimensional designs that confine light in a plane, it is still an ongoing challenge for so-called complete-bandgap materials, where the defects need to be embedded into a three-dimensional structure. 
@@ -77,7 +77,8 @@ The new understandings gained during this work are discussed in \emph{Paper 1-4}
 \section{Modelling dense particle suspensions}
 
 Dense suspensions are mixtures of particles in a fluid medium where the former strongly interact via short-range lubrication or non-hydrodynamic forces.
-There are a number of practical or theoretical reasons to model such systems, which are perhaps best described by the following paragraph quoted from the KITP program on \emph{Physics of Dense Suspensions} held in the spring of 2018:
+There are a number of practical or theoretical reasons to model such systems,
+which are perhaps best described by the following paragraph quoted from the KITP program on \emph{Physics of Dense Suspensions} held in the spring of 2018:
 \footnote{URL: \texttt{https://www.kitp.ucsb.edu/activities/suspensions18}. Accessed on 2020-01-22.}
 
 \medskip
@@ -87,10 +88,14 @@ There are a number of practical or theoretical reasons to model such systems, wh
 \medskip
 In partial response to the challenge, we numerically explore dense suspensions under different imposed flow conditions and geometric constraints.
 In particular, we study particles in the noncolloidal regime, and ask:
-(i) how to minimally characterise the microstructural evolution in an unsteady flow. Candidate answers include the complex viscosity, particle diffusivity, suspension fabric, size distribution of local clusters, structure factor, \etc \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}.
-(ii) Can qualitatively different global behaviours, such as a rate-dependent rheology vs.\ a rate-independent rheology, occur to the same suspension under different flow protocols (Ge \textit{et al.}, in preparation)? And
+(i) how to minimally characterise the microstructural evolution in an unsteady flow?
+Candidate answers include the (complex) suspension viscosity, particle diffusivity, suspension fabric, size distribution of local hydroclusters, structure factor, \etc \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}.
+(ii) Can qualitatively different global behaviours, such as a rate-dependent rheology vs.\ a rate-independent rheology,
+occur to the same suspension under different flow protocols? And
 (iii) how does the particle geometry affect the rheology and jamming of a suspension at fixed volume fractions?
-Solving these problems requires a numerical methodology that is accurate enough to test different physical hypotheses and efficient enough to generate data for a wide range of parameters. The implementation details of one such algorithm is documented in \emph{Paper 7}.
+Solving these problems requires a numerical methodology that is accurate enough to test different physical hypotheses and
+efficient enough to generate data for a wide range of parameters.
+The implementation details of one such algorithm is documented in \emph{Paper 7}.
 
 
 \thesisstructure
@@ -98,10 +103,10 @@ In the remaining of the thesis, we summarise previous studies in the literature 
 This is the \emph{Part I} of the thesis and contains four more chapters.
 In Chapter \ref{chp:micro-hydro}, we formulate the equations governing the microhydrodynamics and
 spotlight the essential physics for one, two and more particles in various flow fields or geometries.
-These are the prerequisites for understanding droplet interactions in more complicated conditions.
+They are the prerequisites for understanding droplet interactions in more complicated conditions.
 In Chapter \ref{chp:num-methods}, we introduce two categories of numerical methodologies that
 either solve the governing equations directly or approximate the solution in reduced order.
-Each category is then divided into several classes, which have further variations and are mentioned succinctly.
+Specifically, each category is divided into several classes, which have further variations and are mentioned succinctly.
 These are followed by a short detour in Chapter \ref{chp:misc},
 where two additional topics studied alongside the main subject are motivated and described.
 Finally, Chapter \ref{chp:summary} concludes the first part of the thesis,
