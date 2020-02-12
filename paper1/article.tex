@@ -542,7 +542,7 @@ The uniform speed will obviously result in a fixed strength $\delta V/\delta t /
 Clearly, this correction-velocity is larger in highly curved parts, and smaller in flatter parts. It thus includes ``local" information while maintaining ``global" mass conservation. Standard central-difference discretization applies, where the components of ${\bm u}_c$ can be obtained at either the cell faces or cell centers. The computation of $\kappa(\phi)$ is crucial and will be presented in the next section. We stress that such a curvature-dependence is not unique. In principle, one can choose different weight-functions, \Ge{and validate the choice based on the specific applications}. Practically, the difference is expected to be negligible since the mass loss remains small (typically around $10^{-5}$) at each correction step.
 
 %In the end, 
-\Ge{After correcting the level set on a $2\epsilon$ band around the interface, a reinitialization step is required to redistance the values within the entire narrow band ($2\gamma$).} The two procedures can be readily combined, since it is not necessary to perform mass correction at every time step. Also, because the formalism is cast in a level set frame, generalization from 2D to 3D is trivial. \Ge{Comparing with other mass-preserving methods, the additional computational cost of ICLS is small. This is due to the simple algebraic expression of ${\bm u}_c$ (Eq.\ \eqref{correction vel sol *}), and only one solve of Eq.\ \eqref{inflation} is required}; whereas a typical VOF-coupling method involves solving another set of transport equations \citep{Sussman_JCP_2000}, or reconstructing the interface by an iterative procedure \citep{Luo_JCP_2015}.
+\Ge{After correcting the level set on a $2\epsilon$ band around the interface, a reinitialization step is required to redistance the values within the entire narrow band ($2\gamma$).} The two procedures can be readily combined, since it is not necessary to perform mass correction at every time step. Also, because the formalism is cast in a level set frame, generalisation from 2D to 3D is trivial. \Ge{Comparing with other mass-preserving methods, the additional computational cost of ICLS is small. This is due to the simple algebraic expression of ${\bm u}_c$ (Eq.\ \eqref{correction vel sol *}), and only one solve of Eq.\ \eqref{inflation} is required}; whereas a typical VOF-coupling method involves solving another set of transport equations \citep{Sussman_JCP_2000}, or reconstructing the interface by an iterative procedure \citep{Luo_JCP_2015}.
 
 In summary, the ICLS method proceeds by performing the following steps:
 
@@ -1299,7 +1299,7 @@ Similarly, all the jumps should be removed consistently when computing the press
 \label{subsec: pot}
 
 
-\Ge{As introduced earlier, colloidal droplets transported in microfluidic devices are subject to various forces, a typical of which is the depletion force. The depletion force arises from the exclusion of the surfactant micelles in the colloidal suspension. It is often characterized as a near-field attracting potential \citep{Asakura_1958, Mewis_colloidal}, and plays a key role in the droplet dynamics \citep{Shen_AS_2016, Shen_thesis}.}
+\Ge{As introduced earlier, colloidal droplets transported in microfluidic devices are subject to various forces, a typical of which is the depletion force. The depletion force arises from the exclusion of the surfactant micelles in the colloidal suspension. It is often characterised as a near-field attracting potential \citep{Asakura_1958, Mewis_colloidal}, and plays a key role in the droplet dynamics \citep{Shen_AS_2016, Shen_thesis}.}
  Below, we first provide a brief background on the colloidal theory of the depletion potential, then present a numerical model to enforce the depletion force using MLS and GFM.
 
 %~~~~~~~~~~~~~~~~~~~~~~~%
@@ -1365,7 +1365,7 @@ where $A_{ex}$ is the effective area of the overlap $\Omega$. Assuming a constan
 \subsubsection{A MLS/GFM-based method for computing the depletion force}
 
 \Ge{%The preceding model for the depletion force is written in 1D because of symmetry. In practice, droplets may deform due to other external forces and it is not always possible to define a symmetry axis. 
-Provided a hydrodynamic model for the depletion force between two droplets, we can easily generalize it to multiple droplets using the MLS.
+Provided a hydrodynamic model for the depletion force between two droplets, we can easily generalise it to multiple droplets using the MLS.
 Thanks to the distance information embedded in the level set functions, it is straightforward to identify the overlap region of arbitrary geometries. Furthermore, as the jump of the osmotic pressure occurs only across the overlap shell, we can define
 \begin{equation}
     [p']_\Omega = p'(r'/r_s) - p'(1),

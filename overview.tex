@@ -99,7 +99,7 @@ The implementation details of one such algorithm is documented in \emph{Paper 7}
 
 
 \thesisstructure
-In the remaining of the thesis, we summarise previous studies in the literature to provide an extended overview on droplet interactions and suspension flow.
+In the remaining of the thesis, we summarize previous studies in the literature to provide an extended overview on droplet interactions and suspension flow.
 This is the \emph{Part I} of the thesis and contains four more chapters.
 In Chapter \ref{chp:micro-hydro}, we formulate the equations governing the microhydrodynamics and
 spotlight the essential physics for one, two and more particles in various flow fields or geometries.
@@ -118,7 +118,7 @@ leading us to \emph{Part II}, where the original results are collected in the fo
 %===============================================================================
 
 
-This chapter summarises the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
+This chapter summarizes the mathematical formulation and theoretical basis of microhydrodynamics and particle interactions.
 By \emph{particle}, we loosely mean a solid or liquid body of micron to millimetre in size, which may also be referred to as \emph{droplet} for abuse of language.
 As preliminaries, most of the contents below are given without any proof. The interested reader is encouraged to read \cite{Batchelor, hb, ps, kim_karrila, graham_2018} for greater details.
 
@@ -503,7 +503,7 @@ In general, q2D analyses are applicable if the system contains a limiting length
 When the number of particles is large within a suspension, analytical calculations of their relative motions can quickly become forbidden due to the complexities of the $N$-body problem.\footnote{Theoretically, $N = 3$ is the lower bound to break the time reversal symmetry.}
 This is because, despite the fact that we know how to calculate the interaction at the individual level, the collective dynamics are often in regimes that are far from equilibrium, for which there is no established theoretical framework to rely on.
 Even if we are primarily interested in averaged properties of a suspension, \emph{a priori} predictions can seldom be made as the \emph{microstructure}, \ie the spatial arrangement of each suspending particle, both determines and is determined by the bulk motion in a dynamic way \citep{Brady_Bossis1988}.
-Nevertheless, in the following, we will introduce a few macroscopic properties of particle suspensions and show how they can be related to certain measurable or computable system parameters. The purpose is to provide a basic physical understanding and, in particular, the rheological characterizations of a particulate system.
+Nevertheless, in the following, we will introduce a few macroscopic properties of particle suspensions and show how they can be related to certain measurable or computable system parameters. The purpose is to provide a basic physical understanding and, in particular, the rheological characterisations of a particulate system.
 
 \subsection{Sedimentation velocity}
 
@@ -517,7 +517,7 @@ where ${\bm M}$ is the \emph{mobility tensor} that relates the overall forcing $
 
 \subsection{Diffusion tensor}
 
-The $N$-particle diffusion tensor $\bm D$ can be generalized from the Einstein relation \citep{Einstein1905} and is given by
+The $N$-particle diffusion tensor $\bm D$ can be generalised from the Einstein relation \citep{Einstein1905} and is given by
 \begin{equation}
  \begin{aligned}
    {\bm D} = k_BT{\bm M},
@@ -529,7 +529,7 @@ For non-Brownian suspensions, several particle diffusivities may be defined, tho
 In the short-time limit, the self-diffusivity ${\bm D}_0^s$ can be taken as the diagonal of $\bm{D}$ per particle and average over all particles; whereas in the long-time limit, the self-diffusivity ${\bm D}_\infty^s$ is usually defined with the mean-square displacement, \viz
 \begin{equation}
  \begin{aligned}
-   {\bm D}_\infty^s = \lim_{t \to \infty} \frac{ \langle \big({\bm x}_i - {\bm x}_{i,0} )^2 \rangle_i }{2t},
+   {\bm D}_\infty^s = \lim_{t \to \infty} \frac{ \big \langle \big({\bm x}_i - {\bm x}_{i,0} )^2 \big \rangle_i }{2t},
  \end{aligned}
 \end{equation}
 where ${\bm x}_i$ is the position of particle $i$ at $t \to \infty$, ${\bm x}_{i,0}$ is its starting position, and $\langle \cdot \rangle_i$ is an average over $i$. Note that self-diffusivities are vectors of the same size of the dimensionality of the space, $d$. For an isotropic suspension, it can also be expressed as a scalar by averaging the components of ${\bm D}^s$ over $d$.
@@ -540,7 +540,7 @@ One of the central tasks of rheology is to determine the bulk stress tensor $\la
 \begin{equation} \label{eq:stress-tensor}
   \begin{aligned}
     \langle \bm{\Sigma} \rangle_i = -\bm{\Pi} +2\mu \bm{E}^\infty + \frac{N}{V} 
-    \bigg(\langle \bm{S}^H \rangle_i + \langle \bm{S}^B \rangle_i +\langle \bm{S}^A \rangle_i \bigg), 
+    \bigg( \big \langle \bm{S}^H  \big \rangle_i +  \big \langle \bm{S}^B  \big \rangle_i + \big \langle \bm{S}^A  \big \rangle_i \bigg), 
   \end{aligned}
 \end{equation} 
 where $V$ is the enclosing volume,
@@ -770,12 +770,19 @@ The objective is to give an overall picture of the complexity of the code. For f
 
 \subsection{Front-capturing methods}
 
-Instead of meshing and tracking the moving boundary on a separate grid, an alternative approach is to capture the particle motion on the same grid at the expanse of an additional function. Such function may correspond to the local volume fraction of a dispersed phase, or measure a geometric quantity of the interface away from the particle.
+Instead of meshing and tracking the moving boundary on a separate grid,
+an alternative approach is to capture the particle motion on the same grid at the expanse of an additional function.
+Such function may correspond to the local volume fraction of a dispersed phase, or measure a geometric quantity of the interface away from the particle.
 Conceptually, it specifies the multiphase flow in a full Eulerian manner, and is sometimes referred to as \emph{Eulerian-Eulerian} methods (front-tracking methods would be called \emph{Eulerian-Lagrangian} methods).
-Many numerical methods fall under the Eulerian-Eulerian framework. In the following, we describe three of them (see Figure \ref{fig:front-capture}).
+
+Many numerical methods fall under the Eulerian-Eulerian framework.
+In the following, we describe three of them (see Figure \ref{fig:front-capture}).
 As always, a brief historical background is given first, followed by the definition of the ``front-capturing'' function and its governing equation.
 We also highlight the major advantages and disadvantages of each method on a general basis.
-Finally, when coupling these front-capturing methods with a flow solver, the internal boundary conditions need to be imposed near the interface and, in principle, can be treated in exactly the same way as in front-tracking methods, cf.\ Eq.\ \eqref{eq:surf-tension}. We skip these details and refer the reader to \cite{Brackbill_JCP_1992, Fedkiw_JCP_1999, Lalanne_JCP_2015, Popinet_ARFM_2018, Gibou_Fedkiv_Osher, ICLS} for further discussions.
+Finally, when coupling these front-capturing methods with a flow solver,
+the internal boundary conditions need to be imposed near the interface and, in principle,
+can be treated in exactly the same way as in front-tracking methods, cf.\ Eq.\ \eqref{eq:surf-tension}.
+We skip these details and refer the reader to \cite{Brackbill_JCP_1992, Fedkiw_JCP_1999, Lalanne_JCP_2015, Popinet_ARFM_2018, Gibou_Fedkiv_Osher, ICLS} for further discussions.
 
 \begin{figure}%[t]
   \centering
@@ -825,15 +832,19 @@ This further requirement is not straightforward knowing only the cell-averaged v
 
 Another way to model interface evolution is to use level set (LS) methods \citep{sethian_1999a}.
 Originally devised by \cite{Osher_Sethian_levelset}, LS methods encompass a broad class of algorithms and numerical schemes for ``front propagation'' with curvature-dependent speeds.
-The mathematical machinery is rooted in the boundary-value and initial-value partial-differential-equations (PDE) perspective on moving interfaces.\footnote{It may seem similar to VOF methods in the sense that the both methods are Eulerian and the governing equations can be written in a similar way. However, the level set method embeds the \emph{geometry} of an interface, while VOF has the \emph{volume} embedding. This, together with that level set is Lipschitz-continuous and VOF is discontinuous, makes the two approaches fundamentally different. See Figure \ref{fig:front-capture}.}
+The mathematical machinery is rooted in the boundary-value and initial-value partial-differential-equations (PDE) perspectives on moving interfaces.%
+\footnote{LS may seem similar to VOF methods in the sense that both methods are Eulerian and the governing equations can be written in a similar way. However, the level set embeds the \emph{geometry} of an interface, while VOF has the \emph{volume} embedding. This, together with that level set is Lipschitz-continuous and VOF is discontinuous, makes the two approaches fundamentally different. See Figure \ref{fig:front-capture}.}
 Its applications include geometry, computer vision, fluid mechanics, combustion, tissue growth, path optimization, \etc
-In terms of fluid mechanics, specifically, the last three decades has witnessed continuous numerical development in applying level set methods to multiphase flow, see \eg \cite{Mulder_JCP_1992, Sussman_JCP_1994, Sussman_JCP_2000, Enright_JCP_2002, Olsson_JCP_2005, Marchandise_JCP_2007, Desjardins_JCP_2008, Desjardins_JCP_2009, Aanjaneya_JCP_2013, Luo_JCP_2015, ICLS}. See also \cite{Gibou_Fedkiv_Osher} for a recent review.
+In terms of fluid mechanics, specifically, the last three decades has witnessed continuous numerical development in applying level set methods to multiphase flow,
+see \eg \cite{Mulder_JCP_1992, Sussman_JCP_1994, Sussman_JCP_2000, Enright_JCP_2002, Olsson_JCP_2005, Marchandise_JCP_2007, Desjardins_JCP_2008, Desjardins_JCP_2009, Aanjaneya_JCP_2013, Luo_JCP_2015, ICLS}.
+See also \cite{Gibou_Fedkiv_Osher} for a recent review.
 
 The level set function, $\phi$, is classically defined as the signed distance to the interface $\Gamma$,
 \begin{equation} \label{eq:ls-def}
     \phi({\bm x},t) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|,
 \end{equation}
-where $sgn({\bm x})$ is a sign function equal to $1$ or $-1$ depending on which side of the interface the observation point $\bm x$ lies, and ${\bm x}_\Gamma$ denotes the point on $\Gamma$ that has the shortest distance to $\bm x$.
+where $sgn({\bm x})$ is a sign function equal to $1$ or $-1$ depending on which side of the interface the observation point $\bm x$ lies,
+and ${\bm x}_\Gamma$ denotes the point on $\Gamma$ that has the shortest distance to $\bm x$.
 That is, the interface can be parameterized by $\phi$ as $\Gamma = \{ {\bm x} ~ \rvert ~ \phi({\bm x},t) = 0 \}$.
 The interface position is then advected according to the following level set equation,
 \begin{equation} \label{eq:ls-eq}
@@ -843,7 +854,8 @@ where $F$ is a speed function.
 From a PDE perspective, the above equation asserts that the entire level set evolution can be obtained by integrating $\phi({\bm x},t=0)$ forward in time.
 In other words, Eq.\ \eqref{eq:ls-eq} is an initial value problem without boundary conditions.
 
-Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$. This is merely due to different sign conventions for the level set.}
+Geometrically, the normal and the curvature of the interface can be readily derived from the level set as below,%
+\footnote{Some authors express the curvature as $\kappa = -\nabla \cdot {\bm n}$. This is merely due to different sign conventions for the level set.}
 \begin{subequations} \label{eq:ls-geo}
  \begin{equation}
     {\bm n} = \frac{\nabla \phi}{\abs{ \nabla \phi }},
@@ -853,16 +865,21 @@ Geometrically, the normal and the curvature of the interface can be readily deri
  \end{equation}
 \end{subequations}
 
-When solving the level set equation for multiphase flow, the most natural choice for $F$ is the local flow velocity projected in the normal direction, \ie $F=\bm{u \cdot n}$, reducing Eq.\ \eqref{eq:ls-eq} to
+When solving the level set equation for multiphase flow, the most natural choice for $F$ is the local flow velocity projected in the normal direction,
+\ie $F=\bm{u \cdot n}$, reducing Eq.\ \eqref{eq:ls-eq} to
 \begin{equation} \label{eq:ls-avd}
   \frac{\partial \phi}{\partial t} + \bm{u} \cdot \nabla \phi = 0.
 \end{equation}
 However, any non-uniform flow will distort the LS field, making Eq.\ \eqref{eq:ls-def} invalid after a few advection steps and making the numerical solution unstable.
 To remedy this problem, it is customary to perform an infrequent level set ``reinitialization'' to reshape $\phi$ into a distance function while preserving the interface location \citep{Sussman_JCP_1994}.
-Various techniques have been developed to do so by \eg using fast marching methods \citep{sethian_1999a}, or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}. It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
+Various techniques have been developed to do so by using fast marching methods \citep{sethian_1999a} or solving a time-dependent Hamilton-Jacobi equation \citep{Sussman_JSC_1997, Russo_JCP_2000}.
+It is also possible to avoid this additional step by modifying $F$ such that the gradient of $\phi$ is always fixed, see \eg \cite{Adalsteinsson_JCP_1999}.
 
-At this point, it is important to mention a critical numerical issue of classical level set methods. The problem is, even if Eq.\ \eqref{eq:ls-avd} is solved on an incompressible velocity field, there is no guarantee that the numerical solution will conserve the total enclosed volume; in practice, there is often significant ``mass loss''.
-The reason for this problem is a combination of numerical dissipation, under-resolution, and lack of built-in mass conservation properties in the numerical scheme.
+At this point, it is important to mention a critical numerical issue of classical level set methods.
+The problem is, even if Eq.\ \eqref{eq:ls-avd} is solved on an incompressible velocity field,
+there is no guarantee that the numerical solution will conserve the total enclosed volume;
+in practice, there is often significant ``mass loss''.
+The reason for this problem is a combination of numerical dissipation, under-resolution and lack of built-in mass conservation properties in the numerical scheme.
 Plenty of methods have thus been proposed to overcome such issues by using higher-order numerical schemes, coupling the LS with VOF or lagrangian particles, imposing additional mass constraints, \etc See \cite{ICLS} (\emph{Paper 1}) for a brief overview.
 
 \begin{algorithm}[t]
@@ -891,7 +908,7 @@ Plenty of methods have thus been proposed to overcome such issues by using highe
  \label{al:ls}
 \end{algorithm}
 
-Finally, we summarise the numerical algorithm of the interface-correction level set/ghost fluid method of \emph{Paper 1} in Algorithm \ref{al:ls}.
+Finally, we summarize the numerical algorithm of the interface-correction level set/ghost fluid method of \emph{Paper 1} in Algorithm \ref{al:ls}.
 Here, the level set field is integrated in time with a total-variation-diminishing third-order Runge-Kutta scheme; the spatial derivatives, ${AD}$, are computed with either fifth-order upstream-central (HOUC) or weighted essentially non-oscillatory (WENO) schemes. The mass correction and reinitialization are treated similarly.
 In the flow solver, the pressure Poisson equation is split into a constant-coefficient part and a variable-coefficient part to utilise the fast Fourier transform.
 The surface tension is incorporated in the same equation using the ghost fluid method (denoted by $[\cdot]_\Gamma$).
@@ -904,7 +921,7 @@ The full algorithm is presented in details in \emph{Paper 1}. Note the high-leve
 The last class of methods that we will describe is derived from theories of capillarity and critical phenomena.
 Here, by introducing a so-called order parameter, a single-component fluid with varying density or a binary fluid with two immiscible components are modelled by a phase field separated by an interface of finite thickness \citep{Anderson_McFadden_Wheeler}.
 Historically, the proposition of a finite-width interface dates back to as early as \cite{Poisson1831}. Since then, various theories have been developed by Maxwell, Gibbs, Lord Rayleigh, van der Waals, etc.; see \eg \cite{van-der-waals1893, Cahn1961}.
-We note that the physical notion of finite width is particularly relevant for fluids that are near their critical point, or for processes involving moving contact lines, breakup or coalescence, where a sharp interface description will be faced with singularities \citep{Zhang_Mohseni_2018, Eggers1997}.
+We note that the physical notion of finite width is particularly relevant for fluids that are near their critical points, or for processes involving moving contact lines, breakup or coalescence, where a sharp interface description will be faced with singularities \citep{Zhang_Mohseni_2018, Eggers1997}.
 For this reason, phase field methods are also regarded as \emph{diffuse interface} methods.
 
 Putting aside its physical origin in capillary and kinetic theories, phase field methods have recently attracted a renewed interest in the numerical modelling of twophase flow \citep{jacqmin_1999a, Jacqmin2000, Badalassi_etal_2003, Ding_Spelt_Shu2007, Shen_Yang_2010, dong_shen_2012a, Wang_Shu_Shao_Wu_Niu_2015, Martin, Mirjalili_Ivey_Mani_2020}.
@@ -939,7 +956,7 @@ In particle-based methods, the central equation to solve is
   {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A, 
  \end{aligned}
 \end{equation}
-where ${\bm m}$ is a generalized mass/moment-of-inertia matrix,
+where ${\bm m}$ is a generalised mass/moment-of-inertia matrix,
 ${\bm U}$ is the particle translational/rotational velocity vector,
 and ${\bm F}$ represents the force/torque vectors owing to hydrodynamics (denoted with superscript $^H$)
 or any applied interactions (denoted with superscript $^A$) that may include contact, electrostatic, van der Waals, or magnetic forces, etc.%
@@ -971,11 +988,16 @@ $\bm{G}(\bm{x},\bm{x}_0)$ is the Stokeslet due to a point force at $\bm{x}_0$ (c
 $\bm f(\bm{x}_0)$ denotes its density,
 and the summation is over all $N$ particles.
 
-The local velocity $\bm{u}$ can be obtained numerically by dividing the surface of each particle into $M$ elements and resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torque conditions.
-This approach belongs to a broad class of \emph{boundary integral methods} \citep{Pozrikidis}, which are highly accurate and computationally efficient, since the discretisation is required only on the particle surface instead of in the flow domain, cf.\ Section \ref{sec:fluid-methods}.
-More specifically, the number of unknowns are $N_E=(3M+6)N$, \ie three components of force density for each element, and six translational and angular velocity components per particle.
+The local velocity $\bm{u}$ can be obtained numerically by dividing the surface of each particle into $M$ elements and
+resolving the linear system of equations for the force densities $\bm f$ subject to the total force and torque conditions.
+This approach belongs to a broad class of \emph{boundary integral methods} \citep{Pozrikidis},
+which are highly accurate and computationally efficient,
+since the discretisation is required only on the particle surface instead of in the flow domain, cf.\ Section \ref{sec:fluid-methods}.
+More specifically, the number of unknowns are $N_E=(3M+6)N$,
+\ie three components of force density for each element, and six translational and angular velocity components per particle.
 The computational time depends on the algorithm and boundary conditions.
-In the best case, it is $\mathcal{O}(N_E\log N_E)$; while it can be as large as $\mathcal{O}(N_E^3)$ if using direct solution methods \citep{graham_2018}.
+In the best case, it is $\mathcal{O}(N_E\log N_E)$;
+while it can be as large as $\mathcal{O}(N_E^3)$ if using direct solution methods \citep{graham_2018}.
 
 Now, instead of directly evaluating the integral over all particle surfaces, the method of Stokesian dynamics \citep{durlofsky_brady_bossis_1987} rewrites the right-hand side of Eq.\ \eqref{eq:boundary-integral} as a multipole expansion, \viz
 \begin{equation} \label{eq:sd-multipole}
@@ -984,11 +1006,16 @@ Now, instead of directly evaluating the integral over all particle surfaces, the
  \end{aligned}
 \end{equation}
 where $\bm{u}_F$, $\bm{u}_S$, $\bm{u}_T$, $\bm{u}_Q$, and $\bm{u}_O$ denote the flow due to the total forces, stresslets, total torques, quadrupoles, and octupoles, respectively.
-The last two moments are included to account for the finite particle size. They are important both for reducing the truncation error, which to the leading order scales as $\mathcal{O}(r^{-6})$, where $r$ is the distance between the observation point and the center of a sphere, and in maintaining the positive definiteness of the mobility matrix \citep{durlofsky_brady_bossis_1987}, shown right below by Eq.\ \eqref{eq:sd-mob-eq}.
-Note that, each particle is associated with 11 unknown variables (6 velocity components and 5 stresslet components since the stresslet is symmetric and traceless), which is usually much less than $3M+6$ as required by the boundary integral method.%
+The last two moments are included to account for the finite particle size.
+They are important both for reducing the truncation error, which to the leading order scales as $\mathcal{O}(r^{-6})$,
+where $r$ is the distance between the observation point and the center of a sphere,
+and in maintaining the positive definiteness of the mobility matrix \citep{durlofsky_brady_bossis_1987}, shown right below by Eq.\ \eqref{eq:sd-mob-eq}.
+Note that, each particle is associated with 11 unknown variables (6 velocity components and 5 stresslet components since the stresslet is symmetric and traceless),
+which is usually much less than $3M+6$ as required by the boundary integral method.%
 \footnote{The value of $M$ depends on dimension and the particle shape. Typically, $M \sim \mathcal{O}(10)$.}
 
-Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres (cf.\ Eq.\ \ref{eq:faxen}) to obtain a relationship between particle velocities and forces, written in matrix form as
+Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with the Fax\'{e}n's formulae for spheres
+(cf.\ Eq.\ \ref{eq:faxen}) to obtain a relationship between particle velocities and forces, written in matrix form as
 \begin{equation} \label{eq:sd-mob-eq}
  \begin{aligned} 
   \begin{pmatrix}
@@ -1002,7 +1029,8 @@ Under this approximation, Eq.\ \eqref{eq:sd-multipole} can then be combined with
   \end{pmatrix},
  \end{aligned}
 \end{equation}
-where $\mathscr{M}^\infty$ is the far-field approximation to the so-called ``grand mobility'' matrix, which contains the structure of all hydrodynamic interactions per particle configuration.
+where $\mathscr{M}^\infty$ is the far-field approximation to the so-called ``grand mobility'' matrix,
+which contains the structure of all hydrodynamic interactions per particle configuration.
 
 Furthermore, the grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, transforming Eq.\ \eqref{eq:sd-mob-eq} to
 \begin{equation} 
@@ -1036,16 +1064,20 @@ If $\mathscr{R}$ is known, the particle velocity can be straightforwardly obtain
 \end{equation}
 Note that $\bm{F}^H$ has been replaced with $-\bm{F}^A$.
 
-There is one more crucial step in the Stokesian dynamics method.
-In the construction of $\mathscr{M}^\infty$, lubrication interactions are not fully accounted for due to the omission of higher-order multipole moments (hence the superscript $^\infty$). To correctly include all contributions from the lubrication, $\mathscr{R}$ is calculated as
+There is one more crucial step in Stokesian dynamics.
+In the construction of $\mathscr{M}^\infty$, lubrication interactions are not fully accounted for due to the omission of higher-order multipole moments
+(hence the superscript $^\infty$).
+To correctly include all contributions from the lubrication, $\mathscr{R}$ is calculated as
 \begin{equation} \label{eq:sd-lub-correction}
  \begin{aligned}
   \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty,
  \end{aligned}
 \end{equation}
-where $\mathscr{R}_{2B}^\infty$ denotes the far-field parts of lubrication already embedded in $\mathscr{M}^\infty$, and the subscript $_{2B}$ indicates that lubrication is mainly a two-body interaction. See \cite{durlofsky_brady_bossis_1987, Brady_Bossis1988} for more detailed discussions.  
+where $\mathscr{R}_{2B}^\infty$ denotes the far-field parts of lubrication already embedded in $\mathscr{M}^\infty$,
+and the subscript $_{2B}$ indicates that lubrication is mainly a two-body interaction.
+See \cite{durlofsky_brady_bossis_1987, Brady_Bossis1988} for more detailed discussions.  
 
-Finally, the solution procedure of the Stokesian dynamics method can be summarised as follows.
+Finally, the solution procedure of Stokesian dynamics can be summarized as follows.
 \begin{enumerate}
 \item Build the grand mobility matrix $\mathscr{M}^\infty$ from the suspension microstructure.
 \item Obtain the grand resistance matrix $\mathscr{R}$ by inverting $\mathscr{M}^\infty$ and adding the lubrication correction as in Eq.\ \eqref{eq:sd-lub-correction}.
@@ -1124,15 +1156,16 @@ $\gamma_n$ the damping constant,
 and $k_t$ the tangential spring constant.
 Furthermore, the contact forces need to satisfy the Coulomb's law of friction, \ie $\abs{\bm{F}^C_{tan}} \leq \mu_c\abs{\bm{F}^C_{nor}}$, with $\mu_c$ being the friction coefficient. 
 
-The above expressions for the contact forces and torques can be directly added in the ${\bm F}^A$ vector in Eq.\ \eqref{eq:force-balance}
+The above expressions for the contact forces and torques can be directly added in the resistance matrices (cf.\ Eq.\ \ref{eq:sd-hydro})
 and be solved similarly to the Stokesian dynamics method.
 From a computational standpoint, the present method does not require to invert the mobility matrix,
 and the grand resistance matrix composed of pair interactions is sparse;
-hence, it can be solve much faster numerically.
-Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance}.
-That is, first computing all forces and torques to get the acceleration, then integrating in time once to obtain the velocity and twice to update the position.
-Similar techniques have been called dissipative particle dynamics or Brownian dynamics, depending on the context \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
-Provided that the particle Reynolds number remains much less than unity, this is equivalent to the quasi-static matrix inversion approach used in Stokesian dynamics.
+hence, it can be solved much faster numerically.
+Alternatively, the particle dynamics can also be obtained by explicitly solving Eq.\ \eqref{eq:force-balance};
+namely, first computing all forces and torques to get the acceleration, then integrating in time once to obtain the velocity and twice to update the position.
+Similar techniques are sometimes called dissipative particle dynamics or Brownian dynamics, depending on the context \citep{Hoogerbrugge_1992, Groot_Warren_1997}.
+Provided that the particle Reynolds number remains much less than unity,
+the latter are equivalent to the quasi-static matrix inversion approach used in Stokesian dynamics.
 
 
 
@@ -1144,7 +1177,7 @@ Provided that the particle Reynolds number remains much less than unity, this is
 In this chapter, we describe two additional topics that were investigated during the course of the present work.
 As side projects, they share with the rest of the thesis in that the flow involved are multiphase and characterised by relatively small length scales; hence, they can be, and have been, studied using similar numerical methods.
 Beyond that, there is no further connection.
-In the following, we first give the physical motivation of each problem, then summarise the overall understanding and research methodology prior to our study.
+In the following, we first give the physical motivation of each problem, then summarize the overall understanding and research methodology prior to our study.
 The new results are reported in \emph{Paper 5 \& 6}.
 
 
@@ -1278,7 +1311,7 @@ and the lack of simple, quantitative models that can be extracted from the resul
 In general, our numerical work provides additional evidences to draw qualitative conclusions,
 but a new set of simulations or experiments may have to be performed if precise predictions need to be made in different situations.
 
-Finally, as an outlook, we summarise the lessons learned during all the projects and name a few open questions worth further investigation:
+Finally, as an outlook, we summarize the lessons learned during all the projects and name a few open questions worth further investigation:
 \medskip
 
 \begin{itemize}

@@ -1,11 +1,26 @@
 
 \section{Introduction}
 
-The behaviour of systems involving the motion of small particles in a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST), or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major practical implications. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
+The behaviour of systems involving the motion of small particles in a suspending fluid covers a wide range of phenomena of interest to both scientists and engineers. Dense suspensions, where the volume fraction of solid particles becomes comparable to or even higher than that of the fluid (see Figure \ref{fig:snap}), have particularly rich and sometimes unexpected rheologies, such as yielding, shear thinning, continuous shear thickening (CST) or discontinuous shear thickening (DST) \citep{mewis_wagner_book, Morton_Morris_2014, guazzelli_pouliquen_2018, Morris_annurev2020}. Apart from being theoretically intriguing, these complex behaviours often have major practical implications. For instance, while it makes sense for the cement industry to manufacture suspensions that do not shear thicken, the same feature becomes an advantage for designing flexible body armor.
 
-Despite the practical importance, theoretical development of suspension rheology remains challenging and only a few analytical solutions have been found in the dilute regime, see \eg \cite{Einstein_1906, batchelor_green_1972b}. This is partially due to the lack of a precise knowledge or control of the various interactions at the particle level and partially due to the mathematical difficulties involved in many-body problems. On the other hand, solving a system of interacting particles appears relatively straightforward in an algorithmic perspective. In fact, the last decades have seen tremendous advancement in both numerical simulations and computer hardware. In the context of rheology and soft condensed matter, some of the numerical models that have been developed include molecular dynamics (MD) \citep{Alder_Wainwright_1959,Verlet1967}, dissipative particle dynamics (DPD) \citep{Hoogerbrugge_1992, Groot_Warren_1997}, Stokesian dynamics \citep{Brady_Bossis1988}, and minimal discrete element methods (M-DEM) \citep{Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few. The objective of the present note is thus to provide a brief summary of the latest development, specifically on the discrete-element lubrication/contact (DLCD) models that recently emerged from a blending of hydrodynamics and granular physics, and comment on some implementation details.
+Despite the practical importance, theoretical development of suspension rheology remains challenging and
+only a few analytical solutions have been found in the dilute regime, see \eg \cite{Einstein_1906, batchelor_green_1972b}.
+This is partially due to the lack of a precise knowledge or control of the various interactions at the particle level and
+partially due to the mathematical difficulties involved in many-body problems.
+On the other hand, solving a system of interacting particles appears relatively straightforward in an algorithmic perspective.
+In fact, the last few decades have seen tremendous advancement in both numerical simulations and computer hardware.
+In the context of rheology and soft condensed matter, some of the numerical models that have been developed include
+molecular dynamics \citep{Alder_Wainwright_1959,Verlet1967},
+dissipative particle dynamics \citep{Hoogerbrugge_1992, Groot_Warren_1997},
+Stokesian dynamics \citep{Brady_Bossis1988}
+and hybrid lubrication/granular dynamics (HLGD)%
+\footnote{We dub it this way not because we invented the model but because there is no unique identifier in the literature.}
+\citep{Mari_Seto_2014JoR, Cheal_Ness_2018}, to name a few.
+The objective of the present note is thus to provide a brief summary of the latest development;
+specifically, we focus on HLGD that recently emerged as an effective method to minimally model dense particle suspensions in low-Reynolds-number flow.
+It is our hope that the numerical details presented in the following will help beginners to this field gain a clear idea in how to implement the seemingly complex algorithm, which are usually scattered in the supplementary information of papers focusing on rheology or physics.
 
-The paper is organized as follows. In Sec.\ \ref{sec:dlcd}, we summarize the mathematical formulation, relevant physical parameters and their rheological characterization. A brief note on the numerical integration of the equations of motion is also provided. In Sec.\ \ref{valid}, we validate the implementation against two benchmark cases in the literature, \ie jamming transition and shear thickening. Finally, we end with a short discussion on potential extensions of the present methodology to non-spherical particles.
+The paper is organized as follows. In Sec.\ \ref{sec:dlcd}, we summarize the mathematical formulation, relevant physical parameters and their rheological characterisation. A brief note on the numerical integration of the equations of motion is also provided. In Sec.\ \ref{valid}, we validate the implementation against two benchmark cases in the literature, \ie jamming transition and shear thickening. Finally, we end with a short discussion on potential extensions of the present methodology to non-spherical particles.
 
 
 \begin{figure}%[t]
@@ -17,10 +32,10 @@ The paper is organized as follows. In Sec.\ \ref{sec:dlcd}, we summarize the mat
 \end{figure}
 
 
-\section{The DLCD model}
+\section{The HLGD model}
 \label{sec:dlcd}
 
-In this section, we briefly summarize the mathematical formulation and essential physical parameters of the DLCD model. Detailed descriptions can be found in \cite{Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018} and references therein.
+In this section, we briefly summarize the mathematical formulation and essential physical parameters of the hybrid lubrication/granular dynamics. Detailed descriptions can be found in \cite{Seto_PRL2013, Mari_Seto_2014JoR, Cheal_Ness_2018} and references therein.
 
 \subsection{Mathematical formulation}
 \label{sec:eqs}
@@ -171,7 +186,7 @@ Note that the hydrodynamic force and torque given above are strictly valid for s
 \subsection{Model parameters}
 \label{model param}
 
-The preceding equations are formulated in dimensional form with a unit system flexibly chosen for the convenience of simulations (\eg $a_1=1$ [{\small Length}], $\dot{\gamma}=10^{-2}$ [{\small 1/Time}], \etc). For the model output to correspond \emph{physically} to a dense suspension of inertialess, rigid particles, the following asymptotic conditions must be satisfied as close as possible.
+The preceding equations are formulated in dimensional form with a unit system flexibly chosen for the convenience of simulations (\eg $a_1=1$ [{\small Length}], $\dot{\gamma}=10^{-2}$ [{\small 1/Time}], \etc). For the model output to correspond physically to a dense suspension of inertialess, rigid particles, the following asymptotic conditions must be satisfied as close as possible.
 
 \begin{enumerate}
 
@@ -333,7 +348,7 @@ Finally, we note that the force calculation, Eq.\ \eqref{verlect 4}, is usually 
 \section{Validations}
 \label{valid}
 
-In this section, we validate our numerical implementation of the DLCD model with two benchmark rheologies, \ie jamming transition and shear thickening.
+In this section, we validate our numerical implementation of the HLGD model with two benchmark rheologies, \ie jamming transition and shear thickening.
 
 \subsection{Jamming transition}
 
@@ -371,7 +386,7 @@ Figure \ref{fig:visc} shows the relative viscosity for six volume fractions rang
   \label{fig:pres}
 \end{figure}
 
-We also examine the non-dimensional particle pressure of the same suspension and compare our results with the theoretical model of \cite{Boyer_Guaz_Poul_2011}. As illustrated in Figure \ref{fig:pres}, an even steeper divergence of $\eta_n$ with $\phi$ is observed, suggestive of a strong tendency for the system to dilate. The constitutive law derived by \cite{Boyer_Guaz_Poul_2011}, supported by their own experiment, is given as $\eta_n=[\phi/(\phi_J-\phi)]^2$. Taking $\phi_J=0.645$, an overall excellent agreement is observed except for the lowest volume fraction $\phi=40$\%, where our data slightly over-predicts the particle pressure. In general, the comparisons above verify our implementation of the DLCD model in the case of jamming transition of frictionless spheres. 
+We also examine the non-dimensional particle pressure of the same suspension and compare our results with the theoretical model of \cite{Boyer_Guaz_Poul_2011}. As illustrated in Figure \ref{fig:pres}, an even steeper divergence of $\eta_n$ with $\phi$ is observed, suggestive of a strong tendency for the system to dilate. The constitutive law derived by \cite{Boyer_Guaz_Poul_2011}, supported by their own experiment, is given as $\eta_n=[\phi/(\phi_J-\phi)]^2$. Taking $\phi_J=0.645$, an overall excellent agreement is observed except for the lowest volume fraction $\phi=40$\%, where our data slightly over-predicts the particle pressure. In general, the comparisons above verify our implementation of the HLGD model in the case of jamming transition of frictionless spheres. 
 
 
 \subsection{Shear thickening}
@@ -383,7 +398,7 @@ We also examine the non-dimensional particle pressure of the same suspension and
   \label{fig:thick}
 \end{figure}
 
-As contact becomes more important at higher particle concentrations, we simulate three frictional suspensions displaying continuous and discontinuous shear thickening rheologies. Specifically, we implement the critical-load friction model introduced in \cite{Mari_Seto_2014JoR} that activates the friction force only when the normal collision force exceeds a critical value. Figure \ref{fig:thick} reproduces the results of \cite{Mari_Seto_2014JoR}. Here, the relative viscosity is plotted against a non-dimensional shear rate defined by the ratio of the Stokes drag and the threshold friction, cf.\ Sec.\ \ref{model param}. At 45\% volume fraction, the suspension viscosity increases gradually with the shear due to increased particle contact. The slope steepens for $\phi=0.55$; while at $\phi=0.58$, we observe an abrupt increase of the mean relative viscosity, accompanied by large fluctuations, indicating a switch from CST to DST. Accurate prediction of the onset of DST remains a theoretical challenge \citep{Morris_annurev2020}. Our results demonstrate the present implementation of the DLCD model can be used to probe such rheologies in details.
+As contact becomes more important at higher particle concentrations, we simulate three frictional suspensions displaying continuous and discontinuous shear thickening rheologies. Specifically, we implement the critical-load friction model introduced in \cite{Mari_Seto_2014JoR} that activates the friction force only when the normal collision force exceeds a critical value. Figure \ref{fig:thick} reproduces the results of \cite{Mari_Seto_2014JoR}. Here, the relative viscosity is plotted against a non-dimensional shear rate defined by the ratio of the Stokes drag and the threshold friction, cf.\ Sec.\ \ref{model param}. At 45\% volume fraction, the suspension viscosity increases gradually with the shear due to increased particle contact. The slope steepens for $\phi=0.55$; while at $\phi=0.58$, we observe an abrupt increase of the mean relative viscosity, accompanied by large fluctuations, indicating a switch from CST to DST. Accurate prediction of the onset of DST remains a theoretical challenge \citep{Morris_annurev2020}. Our results demonstrate the present implementation of the HLGD model can be used to probe such rheologies in details.
 
 
 
@@ -402,7 +417,7 @@ As contact becomes more important at higher particle concentrations, we simulate
 \section{Extension to non-spherical particles}
 \label{sec:nonsph}
 
-Finally, we turn our attention to suspensions of non-spherical particles. While spheres represent the simplest geometry convenient for theoretical and numerical studies, suspensions in reality are almost certainly composed of non-spherical particles. For very dilute suspensions, this may not be an important issue as the macroscopic behaviours are usually not very sensitive to the exact particle shape. However, for dense suspension, a completely different rheology or phase transition may be expected as the lubrication intensifies and particle contact increases, see \eg \cite{Damasceno453, Royer_etal_2015, trulsson_2018}. To simulate suspensions in the latter case, various levels of simplifications may be made depending on the specific particle shape and volume fraction. Here, we present a minimal model that captures the essential effects, mostly suitable for spherical aggregates or polyhedra at high concentrations, extended from the DLCD model.
+Finally, we turn our attention to suspensions of non-spherical particles. While spheres represent the simplest geometry convenient for theoretical and numerical studies, suspensions in reality are almost certainly composed of non-spherical particles. For very dilute suspensions, this may not be an important issue as the macroscopic behaviours are usually not very sensitive to the exact particle shape. However, for dense suspension, a completely different rheology or phase transition may be expected as the lubrication intensifies and particle contact increases, see \eg \cite{Damasceno453, Royer_etal_2015, trulsson_2018}. To simulate suspensions in the latter case, various levels of simplifications may be made depending on the specific particle shape and volume fraction. Here, we present a minimal model that captures the essential effects, mostly suitable for spherical aggregates or polyhedra at high concentrations, extended from the HLGD model.
 
 Assuming collisions and frictions are the most significant factor to the suspension rheology, we can approximate the hydrodynamic interactions using the same functional forms as presented in Sec.\ \ref{sec:eqs}. That is, each particle experiences a Stokes drag based on some hydraulic radius, $\hat{a}$, and each neighbouring pair interacts via the lubrication force as if they were spheres. The exact value of $\hat{a}$ depends on the shape of the particle, \eg $\hat{a}=L/2$ for a cube of length $L$; in general, this is an approximation that shall not greatly affect the bulk behaviour. In a similar spirit, the radii used in the lubrication calculation can be taken as $\hat{a}$ or the inverse of the local curvature. We note that more rigorous treatments of the hydrodynamic interactions have been proposed, though it is rather complicated to implement and is limited to spheroids, see \eg \cite{claeys_brady_1993}. Our simplified approach is similar to the mean-field description developed for wet foams, which has also been employed in studies of frictionless particles \citep{Durian_1997PRE, Marschall_etal_2019}.
 
