@@ -23,7 +23,7 @@ the precise control of pico-litre ($10^{-9}$ mL) ink droplets.
 
 All the above-mentioned processes or technologies depend on the presence and motion of droplets.
 Understanding the physics and hydrodynamics of their interactions in a variety of conditions thus has a great practical importance.
-Traditionally, the study of liquid-embedded systems are mostly conducted by experimenters;
+Traditionally, the study of liquid-embedded systems is mostly conducted by experimentalists;
 fluid mechanics, as most other disciplines of physics, is primarily an experimental science after all.
 However, the last few decades have also seen a phenomenal paradigm shift in many research areas owing to
 the exponential growth of computer power and continuous development of numerical algorithms.
@@ -33,7 +33,7 @@ Comparing to experimental measurements, computer simulations are non-invasive an
 offer the entire information that can be readily visualised up to model errors and the numerical precision.
 Physical parameters can also be freely adjusted to test conditions that are not easy to implement in lab experiments.
 
-Motivated by these reasons, the present work embarks on a number of problems that originates from material fabrication, surface engineering and fluid transport.
+Motivated by these, the present work embarks on a number of problems that originates from material fabrication, surface engineering and fluid transport.
 We develop and utilise both high- and low-fidelity numerical models to simulate the underlying processes with the aims of
 complementing experimental studies and elucidating their physical mechanisms.
 The common ground at the bottom of these enquiries is that the processes all entail interactions of droplets in an ambient fluid or
@@ -88,11 +88,10 @@ which are perhaps best described by the following paragraph quoted from the KITP
 \medskip
 In partial response to the challenge, we numerically explore dense suspensions under different imposed flow conditions and geometric constraints.
 In particular, we study particles in the noncolloidal regime, and ask:
-(i) how to minimally characterise the microstructural evolution in an unsteady flow?
-Candidate answers include the (complex) suspension viscosity, particle diffusivity, suspension fabric, size distribution of local hydroclusters, structure factor, \etc \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}.
-(ii) Can qualitatively different global behaviours, such as a rate-dependent rheology vs.\ a rate-independent rheology,
-occur to the same suspension under different flow protocols? And
-(iii) how does the particle geometry affect the rheology and jamming of a suspension at fixed volume fractions?
+How to minimally characterise the microstructural evolution in an unsteady flow?
+How to relate the (complex) suspension viscosity -- a quantity that is routinely measured or calculated -- to other microscopic variables such as the particle diffusivity, suspension fabric or local density fluctuations \citep{Brady_Bossis1988, Sal03, Ness_Xing_Eiser_2017}?
+How sensitive is the dependence of suspension behaviour on the details of the deformation (\ie shear or extensional flow, steady or transient flow, etc.)?
+And how does the particle geometry affect the rheology and jamming of a suspension at fixed volume fractions?
 Solving these problems requires a numerical methodology that is accurate enough to test different physical hypotheses and
 efficient enough to generate data for a wide range of parameters.
 The implementation details of one such algorithm is documented in \emph{Paper 7}.
@@ -592,7 +591,10 @@ In simple shear flow, a possible constitutive relationship is suggested as $\eta
 When the suspension is non-dilute, normal stresses can deviate from each other as a result of the anisotropic microstructure or particle collision.
 This leads to the definitions of the first and second normal stress differences as above, where $x$, $y$, $z$ denote the flow, velocity-gradient, and negative vorticity directions, respectively.
 $N_1$ and $N_2$ are usually normalized by the modulus of the shear stress, $\abs{\bm{\Sigma}_{xy}}$, since they also diverge as $\phi \to \phi_J$.
-The exact relationship between $N_1$ or $N_2$ and $\phi$ have not been clearly found. The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is negative and large in magnitude due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
+The exact relationship between $N_1$ or $N_2$ and $\phi$ is unclear.
+The overall picture is that $N_1$ is mostly of hydrodynamic origin, while $N_2$ is negative%
+\footnote{Collision results in a negative normal stress because it is repulsive; the force is in the opposite direction to the position vector.}
+and large in magnitude (\ie $|N_2| \gtrapprox |N_1|$) due to particle collisions, which happen more frequently in the $xy$ plane \citep{guazzelli_pouliquen_2018}.
 See \cite{seto_giusteri_2018} for further discussions.
 
 \end{enumerate}
