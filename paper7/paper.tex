@@ -36,12 +36,12 @@
 %
 \papersummary%
 {% Insert summary of the paper here (used in introduction)
-   This report documents the implementation detail of a minimal hybrid lubrication/granular dynamics (HLGD) model
-   intended for simulation of dense particle suspensions in shear flows.
+   This report documents the implementation detail of a minimal hybrid lubrication/granular dynamics model
+   intended for simulation of dense (potentially nonspherical) particle suspensions in shear flows.
    The method is meshless, explicit and solves directly the particle dynamics in the overdamped limit
    by balancing conservative and dissipative interactions at the pair level.
-   Potential limitations include omissions of fluid/particle inertia and long-range hydrodynamic interactions.
-   The implementation has been tested for $200\sim 500$ particles under volume fractions from 40\% to 64\%,
+   Potential sources of inaccuracy include omissions of long-range hydrodynamic interactions and finite particle inertia due to numerical integration.
+   The implementation is tested for $200\sim 500$ particles under volume fractions from 40\% to 64\%,
    showing jamming transition, continuous and discontinuous shear thickening that are in excellent agreement with literature results.
 }%
 %
