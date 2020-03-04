@@ -21,7 +21,7 @@
 \usepackage{xcolor}
 \usepackage{multimedia} % For movies
 
-\input{pandoc_preamble.tex}
+\input{pandoc_preamble.tex}  % more macros and some settings
 \usepackage{lmodern}
 
 %\input{../../commands.tex}
@@ -78,7 +78,8 @@
 % }}
 
 % Renew caption template and remove word "Figure" from figure captions.
-\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+%\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamertemplate{caption}[numbered]
 
 %Additional line so that the math environment looks like standard LaTeX. If
 %anything ''fishy'' starts to happen just remove the line bellow...
@@ -88,6 +89,14 @@
 \setbeameroption{hide notes} % Only slides
 %\setbeameroption{show only notes} % Only notes
 % \setbeameroption{show notes on second screen=right} % Both
+
+
+%% some new commands
+\newcommand{\xb}[1]{\textcolor{bb}{#1}}
+\newcommand{\xo}[1]{\textcolor{olive}{#1}}
+\newcommand{\xr}[1]{\textcolor{us}{#1}}
+\newcommand{\xv}[1]{\textcolor{violet}{#1}}
+\newcommand\etal{\mbox{\textit{et al.}\enspace}}
 
 
 %------------------------------------------------------------------------------

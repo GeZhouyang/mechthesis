@@ -1,3 +1,8 @@
+%% KTH beamer theme inherited from Ashwin.
+%% Originally probably Jacopo and Nicolo.
+%% Anthony Ge.
+%% Today: 2020-03-04.
+
 \ProvidesPackage{beamerthemeKTH}[2016/06/21]
 \mode<presentation>
 
@@ -46,7 +51,7 @@
 %
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]%
-\setbeamersize{text margin left=4mm,text margin right=4mm}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
 
 \pgfdeclareimage[height=12mm]{kthlogo}{kthgraphics/KTH-logo}
 
@@ -91,7 +96,7 @@
   \begin{frame}[plain,label=title-frame]%
       \usebeamertemplate*{title page}%
   \end{frame}%
-  \addtocounter{framenumber}{-3}%
+  \addtocounter{framenumber}{-3}% because now there are 3 pages before the first actual slide
   % \setcounter{framenumber}{0}%
   \centeredlogosfalse \dateinfootlinefalse%
 }
@@ -128,6 +133,32 @@
 % }
 % \makeatother
 %
+%% move frame title to the specificied relative position
+\makeatletter
+\setbeamertemplate{frametitle}{
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+    \hspace*{1mm} %%% relative displacement to the left
+    \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip.25ex%  %%% relative displacement to the top
+        \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+            \else%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+            \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+\makeatother
+
+
 \defbeamertemplate*{title page}{KTH}[1][]%
 {%
 	\begin{tikzpicture}[remember picture, overlay]%

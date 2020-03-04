@@ -3,6 +3,7 @@
 
   \frametitle{But what are \textit{droplets}?}
 
+  \bigskip \bigskip
   \begin{columns}[T]
     %\begin{column}{0.01\textwidth} \end{column}
     
@@ -15,17 +16,18 @@
 
     \begin{column}{0.45\textwidth}
       \movie[showcontrols]{\includegraphics[height=4.8cm]{imgs/St_Feynman.png}}
-            {videos/droplet_Feynman.mp4}
+            {videos/droplet-Feynman.mp4}
       \vskip.3cm
       BBC interview of Richard Feynman (1983).%
       \footnote<.->[frame]{Source: \texttt{https://youtu.be/P1ww1IXRfTA}.}
+      
+      \pause
+      \vskip.4cm
+      %\centering
+      \textcolor{bb}{\bf Let's have some fun!}
     \end{column}
   \end{columns}
 
-  \pause
-  \vskip.5cm
-  \centering
-  \textcolor{bb}{\bf Let's have some fun!}
   
 \end{frame}
 
@@ -46,16 +48,52 @@
 \begin{frame}
   \frametitle{Background, motivation and challenge}
 
-  Photonic crystals (PhC) are materials patterned with a periodicity in dielectric constant
+  \emph{Photonic crystals} (PhC) are materials patterned with a \xo{periodicity in dielectric constant}
   and show great potential for building sophisticated optical circuitry that can
-  route, filter, store or suppress optical signals
+  \xv{route, filter, store} or \xv{suppress} optical signals.
 
+  \bigskip
+  
+  \begin{figure}
+    \centering 
+    (a)
+    \includegraphics[height=4.8cm]{imgs/photonic_crystal_fibre.png} 
+    (b)
+    \includegraphics[height=4.8cm]{../imgs/photonics_cover.jpg} 
+    \caption{
+      (a) A scanning electron micrograph of a solid-core photonic crystal fibre and its far-field optical pattern.%
+      \footnote{P. Russell, Science 2003: 358-362.}
+      \textcopyright \enspace AAAS Science.
+      (b) Cover photo of the January 2008 issue of Nature Photonics,
+      showing an artistic rendering of a light beam passing through a 3D photonic crystal.
+      \textcopyright \enspace Springer Nature.}
+    \label{fig:photonic-flow}
+  \end{figure}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Background, motivation and challenge}
+
+  Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps is challenging in practice.
+  \bigskip
+  
   \begin{figure}
     \centering
-    \includegraphics[height=4.73cm]{imgs/photonics_cover.jpg}
-  \caption{(left) Cover photo of the January 2008 issue of Nature Photonics, showing an artistic rendering of a light beam passing through a 3D photonic crystal. \textcopyright \enspace Springer Nature. (right) Self-assembly of two to four droplets in a microfluidic chip; scale bars, 100 $\mu$m. Images courtesy of Dr.\ Bingqing Shen.}
-  \label{fig:photonic-flow}
-\end{figure}
+    (a)
+    \includegraphics[height=4.8cm]{imgs/diamond-111.png}
+    (b)
+    \includegraphics[height=4.8cm]{imgs/patchy_colloid.png}
+    \caption{(a) A diamond cubic (view angle 111).
+      (b) Self-assembly of micron-sized patchy particles, using single-stranded DNAs as selective ``glues'' to bind to nearby colloids.%
+      \footnote{Y. Wang \etal Nature 491, 51–55 (2012).}
+      The directional bindings mimic the arrangements of bonds around atoms,
+      and the obtained cluster may serve as basic \xb{building blocks} for more complex structures.
+      However, the process relies on \xo{Brownian motion} to bring complementary partilces into their range of attraction.
+      Therefore, even if they can self-assemble into a diamond lattice, the rate of production will be \xr{too slow} to meet practical needs.
+      \textcopyright \enspace Springer Nature.}
+    \label{fig:diamond-struct}
+  \end{figure}
 
 \end{frame}
 
@@ -63,46 +101,94 @@
 \hypertarget{experiment}{%
   \subsection{Experiments, strategy and questions}}
 
+\begin{frame}
+  \frametitle{Experiments, strategy and questions}
+
+  Six years ago, a series of experiments performed at ESPCI, Paris suggested an alternative approach...
+
+  \bigskip
+  
+  \begin{figure}
+    \centering 
+    (a)
+    \movie[showcontrols]{\includegraphics[height=4.2cm]{../imgs/flow-assist1.png}}
+          {videos/espci-3drops.mp4}
+    (b)
+    \includegraphics[height=4.2cm]{imgs/espci-cluster-morph.png}
+    \caption{
+      (a) Self-assembly of two to four droplets in a \xo{microfluidic} chip; scale bars, 100 $\mu$m.
+      (b) Observed cluster morphologies mapped on a $C-N$ diagram,
+      where $C$ represents the number of droplet-droplet contacts and $N$ is the number of droplets per cluster.%
+      \footnote{B. Shen \etal Adv. Sci., 3: 1600012. 2016.}
+      Scale bar is 5 $\mu$m.
+      Images courtesy of Dr.\ Bingqing Shen.}
+  \end{figure}
+  
+  \pause
+  \xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \\
+  \pause
+  \xr{\bf The questions are, why do they organize into such patterns? What is the hydrodynamic mechanism? Can we further optimize it?}
+  
+\end{frame}
+
+
+
+
+
+%%
 \hypertarget{dipolar}{%
   \subsection{Simple physical models (q2D)}}
 
+%%
 \hypertarget{simulation1}{%
   \subsection{3D numerical simulations}}
 
+%%
 \hypertarget{ibm}{%
   \subsubsection{NS/IBM}}
 
+%%
 \hypertarget{icls}{%
   \subsubsection{ICLS/GFM}}
 
+%%
 \hypertarget{assembly}{%
   \subsection{Flow-assisted assembly}}
 
+%%
 \hypertarget{conclusion1}{%
   \subsection{Conclusions}}
 
 
+%%
 \hypertarget{part2}{%
   \section{Part II: Modelling Dense Suspensions (DS)}}
 
+%%
 \hypertarget{background2}{%
   \subsection{Soft matter and rheology}}
 
+%%
 \hypertarget{simulation2}{%
   \subsection{Numerical modelling}}
 
+%%
 \hypertarget{sd}{%
   \subsubsection{SD}}
 
+%%
 \hypertarget{hlgd}{%
   \subsubsection{HLGD}}
 
+%%
 \hypertarget{conclusion2}{%
   \subsection{Outlook}}
 
+%%
 \hypertarget{summary}{%
   \section{Summary}}
 
+%%
 \hypertarget{acknowledgements}{%
   \section{Acknowledgements}}
 
