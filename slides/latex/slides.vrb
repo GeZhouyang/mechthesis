@@ -1,0 +1,9 @@
+\frametitle{Performance of \texttt {fluidsim}\footnote <.->[frame]{\citet {fluidsim}}: scaling}
+\protect\hypertarget{performance-of-fluidsim-scaling}{}
+\begin{figure}
+\centering
+\includegraphics[width=1.3\textwidth,height=\textheight]{../paper_02_fluidsim/tmp/fig_bench_strong3d.pdf}
+\caption{Strong scaling for \texttt{fluidsim.solvers.ns3d.solver} using
+{\color{MidnightBlue}{FFTW-MPI}} and {\color{BurntOrange}{P3DFFT}} via
+\texttt{fluidfft}}
+\end{figure}

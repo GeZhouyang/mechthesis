@@ -1,0 +1,190 @@
+%------------------------------------------------------------------------------
+%                                PREAMBLE
+%------------------------------------------------------------------------------
+\documentclass[usenames,dvipsnames,svgnames,9pt,aspectratio=1610]{beamer}
+%
+% This theme uses TIKZ: compile twice with PDFLaTeX or LuaLaTeX.
+%
+%  Options:
+%  - [clean]:    clean slides, i.e. logos and footbar are removed
+%  - [kth]:      footbar style inspierd to the official KTH template
+%  - [nicewave]: a different style of wave is used (not approved by FLOW)
+%
+\usetheme{KTH}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{hyperref,graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfpages} % For making side notes.
+\usepackage{xcolor}
+\usepackage{multimedia} % For movies
+
+\input{pandoc_preamble.tex}
+\usepackage{lmodern}
+
+%\input{../../commands.tex}
+
+\usepackage{csquotes} % Recommended for biblatex
+%\usepackage[style=authoryear,unique,natbib=true,uniquename=allinit]{biblatex}
+%\bibliography{../../thesis}
+
+\definecolor{bb}{RGB}{30,86,183}   %blue0
+\definecolor{ss}{RGB}{48,127,192}  %blue1
+\definecolor{us}{RGB}{203,78,53}   %red
+
+% tcolorbox settings
+\tcbset{%
+    skin=enhanced,
+    size=title,
+    arc=1mm,
+}
+\newenvironment{bluecolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=blue!5,%
+        colframe=ultramarine!110!white,%
+        title=#1%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{redcolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=red!5!white,
+        colframe=red!75!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{greencolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=green!5!white,
+        colframe=green!65!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+% color commands
+% \def \redalert#1#2{\alt<#1>{\colorbox{red}{#2}}{#2}}
+% \newcommand<>{\redalert}[1]{{\color#2{purple}#1}}
+% \newcommand<>{\redalert}[1]{{%
+%   \alt#2{\colorbox{red}{#1}}{#1}
+% }}
+
+% Renew caption template and remove word "Figure" from figure captions.
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+%Additional line so that the math environment looks like standard LaTeX. If
+%anything ''fishy'' starts to happen just remove the line bellow...
+\usefonttheme{professionalfonts}
+
+% Compile .pdf with or without side notes.
+\setbeameroption{hide notes} % Only slides
+%\setbeameroption{show only notes} % Only notes
+% \setbeameroption{show notes on second screen=right} % Both
+
+
+%------------------------------------------------------------------------------
+%                                TITLE PAGE
+%------------------------------------------------------------------------------
+
+\title[On Droplet Interactions and Suspension Flow] % Short title used in footline
+{%
+  On Droplet Interactions and Suspension Flow%
+	% Long title
+}
+
+\author[Zhouyang Ge] % Presenting author in short form used in footline
+{%
+  \vskip1cm Zhouyang Ge
+}
+% - Give the names in the same order as the appear in the paper.
+% - Underline the presenting author.
+
+\institute[KTH]
+{%
+  Department of Engineering Mechanics,\\
+  KTH Royal Institute of Technology, Stockholm, Sweden
+}
+% Keep it simple, no one is interested in your street address.
+
+% University logo(s):
+% Top logo
+%\logot{\includegraphics[width=.105\paperwidth]{./imgs/KTH-logo.pdf}}
+% Bottom logo
+%\logob{\includegraphics[width=.105\paperwidth]{./imgs/Flow-logo.pdf}}
+% Corner logo in headers (optional)
+%\logoc{{\includegraphics[width=.105\paperwidth]{./imgs/bolin.jpg}}}
+% Corner logo
+%      {%\includegraphics[width=.105\paperwidth]{PoliMi-logo}}
+%
+% Cover image: \cvrimg{x position}{y position}{cover image}
+%\cvrimg{.77}{.75}{%\includegraphics[width=.4\paperwidth]{cover-image}}
+
+\date[unused]
+{%
+  Dissertation, 27 March 2020
+}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+% Graphics path relative to markdown file
+\graphicspath{{../}}
+
+% Uncomment this if you want the table of contents to pop up at the
+% beginning of each section (you can do the same with subsections):
+\AtBeginSubsection[]
+{%
+  % Do not increment frame number and hide it in the footline
+  % \begin{frame}<beamer>[noframenumbering,plain]{Outline}
+
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+\AtBeginSection[]
+{%
+  % Do not increment frame number
+  \begin{frame}<beamer>[noframenumbering]{Outline}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+% \beamerdefaultoverlayspecification{<+->}
+
+% If you wish to compile only part of the presentation, uncomment the
+% following and specify here the labels of the frames you wish to
+% include specify. Labels should be specified in the beginning of each
+% frame as ``\begin{frame}[label=frame-name]{Frame title}''.
+% \includeonlyframes{title-frame}
+
+\begin{document} % \titleframe % Print the title as the first slide
+
+\normalpage
+
+\input{preface.tex}
+
+\startpage
+
+\normalpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------
+%                           PRESENTATION SLIDES
+%------------------------------------------------------------------------------
+
+\input{frames.tex}
+
+\thankspage
+
+\end{document}
