@@ -1,4 +1,8 @@
 \beamer@slide {title-frame<1>}{3}
 \beamer@slide {title-frame}{3}
-\beamer@slide {fig:photonic-flow}{9}
-\beamer@slide {fig:diamond-struct}{10}
+\beamer@slide {fig:photonic-flow}{10}
+\beamer@slide {fig:diamond-struct}{12}
+\beamer@slide {eq:Navier-Sotkes}{27}
+\beamer@slide {eq:div-free}{27}
+\beamer@slide {eq:NS}{27}
+\beamer@slide {eq:stress-bc}{27}

@@ -14,6 +14,12 @@
 
 \usepackage{tikz}
 \usepackage{amsmath}
+
+\usepackage{amsbsy}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{bm}
+
 \usepackage{hyperref,graphicx}
 \usepackage[most]{tcolorbox}
 \usepackage[utf8]{inputenc}
@@ -32,6 +38,7 @@
 
 \definecolor{bb}{RGB}{30,86,183}   %blue0
 \definecolor{ss}{RGB}{48,127,192}  %blue1
+\definecolor{dg}{RGB}{0,100,0}  %dark green
 \definecolor{us}{RGB}{203,78,53}   %red
 
 % tcolorbox settings
@@ -44,7 +51,7 @@
 \begin{altenv}{%
     \begin{tcolorbox}[%
         colback=blue!5,%
-        colframe=ultramarine!110!white,%
+        colframe=bb!110!white,%
         title=#1%
     ]
 }{\end{tcolorbox}}{}{}}{%
@@ -65,6 +72,16 @@
     \begin{tcolorbox}[%
         colback=green!5!white,
         colframe=green!65!black,
+        title={#1}%
+    ]
+}{\end{tcolorbox}}{}{}}{%
+\end{altenv}}
+
+\newenvironment{olivecolorbox}[1][ ]{%
+\begin{altenv}{%
+    \begin{tcolorbox}[%
+        colback=olive!5!white,
+        colframe=olive!65!black,
         title={#1}%
     ]
 }{\end{tcolorbox}}{}{}}{%
@@ -93,10 +110,12 @@
 
 %% some new commands
 \newcommand{\xb}[1]{\textcolor{bb}{#1}}
+\newcommand{\xg}[1]{\textcolor{dg}{#1}}
 \newcommand{\xo}[1]{\textcolor{olive}{#1}}
 \newcommand{\xr}[1]{\textcolor{us}{#1}}
 \newcommand{\xv}[1]{\textcolor{violet}{#1}}
 \newcommand\etal{\mbox{\textit{et al.}\enspace}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
 
 %------------------------------------------------------------------------------

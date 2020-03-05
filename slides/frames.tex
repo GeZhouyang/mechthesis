@@ -7,13 +7,14 @@
   \begin{columns}[T]
     %\begin{column}{0.01\textwidth} \end{column}
     
-    \begin{column}{0.32\textwidth}
-      \includegraphics[height=4.8cm]{imgs/droplet_martin-brechtl-unsplash.jpg}
+    \begin{column}{0.38\textwidth}
+      \includegraphics[height=4.8cm]{imgs/droplet_martin-brechtl-unsplash.png}
       \vskip.3cm
-      Droplets are micron to millemetre sized liquid balls.%
+      Droplets are micron to millemetre sized liquid balls formed under surface tension.%
       \footnote<.->[frame]{Photo by Martin Brechtl on Unsplash.}
     \end{column}
 
+    \pause
     \begin{column}{0.45\textwidth}
       \movie[showcontrols]{\includegraphics[height=4.8cm]{imgs/St_Feynman.png}}
             {videos/droplet-Feynman.mp4}
@@ -48,12 +49,12 @@
 \begin{frame}
   \frametitle{Background, motivation and challenge}
 
-  \emph{Photonic crystals} (PhC) are materials patterned with a \xo{periodicity in dielectric constant}
+  \emph{Photonic crystals} (PhC) are materials patterned with a \xg{periodicity in dielectric constant}
   and show great potential for building sophisticated optical circuitry that can
-  \xv{route, filter, store} or \xv{suppress} optical signals.
+  \xo{route, filter, store} or \xo{suppress} optical signals.
 
   \bigskip
-  
+  \pause
   \begin{figure}
     \centering 
     (a)
@@ -77,7 +78,7 @@
 
   Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps is challenging in practice.
   \bigskip
-  
+  \pause
   \begin{figure}
     \centering
     (a)
@@ -88,7 +89,7 @@
       (b) Self-assembly of micron-sized patchy particles, using single-stranded DNAs as selective ``glues'' to bind to nearby colloids.%
       \footnote{Y. Wang \etal Nature 491, 51–55 (2012).}
       The directional bindings mimic the arrangements of bonds around atoms,
-      and the obtained cluster may serve as basic \xb{building blocks} for more complex structures.
+      and the obtained cluster may serve as basic \xg{building blocks} for more complex structures.
       However, the process relies on \xo{Brownian motion} to bring complementary partilces into their range of attraction.
       Therefore, even if they can self-assemble into a diamond lattice, the rate of production will be \xr{too slow} to meet practical needs.
       \textcopyright \enspace Springer Nature.}
@@ -107,7 +108,7 @@
   Six years ago, a series of experiments performed at ESPCI, Paris suggested an alternative approach...
 
   \bigskip
-  
+  \pause
   \begin{figure}
     \centering 
     (a)
@@ -116,7 +117,7 @@
     (b)
     \includegraphics[height=4.2cm]{imgs/espci-cluster-morph.png}
     \caption{
-      (a) Self-assembly of two to four droplets in a \xo{microfluidic} chip; scale bars, 100 $\mu$m.
+      (a) Self-assembly of two to four droplets in a \xg{microfluidic} chip; scale bars, 100 $\mu$m.
       (b) Observed cluster morphologies mapped on a $C-N$ diagram,
       where $C$ represents the number of droplet-droplet contacts and $N$ is the number of droplets per cluster.%
       \footnote{B. Shen \etal Adv. Sci., 3: 1600012. 2016.}
@@ -131,25 +132,160 @@
   
 \end{frame}
 
-
-
-
-
 %%
 \hypertarget{dipolar}{%
-  \subsection{Simple physical models (q2D)}}
+  \subsection{A simple q2D dipolar model}}
+
+\begin{frame}
+  \frametitle{A simple q2D dipolar model}
+
+  Noticing the strong geometric confinement of the microfluidic channel, physicists at ESPCI proposed the following \emph{dipolar model}.
+
+  \begin{columns}[T]
+    
+    \begin{column}{0.45\textwidth}
+      \centering
+      \only<1,2,3,5,6>{\includegraphics[height=4cm]{imgs/espci-chip-cartoon.png}}
+      \only<1,2,3>{\vskip.3cm \includegraphics[height=1.8cm]{imgs/espci-pancake.png}}
+      \only<4>{\vskip.5cm \includegraphics[height=6cm]{../imgs/dipolar.pdf}}
+      \only<5,6>{\includegraphics[height=2.8cm]{imgs/espci-dipolar-cartoon.png} \\}
+      \only<6>{\xr{\bf Is this picture really correct?}}
+    \end{column}
+
+    \pause
+
+    \begin{column}{0.45\textwidth}
+      
+      \begin{bluecolorbox}[Obersvations \& hypotheses]
+        \begin{itemize}
+        \item Droplets are in quasi-two-dimensional (q2D) space.
+        \item Depletion force attracts nearby drops.
+        \item Hydrodynamic interactions (HI) lead to the rearrangement dynamics.
+        \end{itemize}
+      \end{bluecolorbox}
+
+      \vskip.3cm
+      \pause
+      \begin{bluecolorbox}[Equations of motion (due to HI)]
+        \begin{equation} \notag
+          \begin{aligned}
+            & {\bm u}^\infty(x,y,z) \approx -\frac{z(H-z)}{2\mu} \nabla p(x,y), \\
+            & \delta{\bm u}_{ij} = {\bm B}_{ij} {\bm F}_j, \quad {\bm U}_i = {\bm u}^\infty_i + \sum_{j \ne i} \delta{\bm u}_{ij},
+          \end{aligned}
+        \end{equation}
+        where
+        \begin{equation} \notag
+          \begin{aligned}
+            {\bm B}({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -
+            \frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg).
+          \end{aligned}
+        \end{equation}
+      \end{bluecolorbox}
+    \end{column}
+
+  \end{columns}
+    
+\end{frame}
 
 %%
 \hypertarget{simulation1}{%
   \subsection{3D numerical simulations}}
 
-%%
-\hypertarget{ibm}{%
-  \subsubsection{NS/IBM}}
+\begin{frame}
+  \frametitle{3D numerical simulations}
+
+  To verify the model and potentially optimize the chip design, we set up direct numerical simulations (DNS) of droplets in microchannels.
+  \vskip0.3cm
+
+  \pause
+  \begin{columns}[T]
+
+    \begin{column}{0.55\textwidth}
+      \begin{bluecolorbox}[Mathematical formulations]
+        The incompressible Navier-Stokes (NS) equations read,
+        \begin{subequations} \label{eq:Navier-Sotkes}
+          \begin{equation}
+            \nabla \cdot {\bm u} = 0,
+            \label{eq:div-free}
+          \end{equation}
+          \begin{equation}
+            \rho \bigg(\frac{\partial {\bm u}}{\partial t} + {\bm u} \cdot \nabla {\bm u} \bigg) = \nabla \cdot {\bm \sigma} + {\bm f},
+            \label{eq:NS}
+          \end{equation}
+        \end{subequations}
+        where $\bm \sigma$ is the viscous stress tensor, given as
+        \begin{equation}
+          \begin{aligned}
+            {\bm \sigma} = -p {\bm I}+ \mu \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg),
+          \end{aligned}
+        \end{equation}
+        and is subject to the following boundary condition across the interface
+        \begin{equation} \label{eq:stress-bc}
+          ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma,
+        \end{equation}
+      \end{bluecolorbox}
+    \end{column}
+
+    \pause
+    \begin{column}{0.4\textwidth}
+      \centering
+      \begin{bluecolorbox}[Non-dimensional numbers]
+        \begin{equation} \notag
+          \begin{aligned}
+            \textrm{Re} = \frac{\rho UL}{\mu}, \quad
+            \textrm{Ca} = \frac{\mu U}{\gamma}, \quad
+            \textrm{Fr} = \frac{U^2}{FL}.  
+          \end{aligned}
+        \end{equation}
+      \end{bluecolorbox}
+      \vskip0.2cm
+
+      \pause
+      \begin{flushleft}
+        In the experiments, %Re $\sim 10^{-2}$, Ca $\sim 10^{-5}$, Fr $\sim 10^{-5}$,
+        \begin{equation} \notag
+          \begin{aligned}
+            \textrm{Re} \sim 10^{-2}, \quad
+            \textrm{Ca} \sim 10^{-5}, \quad
+            \textrm{Fr} \sim 10^{-5}.  
+          \end{aligned}
+        \end{equation}
+        It means that inertial effects are negligible,
+        the droplets will remain mostly spherical,
+        and gravity matters.
+        \vskip0.4cm
+
+        \pause
+        In developing the numerical solver, no such assumptions are made.
+      \end{flushleft}
+    \end{column}
+    
+  \end{columns}
+  
+\end{frame}
 
 %%
 \hypertarget{icls}{%
   \subsubsection{ICLS/GFM}}
+
+\begin{frame}
+  \frametitle{ICLS/GFM}
+
+  \begin{bluecolorbox}[Hypotheses for cascade directions]  
+  \begin{itemize}
+  \item
+    In Batchelor we believe.
+  \item
+    Yes we still do.
+  \end{itemize}  
+  \end{bluecolorbox}  
+
+\end{frame}
+
+%%
+\hypertarget{ibm}{%
+  \subsubsection{NS/IBM}}
+
 
 %%
 \hypertarget{assembly}{%
@@ -206,7 +342,14 @@
 \begin{frame}
   \frametitle{}
 
-  In Batchelor we believe.
+  \begin{bluecolorbox}[Hypotheses for cascade directions]  
+  \begin{itemize}
+  \item
+    In Batchelor we believe.
+  \item
+    Yes we still do.
+  \end{itemize}  
+  \end{bluecolorbox}  
 
 \end{frame}
 
