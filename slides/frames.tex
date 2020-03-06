@@ -247,7 +247,7 @@
         \end{equation}
         and is subject to the following boundary condition across the interface
         \begin{equation} \label{eq:stress-bc}
-          ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma,
+          ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma.
         \end{equation}
       \end{bluecolorbox}
     \end{column}
@@ -293,24 +293,211 @@
 %%
 \hypertarget{icls}{%
   \subsubsection{ICLS/GFM}}
+%%1
+\begin{frame}[t]
+  \frametitle{Interface-resolved one-fluid methods}
 
-\begin{frame}
-  \frametitle{ICLS/GFM}
+  \begin{columns}[T]
 
-  \begin{bluecolorbox}[Hypotheses for cascade directions]  
-  \begin{itemize}
-  \item
-    In Batchelor we believe.
-  \item
-    Yes we still do.
-  \end{itemize}  
-  \end{bluecolorbox}  
+    \begin{column}{0.45\textwidth}
+      \vskip0.2cm
+      \only<1-4>{
+      There are numerous methods for direct simulation of droplets in fluids, such as
+      \medskip
+      \begin{itemize}
+      \item the front-tracking methods
+      \item the volume-of-fluid methods    
+      \item the level set (LS) methods
+      \item the phase field methods
+      \item the lattice-Boltzmann methods
+      \item the boundary integral methods
+      \item ...
+      \end{itemize}
+      } % end only
+      \medskip
+      \only<2-4>{We use {\bf LS} for its simplicity and mathematical convenience.}
+
+      \medskip
+      \only<4>{However, there is an \xr{issue}...}
+      \only<5->{\movie[showcontrols,poster,width=6cm,height=6.5cm]{}{videos/serpentine.mp4} \vskip0.2cm}
+      \only<6->{\hskip1.2cm \xr{\bf LS is not mass-conserving.}}
+      
+    \end{column}
+
+    
+    \begin{column}{0.5\textwidth}
+      \only<3->{
+      \begin{bluecolorbox}[Classical LS formulation]
+
+        The level set function, $\phi$, is classically defined as the signed distance to the interface $\Gamma$,
+        \begin{equation} 
+          \phi({\bm x},t) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|.
+        \end{equation}
+        For example, a sphere of radius r centered at origin can be represented as
+        \begin{equation} \notag
+          \Gamma = \{ {\bm x} ~ \rvert ~ \phi({\bm x},t) = 0 \},
+        \end{equation}
+        where
+        \begin{equation} \notag
+          \phi({\bm x},t) = |{\bm x}|^2 -r.
+        \end{equation}
+        The normal and the curvature of the interface can be readily calculated as
+        \begin{equation}
+          {\bm n} = \nabla \phi / \abs{ \nabla \phi }, \quad \kappa = \nabla \cdot {\bm n}.
+        \end{equation}
+        The interface motion is governed by
+        \begin{equation} \label{eq:ls-avd}
+          \frac{\partial \phi}{\partial t} + \bm{u} \cdot \nabla \phi = 0.
+        \end{equation}
+        
+      \end{bluecolorbox}
+      } %end only
+    \end{column}
+    
+  \end{columns}
 
 \end{frame}
+%%2
+\begin{frame}[t]
+  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+  
+  \begin{columns}[T]
 
-%%
-\hypertarget{ibm}{%
-  \subsubsection{NS/IBM}}
+    \begin{column}{0.45\textwidth}
+      \vskip0.2cm
+      \only<1->{
+      To remedy the problem, we developed a simple mass-correction scheme.%
+      \footnote<.->[frame]{Z. Ge \etal J. Comput. Phys. 353: 435-459. (2018)}
+      } % end only
+      \vskip0.2cm
+      \only<2->{
+      The key idea is to construct a correction-velocity, ${\bm u}_c$,
+      such that the total volume is controlled by doing an additional advection.
+      \vskip0.2cm} % end only
+      \only<4>{\centering{\includegraphics[width=0.75\textwidth]{../paper1/Figures/mc.pdf}}} % end only
+    \end{column}
+
+    
+    \begin{column}{0.5\textwidth}
+      \only<3->{
+      \begin{bluecolorbox}[ICLS formulation]
+
+        The level set is defined and evolved in the same way as in the classical formulation,
+        except that we also periodically examine the fluid mass loss.
+        This allows us to define ${\bm u}_c$ as
+        \begin{equation} \notag
+          \int_\Gamma {\bm n} \cdot {\bm u}_c \,d\Gamma = \frac{\delta V}{\delta t},
+        \end{equation}
+        where $-\delta V/\delta t$ corresponds to the mass loss over an arbitrary period of time.
+        If ${\bm u}_c$ is known, then solving
+        \begin{equation}
+          \frac{\partial \phi}{\partial t} + {\bm u}_c \cdot \nabla \phi = 0,
+        \end{equation}
+        will remove the mass loss accumulated over $\delta t$.
+
+        It can be shown that
+        \begin{equation}
+          {\bm u}_c(\phi) = \frac{\delta V}{\delta t} \frac{\kappa(\phi)}{A_f} \delta_\epsilon (\phi),
+        \end{equation}
+        where $A_f = \int_\Gamma f_s \delta_\epsilon (\phi)|\nabla \phi| \,d\Gamma$.
+        
+      \end{bluecolorbox}
+      } %end only
+    \end{column}
+    
+  \end{columns}
+
+\end{frame}
+%%3
+\begin{frame}[noframenumbering]
+  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+
+  \centering
+  \includegraphics[width=0.8\textwidth]{../paper1/Figures/serp_loss.pdf}
+  \vskip0.3cm
+  \xb{\bf A global mass conservation is now achieved.}
+
+\end{frame}
+%%4
+\begin{frame}[noframenumbering]
+  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+
+  \begin{columns}
+    
+    \begin{column}{0.7\textwidth}
+      \vskip0.3cm
+      \begin{algorithm}[H] \notag
+        \ccc{\footnotesize //time marching} \\
+        \For{$n=1,2,\dots,N$}{
+          
+          \ccc{\footnotesize //level set advection} \\
+          $\phi^1 = \phi^{(n)} + \Delta t \cdot {AD}(\phi^{(n)})$ \\
+          $\phi^2 = \frac{3}{4} \phi^{(n)} + \frac{1}{4} \phi^1 + \frac{1}{4} \Delta t \cdot {AD}(\phi^1)$ \\
+          $\phi^{(n+1)} = \frac{1}{3} \phi^{(n)} + \frac{2}{3} \phi^2 + \frac{2}{3} \Delta t \cdot {AD}(\phi^2)$ \\
+              {\small Calculate $\rho^{(n+1)}$, $\mu^{(n+1)}$, $\bm{n}$, and $\kappa$ using $\phi^{(n+1)}$ } \\
+
+              \ccc{\footnotesize //correct and reinitialize the level set every $N_i$ steps} \\
+              \If{$n \mod N_i =0$}{
+                {\small Mass-correction: advect with ${AD}(\phi) = (\delta V/\delta t) (\kappa \delta(\phi)/A_f)$} \\
+                {\small Reinitialization: advect with ${AD}(\phi) = S(\phi)(\abs{\nabla \phi} -1)$} \\
+              }
+              \ccc{\footnotesize //flow solver (AB2)} \\
+              ${\bf RU}^{(n)} = -{\bm u}^{(n)} \cdot \nabla {\bm u}^{(n)} +\frac{1}{Re}\big(\frac{1}{\rho^{(n+1)}} \nabla \cdot \big[\mu^{(n+1)}(\nabla {\bm u}^{(n)}+(\nabla {\bm u}^{(n)})^T)\big]\big)$ \\
+              ${\bm u}^* ={\bm u}^{(n)} +\Delta t \big(\frac{3}{2} {\bf RU}^{(n)}-\frac{1}{2} {\bf RU}^{(n-1)} \big)$ \\
+              $\nabla ^2 p^{(n+1)} = \nabla ^2_g [p]_\Gamma + \nabla \cdot \big[ \big(1-\frac{\rho_0}{\rho^{(n+1)}}) \nabla_g \hat{p} \big] + \frac{\rho_0}{\Delta t} \nabla \cdot {\bm u}^*$ \ccc{\footnotesize //FastP*-GFM} \\
+              ${\bm u}^{(n+1)} = {\bm u}^* -\Delta t \big[\frac{1}{\rho_0} \nabla_g p^{(n+1)} + \big(\frac{1}{\rho^{(n+1)}} - \frac{1}{\rho_0}\big) \nabla_g \hat{p} \big]$ \ccc{\footnotesize //correction} \\
+              ${\bf RU}^{(n-1)}={\bf RU}^{(n)}$ \\
+        }
+        \caption{A pseudo-code of ICLS/GFM.}
+      \end{algorithm}
+    \end{column}
+    
+    \begin{column}{0.2\textwidth}
+      \pause
+      \vskip4cm
+      \centering
+      \includegraphics[width=2cm]{imgs/github.png}
+      \vskip0.1cm
+      Source available on GitHub (\texttt{ICLS-release}).
+    \end{column}
+    
+  \end{columns}
+
+\end{frame}
+%%5
+\begin{frame}[noframenumbering]
+  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+
+  \begin{columns}
+    
+    \begin{column}{0.8\textwidth}
+      
+      \begin{bluecolorbox}[Summary of the numerics]
+        \medskip
+        \begin{itemize}
+        \item The LS part is solved by standard techniques for hyperbolic partial differential equations. \medskip
+        \item The NS part is solved by a standard projection method. \medskip
+        \item The equations are solved on a staggered Cartesian grid using the finite volume method. \medskip
+        \item The temporal integration is the 2nd-order Adam-Bashforth scheme. \medskip
+        \item The pressure jump across an liquid interface is imposed by the ghost fluid method (GFM). \medskip
+        \item The depletion force between droplets are computed from a hydrodynamic model (not shown) under the GFM framework. \medskip
+        \end{itemize}
+      \end{bluecolorbox}
+       
+    \end{column}
+    
+  \end{columns}
+
+  \vskip0.5cm
+  \pause
+  \centering
+  \xb{\bf Now, we are ready to simulate the droplets.}
+  
+\end{frame}
+
+%%%
+%\hypertarget{ibm}{%
+%  \subsubsection{NS/IBM}}
 
 
 %%
@@ -320,7 +507,6 @@
 %%
 \hypertarget{conclusion1}{%
   \subsection{Conclusions}}
-
 
 %%
 \hypertarget{part2}{%
