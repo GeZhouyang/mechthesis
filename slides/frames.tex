@@ -153,7 +153,7 @@
   \pause
   \xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \vskip0.1cm
   \pause
-  \xr{\bf The questions are, why do they organize into such patterns? What is the hydrodynamic mechanism? Can we further optimize it?}
+  \xr{\bf The questions are, why do they organize into such patterns and can we further optimize it?}
   
 \end{frame}
 
@@ -227,7 +227,7 @@
   \begin{columns}[T]
 
     \begin{column}{0.55\textwidth}
-      \begin{bluecolorbox}[Mathematical formulations]
+      \begin{bluecolorbox}[Mathematical formulation]
         The incompressible Navier-Stokes (NS) equations read,
         \begin{subequations} \label{eq:Navier-Sotkes}
           \begin{equation}
@@ -422,10 +422,35 @@
 \begin{frame}[noframenumbering]
   \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
 
+  \begin{columns}[T]
+    
+    \begin{column}{\textwidth}
+      The flow solver also requires accurate computation of surface tension... \vskip0.2cm
+      and a hydrodynamic model to impose the depletion force ... \vskip0.2cm
+      \pause
+      These details are given in: \vskip0.5cm
+      \centering
+      \begin{tcolorbox}[beamer,
+          width=0.7\textwidth,
+          arc=0pt,
+          boxsep=1pt,
+          left=0pt,right=0pt,top=0pt,bottom=0pt,
+        ]
+        \includegraphics[width=\linewidth]{imgs/JCP-cover.png}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+
+\end{frame}  
+%%5
+\begin{frame}[noframenumbering]
+  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+  
   \begin{columns}
     
     \begin{column}{0.7\textwidth}
       \vskip0.3cm
+      \only<1->{
       \begin{algorithm}[H] \notag
         \ccc{\footnotesize //time marching} \\
         \For{$n=1,2,\dots,N$}{
@@ -450,17 +475,18 @@
         }
         \caption{A pseudo-code of ICLS/GFM.}
       \end{algorithm}
+      }%end only
     \end{column}
     
     \begin{column}{0.2\textwidth}
-      \pause
-      \vskip4cm
-      \centering
-      \includegraphics[width=2cm]{imgs/github.png}
-      \vskip0.1cm
-      Source available on GitHub (\texttt{ICLS-release}).
+      \only<2->{
+        \vskip5.5cm
+        \centering
+        \includegraphics[width=1.2cm]{imgs/github.png}
+        \vskip0.1cm
+        Available at \texttt{ICLS-release}
+      } %end only
     \end{column}
-    
   \end{columns}
 
 \end{frame}
@@ -470,7 +496,7 @@
 
   \begin{columns}
     
-    \begin{column}{0.8\textwidth}
+    \begin{column}{0.9\textwidth}
       
       \begin{bluecolorbox}[Summary of the numerics]
         \medskip
@@ -479,8 +505,9 @@
         \item The NS part is solved by a standard projection method. \medskip
         \item The equations are solved on a staggered Cartesian grid using the finite volume method. \medskip
         \item The temporal integration is the 2nd-order Adam-Bashforth scheme. \medskip
+        \item The pressure Poisson equation is solved using a Fast Fourier transform based solver. \medskip
         \item The pressure jump across an liquid interface is imposed by the ghost fluid method (GFM). \medskip
-        \item The depletion force between droplets are computed from a hydrodynamic model (not shown) under the GFM framework. \medskip
+        \item The depletion force between droplets is also computed under the GFM framework. \medskip
         \end{itemize}
       \end{bluecolorbox}
        
