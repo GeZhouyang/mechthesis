@@ -220,7 +220,7 @@
 \begin{frame}
   \frametitle{3D numerical simulations}
 
-  To verify the model and potentially optimize the chip design, we set up direct numerical simulations (DNS) of droplets in microchannels.
+  To verify the model and subsequently optimize the chip design, we set up direct numerical simulations (DNS) of droplets in microchannels.
   \vskip0.3cm
 
   \pause
@@ -498,14 +498,14 @@
     
     \begin{column}{0.9\textwidth}
       
-      \begin{bluecolorbox}[Summary of the numerics]
+      \begin{bluecolorbox}[Summary of numerics]
         \medskip
         \begin{itemize}
         \item The LS part is solved by standard techniques for hyperbolic partial differential equations. \medskip
         \item The NS part is solved by a standard projection method. \medskip
         \item The equations are solved on a staggered Cartesian grid using the finite volume method. \medskip
         \item The temporal integration is the 2nd-order Adam-Bashforth scheme. \medskip
-        \item The pressure Poisson equation is solved using a Fast Fourier transform based solver. \medskip
+        \item The pressure Poisson equation is solved using a fast Fourier transform based solver. \medskip
         \item The pressure jump across an liquid interface is imposed by the ghost fluid method (GFM). \medskip
         \item The depletion force between droplets is also computed under the GFM framework. \medskip
         \end{itemize}
@@ -530,6 +530,128 @@
 %%
 \hypertarget{assembly}{%
   \subsection{Flow-assisted assembly}}
+
+\begin{frame}[t]
+  \frametitle{Flow-assisted assembly}
+
+  \begin{columns}[T]
+    
+    \begin{column}{0.5\textwidth}      
+      \only<1->{In our microfluidic device, the droplet dynamics are affected by:
+      \vskip0.3cm
+      \begin{itemize}
+      \item near-field depletion force
+      \item shear
+      \item confinement
+      \item boundary condition
+      \end{itemize}
+      \vskip0.3cm} %end only
+      \only<2>{We examine these effects one-by-one as in the paper below.}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \only<1->{
+      \centering
+      \includegraphics[height=4cm]{imgs/espci-chip-cartoon.png}} %end only
+    \end{column}
+    
+  \end{columns}
+  
+  \only<2>{
+    \begin{tcolorbox}[beamer,
+        width=.6\textwidth,
+        arc=0pt,
+        boxsep=1pt,
+        left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ]
+      \includegraphics[width=\linewidth]{imgs/soft-mat.png}
+    \end{tcolorbox}
+  } %end only
+    
+\end{frame}
+
+%%1
+\begin{frame}[t]
+  \frametitle{Flow-assisted assembly: Approaching droplets in quiescent flows}
+
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      Dimensional analysis suggests the following scaling.  \vskip0.2cm
+      \begin{itemize}
+      \item The strength of the attraction $\propto \Pi=p_{os}/p$.
+      \item The approaching time $\propto T_\pi = r_s/(R\Pi)$.
+        \only<3->{\item The physical time scale, $\tau_\pi = r_s \mu /(R p_{os})$, is $\sim 1$ ns.%
+          \footnote<3->[frame]{Typical experimental values:
+            $r_s = 1$ nm, ${\mu} = 10^{-3}$ kg/m-s, ${R} = 10$ $\mu$m, and ${p}_{os} = 100$ Pa.}
+          }
+        \only<4->{\\ Therefore, the approaching can be considered instantaneous.}
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \includegraphics[width=\columnwidth]{../paper2/figs/depletion_flow.png}
+      \end{figure}
+
+    \end{column}
+    
+  \end{columns}
+
+  \vskip0.4cm
+  \only<2-3>{
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.75\textwidth]{../paper2/figs/min_dist4.pdf}
+      \begin{picture}(0,0)
+        \put(-210,48){\includegraphics[height=1.4cm]{../paper2/figs/2dp.png}}
+        \put(-55, 48){\includegraphics[height=1.4cm]{../paper2/figs/3dp.png}}
+      \end{picture}
+    \end{figure}
+  } %end only
+
+  \only<5>{
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.6\textwidth]{../paper2/figs/packings.png}
+    \end{figure}
+  } %end only
+
+  \only<6>{ \vskip0.6cm
+    \begin{columns}    
+      \begin{column}{0.7\textwidth}
+        \begin{bluecolorbox}[Characteristics of depletion force]
+          In summary, the depletion attraction
+          \medskip
+          \begin{itemize}
+          \item is local (activated at nearly touching);
+          \item acts in the radial direction; 
+          \item has a fast reaction time. 
+          \end{itemize}
+          \medskip
+          Consequently, the effect of depletion force on the cluster morphology is to preserve the initial positions in the absence of noise. 
+        \end{bluecolorbox}
+      \end{column}
+    \end{columns}
+  }
+    
+\end{frame}
+
+
+%%2
+\begin{frame}[t]
+  \frametitle{Flow-assisted assembly: Sticky droplets in shear-driven channel flows}
+
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+
+      %\movie[]{}
+      %      {videos/v3_simple_shear_cycle.ogv}
+            
+    \end{column}
+  \end{columns}
+  
+    
+\end{frame}
 
 %%
 \hypertarget{conclusion1}{%
