@@ -538,7 +538,7 @@
   \begin{columns}[T]
     
     \begin{column}{0.5\textwidth}      
-      \only<1->{In our microfluidic device, the droplet dynamics are affected by:
+      \only<1->{In our microfluidic device, the droplet dynamics are governed by:
       \vskip0.3cm
       \begin{itemize}
       \item near-field depletion force
@@ -559,14 +559,16 @@
   \end{columns}
   
   \only<2>{
-    \begin{tcolorbox}[beamer,
-        width=.6\textwidth,
-        arc=0pt,
-        boxsep=1pt,
-        left=0pt,right=0pt,top=0pt,bottom=0pt,
-      ]
-      \includegraphics[width=\linewidth]{imgs/soft-mat.png}
-    \end{tcolorbox}
+    \begin{textblock}{160}(12,54)
+      \begin{tcolorbox}[beamer,
+          width=.6\textwidth,
+          arc=0pt,
+          boxsep=1pt,
+          left=0pt,right=0pt,top=0pt,bottom=0pt,
+        ]
+        \includegraphics[width=\linewidth]{imgs/soft-mat.png}
+      \end{tcolorbox}
+    \end{textblock}
   } %end only
     
 \end{frame}
@@ -787,7 +789,7 @@
       } % end only
       \only<6>{
         \vskip1cm
-        \movie[showcontrols]{\includegraphics[width=\columnwidth]{../paper2/figs/non-uniform_inflow1.pdf}}
+        \movie[]{\includegraphics[width=\columnwidth]{../paper2/figs/non-uniform_inflow1.pdf}}
               {videos/movie-bird.ogv}
         \vskip0.3cm
         A very non-uniform inflow.
@@ -885,6 +887,52 @@
 %%
 \hypertarget{conclusion1}{%
   \subsection{Conclusions}}
+
+\begin{frame}[t]
+  \frametitle{Conclusions}
+ 
+  \begin{columns}[T]
+    
+    \begin{column}{0.6\textwidth}
+      \only<1->{
+      \begin{bluecolorbox}[Droplet interactions]
+        \begin{itemize}
+        \item The depletion force is short-range, radial and instantaneous.
+          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement.
+          
+        \item Confinement modifies the phase portrait of droplet trajectories.
+          Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.
+          
+        \item Dipolar interactions is weak in confined 3D geometries.
+          An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.
+
+        \item Overall, it is difficult to calibrate all 3D effects at play.
+        \end{itemize}
+      \end{bluecolorbox}
+      } % end only
+
+      \vskip0.4cm
+      \only<2->{
+      \begin{bluecolorbox}[Photonic material fabrication]
+        \begin{itemize}
+        \item The microfluidic-based approach is theoretically possible,%
+          \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}
+          but tricky in practice.
+        \item Current trend seems to be shifted from colloidal self-assembly to making new disordered structures.%
+          \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}
+        \end{itemize}
+      \end{bluecolorbox}
+      } % end only
+    \end{column}
+      
+    \begin{column}{0.4\textwidth}
+      \centering 
+      \includegraphics[width=.6\columnwidth]{../imgs/photonics_cover.jpg} \vskip0.4cm
+      \includegraphics[width=.9\columnwidth]{imgs/espci-delta.png}
+    \end{column}
+  \end{columns}
+  
+\end{frame}
 
 %%
 \hypertarget{part2}{%
