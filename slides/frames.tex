@@ -737,7 +737,7 @@
   \frametitle{Flow-assisted assembly: Droplet clusters in pressure-driven channel flows}
 
   Finally, we turn to pressure-driven channel flows. \vskip0.2cm
-  \only<2->{In the region far away from the inlet...} \vskip0.2cm
+  \only<2-5>{In the region far away from the inlet...} %\vskip0.2cm
   \only<6->{In the region close to the inlet...} \vskip0.2cm
   
   \begin{columns}
@@ -749,7 +749,7 @@
       \end{textblock}
       } %end only
       \only<8>{
-        \begin{bluecolorbox}[Effects of depletion force $+$ shear $+$ confinement $+$ boundary]
+        \begin{bluecolorbox}[Effects of all combined]
           \medskip
           \begin{itemize}
           \item Uniform flow favors chain-like structures. \medskip
@@ -890,46 +890,45 @@
 
 \begin{frame}[t]
   \frametitle{Conclusions}
- 
+
+  \vskip0.4cm
   \begin{columns}[T]
     
-    \begin{column}{0.6\textwidth}
-      \only<1->{
+    \begin{column}{0.95\textwidth}
       \begin{bluecolorbox}[Droplet interactions]
         \begin{itemize}
         \item The depletion force is short-range, radial and instantaneous.
-          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement.
+          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement. \medskip
           
         \item Confinement modifies the phase portrait of droplet trajectories.
-          Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.
+          Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.\medskip
           
         \item Dipolar interactions is weak in confined 3D geometries.
-          An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.
-
+          An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.\medskip
+          
         \item Overall, it is difficult to calibrate all 3D effects at play.
         \end{itemize}
       \end{bluecolorbox}
-      } % end only
 
       \vskip0.4cm
       \only<2->{
       \begin{bluecolorbox}[Photonic material fabrication]
         \begin{itemize}
-        \item The microfluidic-based approach is theoretically possible,%
-          \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}
-          but tricky in practice.
+        \item The microfluidic-based approach is theoretically possible, but tricky in practice.%
+          \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}\medskip
+
         \item Current trend seems to be shifted from colloidal self-assembly to making new disordered structures.%
-          \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}
+          \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}   
         \end{itemize}
       \end{bluecolorbox}
-      } % end only
+      } %end only
     \end{column}
       
-    \begin{column}{0.4\textwidth}
-      \centering 
-      \includegraphics[width=.6\columnwidth]{../imgs/photonics_cover.jpg} \vskip0.4cm
-      \includegraphics[width=.9\columnwidth]{imgs/espci-delta.png}
-    \end{column}
+    %\begin{column}{0.4\textwidth}
+    %  \centering 
+    %  \includegraphics[width=.6\columnwidth]{../imgs/photonics_cover.jpg} \vskip0.4cm
+    %  \includegraphics[width=.9\columnwidth]{imgs/espci-delta.png}
+    %\end{column}
   \end{columns}
   
 \end{frame}
@@ -942,17 +941,63 @@
 \hypertarget{background2}{%
   \subsection{Soft matter and rheology}}
 
+\begin{frame}[t]
+  \frametitle{Soft matter and rheology}
+
+  
+  \begin{columns}[T]
+    
+    \begin{column}{0.6\textwidth}
+      In his Nobel lecture (1991), de Gennes described two main features of \emph{soft matter}:
+      \begin{itemize}
+      \item complexity (he used the analogy of biology);
+      \item flexibility (he used the example of rubber).
+      \end{itemize}
+      \vskip0.2cm
+      \only<2->{Specifically, it includes cells, polymers, surfactants, liquid crystals, colloidal grains, {\it etc.}}
+      \vskip0.2cm
+      \only<3->{A better understanding of these systems \xb{in} and \xr{out of} equilibrium thus has many practical relevance.}
+      \vskip0.2cm
+      \only<4->{In particular, a currently active area is {\bf dense suspension},
+        where suspending particles occupy equal or more volume than the underlying fluid and
+        interact strongly via short-range lubrication or non-hydrodynamic forces.}
+      \vskip0.2cm
+      \only<5->{This is intimately related to \emph{rheology}, which studies the deformation and flow of matter (in the overdamped regime).}
+      \vskip0.2cm
+      \only<6->{There are rich phenomena in dense suspensions, such as \xb{shear thickening} or \xb{jamming}.}
+      \vskip0.2cm
+      \only<7->{Questions regarding how such rheological behaviours depend on microscopic interactions or particle/manifold geometries are still unanswered today.}
+    \end{column}
+
+    \begin{column}{0.3\textwidth}      
+      \vskip1cm
+      \begin{figure}
+        \centering
+        \only<1-3>{
+          \includegraphics[width=\columnwidth]{imgs/ecoli.jpg}
+          \caption{E. coli, a common baterium in the gut and a model organism in biological studies.}
+        } % end only
+        \only<4->{
+          \includegraphics[width=\columnwidth]{../paper7/figs/np2000_vol0.55.png}
+          \caption{Simulation snapshot of a bidisperse suspension of 2000 spheres at 55\% volume fraction.}
+        } % end only
+      \end{figure}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
 %%
 \hypertarget{simulation2}{%
   \subsection{Numerical modelling}}
 
 %%
-\hypertarget{sd}{%
-  \subsubsection{SD}}
-
-%%
 \hypertarget{hlgd}{%
   \subsubsection{HLGD}}
+
+%%
+\hypertarget{Cases}{%
+  \subsection{Case studies}}
 
 %%
 \hypertarget{conclusion2}{%
