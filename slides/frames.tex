@@ -305,12 +305,12 @@
       There are numerous methods for direct simulation of droplets in fluids, such as
       \medskip
       \begin{itemize}
-      \item the front-tracking methods
-      \item the volume-of-fluid methods    
-      \item the level set (LS) methods
-      \item the phase field methods
-      \item the lattice-Boltzmann methods
-      \item the boundary integral methods
+      \item front-tracking methods
+      \item volume-of-fluid methods    
+      \item level set (LS) methods
+      \item phase field methods
+      \item lattice-Boltzmann methods
+      \item boundary integral methods
       \item ...
       \end{itemize}
       } % end only
@@ -923,12 +923,7 @@
       \end{bluecolorbox}
       } %end only
     \end{column}
-      
-    %\begin{column}{0.4\textwidth}
-    %  \centering 
-    %  \includegraphics[width=.6\columnwidth]{../imgs/photonics_cover.jpg} \vskip0.4cm
-    %  \includegraphics[width=.9\columnwidth]{imgs/espci-delta.png}
-    %\end{column}
+    
   \end{columns}
   
 \end{frame}
@@ -943,43 +938,46 @@
 
 \begin{frame}[t]
   \frametitle{Soft matter and rheology}
-
   
   \begin{columns}[T]
     
-    \begin{column}{0.6\textwidth}
+    \begin{column}{0.65\textwidth}
       In his Nobel lecture (1991), de Gennes described two main features of \emph{soft matter}:
-      \begin{itemize}
-      \item complexity (he used the analogy of biology);
-      \item flexibility (he used the example of rubber).
-      \end{itemize}
+      \only<2->{
+        \begin{itemize}
+        \item complexity (he used the analogy of biology);
+          \only<3->{\item flexibility (he used the example of rubber).}
+        \end{itemize}
+      } %end only
       \vskip0.2cm
-      \only<2->{Specifically, it includes cells, polymers, surfactants, liquid crystals, colloidal grains, {\it etc.}}
+      \only<4->{Specifically, groups of cells, proteins, polymers, surfactants, colloidal grains, {\it etc.} are all examples of soft matter.}
       \vskip0.2cm
-      \only<3->{A better understanding of these systems \xb{in} and \xr{out of} equilibrium thus has many practical relevance.}
+      \only<5->{A better understanding of these systems \xb{in} and \xr{out of} equilibrium thus has many practical relevance.}
       \vskip0.2cm
-      \only<4->{In particular, a currently active area is {\bf dense suspension},
+      \only<6->{In particular, a currently active research area is {\bf dense suspension} (DS),
         where suspending particles occupy equal or more volume than the underlying fluid and
         interact strongly via short-range lubrication or non-hydrodynamic forces.}
       \vskip0.2cm
-      \only<5->{This is intimately related to \emph{rheology}, which studies the deformation and flow of matter (in the overdamped regime).}
+      \only<7->{This is intimately related to \emph{rheology}, the study of the deformation and flow of matter (in the overdamped regime).}
       \vskip0.2cm
-      \only<6->{There are rich phenomena in dense suspensions, such as \xb{shear thickening} or \xb{jamming}.}
+      \only<8->{There are rich phenomena in DS, such as {\it shear thickening} or {\it jamming}.}
       \vskip0.2cm
-      \only<7->{Questions regarding how such rheological behaviours depend on microscopic interactions or particle/manifold geometries are still unanswered today.}
+      \only<9->{Questions regarding how such rheological behaviours depend on \xb{microscopic interactions}
+        or \xb{particle/manifold geometries} are still not fully understood today.}
     \end{column}
 
-    \begin{column}{0.3\textwidth}      
-      \vskip1cm
+    \begin{column}{0.25\textwidth}      
+      %\vskip.5cm
       \begin{figure}
         \centering
-        \only<1-3>{
+        \only<2->{
           \includegraphics[width=\columnwidth]{imgs/ecoli.jpg}
-          \caption{E. coli, a common baterium in the gut and a model organism in biological studies.}
+          \caption{E. coli.}
         } % end only
-        \only<4->{
+        \vskip0.1cm
+        \only<6->{
           \includegraphics[width=\columnwidth]{../paper7/figs/np2000_vol0.55.png}
-          \caption{Simulation snapshot of a bidisperse suspension of 2000 spheres at 55\% volume fraction.}
+          \caption{$N=2000$, $\phi=55$\%.}
         } % end only
       \end{figure}
     \end{column}
@@ -991,9 +989,198 @@
 \hypertarget{simulation2}{%
   \subsection{Numerical modelling}}
 
+\begin{frame}[t]
+  \frametitle{Numerical modelling -- Why?}
+
+  \begin{textblock}{129}(5,14)
+  For DS far from equilibrium, there is no established analytical method to study the system behaviour bottom-up.
+  \vskip0.2cm
+  \only<2->{The difficulty is mainly mathematical (a case of the \xr{$N$-body problem}).}
+  \vskip0.2cm
+  \only<3->{On the other hand, solving a system of interacting particles is relatively straightforward in an \xb{algorithmic} perspective.}
+  \vskip0.2cm
+  \only<4->{That is, we can use computers to solve the $N$-body dynamics in a brute-force manner.}
+  \vskip0.2cm
+  \only<5->{Furthermore, in the DS context, numerical simulations have demonstrated a unique capability to%
+    \footnote<.->[frame]{E. Del Gado \& J. Morris. J. Rheol. 64, 223 (2020).} \vskip0.1cm
+    \only<6->{\begin{itemize}
+      \item provide insight into microscopic mechanisms;\vskip0.1cm
+      \only<7->{\item abstract the fundamental underpinnings of the rheological response;\vskip0.1cm}
+      \only<8->{\item help one to link experiments and theory in a consistent picture.}
+      \end{itemize}
+    } %end only
+  } %end only
+  \vskip0.2cm
+  \only<9->{\xb{\bf Therefore, we aim to develop and implement a numerical model to study DS.}}
+  \end{textblock}
+    
+\end{frame}
+
 %%
 \hypertarget{hlgd}{%
   \subsubsection{HLGD}}
+
+\begin{frame}[t]
+  \frametitle{Numerical modelling -- How?}
+
+  \begin{columns}[T]
+
+    \begin{column}{0.4\textwidth}
+      \vskip0.2cm
+      There are at least four classes of methods to simulate DS (in increasing efficiency):
+      \vskip0.2cm
+      \only<2->{
+        \begin{itemize}
+        \item Well-resolved NS solvers (meshing the entire space) \vskip0.2cm
+        \only<4->{\item Boundary integral methods (meshing the particle surface) \vskip0.2cm}
+        \only<5->{\item Stokesian dynamics (SD), solving (meshless)
+          \begin{equation} 
+            \begin{aligned} \notag
+              {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A.
+            \end{aligned}
+          \end{equation}
+          \vskip0.2cm
+        } % end only
+        \only<10->{\item Hybrid lubrication/granular dynamics (HLGD).}
+        \end{itemize}
+      } % end only
+
+      \vskip0.4cm
+      \only<11->{\xb{\bf We implemented a version of HLGD to study DS.}}
+    \end{column}
+    
+    \begin{column}{0.56\textwidth}
+      \only<2->{
+        \begin{bluecolorbox}[Mathematical formulation]
+          \only<2-3>{
+            The incompressible Navier-Stokes (NS) equations read,
+            \begin{subequations} 
+              \begin{equation}\tag{1a}
+                \nabla \cdot {\bm u} = 0,
+                \label{eq:div-free}
+              \end{equation}
+              \begin{equation} \tag{1b}
+                \rho \bigg(\frac{\partial {\bm u}}{\partial t} + {\bm u} \cdot \nabla {\bm u} \bigg) = \nabla \cdot {\bm \sigma} + {\bm f},
+                \label{eq:NS}
+              \end{equation}
+            \end{subequations}
+            where $\bm \sigma$ is the viscous stress tensor, given as
+            \begin{equation} \tag{2}
+              \begin{aligned}
+                {\bm \sigma} = -p {\bm I}+ \mu \bigg( \nabla {\bm u} + (\nabla {\bm u})^T \bigg),
+              \end{aligned}
+            \end{equation}
+            and is subject to the following boundary condition across the interface
+            \begin{equation} \tag{3}
+              ({\bm \sigma}_+ - {\bm \sigma}_- ) \cdot {\bm n} = \gamma \kappa {\bm n} - \nabla \gamma.
+            \end{equation}
+            \vskip0.2cm
+            
+            \only<3>{
+              In the case of Stokes flow, Eq.\ \eqref{eq:NS} becomes,
+              \begin{equation} \notag
+                \nabla \cdot {\bm \sigma} + {\bm f} =0.
+              \end{equation}
+            } % end only
+          } %end only
+          
+          \only<4-5>{
+            An integral representation of the velocity field in Stokes flow,
+            \begin{equation} \label{eq:boundary-integral}
+              \begin{aligned}
+                u_i(\bm{x}) - u_i^\infty(\bm{x}) = -\frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} G_{i,j} (\bm{x},\bm{x}_0) f_j(\bm{x}_0) dS_{x_0},
+              \end{aligned}
+            \end{equation}
+            where $\bm{u}^\infty(\bm{x})$ is the velocity at position $\bm{x}$ in the absence of particles,
+            $S_\alpha$ is the surface of particle $\alpha$,
+            $\bm{G}(\bm{x},\bm{x}_0)$ is the Stokeslet due to a point force at $\bm{x}_0$,
+            $\bm f(\bm{x}_0)$ denotes its density,
+            and the summation is over all $N$ particles. \vskip0.2cm
+            \only<5>{
+              SD rewrites the r.h.s of Eq.\ (9) as a multipole expansion,
+              \begin{equation} \notag
+                \begin{aligned}
+                  - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... \approx \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O , 
+                \end{aligned}
+              \end{equation}
+              where $\bm{u}$'s denote the flow due to leading-order poles.
+            } % end only
+          } % end only
+          
+          \only<6-7>{
+            The multipole expansion can then be combined with the Fax\'{e}n's formulae for spheres
+            to obtain a relationship between particle velocities and forces,
+            \begin{equation} \notag
+              \begin{aligned} 
+                \begin{pmatrix}
+                  {\bm U}-{\bm U}^\infty \\
+                  -{\bm E}^\infty
+                \end{pmatrix}
+                = \mathscr{M^\infty} \cdot
+                \begin{pmatrix}
+                  {\bm F}^H \\
+                  {\bm S}^H
+                \end{pmatrix},
+              \end{aligned}
+            \end{equation}
+            where $\mathscr{M}^\infty$ is the far-field ``grand mobility'' matrix. \vskip0.1cm
+            \only<7>{
+              The grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, 
+              \begin{equation} \notag
+                \begin{aligned} 
+                  \begin{pmatrix}
+                    {\bm F}^H \\
+                    {\bm S}^H
+                  \end{pmatrix}
+                  = \mathscr{R} \cdot
+                  \begin{pmatrix}
+                    {\bm U}-{\bm U}^\infty \\
+                    -{\bm E}^\infty
+                  \end{pmatrix},
+                \end{aligned}
+              \end{equation}
+              which, once obtained, can be used to calculate $\bm U$.
+            } % end only
+          } % end only
+
+          \only<8->{
+            In SD, lubrication is explicitly accounted for in $\mathscr{R}$,
+            \begin{equation} \notag
+              \begin{aligned}
+                \mathscr{R} = (\mathscr{M}^\infty)^{-1} +\mathscr{R}_{2B} - \mathscr{R}_{2B}^\infty,
+              \end{aligned}
+            \end{equation}
+            where $\mathscr{R}_{2B}^\infty$ denotes the duplication terms. \vskip0.1cm
+          } % end only
+
+          \only<9->{
+            Since lubrication diverges at contact, which is more probable at higher concentrations,
+            we can further simplify $\mathscr{R}$ as,
+            \begin{equation}  \notag
+              \begin{aligned}
+                \mathscr{R} = \mathscr{R}_{2B}.
+              \end{aligned}
+            \end{equation}
+
+            \only<10->{
+              \vskip.1cm
+              This, combined with models for contact forces (e.g.\ collision and fricition), is the mathematical basis of HLGD.
+            } %end only
+          } %end only
+          
+        \end{bluecolorbox}
+
+        \only<10->{
+          \vskip0.4cm
+          \centering
+          \includegraphics[width=0.85\columnwidth]{../imgs/stick-slide.pdf}
+        } % end only
+      } %end only
+    \end{column}
+    
+  \end{columns}
+  
+\end{frame}
 
 %%
 \hypertarget{Cases}{%
