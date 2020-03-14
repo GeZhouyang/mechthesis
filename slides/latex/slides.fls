@@ -1142,6 +1142,17 @@ INPUT slides.toc
 INPUT slides.toc
 INPUT slides.toc
 INPUT slides.toc
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/group_photo_20180625.png
+INPUT ../imgs/Paris2020.png
+INPUT ../imgs/Paris2020.png
+INPUT ../imgs/Paris2020.png
+INPUT ../imgs/Paris2020.png
 OUTPUT slides.nav
 OUTPUT slides.toc
 OUTPUT slides.snm
