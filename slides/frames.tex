@@ -1031,28 +1031,25 @@
       \vskip0.2cm
       \only<2->{
         \begin{itemize}
-        \item Well-resolved NS solvers (meshing the entire space) \vskip0.2cm
-        \only<4->{\item Boundary integral methods (meshing the particle surface) \vskip0.2cm}
-        \only<5->{\item Stokesian dynamics (SD), solving (meshless)
-          \begin{equation} 
-            \begin{aligned} \notag
-              {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A.
-            \end{aligned}
-          \end{equation}
-          \vskip0.2cm
-        } % end only
-        \only<10->{\item Hybrid lubrication/granular dynamics (HLGD).}
+        \item Finite volume solvers \vskip0.2cm
+        \only<5->{\item Boundary integral methods \vskip0.2cm}
+        \only<7->{\item Stokesian dynamics (SD) \vskip0.2cm}
+        \only<13->{\item Hybrid lubrication/granular dynamics (HLGD).}
         \end{itemize}
       } % end only
 
       \vskip0.4cm
-      \only<11->{\xb{\bf We implemented a version of HLGD to study DS.}}
+      \only<14->{
+        \xb{\bf We implemented a version of HLGD to study DS.}%
+        \footnote<.->[frame]{Lees-Edwards boundary condition, velocity-Verlet integration, near-neighbour list, {\it etc.}}
+      } % end only
     \end{column}
     
     \begin{column}{0.56\textwidth}
       \only<2->{
+        \vskip-0.1cm
         \begin{bluecolorbox}[Mathematical formulation]
-          \only<2-3>{
+          \only<2-4>{
             The incompressible Navier-Stokes (NS) equations read,
             \begin{subequations} 
               \begin{equation}\tag{1a}
@@ -1076,17 +1073,19 @@
             \end{equation}
             \vskip0.2cm
             
-            \only<3>{
+            \only<3-4>{
               In the case of Stokes flow, Eq.\ \eqref{eq:NS} becomes,
               \begin{equation} \notag
                 \nabla \cdot {\bm \sigma} + {\bm f} =0.
               \end{equation}
+              \vskip0.1cm
+              \only<4>{In any case, the \emph{whole domain} needs to be meshed.}
             } % end only
           } %end only
           
-          \only<4-5>{
+          \only<5-6>{
             An integral representation of the velocity field in Stokes flow,
-            \begin{equation} \label{eq:boundary-integral}
+            \begin{equation} \notag
               \begin{aligned}
                 u_i(\bm{x}) - u_i^\infty(\bm{x}) = -\frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} G_{i,j} (\bm{x},\bm{x}_0) f_j(\bm{x}_0) dS_{x_0},
               \end{aligned}
@@ -1096,54 +1095,67 @@
             $\bm{G}(\bm{x},\bm{x}_0)$ is the Stokeslet due to a point force at $\bm{x}_0$,
             $\bm f(\bm{x}_0)$ denotes its density,
             and the summation is over all $N$ particles. \vskip0.2cm
-            \only<5>{
-              SD rewrites the r.h.s of Eq.\ (9) as a multipole expansion,
-              \begin{equation} \notag
-                \begin{aligned}
-                  - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... \approx \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O , 
-                \end{aligned}
-              \end{equation}
-              where $\bm{u}$'s denote the flow due to leading-order poles.
+            \only<6>{
+              The integral on the r.h.s of the equation can be evaluated numerically by meshing the \emph{particle surface}.
             } % end only
           } % end only
           
-          \only<6-7>{
-            The multipole expansion can then be combined with the Fax\'{e}n's formulae for spheres
-            to obtain a relationship between particle velocities and forces,
+          \only<7-8>{
+            SD rewrites the integral as a multipole expansion,
             \begin{equation} \notag
-              \begin{aligned} 
-                \begin{pmatrix}
-                  {\bm U}-{\bm U}^\infty \\
-                  -{\bm E}^\infty
-                \end{pmatrix}
-                = \mathscr{M^\infty} \cdot
-                \begin{pmatrix}
-                  {\bm F}^H \\
-                  {\bm S}^H
-                \end{pmatrix},
+              \begin{aligned}
+                - \frac{1}{8\pi \mu} \sum_{\alpha=1}^N  \int_{S_\alpha} ... \approx \bm{u}_F + \bm{u}_S + \bm{u}_T + \bm{u}_Q + \bm{u}_O , 
               \end{aligned}
             \end{equation}
-            where $\mathscr{M}^\infty$ is the far-field ``grand mobility'' matrix. \vskip0.1cm
-            \only<7>{
-              The grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, 
+            where $\bm{u}$'s denote the flow due to leading-order poles. \vskip0.1cm
+            \only<8>{
+              The multipole expansion can then be combined with the Fax\'{e}n's formulae for spheres
+              to obtain a relationship between particle velocities and forces,
               \begin{equation} \notag
                 \begin{aligned} 
                   \begin{pmatrix}
-                    {\bm F}^H \\
-                    {\bm S}^H
-                  \end{pmatrix}
-                  = \mathscr{R} \cdot
-                  \begin{pmatrix}
                     {\bm U}-{\bm U}^\infty \\
                     -{\bm E}^\infty
+                  \end{pmatrix}
+                  = \mathscr{M^\infty} \cdot
+                  \begin{pmatrix}
+                    {\bm F}^H \\
+                    {\bm S}^H
                   \end{pmatrix},
                 \end{aligned}
               \end{equation}
-              which, once obtained, can be used to calculate $\bm U$.
+              where $\mathscr{M}^\infty$ is the far-field ``grand mobility'' matrix. \vskip0.1cm
             } % end only
           } % end only
 
-          \only<8->{
+          \only<9-10>{
+            The grand mobility matrix may be inverted to obtain the ``grand resistance'' matrix $\mathscr{R}$, 
+            \begin{equation} \notag
+              \begin{aligned} 
+                \begin{pmatrix}
+                  {\bm F}^H \\
+                  {\bm S}^H
+                \end{pmatrix}
+                = \mathscr{R} \cdot
+                \begin{pmatrix}
+                  {\bm U}-{\bm U}^\infty \\
+                  -{\bm E}^\infty
+                \end{pmatrix},
+              \end{aligned}
+            \end{equation}
+            which, once obtained, can be used to calculate $\bm U$. \vskip0.1cm
+            \only<10>{
+              Overall, the dynamics is governed by
+              \begin{equation} 
+                \begin{aligned} \notag
+                  {\bm m} \cdot \frac{d{\bm U}}{dt} = {\bm F}^H + {\bm F}^A,
+                \end{aligned}
+              \end{equation}
+              which can be solved \emph{without meshing anything}.
+            } % end only
+          } %end only
+
+          \only<11->{
             In SD, lubrication is explicitly accounted for in $\mathscr{R}$,
             \begin{equation} \notag
               \begin{aligned}
@@ -1151,30 +1163,28 @@
               \end{aligned}
             \end{equation}
             where $\mathscr{R}_{2B}^\infty$ denotes the duplication terms. \vskip0.1cm
-          } % end only
-
-          \only<9->{
-            Since lubrication diverges at contact, which is more probable at higher concentrations,
-            we can further simplify $\mathscr{R}$ as,
-            \begin{equation}  \notag
-              \begin{aligned}
-                \mathscr{R} = \mathscr{R}_{2B}.
-              \end{aligned}
-            \end{equation}
-
-            \only<10->{
-              \vskip.1cm
+            \only<12->{ 
+              Since lubrication diverges at contact, which is more probable at higher concentrations,
+              we can further simplify $\mathscr{R}$ as,
+              \begin{equation}  \notag
+                \begin{aligned}
+                  \mathscr{R} = \mathscr{R}_{2B}.
+                \end{aligned}
+              \end{equation}
+            } %end only
+            \only<13->{
+              \vskip.01cm
               This, combined with models for contact forces (e.g.\ collision and fricition), is the mathematical basis of HLGD.
             } %end only
           } %end only
           
         \end{bluecolorbox}
 
-        \only<10->{
-          \vskip0.4cm
-          \centering
-          \includegraphics[width=0.85\columnwidth]{../imgs/stick-slide.pdf}
-        } % end only
+        %\only<11->{
+        %  \vskip0.4cm
+        %  \centering
+        %  \includegraphics[width=0.85\columnwidth]{../imgs/stick-slide.pdf}
+        %} % end only
       } %end only
     \end{column}
     
@@ -1185,6 +1195,111 @@
 %%
 \hypertarget{Cases}{%
   \subsection{Case studies}}
+%%1
+\begin{frame}[t]
+  \frametitle{Case studies -- Jamming transition}
+  
+  We simulate 200 spherical particles, initially randomly distributed in a cubic box, undergoing simple shear. \vskip0.1cm
+  \only<2->{
+    The particles experience Stokes drag, lubrication, and collision forces. \vskip0.1cm}
+  \only<3->{
+  We plot the relative viscosity, $\eta_r=\sigma_{xy}/(\mu\dot{\gamma})$,
+  and non-dimensional particle pressure, $\eta_n=-\textrm{tr}(\bm{\sigma})/(3\mu\dot{\gamma})$, as functions of volumn fraction.
+  \vskip0.2cm}
+
+  \only<1-3>{
+    \begin{textblock}{110}(52,40)
+      \includegraphics[width=0.47\textwidth]{imgs/suspension-shear.png}\\
+      {\footnotesize Image from \texttt{https://github.com/rmari/LF\_DEM}.}
+    \end{textblock}
+  } % end only
+
+  \only<4>{
+    \begin{textblock}{135}(12,35)
+      \centering
+      \includegraphics[width=0.47\textwidth]{../paper7/figs/curve_visc_fricless1.pdf}
+      \includegraphics[width=0.47\textwidth]{../paper7/figs/curve_pp_fricless.pdf}
+    \end{textblock}
+  } % end only
+
+\end{frame}
+%%2
+\begin{frame}[t]
+  \frametitle{Case studies -- Shear thickening}
+
+  \begin{textblock}{80}(5,12)
+    We simulate bidisperse suspensions in the same setup, except that these particles are also rough.
+    \vskip0.1cm
+    \only<2->{
+      We implement a critical-load fricition model, with a build-in non-linearity.%
+      \footnote<.->[frame]{R. Mari \etal J. Rheol. 58(6), 1693-1724, (2014).}
+      \begin{equation}  \notag
+        \begin{aligned}
+          F_t=
+          \begin{cases}
+            0 & \textrm{if} \quad  F_n<F_{CL}, \\
+            \textrm{min}(k_t\xi, \mu(F_n-F_{CL})) & \textrm{otherwise.} \\
+          \end{cases}
+        \end{aligned}
+      \end{equation}
+      \vskip0.1cm
+    } % end only
+    \only<3->{
+      This way, an additional time scale, $\tau= F_{CL}/(6\pi\mu a_1^2)$, can be compared with that of the flow, $\dot{\gamma}^{-1}$,
+      physically invoking a rate-dependent rheology.}
+  \end{textblock}
+  
+  \only<2->{
+    \begin{textblock}{70}(8,62)
+      \includegraphics[width=\textwidth]{../imgs/stick-slide.pdf}
+    \end{textblock}
+  } % end only
+
+  \only<4->{
+    \begin{textblock}{68}(88,20)
+      \includegraphics[width=\textwidth]{../paper7/figs/curve_visc_mu0.5.pdf}
+    \end{textblock}
+  } % end only
+
+  \only<5->{
+    \begin{textblock}{9}(135,65)
+      \xo{\bf CST}
+    \end{textblock}
+  } % end only
+  
+  \only<6->{
+    \begin{textblock}{9}(135,29)
+      \xr{\bf DST}
+    \end{textblock}
+  } % end only
+
+\end{frame}
+%%3
+\begin{frame}[t]
+  \frametitle{Case studies -- Microstructure evolution}
+
+  \begin{textblock}{140}(5,12)
+    Finally, we simulate 500 particles in oscillatory shear flow.
+    \vskip0.1cm
+    \only<2->{Apart from hydrodynamic and contact forces,
+      the particles also interact via van der Waals attraction and electrostatic repulsion (i.e.\ the DLVO theory). \vskip0.1cm
+    } % end only
+    \only<3->{We inspect the suspension microstructure by visualizing the evolution of hydroclusters.}
+  \end{textblock}
+  
+  \only<4>{
+    \begin{textblock}{80}(12,32)
+      \movie[showcontrols]{\includegraphics[width=6cm]{imgs/small_p0000000.png}}{videos/m5.1.mp4}\\
+      \hskip1.5cm  Weak shear ($\dot{\gamma} \approx 10^2$)
+    \end{textblock}
+
+    \begin{textblock}{80}(80,32)
+      \movie[showcontrols]{\includegraphics[width=6cm]{imgs/small_p0000000.png}}{videos/m5.4.mp4}\\
+      \hskip1.5cm  Stronger shear ($\dot{\gamma} \approx 10^5$)
+    \end{textblock}
+  } % end only
+
+\end{frame}
 
 %%
 \hypertarget{conclusion2}{%

@@ -231,7 +231,7 @@ where $V=L_xL_yL_z$ is the volume of the simulation box, and $\mathbb{S}$'s deno
   \end{equation}
   \begin{equation} 
     \begin{aligned}
-      \mathbb{S}_i^A = (20\pi \mu a_{i}^3/3) \mathbb{E}^\infty,
+      \mathbb{S}_i^S = (20\pi \mu a_{i}^3/3) \mathbb{E}^\infty,
     \end{aligned}
     \label{stresslet A}
   \end{equation}
@@ -342,7 +342,7 @@ define the position and velocity shifts at time $t$.
 
 The above explicit integration scheme is second-order accurate in time and requires the time step $\Delta t$ to be smaller than the smallest physical time scale of the process, cf.\ Sec.\ \ref{model param}. Empirical experience suggests $\Delta t \dot{\gamma} \approx 10^{-6}$. Alternatively, the equations of motion can be solved by matrix inversion upon setting the left-hand-side of Eq.\ \eqref{newton-euler} to zero, thus obtaining particle velocities in the quasi-static limit \citep{Mari_Seto_2014JoR}. The latter approach is equivalent to the one adopted here provided St $\ll 1$, see \eg \cite{Ness_Mari_Cates_2018}.
 
-Finally, we note that the force calculation, Eq.\ \eqref{verlect 4}, is usually the most time-consuming step in a Verlet integration. One straightforward technique to speed up the computation is to construct a near-neighbour list (NNL) for each particle and only calculate the force between particle pairs therein. This way, the operation count for a complete update reduces from being quadratic to being linear with the number of particles.\footnote{The overhead due to the construction of a NNL normally does not exceed the cost reduction for dense suspensions.} Practically, the algorithm requires $\mathcal{O}(cN)$ operations, where $c$ is a kernel constant mainly depending on the cutoff distance of particle interactions.\footnote{The lubrication cutoff is usually chosen as 0.05min$(a_1,a_2)$ for dense suspensions, see \cite{Cheal_Ness_2018}.}
+Finally, we note that the force calculation, Eq.\ \eqref{verlect 3}, is usually the most time-consuming step in a Verlet integration. One straightforward technique to speed up the computation is to construct a near-neighbour list (NNL) for each particle and only calculate the force between particle pairs therein. This way, the operation count for a complete update reduces from being quadratic to being linear with the number of particles.\footnote{The overhead due to the construction of a NNL normally does not exceed the cost reduction for dense suspensions.} Practically, the algorithm requires $\mathcal{O}(cN)$ operations, where $c$ is a kernel constant mainly depending on the cutoff distance of particle interactions.\footnote{The lubrication cutoff is usually chosen as 0.05min$(a_1,a_2)$ for dense suspensions, see \cite{Cheal_Ness_2018}.}
 
 
 \section{Validations}
