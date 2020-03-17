@@ -4,132 +4,130 @@
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {0}{0}{3}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {0}{0}{4}{4/6}{}{0}}
-\headcommand {\beamer@framepages {4}{6}}
-\headcommand {\slideentry {0}{0}{5}{7/7}{}{0}}
+\headcommand {\slideentry {0}{0}{4}{5/5}{}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@sectionpages {1}{5}}
+\headcommand {\beamer@subsectionpages {1}{5}}
+\headcommand {\sectionentry {1}{Part I: Fabricating Photonic Crystals (PhC)}{6}{Part I: Fabricating Photonic Crystals (PhC)}{0}}
+\headcommand {\slideentry {1}{0}{1}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{7}{Background, motivation and challenge}}
+\headcommand {\slideentry {1}{1}{1}{7/7}{Background, motivation and challenge}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@sectionpages {1}{7}}
-\headcommand {\beamer@subsectionpages {1}{7}}
-\headcommand {\sectionentry {1}{Part I: Fabricating Photonic Crystals (PhC)}{8}{Part I: Fabricating Photonic Crystals (PhC)}{0}}
-\headcommand {\slideentry {1}{0}{1}{8/8}{}{0}}
-\headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{9}{Background, motivation and challenge}}
-\headcommand {\slideentry {1}{1}{1}{9/9}{Background, motivation and challenge}{0}}
-\headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {1}{1}{2}{10/11}{Background, motivation and challenge}{0}}
-\headcommand {\beamer@framepages {10}{11}}
-\headcommand {\slideentry {1}{1}{3}{12/16}{Background, motivation and challenge}{0}}
-\headcommand {\beamer@framepages {12}{16}}
-\headcommand {\beamer@subsectionpages {9}{16}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{17}{Experiments, strategy and questions}}
-\headcommand {\slideentry {1}{2}{1}{17/17}{Experiments, strategy and questions}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {1}{2}{2}{18/21}{Experiments, strategy and questions}{0}}
-\headcommand {\beamer@framepages {18}{21}}
-\headcommand {\beamer@subsectionpages {17}{21}}
-\headcommand {\beamer@subsectionentry {0}{1}{3}{22}{A simple q2D dipolar model}}
-\headcommand {\slideentry {1}{3}{1}{22/22}{A simple q2D dipolar model}{0}}
-\headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {1}{3}{2}{23/28}{A simple q2D dipolar model}{0}}
-\headcommand {\beamer@framepages {23}{28}}
-\headcommand {\beamer@subsectionpages {22}{28}}
-\headcommand {\beamer@subsectionentry {0}{1}{4}{29}{3D numerical simulations}}
-\headcommand {\slideentry {1}{4}{1}{29/29}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {29}{29}}
-\headcommand {\slideentry {1}{4}{2}{30/34}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {30}{34}}
-\headcommand {\beamer@subsubsectionentry {0}{1}{4}{1}{35}{ICLS/GFM}}
-\headcommand {\slideentry {1}{4}{3}{35/40}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {35}{40}}
-\headcommand {\slideentry {1}{4}{4}{41/44}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {41}{44}}
-\headcommand {\slideentry {1}{4}{5}{45/46}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {45}{46}}
-\headcommand {\slideentry {1}{4}{6}{47/48}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {47}{48}}
-\headcommand {\slideentry {1}{4}{7}{49/50}{3D numerical simulations}{0}}
+\headcommand {\slideentry {1}{1}{2}{8/9}{Background, motivation and challenge}{0}}
+\headcommand {\beamer@framepages {8}{9}}
+\headcommand {\slideentry {1}{1}{3}{10/14}{Background, motivation and challenge}{0}}
+\headcommand {\beamer@framepages {10}{14}}
+\headcommand {\beamer@subsectionpages {7}{14}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{15}{Experiments, strategy and questions}}
+\headcommand {\slideentry {1}{2}{1}{15/15}{Experiments, strategy and questions}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {1}{2}{2}{16/18}{Experiments, strategy and questions}{0}}
+\headcommand {\beamer@framepages {16}{18}}
+\headcommand {\beamer@subsectionpages {15}{18}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{19}{A simple q2D dipolar model}}
+\headcommand {\slideentry {1}{3}{1}{19/19}{A simple q2D dipolar model}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {1}{3}{2}{20/27}{A simple q2D dipolar model}{0}}
+\headcommand {\beamer@framepages {20}{27}}
+\headcommand {\beamer@subsectionpages {19}{27}}
+\headcommand {\beamer@subsectionentry {0}{1}{4}{28}{3D numerical simulations}}
+\headcommand {\slideentry {1}{4}{1}{28/28}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {1}{4}{2}{29/33}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {29}{33}}
+\headcommand {\beamer@subsubsectionentry {0}{1}{4}{1}{34}{ICLS/GFM}}
+\headcommand {\slideentry {1}{4}{3}{34/39}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {34}{39}}
+\headcommand {\slideentry {1}{4}{4}{40/43}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {40}{43}}
+\headcommand {\slideentry {1}{4}{5}{44/45}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {44}{45}}
+\headcommand {\slideentry {1}{4}{6}{46/47}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {46}{47}}
+\headcommand {\slideentry {1}{4}{7}{48/48}{3D numerical simulations}{0}}
+\headcommand {\beamer@framepages {48}{48}}
+\headcommand {\slideentry {1}{4}{8}{49/50}{3D numerical simulations}{0}}
 \headcommand {\beamer@framepages {49}{50}}
-\headcommand {\slideentry {1}{4}{8}{51/52}{3D numerical simulations}{0}}
-\headcommand {\beamer@framepages {51}{52}}
-\headcommand {\beamer@subsectionpages {29}{52}}
-\headcommand {\beamer@subsectionentry {0}{1}{5}{53}{Flow-assisted assembly}}
-\headcommand {\slideentry {1}{5}{1}{53/53}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {53}{53}}
-\headcommand {\slideentry {1}{5}{2}{54/55}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {54}{55}}
-\headcommand {\slideentry {1}{5}{3}{56/61}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {56}{61}}
-\headcommand {\slideentry {1}{5}{4}{62/65}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {62}{65}}
-\headcommand {\slideentry {1}{5}{5}{66/66}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {66}{66}}
-\headcommand {\slideentry {1}{5}{6}{67/69}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {67}{69}}
-\headcommand {\slideentry {1}{5}{7}{70/77}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {70}{77}}
-\headcommand {\slideentry {1}{5}{8}{78/81}{Flow-assisted assembly}{0}}
-\headcommand {\beamer@framepages {78}{81}}
-\headcommand {\beamer@subsectionpages {53}{81}}
-\headcommand {\beamer@subsectionentry {0}{1}{6}{82}{Conclusions}}
-\headcommand {\slideentry {1}{6}{1}{82/82}{Conclusions}{0}}
-\headcommand {\beamer@framepages {82}{82}}
-\headcommand {\slideentry {1}{6}{2}{83/84}{Conclusions}{0}}
-\headcommand {\beamer@framepages {83}{84}}
-\headcommand {\beamer@sectionpages {8}{84}}
-\headcommand {\beamer@subsectionpages {82}{84}}
-\headcommand {\sectionentry {2}{Part II: Modelling Dense Suspensions (DS)}{85}{Part II: Modelling Dense Suspensions (DS)}{0}}
-\headcommand {\slideentry {2}{0}{1}{85/85}{}{0}}
-\headcommand {\beamer@framepages {85}{85}}
-\headcommand {\beamer@subsectionpages {85}{85}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{86}{Soft matter and rheology}}
-\headcommand {\slideentry {2}{1}{1}{86/86}{Soft matter and rheology}{0}}
-\headcommand {\beamer@framepages {86}{86}}
-\headcommand {\slideentry {2}{1}{2}{87/95}{Soft matter and rheology}{0}}
-\headcommand {\beamer@framepages {87}{95}}
-\headcommand {\beamer@subsectionpages {86}{95}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{96}{Numerical modelling}}
-\headcommand {\slideentry {2}{2}{1}{96/96}{Numerical modelling}{0}}
-\headcommand {\beamer@framepages {96}{96}}
-\headcommand {\slideentry {2}{2}{2}{97/105}{Numerical modelling}{0}}
-\headcommand {\beamer@framepages {97}{105}}
-\headcommand {\beamer@subsubsectionentry {0}{2}{2}{1}{106}{HLGD}}
-\headcommand {\slideentry {2}{2}{3}{106/119}{Numerical modelling}{0}}
-\headcommand {\beamer@framepages {106}{119}}
-\headcommand {\beamer@subsectionpages {96}{119}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{120}{Case studies}}
-\headcommand {\slideentry {2}{3}{1}{120/120}{Case studies}{0}}
-\headcommand {\beamer@framepages {120}{120}}
-\headcommand {\slideentry {2}{3}{2}{121/124}{Case studies}{0}}
-\headcommand {\beamer@framepages {121}{124}}
-\headcommand {\slideentry {2}{3}{3}{125/130}{Case studies}{0}}
-\headcommand {\beamer@framepages {125}{130}}
-\headcommand {\slideentry {2}{3}{4}{131/134}{Case studies}{0}}
-\headcommand {\beamer@framepages {131}{134}}
-\headcommand {\beamer@subsectionpages {120}{134}}
-\headcommand {\beamer@subsectionentry {0}{2}{4}{135}{Outlook}}
-\headcommand {\slideentry {2}{4}{1}{135/135}{Outlook}{0}}
-\headcommand {\beamer@framepages {135}{135}}
-\headcommand {\slideentry {2}{4}{2}{136/140}{Outlook}{0}}
-\headcommand {\beamer@framepages {136}{140}}
-\headcommand {\beamer@sectionpages {85}{140}}
-\headcommand {\beamer@subsectionpages {135}{140}}
-\headcommand {\sectionentry {3}{Summary}{141}{Summary}{0}}
-\headcommand {\slideentry {3}{0}{1}{141/141}{}{0}}
-\headcommand {\beamer@framepages {141}{141}}
-\headcommand {\slideentry {3}{0}{2}{142/150}{}{0}}
-\headcommand {\beamer@framepages {142}{150}}
-\headcommand {\beamer@sectionpages {141}{150}}
-\headcommand {\beamer@subsectionpages {141}{150}}
-\headcommand {\sectionentry {4}{Acknowledgements}{151}{Acknowledgements}{0}}
-\headcommand {\slideentry {4}{0}{1}{151/151}{}{0}}
-\headcommand {\beamer@framepages {151}{151}}
-\headcommand {\slideentry {4}{0}{2}{152/153}{}{0}}
-\headcommand {\beamer@framepages {152}{153}}
-\headcommand {\slideentry {4}{0}{3}{154/154}{}{0}}
-\headcommand {\beamer@framepages {154}{154}}
-\headcommand {\beamer@partpages {1}{154}}
-\headcommand {\beamer@subsectionpages {151}{154}}
-\headcommand {\beamer@sectionpages {151}{154}}
-\headcommand {\beamer@documentpages {154}}
-\headcommand {\gdef \inserttotalframenumber {24}}
+\headcommand {\beamer@subsectionpages {28}{50}}
+\headcommand {\beamer@subsectionentry {0}{1}{5}{51}{Flow-assisted assembly}}
+\headcommand {\slideentry {1}{5}{1}{51/51}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\slideentry {1}{5}{2}{52/53}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {52}{53}}
+\headcommand {\slideentry {1}{5}{3}{54/59}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {54}{59}}
+\headcommand {\slideentry {1}{5}{4}{60/63}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {60}{63}}
+\headcommand {\slideentry {1}{5}{5}{64/64}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {64}{64}}
+\headcommand {\slideentry {1}{5}{6}{65/67}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {65}{67}}
+\headcommand {\slideentry {1}{5}{7}{68/75}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {68}{75}}
+\headcommand {\slideentry {1}{5}{8}{76/79}{Flow-assisted assembly}{0}}
+\headcommand {\beamer@framepages {76}{79}}
+\headcommand {\beamer@subsectionpages {51}{79}}
+\headcommand {\beamer@subsectionentry {0}{1}{6}{80}{Conclusions}}
+\headcommand {\slideentry {1}{6}{1}{80/80}{Conclusions}{0}}
+\headcommand {\beamer@framepages {80}{80}}
+\headcommand {\slideentry {1}{6}{2}{81/82}{Conclusions}{0}}
+\headcommand {\beamer@framepages {81}{82}}
+\headcommand {\beamer@sectionpages {6}{82}}
+\headcommand {\beamer@subsectionpages {80}{82}}
+\headcommand {\sectionentry {2}{Part II: Modelling Dense Suspensions (DS)}{83}{Part II: Modelling Dense Suspensions (DS)}{0}}
+\headcommand {\slideentry {2}{0}{1}{83/83}{}{0}}
+\headcommand {\beamer@framepages {83}{83}}
+\headcommand {\beamer@subsectionpages {83}{83}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{84}{Soft matter and rheology}}
+\headcommand {\slideentry {2}{1}{1}{84/84}{Soft matter and rheology}{0}}
+\headcommand {\beamer@framepages {84}{84}}
+\headcommand {\slideentry {2}{1}{2}{85/93}{Soft matter and rheology}{0}}
+\headcommand {\beamer@framepages {85}{93}}
+\headcommand {\beamer@subsectionpages {84}{93}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{94}{Numerical modelling}}
+\headcommand {\slideentry {2}{2}{1}{94/94}{Numerical modelling}{0}}
+\headcommand {\beamer@framepages {94}{94}}
+\headcommand {\slideentry {2}{2}{2}{95/103}{Numerical modelling}{0}}
+\headcommand {\beamer@framepages {95}{103}}
+\headcommand {\beamer@subsubsectionentry {0}{2}{2}{1}{104}{HLGD}}
+\headcommand {\slideentry {2}{2}{3}{104/117}{Numerical modelling}{0}}
+\headcommand {\beamer@framepages {104}{117}}
+\headcommand {\beamer@subsectionpages {94}{117}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{118}{Case studies}}
+\headcommand {\slideentry {2}{3}{1}{118/118}{Case studies}{0}}
+\headcommand {\beamer@framepages {118}{118}}
+\headcommand {\slideentry {2}{3}{2}{119/122}{Case studies}{0}}
+\headcommand {\beamer@framepages {119}{122}}
+\headcommand {\slideentry {2}{3}{3}{123/128}{Case studies}{0}}
+\headcommand {\beamer@framepages {123}{128}}
+\headcommand {\slideentry {2}{3}{4}{129/132}{Case studies}{0}}
+\headcommand {\beamer@framepages {129}{132}}
+\headcommand {\beamer@subsectionpages {118}{132}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{133}{Outlook}}
+\headcommand {\slideentry {2}{4}{1}{133/133}{Outlook}{0}}
+\headcommand {\beamer@framepages {133}{133}}
+\headcommand {\slideentry {2}{4}{2}{134/138}{Outlook}{0}}
+\headcommand {\beamer@framepages {134}{138}}
+\headcommand {\beamer@sectionpages {83}{138}}
+\headcommand {\beamer@subsectionpages {133}{138}}
+\headcommand {\sectionentry {3}{Summary}{139}{Summary}{0}}
+\headcommand {\slideentry {3}{0}{1}{139/139}{}{0}}
+\headcommand {\beamer@framepages {139}{139}}
+\headcommand {\slideentry {3}{0}{2}{140/148}{}{0}}
+\headcommand {\beamer@framepages {140}{148}}
+\headcommand {\beamer@sectionpages {139}{148}}
+\headcommand {\beamer@subsectionpages {139}{148}}
+\headcommand {\sectionentry {4}{Acknowledgements}{149}{Acknowledgements}{0}}
+\headcommand {\slideentry {4}{0}{1}{149/149}{}{0}}
+\headcommand {\beamer@framepages {149}{149}}
+\headcommand {\slideentry {4}{0}{2}{150/151}{}{0}}
+\headcommand {\beamer@framepages {150}{151}}
+\headcommand {\slideentry {4}{0}{3}{152/152}{}{0}}
+\headcommand {\beamer@framepages {152}{152}}
+\headcommand {\beamer@partpages {1}{152}}
+\headcommand {\beamer@subsectionpages {149}{152}}
+\headcommand {\beamer@sectionpages {149}{152}}
+\headcommand {\beamer@documentpages {152}}
+\headcommand {\gdef \inserttotalframenumber {23}}

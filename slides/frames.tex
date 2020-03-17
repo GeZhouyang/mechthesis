@@ -1,4 +1,8 @@
 %% teaser
+
+\includepdf{imgs/sneeze-sequence.pdf}
+
+\iffalse
 \begin{frame}
 
   \frametitle{But what are \textit{droplets}?}
@@ -28,8 +32,9 @@
     \end{column}
   \end{columns}
 
-  
 \end{frame}
+\fi
+
 
 %% outline
 \begin{frame}{Outline}
@@ -120,40 +125,30 @@
 \hypertarget{experiment}{%
   \subsection{Experiments, strategy and questions}}
 
-\begin{frame}
+\begin{frame}[t]
   \frametitle{Experiments, strategy and questions}
 
-  A few years ago, a series of experiments%
+  A few years ago, a series of experiments performed at ESPCI, Paris suggested a possible solution.%
   \footnote{B. Shen \etal Exp. Fluids, 55, 1. (2014); B. Shen \etal Adv. Sci., 3: 1600012. (2016).}
-  performed at ESPCI, Paris suggested an alternative approach...
-  \bigskip
-  \begin{columns}[T]
-    
-    \begin{column}{0.52\textwidth}
-      \begin{figure}
-        \centering 
-        \movie[showcontrols]{\includegraphics[height=3cm]{imgs/espci-delta.png}}{videos/espci-3drops.mp4}
-        \movie[showcontrols]{\includegraphics[width=6.5cm]{imgs/espci-tetra.jpg}}{videos/espci-4drops.mp4}
-        \caption{Assembly of two to four droplets in a microfluidic chip.}
-      \end{figure}
-    \end{column}
-
-    \pause
-    \begin{column}{0.4\textwidth}
-      \begin{figure}
-        \centering 
-        \includegraphics[height=4.5cm]{imgs/espci-cluster-morph.png}
-        \caption{Observed cluster morphologies.
-        Images courtesy of Dr.\ Bingqing Shen.}
-      \end{figure}
-    \end{column}
-
-  \end{columns}
   
-  \pause
-  \xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \vskip0.1cm
-  \pause
-  \xr{\bf The questions are why do they organize into such patterns and can we further optimize it?}
+  \begin{textblock}{80}(8,21)    
+    \movie[showcontrols]{\includegraphics[height=3cm]{imgs/espci-delta.png}}{videos/espci-3drops.mp4}
+  \end{textblock}
+  \begin{textblock}{80}(8,51)    
+    \movie[showcontrols]{\includegraphics[width=6.5cm]{imgs/espci-tetra.jpg}}{videos/espci-4drops.mp4}
+  \end{textblock}
+  \begin{textblock}{80}(78,21)    
+    \includegraphics[height=4.6cm]{imgs/espci_clusters.png}
+  \end{textblock}
+  \begin{textblock}{135}(8,71)    
+    Figure: (a) Assembly of two to four droplets in a microfluidic chip.
+    (b-e) Electron micrograph of clusters of various shapes; scale bars: 10 $\mu$m.
+  \end{textblock}
+
+  \begin{textblock}{135}(6,81)  
+    \only<2->{\xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \vskip0.1cm}
+    \only<3->{\xr{\bf The questions are why do they organize into such patterns and can we further optimize it?}}
+  \end{textblock}
   
 \end{frame}
 
@@ -164,53 +159,57 @@
 \begin{frame}
   \frametitle{A simple q2D dipolar model}
 
-  Noticing the strong geometric confinement of the microfluidic channel, physicists at ESPCI proposed the following \emph{dipolar model}.
+  \begin{textblock}{148}(5,12)
+    Noticing the geometric confinement of the microfluidic channel, our colleagues at ESPCI proposed the following \emph{dipolar model}.
+  \end{textblock}
 
-  \begin{columns}[T]
-    
-    \begin{column}{0.45\textwidth}
-      \centering
-      \only<1-3,5,6>{\includegraphics[height=4cm]{imgs/espci-chip-cartoon.png}}
-      \only<1-3>{\vskip.3cm \includegraphics[height=1.6cm]{imgs/espci-pancake.png}}
-      \only<1-3>{\includegraphics[height=1.9cm]{imgs/espci-depletion.png}}
-      \only<4>{\vskip.5cm \includegraphics[height=6cm]{../imgs/dipolar.pdf}}
-      \only<5,6>{\includegraphics[height=2.8cm]{imgs/espci-dipolar-cartoon.png} \\}
-      \only<6>{\xr{\bf Is this picture really correct?}}
-    \end{column}
-
-    \pause
-
-    \begin{column}{0.45\textwidth}
+  \begin{textblock}{148}(5,19)
+    \begin{columns}[T]
       
-      \begin{bluecolorbox}[Obersvations \& hypotheses]
-        \begin{itemize}
-        \item Droplets are in quasi-two-dimensional (q2D) space.
-        \item Depletion force attracts nearby drops.
-        \item Hydrodynamic interactions (HI) lead to the rearrangement dynamics.
-        \end{itemize}
-      \end{bluecolorbox}
+      \begin{column}{0.45\textwidth}
+        \vskip0.2cm
+        \centering
+        \only<1-5,7,8>{\includegraphics[height=4cm]{imgs/espci-chip-cartoon.png} \vskip.3cm}
+        \only<2-5>{\includegraphics[height=1.6cm]{imgs/espci-pancake.png}}
+        \only<3-5>{\includegraphics[height=1.9cm]{imgs/espci-depletion.png}}
+        \only<6>{\vskip.5cm \includegraphics[height=6cm]{../imgs/dipolar.pdf}}
+        \only<7->{\includegraphics[height=2.8cm]{imgs/espci-dipolar-cartoon.png} \\}
+        \only<8>{\xr{\bf Is this picture really correct?}}
+      \end{column}
+      
+      \begin{column}{0.45\textwidth}
+        \only<2->{
+          \begin{bluecolorbox}[Hypotheses]
+            \begin{itemize}
+            \item Droplets obey laws in quasi-two- dimensional (q2D) space.
+              \only<3->{\item Depletion force attracts nearby drops.}
+              \only<4->{\item Hydrodynamic interactions (HI) lead to the rearrangement dynamics.}
+            \end{itemize}
+          \end{bluecolorbox}
+        } %end only
+        \vskip.2cm
+        \only<5->{
+          \begin{bluecolorbox}[Equations of motion (due to HI)]
+            \begin{equation} \notag
+              \begin{aligned}
+                & {\bm u}^\infty(x,y,z) \approx -\frac{z(H-z)}{2\mu} \nabla p(x,y), \\
+                & \delta{\bm u}_{ij} = {\bm B}_{ij} {\bm F}_j, \quad {\bm U}_i = {\bm u}^\infty_i + \sum_{j \ne i} \delta{\bm u}_{ij},
+              \end{aligned}
+            \end{equation}
+            where
+            \begin{equation} \notag
+              \begin{aligned}
+                {\bm B}({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -
+                \frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg).
+              \end{aligned}
+            \end{equation}
+          \end{bluecolorbox}
+        } % end only
+      \end{column}
 
-      \vskip.3cm
-      \pause
-      \begin{bluecolorbox}[Equations of motion (due to HI)]
-        \begin{equation} \notag
-          \begin{aligned}
-            & {\bm u}^\infty(x,y,z) \approx -\frac{z(H-z)}{2\mu} \nabla p(x,y), \\
-            & \delta{\bm u}_{ij} = {\bm B}_{ij} {\bm F}_j, \quad {\bm U}_i = {\bm u}^\infty_i + \sum_{j \ne i} \delta{\bm u}_{ij},
-          \end{aligned}
-        \end{equation}
-        where
-        \begin{equation} \notag
-          \begin{aligned}
-            {\bm B}({\bm x}) \approx -\frac{\alpha H}{\mu} \bigg( \frac{{\bm I}}{\abs{\bm x}^2} -
-            \frac{ 2{\bm x}{\bm x} }{ \abs{{\bm x}}^4} \bigg).
-          \end{aligned}
-        \end{equation}
-      \end{bluecolorbox}
-    \end{column}
-
-  \end{columns}
-    
+    \end{columns}
+  \end{textblock}
+  
 \end{frame}
 
 %%
@@ -220,7 +219,7 @@
 \begin{frame}
   \frametitle{3D numerical simulations}
 
-  To verify the model and subsequently optimize the chip design, we set up direct numerical simulations (DNS) of droplets in microchannels.
+  To investigate the hydrodynamics and subsequently optimize the chip design, we set up direct numerical simulations of droplets in microchannels.
   \vskip0.3cm
 
   \pause
@@ -282,7 +281,7 @@
         \vskip0.4cm
 
         \pause
-        In developing the numerical solver, no such assumptions are made.
+        These are kept in mind in developing the otherwise general numerical solver.
       \end{flushleft}
     \end{column}
     
@@ -329,23 +328,23 @@
       \only<3->{
       \begin{bluecolorbox}[Classical LS formulation]
 
-        The level set function, $\phi$, is classically defined as the signed distance to the interface $\Gamma$,
+        The level set function, $\phi$, is defined as the signed distance to the interface $\Gamma$,
         \begin{equation} 
-          \phi({\bm x},t) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|.
+          \phi({\bm x}) = sgn({\bm x}) |{\bm x}-{\bm x}_\Gamma|.
         \end{equation}
-        For example, a sphere of radius r centered at origin can be represented as
+        For example, a sphere of radius $r$ centered at origin can be represented as
         \begin{equation} \notag
-          \Gamma = \{ {\bm x} ~ \rvert ~ \phi({\bm x},t) = 0 \},
+          \Gamma = \{ {\bm x} ~ \rvert ~ \phi({\bm x}) = 0 \},
         \end{equation}
         where
         \begin{equation} \notag
-          \phi({\bm x},t) = |{\bm x}|^2 -r.
+          \phi({\bm x}) = |{\bm x}| -r.
         \end{equation}
-        The normal and the curvature of the interface can be readily calculated as
+        Knowing $\phi$, the normal and the curvature of the interface can be readily calculated as
         \begin{equation}
           {\bm n} = \nabla \phi / \abs{ \nabla \phi }, \quad \kappa = \nabla \cdot {\bm n}.
         \end{equation}
-        The interface motion is governed by
+        The motion of the interface is captured by
         \begin{equation} \label{eq:ls-avd}
           \frac{\partial \phi}{\partial t} + \bm{u} \cdot \nabla \phi = 0.
         \end{equation}
@@ -412,6 +411,8 @@
 \begin{frame}[noframenumbering]
   \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
 
+  To verify, we simulate the deforming circle, same as before.
+  \vskip0.2cm
   \centering
   \includegraphics[width=0.8\textwidth]{../paper1/Figures/serp_loss.pdf}
   \vskip0.3cm
@@ -426,7 +427,7 @@
   \begin{columns}[T]
     
     \begin{column}{\textwidth}
-      The flow solver also requires accurate computation of surface tension... \vskip0.2cm
+      The coupled flow solver also requires accurate computation of surface tension... \vskip0.2cm
       and a hydrodynamic model to impose the depletion force ... \vskip0.2cm
       \pause
       These details are given in: \vskip0.5cm
@@ -451,7 +452,6 @@
     
     \begin{column}{0.7\textwidth}
       \vskip0.3cm
-      \only<1->{
       \begin{algorithm}[H] \notag
         \ccc{\footnotesize //time marching} \\
         \For{$n=1,2,\dots,N$}{
@@ -476,17 +476,14 @@
         }
         \caption{A pseudo-code of ICLS/GFM.}
       \end{algorithm}
-      }%end only
     \end{column}
     
     \begin{column}{0.2\textwidth}
-      \only<2->{
-        \vskip5.5cm
-        \centering
-        \includegraphics[width=1.2cm]{imgs/github.png}
-        \vskip0.1cm
-        Available at \texttt{ICLS-release}
-      } %end only
+      \vskip5.5cm
+      \centering
+      \includegraphics[width=1.2cm]{imgs/github.png}
+      \vskip0.1cm
+      Available at \texttt{ICLS-release}
     \end{column}
   \end{columns}
 
