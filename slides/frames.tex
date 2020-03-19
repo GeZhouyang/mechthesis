@@ -86,10 +86,11 @@
 \begin{frame}
   \frametitle{Background, motivation and challenge}
 
-  Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps is challenging in practice.
-  \bigskip
-  
-  \pause
+  \begin{textblock}{145}(5,12)
+    Despite the theoretical promise, fabricating photonic crystals with 3D bandgaps is challenging in practice.
+  \end{textblock}
+
+  \begin{textblock}{145}(5,20)
   \begin{columns}[T]
     \begin{column}{0.45\textwidth}
       \begin{figure}
@@ -99,25 +100,28 @@
       \end{figure}
     \end{column}
 
-    \pause
-    \begin{column}{0.45\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[height=4.8cm]{imgs/patchy_colloid.png}
-        \caption{Self-assembly of micron-sized patchy particles mimicking the arrangements of bonds around atoms.
-        \textcopyright \enspace Springer Nature (2012).}
-      \end{figure}
-    \end{column}
-
+    \only<2->{
+      \begin{column}{0.45\textwidth}
+        \begin{figure}
+          \centering
+          \includegraphics[height=4.8cm]{imgs/patchy_colloid.png}
+          \caption{Self-assembly of micron-sized patchy particles mimicking the arrangements of bonds around atoms.%
+            \footnote<2->[frame]{Wang \etal Nature. 491, 51-55(2012).}
+            \textcopyright \enspace Springer Nature (2012).}
+        \end{figure}
+      \end{column}
+    } % end only
+    
   \end{columns}
-  \vskip0.1cm
+  %\vskip0.1cm
   
-  \pause
+  %\pause
   \centering{
-    \xb{\bf The obtained clusters may serve as basic building blocks for fabricating PhC.}
+    \only<3->{\xb{\bf The obtained clusters may serve as basic building blocks for fabricating PhC.}}
     \vskip0.08cm
-    \pause
-    \xr{\bf The challenge is to speed up the process.}}
+    %\pause
+    \only<4->{\xr{\bf The challenge is to speed up the process.}}}
+  \end{textblock}
 
 \end{frame}
 
@@ -142,11 +146,12 @@
   \end{textblock}
   \begin{textblock}{135}(8,71)    
     Figure: (a) Assembly of two to four droplets in a microfluidic chip.
-    (b-e) Electron micrograph of clusters of various shapes; scale bars: 10 $\mu$m.
+    (b-e) Electron micrographs of clusters of various shapes; scale bars: 10 $\mu$m.
+    Images courtesy of Joshua Ricouvier.
   \end{textblock}
 
   \begin{textblock}{135}(6,81)  
-    \only<2->{\xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \vskip0.1cm}
+    \only<2->{\xb{\bf Here, the droplet assembly is driven by the flow. Hence, it is much faster.} \vskip0.05cm}
     \only<3->{\xr{\bf The questions are why do they organize into such patterns and can we further optimize it?}}
   \end{textblock}
   
@@ -160,7 +165,7 @@
   \frametitle{A simple q2D dipolar model}
 
   \begin{textblock}{148}(5,12)
-    Noticing the geometric confinement of the microfluidic channel, our colleagues at ESPCI proposed the following \emph{dipolar model}.
+    Noticing the geometric confinement of the microfluidic channel, researchers at ESPCI proposed the following \emph{dipolar model}.
   \end{textblock}
 
   \begin{textblock}{148}(5,19)
@@ -281,7 +286,7 @@
         \vskip0.4cm
 
         \pause
-        These are kept in mind in developing the otherwise general numerical solver.
+        The rest of the task is to develop a solver that can solve these equations accurately.
       \end{flushleft}
     \end{column}
     
@@ -382,12 +387,11 @@
       \begin{bluecolorbox}[ICLS formulation]
 
         The level set is defined and evolved in the same way as in the classical formulation,
-        except that we also periodically examine the fluid mass loss.
+        except that we also periodically examine the fluid mass loss, $-\delta V/\delta t$.
         This allows us to define ${\bm u}_c$ as
         \begin{equation} \notag
-          \int_\Gamma {\bm n} \cdot {\bm u}_c \,d\Gamma = \frac{\delta V}{\delta t},
+          \int_\Gamma {\bm n} \cdot {\bm u}_c \,d\Gamma = \frac{\delta V}{\delta t}.
         \end{equation}
-        where $-\delta V/\delta t$ corresponds to the mass loss over an arbitrary period of time.
         If ${\bm u}_c$ is known, then solving
         \begin{equation}
           \frac{\partial \phi}{\partial t} + {\bm u}_c \cdot \nabla \phi = 0,
@@ -408,7 +412,7 @@
 
 \end{frame}
 %%3
-\begin{frame}[noframenumbering]
+\begin{frame}[noframenumbering,t]
   \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
 
   To verify, we simulate the deforming circle, same as before.
@@ -421,17 +425,52 @@
 
 \end{frame}
 %%4
-\begin{frame}[noframenumbering]
+\begin{frame}[t]
   \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
 
-  \begin{columns}[T]
-    
-    \begin{column}{\textwidth}
-      The coupled flow solver also requires accurate computation of surface tension... \vskip0.2cm
-      and a hydrodynamic model to impose the depletion force ... \vskip0.2cm
-      \pause
-      These details are given in: \vskip0.5cm
-      \centering
+  The coupled flow solver also requires accurate computation of surface tension and a hydrodynamic model to impose the depletion force.
+
+  \only<2>{
+    \begin{textblock}{130}(5,23)
+      \begin{algorithm}[H] \notag
+        %\xb{\footnotesize //time marching} \\
+        \For{$n=1,2,\dots,N$}{
+          %\xg{\footnotesize //level set advection} \\
+          $\phi^1 = \phi^{(n)} + \Delta t \cdot {AD}(\phi^{(n)})$ \\
+          $\phi^2 = \frac{3}{4} \phi^{(n)} + \frac{1}{4} \phi^1 + \frac{1}{4} \Delta t \cdot {AD}(\phi^1)$ \\
+          $\phi^{(n+1)} = \frac{1}{3} \phi^{(n)} + \frac{2}{3} \phi^2 + \frac{2}{3} \Delta t \cdot {AD}(\phi^2)$ \\
+          
+          %\xg{\footnotesize //correct and reinitialize the level set every $N_i$ steps} \\
+          \If{$n \mod N_i =0$}{
+            {\small advect with ${AD}(\phi) = (\delta V/\delta t) (\kappa \delta(\phi)/A_f)$} \\
+            {\small advect with ${AD}(\phi) = S(\phi)(\abs{\nabla \phi} -1)$} \\
+          }
+          %\xo{\footnotesize //flow solver (AB2)} \\
+             {\small Calculate $\rho^{(n+1)}$, $\mu^{(n+1)}$, $\bm{n}$, and $\kappa$ using $\phi^{(n+1)}$ } \\
+             ${\bf RU}^{(n)} = -{\bm u}^{(n)} \cdot \nabla {\bm u}^{(n)} +\frac{1}{Re}\big(\frac{1}{\rho^{(n+1)}} \nabla \cdot \big[\mu^{(n+1)}(\nabla {\bm u}^{(n)}+(\nabla {\bm u}^{(n)})^T)\big]\big)$ \\
+             ${\bm u}^* ={\bm u}^{(n)} +\Delta t \big(\frac{3}{2} {\bf RU}^{(n)}-\frac{1}{2} {\bf RU}^{(n-1)} \big)$ \\
+             $\nabla ^2 p^{(n+1)} = \nabla ^2_g [p]_\Gamma + \nabla \cdot \big[ \big(1-\frac{\rho_0}{\rho^{(n+1)}}) \nabla_g \hat{p} \big] + \frac{\rho_0}{\Delta t} \nabla \cdot {\bm u}^*$ %\xo{\footnotesize //FastP*-GFM} \\
+             ${\bm u}^{(n+1)} = {\bm u}^* -\Delta t \big[\frac{1}{\rho_0} \nabla_g p^{(n+1)} + \big(\frac{1}{\rho^{(n+1)}} - \frac{1}{\rho_0}\big) \nabla_g \hat{p} \big]$ %\xo{\footnotesize //correction} \\
+             ${\bf RU}^{(n-1)}={\bf RU}^{(n)}$ \\
+        }
+        \caption{A pseudo-code of ICLS/GFM.}
+      \end{algorithm}  
+    \end{textblock}
+
+    \begin{textblock}{40}(101,35)
+      \xb{\texttt{\small level set advection (SSP-RK3, HOUC5/WENO5)}}
+    \end{textblock}
+    \begin{textblock}{40}(108,50)
+      \xb{\texttt{\small mass correction \& reinitialization}}
+    \end{textblock}
+    \begin{textblock}{20}(117,70)
+      \xb{\texttt{\small flow solver (FVM, AB2, FastP* GFM)}}
+    \end{textblock}
+  } % end only
+  
+  \only<3->{
+    \begin{textblock}{130}(5,23)
+      Full details are in: \vskip0.5cm
       \begin{tcolorbox}[beamer,
           width=0.7\textwidth,
           arc=0pt,
@@ -440,85 +479,53 @@
         ]
         \includegraphics[width=\linewidth]{imgs/JCP-cover.png}
       \end{tcolorbox}
-    \end{column}
-  \end{columns}
+      
+    \end{textblock}
+    \begin{textblock}{30}(103,57)
+      \hskip0.15cm \includegraphics[width=1.2cm]{imgs/github.png}
+      \vskip0.05cm
+      {\small Available at \texttt{ICLS-release}}
+    \end{textblock}
+  } %end only
+
+  \only<4->{
+    \begin{textblock}{130}(5,85)
+      \xb{\bf Now we are ready to simulate the droplets.}
+    \end{textblock}
+  } %end only
 
 \end{frame}  
-%%5
-\begin{frame}[noframenumbering]
-  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
-  
-  \begin{columns}
-    
-    \begin{column}{0.7\textwidth}
-      \vskip0.3cm
-      \begin{algorithm}[H] \notag
-        \ccc{\footnotesize //time marching} \\
-        \For{$n=1,2,\dots,N$}{
-          
-          \ccc{\footnotesize //level set advection} \\
-          $\phi^1 = \phi^{(n)} + \Delta t \cdot {AD}(\phi^{(n)})$ \\
-          $\phi^2 = \frac{3}{4} \phi^{(n)} + \frac{1}{4} \phi^1 + \frac{1}{4} \Delta t \cdot {AD}(\phi^1)$ \\
-          $\phi^{(n+1)} = \frac{1}{3} \phi^{(n)} + \frac{2}{3} \phi^2 + \frac{2}{3} \Delta t \cdot {AD}(\phi^2)$ \\
-              {\small Calculate $\rho^{(n+1)}$, $\mu^{(n+1)}$, $\bm{n}$, and $\kappa$ using $\phi^{(n+1)}$ } \\
-
-              \ccc{\footnotesize //correct and reinitialize the level set every $N_i$ steps} \\
-              \If{$n \mod N_i =0$}{
-                {\small Mass-correction: advect with ${AD}(\phi) = (\delta V/\delta t) (\kappa \delta(\phi)/A_f)$} \\
-                {\small Reinitialization: advect with ${AD}(\phi) = S(\phi)(\abs{\nabla \phi} -1)$} \\
-              }
-              \ccc{\footnotesize //flow solver (AB2)} \\
-              ${\bf RU}^{(n)} = -{\bm u}^{(n)} \cdot \nabla {\bm u}^{(n)} +\frac{1}{Re}\big(\frac{1}{\rho^{(n+1)}} \nabla \cdot \big[\mu^{(n+1)}(\nabla {\bm u}^{(n)}+(\nabla {\bm u}^{(n)})^T)\big]\big)$ \\
-              ${\bm u}^* ={\bm u}^{(n)} +\Delta t \big(\frac{3}{2} {\bf RU}^{(n)}-\frac{1}{2} {\bf RU}^{(n-1)} \big)$ \\
-              $\nabla ^2 p^{(n+1)} = \nabla ^2_g [p]_\Gamma + \nabla \cdot \big[ \big(1-\frac{\rho_0}{\rho^{(n+1)}}) \nabla_g \hat{p} \big] + \frac{\rho_0}{\Delta t} \nabla \cdot {\bm u}^*$ \ccc{\footnotesize //FastP*-GFM} \\
-              ${\bm u}^{(n+1)} = {\bm u}^* -\Delta t \big[\frac{1}{\rho_0} \nabla_g p^{(n+1)} + \big(\frac{1}{\rho^{(n+1)}} - \frac{1}{\rho_0}\big) \nabla_g \hat{p} \big]$ \ccc{\footnotesize //correction} \\
-              ${\bf RU}^{(n-1)}={\bf RU}^{(n)}$ \\
-        }
-        \caption{A pseudo-code of ICLS/GFM.}
-      \end{algorithm}
-    \end{column}
-    
-    \begin{column}{0.2\textwidth}
-      \vskip5.5cm
-      \centering
-      \includegraphics[width=1.2cm]{imgs/github.png}
-      \vskip0.1cm
-      Available at \texttt{ICLS-release}
-    \end{column}
-  \end{columns}
-
-\end{frame}
-%%5
-\begin{frame}[noframenumbering]
-  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
-
-  \begin{columns}
-    
-    \begin{column}{0.9\textwidth}
-      
-      \begin{bluecolorbox}[Summary of numerics]
-        \medskip
-        \begin{itemize}
-        \item The LS part is solved by standard techniques for hyperbolic partial differential equations. \medskip
-        \item The NS part is solved by a standard projection method. \medskip
-        \item The equations are solved on a staggered Cartesian grid using the finite volume method. \medskip
-        \item The temporal integration is the 2nd-order Adam-Bashforth scheme. \medskip
-        \item The pressure Poisson equation is solved using a fast Fourier transform based solver. \medskip
-        \item The pressure jump across an liquid interface is imposed by the ghost fluid method (GFM). \medskip
-        \item The depletion force between droplets is also computed under the GFM framework. \medskip
-        \end{itemize}
-      \end{bluecolorbox}
-       
-    \end{column}
-    
-  \end{columns}
-
-  \vskip0.5cm
-  \pause
-  \centering
-  \xb{\bf Now, we are ready to simulate the droplets.}
-  
-\end{frame}
+%%%5
+%\begin{frame}[noframenumbering]
+%  \frametitle{Interface-correction level set/ghost fluid method (ICLS/GFM)}
+%
+%  \begin{columns}
+%    
+%    \begin{column}{0.9\textwidth}
+%      
+%      \begin{bluecolorbox}[Summary of numerics]
+%        \medskip
+%        \begin{itemize}
+%        \item The LS part is solved by standard techniques for hyperbolic partial differential equations. \medskip
+%        \item The NS part is solved by a standard projection method. \medskip
+%        \item The equations are solved on a staggered Cartesian grid using the finite volume method. \medskip
+%        \item The temporal integration is the 2nd-order Adam-Bashforth scheme. \medskip
+%        \item The pressure Poisson equation is solved using a fast Fourier transform based solver. \medskip
+%        \item The pressure jump across an liquid interface is imposed by the ghost fluid method (GFM). \medskip
+%        \item The depletion force between droplets is also computed under the GFM framework. \medskip
+%        \end{itemize}
+%      \end{bluecolorbox}
+%       
+%    \end{column}
+%    
+%  \end{columns}
+%
+%  \vskip0.5cm
+%  \pause
+%  \centering
+%  \xb{\bf Now, we are ready to simulate the droplets.}
+%  
+%\end{frame}
 
 %%%
 %\hypertarget{ibm}{%
@@ -531,42 +538,38 @@
 
 \begin{frame}[t]
   \frametitle{Flow-assisted assembly}
-
-  \begin{columns}[T]
     
-    \begin{column}{0.5\textwidth}      
-      \only<1->{In our microfluidic device, the droplet dynamics are governed by:
-      \vskip0.3cm
+  \begin{textblock}{80}(5,15)
+    Our objective is to elucidate the hydrodynamic mechanism that leads to the observed droplet dynamics.\vskip0.3cm
+    
+    \only<2->{Factors that may contribute to the dynamics:
+      \vskip0.1cm
       \begin{itemize}
       \item near-field depletion force
       \item shear
       \item confinement
       \item boundary condition
       \end{itemize}
-      \vskip0.3cm} %end only
-      \only<2>{We examine these effects one-by-one as in the paper below.}
-    \end{column}
-
-    \begin{column}{0.45\textwidth}
-      \only<1->{
-      \centering
-      \includegraphics[height=4cm]{imgs/espci-chip-cartoon.png}} %end only
-    \end{column}
+      \vskip0.3cm
+    } %end only
     
-  \end{columns}
-  
-  \only<2>{
-    \begin{textblock}{160}(12,54)
-      \begin{tcolorbox}[beamer,
-          width=.6\textwidth,
-          arc=0pt,
-          boxsep=1pt,
-          left=0pt,right=0pt,top=0pt,bottom=0pt,
-        ]
-        \includegraphics[width=\linewidth]{imgs/soft-mat.png}
-      \end{tcolorbox}
-    \end{textblock}
-  } %end only
+    \only<3->{
+      In the following, we will present simulation results of droplet motions in three types of flows:
+      \vskip0.1cm
+      \begin{itemize}
+      \item quiescent
+      \item shear-driven 
+      \item pressure-driven 
+      \end{itemize}
+      \vskip0.1cm
+      channel flows to disentangle the various effects.
+      As the flow becomes increasingly complex, the mechanism behind the droplet assembly will gradually becomes evident.
+    } % end only
+  \end{textblock}
+
+  \begin{textblock}{90}(90,30)
+    \includegraphics[height=4cm]{imgs/espci-chip-cartoon.png}
+  \end{textblock}
     
 \end{frame}
 
@@ -574,65 +577,63 @@
 \begin{frame}[t]
   \frametitle{Flow-assisted assembly: Approaching droplets in quiescent flows}
 
-  \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
-      Dimensional analysis suggests the following scaling.  \vskip0.2cm
+  \begin{textblock}{70}(5,15)
+    Dimensional analysis suggests the following scaling.  \vskip0.2cm
+    \begin{itemize}
+    \item The strength of the attraction $\propto \Pi=p_{os}/p$.
+    \item The approaching time $\propto T_\pi = r_s/(R\Pi)$.
+      \only<3->{
+      \item The physical time scale, $\tau_\pi = r_s \mu /(R p_{os})$, is $\sim 1$ ns.%
+        \footnote<3->[frame]{Typical experimental values:
+          $r_s = 1$ nm, ${\mu} = 10^{-3}$ kg/m-s, ${R} = 10$ $\mu$m, and ${p}_{os} = 100$ Pa.}
+      } % end only
+    \end{itemize}
+  \end{textblock}
+
+  \begin{textblock}{80}(78,12)
+    \includegraphics[width=7.2cm]{../paper1/Figures/depletion3.pdf}
+  \end{textblock}
+  
+  \only<2-4>{
+    \begin{textblock}{90}(3,50)
+      \includegraphics[width=\textwidth]{../paper2/figs/min_dist4.pdf}
+    \end{textblock}
+    \begin{textblock}{90}(33,63)
+      \includegraphics[height=1.1cm]{../paper2/figs/2dp.png}
+    \end{textblock}
+    \begin{textblock}{90}(76,63)
+      \includegraphics[height=1.1cm]{../paper2/figs/3dp.png}
+    \end{textblock}
+  } %end only
+
+  \only<4->{
+    \begin{textblock}{65}(93,50)
+      \includegraphics[width=\textwidth]{../paper2/figs/packings.png}
+    \end{textblock}
+  } %end only
+
+  \only<5->{ 
+    \begin{textblock}{90}(5,41)
+      In summary, the depletion attraction
+      \vskip0.1cm
       \begin{itemize}
-      \item The strength of the attraction $\propto \Pi=p_{os}/p$.
-      \item The approaching time $\propto T_\pi = r_s/(R\Pi)$.
-        \only<3->{\item The physical time scale, $\tau_\pi = r_s \mu /(R p_{os})$, is $\sim 1$ ns.%
-          \footnote<3->[frame]{Typical experimental values:
-            $r_s = 1$ nm, ${\mu} = 10^{-3}$ kg/m-s, ${R} = 10$ $\mu$m, and ${p}_{os} = 100$ Pa.}
-          }
-        \only<4->{\\ Therefore, the approaching can be considered instantaneous.}
+      \item is local (activated at nearly touching);
+      \item acts in the radial direction; 
+      \item has a fast relaxation time.
       \end{itemize}
-    \end{column}
+    \end{textblock}
+  } % end only
 
-    \begin{column}{0.4\textwidth}
-      \begin{figure}
-        \includegraphics[width=\columnwidth]{../paper2/figs/depletion_flow.png}
-      \end{figure}
-
-    \end{column}
-    
-  \end{columns}
-
-  \vskip0.4cm
-  \only<2-3>{
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.75\textwidth]{../paper2/figs/min_dist4.pdf}
-      \begin{picture}(0,0)
-        \put(-210,48){\includegraphics[height=1.4cm]{../paper2/figs/2dp.png}}
-        \put(-55, 48){\includegraphics[height=1.4cm]{../paper2/figs/3dp.png}}
-      \end{picture}
-    \end{figure}
-  } %end only
-
-  \only<5>{
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.6\textwidth]{../paper2/figs/packings.png}
-    \end{figure}
-  } %end only
-
-  \only<6>{ \vskip0.6cm
-    \begin{columns}    
-      \begin{column}{0.7\textwidth}
-        \begin{bluecolorbox}[Characteristics of depletion force]
-          In summary, the depletion attraction
-          \medskip
-          \begin{itemize}
-          \item is local (activated at nearly touching);
-          \item acts in the radial direction; 
-          \item has a fast relaxation time. 
-          \end{itemize}
-          \medskip
-          Consequently, the effect of depletion force on cluster morphology is to preserve the initial positions in the absence of noise. 
-        \end{bluecolorbox}
-      \end{column}
-    \end{columns}
-  }
+  \only<6->{ 
+    \begin{textblock}{65}(10,65)
+      \begin{bluecolorbox}[Effects of depletion force]
+        \begin{itemize}
+        \item Keep nearby droplets in touch.
+        \item Preserve the initial positions in the absence of noise. 
+        \end{itemize}
+      \end{bluecolorbox}
+    \end{textblock}
+  } % end only
     
 \end{frame}
 
@@ -640,37 +641,43 @@
 \begin{frame}[t]
   \frametitle{Flow-assisted assembly: Sticky droplets in shear-driven channel flows}
 
-  \vskip0.4cm
-  \only<1->{
-    \begin{columns}[c]
-      \begin{column}{.3\textwidth}
-        A pair of droplets in unbounded simple shear flow has two types of trajectories%
-        \footnote<.->[frame]{Batchelor \& Green, J. Fluid. Mech. 56, (2), 375-400. (1972).}: \medskip
-        \begin{itemize}
-        \item open trajectory;
-        \item closed trajectory.
-        \end{itemize}
-      \end{column}
-      
-      \begin{column}{.6\textwidth}
-        \centering 
-        \includegraphics[width=.8\columnwidth]{../imgs/BG-traj4.pdf}
-        
-      \end{column}
-    \end{columns}
+  \begin{textblock}{70}(5,15)
+    The simplest example is the simple shear flow.
+  \end{textblock}
+
+  \begin{textblock}{70}(80,15)
+    \includegraphics[width=\textwidth]{imgs/shear1.png}
+  \end{textblock}
+
+  \only<2->{
+    \begin{textblock}{70}(5,20)
+      A pair of droplets in unbounded simple shear flow can have two types of trajectories%
+      \footnote<.->[frame]{Batchelor \& Green, J. Fluid. Mech. 56, (2), 375-400. (1972).}: \vskip0.1cm
+      \begin{itemize}
+      \item open trajectory
+      \item closed trajectory
+      \end{itemize}
+      \vskip0.1cm
+      These two classes of trajectory is only determined by the relative position for equal spheres. 
+    \end{textblock}
+
+    \begin{textblock}{70}(80,47)
+      \includegraphics[width=\textwidth]{../imgs/BG-traj4.pdf}
+    \end{textblock}
   } %end only
 
-  \vskip0.4cm  
-  \only<2->{These two classes of trajectory is only determined by the relative position for equal spheres.\\} 
-  \only<3->{Adding a depletion force shall not alter the phase portrait, since the force is local.}
-  
-  \vskip0.4cm  
-  \only<4->{\xb{However, adding both depletion and confinement will change the droplet dynamics.} \\
-    (Actually, adding confinement alone already changes the picture qualitatively.%
-    \footnote<4->[frame]{M. Zurita-Gotor \etal J. Fluid. Mech. 592, 447-469. (2007). I. Fouxon \etal ArXiv:1908.11208.})}
+  \only<3->{
+    \begin{textblock}{70}(5,50)
+      Adding a depletion force shall not alter the phase portrait, since the force is local.%
+      \footnote<.->[frame]{This is only true mathematically. Physically, there will be noise and the symmetry is not guaranteed.}
+    \end{textblock}
+  } %end only
 
-  %\vskip0.4cm
-  %\only<5->{\xr{\bf What is the nature of droplet interactions under depletion force and shear in strongly confined geometries?}}  
+  \only<4->{
+    \begin{textblock}{70}(5,60)
+      \xb{However, adding both depletion and confinement will profoundly change the droplet dynamics.}
+    \end{textblock}
+  } %end only
     
 \end{frame}
 
@@ -678,42 +685,43 @@
 \begin{frame}[t,noframenumbering]
   \frametitle{Flow-assisted assembly: Sticky droplets in shear-driven channel flows}
 
-  We simulate a pair of touching droplets in a shear-driven channel of height $L_z=1.5D$. \vskip0.2cm
-  Without the depletion attraction, droplets separate and swap their positions (i.e.\ symmetrical). \vskip0.2cm
-  
-  \begin{figure}
-    \centering
-    \movie[]{\includegraphics[width=.5\columnwidth]{imgs/shear.png}}
-          {videos/shear-swap-no-depl.ogv}
-  \end{figure}
-
-\end{frame}
-
-%%2
-\begin{frame}[t,noframenumbering]
-  \frametitle{Flow-assisted assembly: Sticky droplets in shear-driven channel flows}
-
-  We simulate a pair of touching droplets in a shear-driven channel of height $L_z=1.5D$. \vskip0.2cm
-  Without the depletion attraction, droplets separate and swap their positions (i.e.\ symmetrical). \vskip0.2cm
-  With the depletion attraction, only one configuration is dynamically stable (i.e.\ the symmetry is lost). \vskip0.5cm
+  \begin{textblock}{140}(5,15)
+    To see that, we simulate a pair of touching droplets in a shear-driven channel of height $L_z=1.5D$. \vskip0.1cm
+    \only<2->{
+      Without the depletion attraction, droplets separate and swap their positions (i.e.\ symmetrical).%
+      \footnote<.->[frame]{M. Zurita-Gotor \etal J. Fluid. Mech. 592, 447-469. (2007). I. Fouxon \etal ArXiv:1908.11208.}
+    } %end only
+    \only<3->{
+      \vskip0.1cm
+      With the depletion attraction and strong confinement, only one configuration is dynamically stable (i.e.\ the symmetry is lost).
+    } %end only      
+  \end{textblock}
 
   \only<1-2>{
-  \begin{figure}
-    \centering
-    \includegraphics[width=.15\columnwidth]{../paper2/figs/shear1.png}
-    \includegraphics[width=.32\columnwidth]{../paper2/figs/shell1.png} %\vskip0.1cm
-    \only<1>{
-      \movie[]{\includegraphics[width=.4\columnwidth]{../paper2/figs/angle_final2.pdf}}
-            {videos/shear-align-case8.ogv} } %end only
-    \only<2>{\includegraphics[width=.415\columnwidth]{../paper2/figs/traj.pdf}}
-    \caption{All initial positions (\xb{blue dots}) stabalize at a polar angle $\theta_\infty=$ 79 deg (\xr{red dot}).}
-  \end{figure} }%end only
+    \begin{textblock}{105}(25,35)
+      \movie[]{\includegraphics[width=\textwidth]{imgs/shear1.png}}
+            {videos/shear-swap-no-depl.ogv}
+    \end{textblock}
+  } % end only
 
-  \only<3>{
-    \vskip1cm
-    \begin{columns}
-      \begin{column}{0.6\textwidth}
-        
+  \only<3-4>{
+    \begin{textblock}{135}(7,35)
+      \begin{figure}
+        \centering
+        \includegraphics[width=.15\columnwidth]{../paper2/figs/shear1.png}
+        \includegraphics[width=.32\columnwidth]{../paper2/figs/shell1.png} %\vskip0.1cm
+        \only<3>{
+          \movie[]{\includegraphics[width=.4\columnwidth]{../paper2/figs/angle_final2.pdf}}
+                {videos/shear-align-case8.ogv}
+        } %end only
+        \only<4>{\includegraphics[width=.417\columnwidth]{../paper2/figs/traj.pdf}}
+        \caption{All initial positions (\xb{blue dots}) stabalize at a polar angle $\theta_\infty=$ 79 deg (\xr{red dot}).}
+      \end{figure}
+    \end{textblock}
+  } % end only
+
+  \only<5>{
+    \begin{textblock}{92}(30,40)
         \begin{bluecolorbox}[Effects of depletion force $+$ shear $+$ confinement]
           \medskip
           \begin{itemize}
@@ -722,10 +730,9 @@
           \item When $N>2$, we expect a chain of droplets. \medskip
           \end{itemize}
         \end{bluecolorbox}
-        
-      \end{column}
-    \end{columns}
-  } %end only
+      
+    \end{textblock}
+  } % end only
 
 \end{frame}
 
@@ -733,63 +740,82 @@
 \begin{frame}[t]
   \frametitle{Flow-assisted assembly: Droplet clusters in pressure-driven channel flows}
 
-  Finally, we turn to pressure-driven channel flows. \vskip0.2cm
-  \only<2-5>{In the region far away from the inlet...} %\vskip0.2cm
-  \only<6->{In the region close to the inlet...} \vskip0.2cm
+  \begin{textblock}{145}(5,14)
+    Finally, we turn to pressure-driven channel flows, the case that has the most resemblance to the actual microfluidic channel.
+  \end{textblock}
+
+  \begin{textblock}{80}(5,24)
+    \only<2->{In the region far away from the inlet... \vskip0.1cm
+      \begin{itemize}
+      \item w/o depletion force $\rightarrow $ scattering drops
+        \only<3->{
+        \item w/ depletion force $\rightarrow$ forming a chain \only<4->{or a triangle}
+        } %end only
+      \end{itemize}
+    } % end only
+    
+    \vskip0.1cm
+    \only<6->{In the region close to the inlet...
+      \begin{itemize}
+      \item Non-uniform inflow \only<7->{$\rightarrow $ compact clusters}
+      \end{itemize}
+    } % end only
+    
+  \end{textblock}
+
+  \only<1-7>{
+    \begin{textblock}{55}(12.5,49)
+      \includegraphics{imgs/espci-chip-cartoon.png}
+    \end{textblock}
+  } %end only            
   
-  \begin{columns}
+  \only<8>{
+    \begin{textblock}{73}(5,52)
+      \begin{bluecolorbox}[Effects of \emph{all} combined]
+        \medskip
+        \begin{itemize}
+        \item Depletion force is necessary for cluster formation. %\medskip
+        \item Homogeneous shear flow with confinement promotes droplet chains. %\medskip
+        \item Non-uniform inflow can lead to compact structures. %\medskip
+        \item Overall, these are 3D effects. \medskip
+        \end{itemize}
+      \end{bluecolorbox}
+    \end{textblock}
+  } % end only
 
-    \begin{column}{0.4\textwidth}
-      \only<1-7>{
-      \begin{textblock}{60}(10,35)
-        \includegraphics{imgs/espci-chip-cartoon.png}
-      \end{textblock}
-      } %end only
-      \only<8>{
-        \begin{bluecolorbox}[Effects of all combined]
-          \medskip
-          \begin{itemize}
-          \item Uniform flow favors chain-like structures. \medskip
-          \item Non-uniform flow promotes compact structures. \medskip
-          \item Overall, these are 3D effects. \medskip
-          \end{itemize}
-        \end{bluecolorbox}
-      } % end only
-    \end{column}
-
-    \begin{column}{0.5\textwidth}
+    \begin{textblock}{67}(85,30)
       \begin{figure}
       %\centering
       \only<2>{
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-scatter-top.png}
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-scatter-side.png}
-        \vskip0.3cm
-        Without depletion force: scattering drops.
+        \vskip0.2cm \hskip0.4cm
+        %Without depletion force: scattering drops.
       } % end only
       \only<3>{
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-line-top1.png}
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-line-side1.png}
-        \vskip0.3cm
-        With depletion force: forming a chain.
+        \vskip0.2cm \hskip0.4cm
+        %With depletion force: forming a chain.
       } % end only
       \only<4>{
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-triangle-top.png}
         \includegraphics[width=.7\columnwidth]{../paper2/figs/3-triangle-side.png}
-        \vskip0.3cm
-        With depletion force: forming a triangle.
+        \vskip0.2cm \hskip0.4cm
+        %With depletion force: forming a triangle.
       } % end only
       \only<5>{
         \includegraphics[width=.5\columnwidth]{../paper2/figs/angle_sketch1.pdf}
         \includegraphics[width=.5\columnwidth]{../paper2/figs/result_poi_bar.pdf}
-        \vskip0.3cm
+        \vskip0.2cm \hskip0.2cm
         Overall, chains are more favorable than triangles.
       } % end only
       \only<6>{
         \vskip1cm
         \movie[]{\includegraphics[width=\columnwidth]{../paper2/figs/non-uniform_inflow1.pdf}}
               {videos/movie-bird.ogv}
-        \vskip0.3cm
-        A very non-uniform inflow.
+        \vskip0.2cm \hskip0.2cm
+        %A very non-uniform inflow.
       } % end only
       \only<7-8>{
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-top-0.png}
@@ -797,7 +823,7 @@
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-top-570k.png}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-side-0.png}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-side-150k-l.png}
-        \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-side-570k.png}
+        \includegraphics[width=.32\columnwidth]{../paper2/figs/bx6-side-570k.png} 
         \includegraphics[width=.75\columnwidth]{../paper2/figs/time_arrow.pdf}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bd8-top-0.png}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bd8-top-150k.png}
@@ -805,13 +831,13 @@
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bd8-side-0.png}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bd8-side-150k.png}
         \includegraphics[width=.32\columnwidth]{../paper2/figs/bd8-side-450k.png}
-        \vskip0.1cm
+        \vskip0.2cm \hskip0.2cm
         Assembly of 3-4 droplets.
       } % end only
       \end{figure}
-    \end{column}
+    \end{textblock}
     
-  \end{columns}
+  
   
 \end{frame}
 
@@ -839,9 +865,9 @@
 
     \begin{column}{0.45\textwidth}
       
-      \begin{bluecolorbox}[Obersvations \& hypotheses]
+      \begin{bluecolorbox}[Hypotheses]
         \begin{itemize}
-        \item Droplets are in quasi-two-dimensional (q2D) space.
+        \item Droplets obey laws in quasi-two- dimensional (q2D) space.
         \item Depletion force attracts nearby drops.
         \item Hydrodynamic interactions (HI) lead to the rearrangement dynamics.
         \end{itemize}
@@ -888,41 +914,86 @@
 \begin{frame}[t]
   \frametitle{Conclusions}
 
-  \vskip0.4cm
+  \vskip0.1cm
   \begin{columns}[T]
     
     \begin{column}{0.95\textwidth}
       \begin{bluecolorbox}[Droplet interactions]
+        \medskip
         \begin{itemize}
         \item The depletion force is short-range, radial and instantaneous.
-          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement. \medskip
-          
-        \item Confinement modifies the phase portrait of droplet trajectories.
-          Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.\medskip
-          
-        \item Dipolar interactions is weak in confined 3D geometries.
-          An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.\medskip
-          
-        \item Overall, it is difficult to calibrate all 3D effects at play.
+          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement. \medskip 
+          \only<2->{  
+          \item Confinement modifies the phase portrait of droplet trajectories.
+            Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.\medskip}
+          \only<3->{
+          \item Dipolar interactions is weak in confined 3D geometries.
+            An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.\medskip}
+          \only<4->{
+          \item Overall, it is difficult to calibrate all 3D effects at play. \medskip}
         \end{itemize}
       \end{bluecolorbox}
 
-      \vskip0.4cm
-      \only<2->{
-      \begin{bluecolorbox}[Photonic material fabrication]
-        \begin{itemize}
-        \item The microfluidic-based approach is theoretically possible, but tricky in practice.%
-          \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}\medskip
-
-        \item Current trend seems to be shifted from colloidal self-assembly to making new disordered structures.%
-          \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}   
-        \end{itemize}
-      \end{bluecolorbox}
+      \vskip0.3cm
+      \only<5->{
+        \begin{bluecolorbox}[Photonic material fabrication]
+          \medskip
+          \begin{itemize}
+          \item The microfluidic-based approach is theoretically possible, but tricky in practice.%
+            \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}\medskip 
+            \only<6->{
+            \item Current trend seems to be shifted from colloidal self-assembly to making new disordered structures.%
+              \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}    \medskip}
+          \end{itemize}
+        \end{bluecolorbox}
       } %end only
     \end{column}
     
   \end{columns}
   
+\end{frame}
+%%2
+\begin{frame}[noframenumbering,t]
+  \frametitle{Conclusions}
+
+  All the conclusions are drawn from the following papers.
+  
+  \begin{textblock}{45}(5,20)
+    \begin{tcolorbox}[beamer,
+        width=\textwidth,
+        arc=0pt,
+        boxsep=1pt,
+        left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ]
+      \includegraphics[width=\linewidth]{imgs/PRE_cover.png}
+    \end{tcolorbox}
+    Fouxon \etal PRE (2017).
+  \end{textblock}
+
+  \begin{textblock}{45}(55,20)
+    \begin{tcolorbox}[beamer,
+        width=\textwidth,
+        arc=0pt,
+        boxsep=1pt,
+        left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ]
+      \includegraphics[width=\linewidth]{imgs/soft-mat.png}
+    \end{tcolorbox}
+    Ge \etal Soft Matter (2019).
+  \end{textblock}
+
+  \begin{textblock}{45}(105,20)
+    \begin{tcolorbox}[beamer,
+        width=\textwidth,
+        arc=0pt,
+        boxsep=1pt,
+        left=0pt,right=0pt,top=0pt,bottom=0pt,
+      ]
+      \includegraphics[width=\linewidth]{imgs/arxiv-cover.png}
+    \end{tcolorbox}
+    Fouxon \etal Under review.
+  \end{textblock}
+
 \end{frame}
 
 %%
