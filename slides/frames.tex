@@ -224,7 +224,7 @@
 \begin{frame}
   \frametitle{3D numerical simulations}
 
-  To investigate the hydrodynamics and subsequently optimize the chip design, we set up direct numerical simulations of droplets in microchannels.
+  To investigate the hydrodynamics, we set up direct numerical simulations of droplets in microchannels.
   \vskip0.3cm
 
   \pause
@@ -265,7 +265,7 @@
             \textrm{Re} = \frac{\rho UL}{\mu}, \quad
             \textrm{Ca} = \frac{\mu U}{\gamma}, \quad
             \textrm{Fr} = \frac{U^2}{FL}.  
-          \end{aligned}
+          \end{aligned} \medskip
         \end{equation}
       \end{bluecolorbox}
       \vskip0.2cm
@@ -688,12 +688,12 @@
   \begin{textblock}{140}(5,15)
     To see that, we simulate a pair of touching droplets in a shear-driven channel of height $L_z=1.5D$. \vskip0.1cm
     \only<2->{
-      Without the depletion attraction, droplets separate and swap their positions (i.e.\ symmetrical).%
+      Without the depletion attraction, droplets {\bf separate} and {\bf swap} their positions (i.e.\ symmetrical).%
       \footnote<.->[frame]{M. Zurita-Gotor \etal J. Fluid. Mech. 592, 447-469. (2007). I. Fouxon \etal ArXiv:1908.11208.}
     } %end only
     \only<3->{
       \vskip0.1cm
-      With the depletion attraction and strong confinement, only one configuration is dynamically stable (i.e.\ the symmetry is lost).
+      With the depletion attraction and strong confinement, only {\bf one configuration} is dynamically stable (i.e.\ the symmetry is lost).
     } %end only      
   \end{textblock}
 
@@ -925,28 +925,28 @@
         %\medskip
         \begin{itemize}
         \item Droplets in confined 3D geometries, such as the one we considered here, do obey laws in q2D (e.g.\ dipolar interactions).
-          However, the interaction is too weak to produce the dynamics observed within the time scale of the experiment.
-          In other words, it can only be used as a far-field approximation in the long-time limit.\medskip 
-          \only<2->{
+          \only<2->{However, the interaction is too weak to produce the dynamics observed within the time scale of the experiment.}
+          \only<3->{Therefore, it can only be used as a \emph{far-field} approximation in the \emph{long-time} limit.}
+          \only<4->{\medskip 
           \item The correct explanation for the experimental observation is based on a number of 3D effects,
-            such as the confinement-mediated shear alignment, inhomogeneous boundary conditions, \emph{etc}.
-            However, the interplay of these 3D effects negates a simple droplet interaction model of parametric dependence.
-            In practice, we may have to do a full simulation for each setup to predict the droplet dynamics,
+            such as the confinement-mediated shear alignment, inhomogeneous boundary conditions, \emph{etc}.}
+          \only<5->{However, the interplay of these 3D effects negates a simple droplet interaction model of parametric dependence.}
+          \only<6->{In practice, we may have to do a \emph{full} simulation for each setup to predict the droplet dynamics,
             and it remains difficult to make a diamond cubic. }
         \end{itemize}
       \end{bluecolorbox}
 
       \vskip0.3cm
-      \only<3->{
+      \only<7->{
         \begin{bluecolorbox}[Photonic material fabrication]
           %\medskip
           \begin{itemize}
-          \item It's still possible to make PhC using the microfluidic-based approach --
-            an ingeneous approach is proposed to assemble face-centered cubic composed of smaller clusters.%
-            \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}\medskip 
-            \only<4->{
-            \item However, instead of struggling with crystal making, currently there is a strong trend in making disordered photonic materials.%
-              \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}    }
+          \item It's still possible to make PhC using the microfluidic-based approach,
+            e.g.\ an ingeneous approach has been proposed to assemble face-centered cubic composed of smaller clusters.%
+            \footnote<.->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}
+            \only<8->{\medskip 
+            \item However, instead of struggling with crystal making, the current fashion is to make \emph{disordered} photonic materials.%
+              \footnote<.->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}    }
           \end{itemize}
         \end{bluecolorbox}
       } %end only
