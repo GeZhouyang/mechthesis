@@ -704,23 +704,26 @@
     \end{textblock}
   } % end only
 
-  \only<3-4>{
-    \begin{textblock}{135}(7,35)
-      \begin{figure}
-        \centering
-        \includegraphics[width=.15\columnwidth]{../paper2/figs/shear1.png}
-        \includegraphics[width=.32\columnwidth]{../paper2/figs/shell1.png} %\vskip0.1cm
-        \only<3>{
-          \movie[]{\includegraphics[width=.4\columnwidth]{../paper2/figs/angle_final2.pdf}}
-                {videos/shear-align-case8.ogv}
-        } %end only
-        \only<4>{\includegraphics[width=.417\columnwidth]{../paper2/figs/traj.pdf}}
-        \caption{All initial positions (\xb{blue dots}) stabalize at a polar angle $\theta_\infty=$ 79 deg (\xr{red dot}).}
-      \end{figure}
+  \only<3-5>{
+    \begin{textblock}{75}(7,35)
+      \includegraphics[width=.3\columnwidth]{../paper2/figs/shear1.png}
+      \includegraphics[width=.64\columnwidth]{../paper2/figs/shell1.png} 
     \end{textblock}
+    \begin{textblock}{140}(12,80)
+      Figure: All initial positions (\xb{blue dots}) stabalize at a polar angle $\theta_\infty=$ 79 deg (\xr{red dot}).
+    \end{textblock}    
   } % end only
+  
+  \begin{textblock}{65}(80,45)
+    \only<3>{
+      \movie[]{\includegraphics[width=.85\columnwidth]{../paper2/figs/angle_final2.pdf}}
+            {videos/shear-align-case8.ogv}
+    } %end only
+    \only<4>{\includegraphics[width=\columnwidth]{imgs/traj0.pdf}}
+    \only<5>{\includegraphics[width=\columnwidth]{imgs/traj.pdf}}
+  \end{textblock}
 
-  \only<5>{
+  \only<6>{
     \begin{textblock}{92}(30,40)
         \begin{bluecolorbox}[Effects of depletion force $+$ shear $+$ confinement]
           \medskip
@@ -747,9 +750,9 @@
   \begin{textblock}{80}(5,24)
     \only<2->{In the region far away from the inlet... \vskip0.1cm
       \begin{itemize}
-      \item w/o depletion force $\rightarrow $ scattering drops
+      \item w/o depletion force $\rightarrow $ {\bf scattering} drops
         \only<3->{
-        \item w/ depletion force $\rightarrow$ forming a chain \only<4->{or a triangle}
+        \item w/ depletion force $\rightarrow$ forming a \only<3-4>{chain \only<4>{or a triangle}}\only<5->{{\bf chain} or a triangle}
         } %end only
       \end{itemize}
     } % end only
@@ -757,7 +760,7 @@
     \vskip0.1cm
     \only<6->{In the region close to the inlet...
       \begin{itemize}
-      \item Non-uniform inflow \only<7->{$\rightarrow $ compact clusters}
+      \item Non-uniform inflow \only<7->{$\rightarrow $ {\bf compact} clusters}
       \end{itemize}
     } % end only
     
@@ -776,7 +779,7 @@
         \begin{itemize}
         \item Depletion force is necessary for cluster formation. %\medskip
         \item Homogeneous shear flow with confinement promotes droplet chains. %\medskip
-        \item Non-uniform inflow can lead to compact structures. %\medskip
+        \item Non-uniform inflow can lead to compact structures (with some tuning). %\medskip
         \item Overall, these are 3D effects. \medskip
         \end{itemize}
       \end{bluecolorbox}
@@ -919,31 +922,31 @@
     
     \begin{column}{0.95\textwidth}
       \begin{bluecolorbox}[Droplet interactions]
-        \medskip
+        %\medskip
         \begin{itemize}
-        \item The depletion force is short-range, radial and instantaneous.
-          It keeps droplets in a cluster but does not contribute to inter-cluster rearrangement. \medskip 
-          \only<2->{  
-          \item Confinement modifies the phase portrait of droplet trajectories.
-            Combined with a strong depletion attraction, it promotes chain-like structures aligned with the flow.\medskip}
-          \only<3->{
-          \item Dipolar interactions is weak in confined 3D geometries.
-            An inhomogeneous inflow profile is responsible for the experimentally observed droplet clustering.\medskip}
-          \only<4->{
-          \item Overall, it is difficult to calibrate all 3D effects at play. \medskip}
+        \item Droplets in confined 3D geometries, such as the one we considered here, do obey laws in q2D (e.g.\ dipolar interactions).
+          However, the interaction is too weak to produce the dynamics observed within the time scale of the experiment.
+          In other words, it can only be used as a far-field approximation in the long-time limit.\medskip 
+          \only<2->{
+          \item The correct explanation for the experimental observation is based on a number of 3D effects,
+            such as the confinement-mediated shear alignment, inhomogeneous boundary conditions, \emph{etc}.
+            However, the interplay of these 3D effects negates a simple droplet interaction model of parametric dependence.
+            In practice, we may have to do a full simulation for each setup to predict the droplet dynamics,
+            and it remains difficult to make a diamond cubic. }
         \end{itemize}
       \end{bluecolorbox}
 
       \vskip0.3cm
-      \only<5->{
+      \only<3->{
         \begin{bluecolorbox}[Photonic material fabrication]
-          \medskip
+          %\medskip
           \begin{itemize}
-          \item The microfluidic-based approach is theoretically possible, but tricky in practice.%
+          \item It's still possible to make PhC using the microfluidic-based approach --
+            an ingeneous approach is proposed to assemble face-centered cubic composed of smaller clusters.%
             \footnote<2->[frame]{Morozov \& Leshansky, Langmuir. 35, 11, 3987-3991 (2019).}\medskip 
-            \only<6->{
-            \item Current trend seems to be shifted from colloidal self-assembly to making new disordered structures.%
-              \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}    \medskip}
+            \only<4->{
+            \item However, instead of struggling with crystal making, currently there is a strong trend in making disordered photonic materials.%
+              \footnote<2->[frame]{Ricouvier \etal PNAS. 116 (19), 9202-9207 (2019).}    }
           \end{itemize}
         \end{bluecolorbox}
       } %end only
