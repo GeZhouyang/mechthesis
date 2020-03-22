@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1584700422 "slides.tex" "slides.pdf" "slides" 1584700431
+["pdflatex"] 1584882423 "slides.tex" "slides.pdf" "slides" 1584882432
   "../../imgs/BG-traj4.pdf" 1580372174 74591 26bee9f7582c3a98d183d1043c69d26e ""
   "../../imgs/dipolar.pdf" 1579626789 133166 394c121fea5ade826ffc35edd9879628 ""
   "../../imgs/photonics_cover.jpg" 1579626789 3426016 7d57bc98b7e2dba116e068a3e9c27acb ""
@@ -41,7 +41,7 @@
   "../../paper7/figs/curve_visc_fricless1.pdf" 1579626759 485819 47568acb02cdb49006b63554551b8d4b ""
   "../../paper7/figs/curve_visc_mu0.5.pdf" 1579626759 483508 4c27f2eaec72ba28b1c38e533b6820dc ""
   "../../paper7/figs/np2000_vol0.55.png" 1579626759 1485506 6ab1df3b4e77c38c08205d8564ec09e2 ""
-  "../frames.tex" 1584700420 53489 4696f9e335e1a772d33289dd4fe80266 ""
+  "../frames.tex" 1584882420 53442 de67de0daad53a864da2643da1608968 ""
   "../imgs/JCP-cover.png" 1583654415 285535 4ecd2138174f7f254ca1f64ff4a52a70 ""
   "../imgs/PRE_cover.png" 1584564377 183048 4536c4573d99672f76dfd0f5d69eb10f ""
   "../imgs/Paris2020.png" 1584199785 1583015 782057c881ec2a3657696ea83a9e24e2 ""
@@ -435,10 +435,10 @@
   "beamerthemeKTH.sty" 1583327352 7562 5ee81e1c35e76b4aa040f3861160f815 ""
   "kthgraphics/KTH-logo.pdf" 1583245218 71365 402fa3b7bb4568f72f00bd9996f7ed2b ""
   "pandoc_preamble.tex" 1583245886 7150 e436aebdc2c57014bef472570e739040 ""
-  "slides.aux" 1584700430 15747 656537aa76177c5bdf883cfd2faaea57 "pdflatex"
-  "slides.nav" 1584700430 7280 e943fd0463be3d9a2fa8e3ea1b5796a4 "pdflatex"
+  "slides.aux" 1584882432 15747 656537aa76177c5bdf883cfd2faaea57 "pdflatex"
+  "slides.nav" 1584882432 7280 e943fd0463be3d9a2fa8e3ea1b5796a4 "pdflatex"
   "slides.tex" 1584393530 6580 6b047b4b7e589c130fc3cd804361f5d4 ""
-  "slides.toc" 1584700430 1015 7bdc5d496f006c0ed770bdeea9c76287 "pdflatex"
+  "slides.toc" 1584882432 1015 7bdc5d496f006c0ed770bdeea9c76287 "pdflatex"
   "videos/espci-3drops.mp4" 1583335362 552595 89a07b5b93d058e9e8eb0f8cbccc6003 ""
   "videos/espci-4drops.mp4" 1583481950 689233 9c5e97bea6a0947a03b90c35bf45d381 ""
   "videos/m5.1.mp4" 1584119044 2263448 d3c04240b4fe9e1c3a0b47d2400dfa13 ""
@@ -448,9 +448,9 @@
   "videos/shear-align-case8.ogv" 1583772998 420837 a905f504251fe905c52795c88e480937 ""
   "videos/shear-swap-no-depl.ogv" 1583826610 206191 6d8e794e62941be6d5572a600de4c4ed ""
   (generated)
+  "slides.snm"
+  "slides.nav"
+  "slides.pdf"
+  "slides.aux"
   "slides.toc"
   "slides.log"
-  "slides.pdf"
-  "slides.nav"
-  "slides.aux"
-  "slides.snm"
